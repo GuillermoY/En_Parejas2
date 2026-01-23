@@ -56,7 +56,8 @@ class SingleColorEntity : public Abs_Entity
 private:
 	glm::vec4 mColor;
 public:
-
+	glm::vec4 getColor() { return mColor; };
+	void setColor(glm::vec4 newColor) { mColor = newColor; };
 };
 
 

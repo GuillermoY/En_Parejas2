@@ -121,6 +121,8 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 
 	mesh->mNumVertices = num;
 	double angle = 90;
+	// Dividimos un círculo como un pastel y ponemos vértices en cada intersección
+	// entre la línea y la circunferencia.
 	for (GLuint i = 0; i < num; ++i)
 	{
 		int x = 0 + r * cos(radians(angle));
