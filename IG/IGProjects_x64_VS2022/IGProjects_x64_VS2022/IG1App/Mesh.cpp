@@ -111,3 +111,24 @@ Mesh::createRGBAxes(GLdouble l)
 
 	return mesh;
 }
+
+Mesh*
+Mesh::generateRegularPolygon(GLuint num, GLdouble r)
+{
+	Mesh* mesh = new Mesh();
+
+	mesh->mPrimitive = GL_LINE_LOOP;
+
+	mesh->mNumVertices = num;
+	double angle = 90;
+	for (GLuint i = 0; i < num; ++i)
+	{
+		int x = 0 + r * cos(radians(angle));
+		int y = 0 + r * sin(radians(angle));
+		mesh->vVertices.emplace_back(x, y, 0.0);
+		angle += 360 / num;
+	
+	}
+
+	return mesh;
+}
