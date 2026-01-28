@@ -70,7 +70,7 @@ public:
 class RegularPolygon : public SingleColorEntity
 {
 public:
-	explicit RegularPolygon(GLuint num, GLdouble r);
+	explicit RegularPolygon(GLuint num, GLdouble r, glm::vec4 color = glm::vec4(1.0f));
 };
 
 

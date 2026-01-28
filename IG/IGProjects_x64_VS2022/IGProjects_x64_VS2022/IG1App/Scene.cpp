@@ -16,7 +16,9 @@ Scene::init()
 
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
-	gObjects.push_back(new RegularPolygon(7, 100.0));
+	//gObjects.push_back(new RegularPolygon(7, 200.0));
+	gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f)));
+	gObjects.push_back(new RegularPolygon(6, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f)));
 }
 
 Scene::~Scene()

@@ -62,7 +62,7 @@ RGBAxes::RGBAxes(GLdouble l)
 	mMesh = Mesh::createRGBAxes(l);
 }
 
-RegularPolygon::RegularPolygon(GLuint num, GLdouble r)
+RegularPolygon::RegularPolygon(GLuint num, GLdouble r, glm::vec4 color) : SingleColorEntity(color)
 {
 	mMesh = Mesh::generateRegularPolygon(num, r);
 }
