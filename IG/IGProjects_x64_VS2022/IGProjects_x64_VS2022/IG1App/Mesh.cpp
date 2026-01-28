@@ -120,13 +120,13 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 	mesh->mPrimitive = GL_LINE_LOOP;
 
 	mesh->mNumVertices = num;
-	double angle = 90;
+	double angle = 90.0;
 	// Dividimos un círculo como un pastel y ponemos vértices en cada intersección
 	// entre la línea y la circunferencia.
 	for (GLuint i = 0; i < num; ++i)
 	{
-		int x = 0 + r * cos(radians(angle));
-		int y = 0 + r * sin(radians(angle));
+		double x = 0 + r * cos(glm::radians(angle));
+		double y = 0 + r * sin(glm::radians(angle));
 		mesh->vVertices.emplace_back(x, y, 0.0);
 		angle += 360 / num;
 	

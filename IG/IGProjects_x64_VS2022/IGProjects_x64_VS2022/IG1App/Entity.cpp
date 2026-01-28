@@ -45,7 +45,24 @@ EntityWithColors::render(mat4 const& modelViewMat) const
 	}
 }
 
+void
+SingleColorEntity::render(mat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+		mat4 aMat = modelViewMat * mModelMat;
+		mShader->use();
+		upload(aMat);
+		mShader->setUniform("color", mColor);
+		mMesh->render();
+	}
+}
+
 RGBAxes::RGBAxes(GLdouble l)
 {
 	mMesh = Mesh::createRGBAxes(l);
+}
+
+RegularPolygon::RegularPolygon(GLuint num, GLdouble r)
+{
+	mMesh = Mesh::generateRegularPolygon(num, r);
 }

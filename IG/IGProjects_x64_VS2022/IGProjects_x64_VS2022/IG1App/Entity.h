@@ -52,12 +52,25 @@ public:
 
 class SingleColorEntity : public Abs_Entity
 {
-	//FALTAN GET Y SET Del atributo 
 private:
 	glm::vec4 mColor;
+
 public:
-	glm::vec4 getColor() { return mColor; };
+	SingleColorEntity(glm::vec4 color = glm::vec4(1.0f))
+		: mColor(color)
+	{
+		mShader = Shader::get("simple");
+	}
+
+	void render(const glm::mat4& modelViewMat) const override;
+	glm::vec4 getColor() const { return mColor; };
 	void setColor(glm::vec4 newColor) { mColor = newColor; };
+};
+
+class RegularPolygon : public SingleColorEntity
+{
+public:
+	explicit RegularPolygon(GLuint num, GLdouble r);
 };
 
 
