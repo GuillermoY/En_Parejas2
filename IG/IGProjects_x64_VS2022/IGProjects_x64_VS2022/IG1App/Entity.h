@@ -73,5 +73,14 @@ public:
 	explicit RegularPolygon(GLuint num, GLdouble r, glm::vec4 color = glm::vec4(1.0f));
 };
 
+class RGBTriangle : public EntityWithColors
+{
+public:
+	static Mesh generateTriangle(GLdouble w, GLdouble h)
+	{
+		Mesh::generateRegularPolygon(w, h);
+	}
+};
+
 
 #endif //_H_Entities_H_

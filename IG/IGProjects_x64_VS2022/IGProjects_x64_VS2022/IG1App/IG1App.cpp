@@ -55,10 +55,14 @@ IG1App::init()
 	// allocate memory and resources
 	mViewPort = new Viewport(mWinW, mWinH);
 	mCamera = new Camera(mViewPort);
+	// En el apartado 6 he metido Scene1 para cuando le das al 1 carga la escena 1.
 	mScenes.push_back(new Scene);
-
+	mScenes.push_back(new Scene1);
+	mScenes.push_back(new Scene2);
 	mCamera->set2D();
 	mScenes[0]->init();
+	mScenes[1]->init();
+	mScenes[2]->init();
 	mScenes[mCurrentScene]->load();
 }
 
