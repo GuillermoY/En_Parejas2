@@ -134,3 +134,31 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 
 	return mesh;
 }
+
+Mesh*
+Mesh::generateRectangle(GLdouble w, GLdouble h)
+{
+	Mesh* mesh = new Mesh();
+
+	mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+	mesh->mNumVertices = 4;
+	mesh->vVertices.emplace_back(w / 2, h / 2, 0.0);
+	mesh->vVertices.emplace_back(-w / 2, h / 2, 0.0);
+	mesh->vVertices.emplace_back(w / 2, -h / 2, 0.0);
+	mesh->vVertices.emplace_back(-w / 2, -h / 2, 0.0);
+
+	return mesh;
+}
+
+Mesh*
+Mesh::generateRGBRectangle(GLdouble w, GLdouble h)
+{
+	Mesh* mesh = generateRectangle(w,h);
+	mesh->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
+	mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
+	mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
+	mesh->vColors.emplace_back(0.0, 0.0, 1.0, 1.0);
+
+	return mesh;
+}

@@ -66,3 +66,8 @@ RegularPolygon::RegularPolygon(GLuint num, GLdouble r, glm::vec4 color) : Single
 {
 	mMesh = Mesh::generateRegularPolygon(num, r);
 }
+
+RGBRectangle::RGBRectangle(GLdouble w, GLdouble h)
+{
+	mMesh = Mesh::generateRGBRectangle(w, h);
+}
