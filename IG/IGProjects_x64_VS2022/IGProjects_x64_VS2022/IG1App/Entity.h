@@ -19,7 +19,7 @@ public:
 	Abs_Entity& operator=(const Abs_Entity& e) = delete; // no copy assignment
 
 	virtual void render(const glm::mat4& modelViewMat) const = 0; // abstract method
-
+	virtual void update(){};
 	// modeling matrix
 	glm::mat4 const& modelMat() const { return mModelMat; };
 	void setModelMat(glm::mat4 const& aMat) { mModelMat = aMat; };
@@ -70,13 +70,13 @@ public:
 class RegularPolygon : public SingleColorEntity
 {
 public:
-	explicit RegularPolygon(GLuint num, GLdouble r, glm::vec4 color = glm::vec4(1.0f));
+	explicit RegularPolygon(GLuint num, GLdouble r, GLuint offset, glm::vec4 color = glm::vec4(1.0f));
 };
 
 class RGBTriangle : public EntityWithColors
 {
 public:
-	explicit RGBTriangle(GLdouble h);
+	explicit RGBTriangle(GLdouble h, GLuint offset);
 	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
 };
 

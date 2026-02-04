@@ -113,7 +113,7 @@ Mesh::createRGBAxes(GLdouble l)
 }
 
 Mesh*
-Mesh::generateRegularPolygon(GLuint num, GLdouble r)
+Mesh::generateRegularPolygon(GLuint num, GLdouble r, GLuint offset)
 {
 	Mesh* mesh = new Mesh();
 
@@ -125,7 +125,7 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 	// entre la línea y la circunferencia.
 	for (GLuint i = 0; i < num; ++i)
 	{
-		double x = 0 + r * cos(glm::radians(angle));
+		double x = offset + r * cos(glm::radians(angle));
 		double y = 0 + r * sin(glm::radians(angle));
 		mesh->vVertices.emplace_back(x, y, 0.0);
 		angle += 360 / num;
@@ -135,9 +135,9 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 	return mesh;
 }
 Mesh*
-Mesh::generateRGBTriangle(GLdouble h)
+Mesh::generateRGBTriangle(GLdouble h, GLuint offset)
 {
-	Mesh* mesh = generateRegularPolygon(3, h);
+	Mesh* mesh = generateRegularPolygon(3, h, offset);
 	mesh->mPrimitive = GL_TRIANGLE_STRIP;
 	mesh->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
 	mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);

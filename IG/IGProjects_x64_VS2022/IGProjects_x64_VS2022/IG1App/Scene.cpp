@@ -17,6 +17,12 @@ Scene::init() // En el apartado 6 he hecho una clase vacía con solo los ejes
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
 }
+void Scene::update()
+{
+	for (auto obj : gObjects) {
+		obj->update();
+	}
+}
 
 Scene::~Scene()
 {
