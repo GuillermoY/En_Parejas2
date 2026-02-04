@@ -66,7 +66,10 @@ public:
 
 		// Graphics objects (entities) of the scene
 		gObjects.push_back(new RGBAxes(400.0));
-		gObjects.push_back(new RGBRectangle(400, 200));
+
+		gObjects.push_back(new RGBTriangle(100));
+		gObjects.push_back(new RGBRectangle(280, 280));
+		gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f)));
 
 	}
 protected:

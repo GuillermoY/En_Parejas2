@@ -67,7 +67,38 @@ RegularPolygon::RegularPolygon(GLuint num, GLdouble r, glm::vec4 color) : Single
 	mMesh = Mesh::generateRegularPolygon(num, r);
 }
 
+RGBTriangle::RGBTriangle(GLdouble h) : EntityWithColors()
+{
+	mMesh = Mesh::generateRGBTriangle(h);
+}
+
 RGBRectangle::RGBRectangle(GLdouble w, GLdouble h)
 {
 	mMesh = Mesh::generateRGBRectangle(w, h);
+}
+
+
+void RGBRectangle::render(const glm::mat4& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
+		mShader->use();
+		upload(aMat);
+
+		glEnable(GL_CULL_FACE);
+		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
+
+		glCullFace(GL_FRONT);
+		glPolygonMode(GL_BACK, GL_FILL);
+		mMesh->render();
+
+
+		glCullFace(GL_BACK);
+		glPolygonMode(GL_FRONT, GL_LINE);
+		mMesh->render();
+
+		glDisable(GL_CULL_FACE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	
+	}
 }

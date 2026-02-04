@@ -41,7 +41,7 @@ class EntityWithColors : public Abs_Entity
 {
 public:
 	explicit EntityWithColors();
-	void render(const glm::mat4& modelViewMat) const override;
+	virtual void render(const glm::mat4& modelViewMat) const override;
 };
 
 class RGBAxes : public EntityWithColors
@@ -73,10 +73,18 @@ public:
 	explicit RegularPolygon(GLuint num, GLdouble r, glm::vec4 color = glm::vec4(1.0f));
 };
 
+class RGBTriangle : public EntityWithColors
+{
+public:
+	explicit RGBTriangle(GLdouble h);
+	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
+};
+
 class RGBRectangle : public EntityWithColors
 {
 public:
 	explicit RGBRectangle(GLdouble w, GLdouble h);
+	void render(const glm::mat4& modelViewMat) const override;
 	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
 };
 
