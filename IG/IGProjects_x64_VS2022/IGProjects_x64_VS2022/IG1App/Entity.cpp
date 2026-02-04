@@ -89,12 +89,12 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
 		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
 
 		glCullFace(GL_FRONT);
-		glPolygonMode(GL_BACK, GL_FILL);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		mMesh->render();
 
 
 		glCullFace(GL_BACK);
-		glPolygonMode(GL_FRONT, GL_LINE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		mMesh->render();
 
 		glDisable(GL_CULL_FACE);

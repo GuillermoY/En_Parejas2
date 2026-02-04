@@ -86,8 +86,7 @@
               "RelativeToolTip": "IG1App\\Scene.cpp",
               "ViewState": "AgIAADQAAAAAAAAAAAAAAAgAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T15:34:42.026Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T15:34:42.026Z"
             },
             {
               "$type": "Document",
@@ -99,8 +98,7 @@
               "RelativeToolTip": "IG1App\\Scene.h",
               "ViewState": "AgIAADwAAAAAAAAAAAAYwEUAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-28T14:51:56.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T14:51:56.576Z"
             },
             {
               "$type": "Document",
@@ -136,8 +134,7 @@
               "RelativeToolTip": "IG1App\\Mesh.h",
               "ViewState": "AgIAABsAAAAAAAAAAAAAABkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T15:47:15.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T15:47:15.895Z"
             },
             {
               "$type": "Document",
@@ -149,8 +146,7 @@
               "RelativeToolTip": "IG1App\\Mesh.cpp",
               "ViewState": "AgIAAJsAAAAAAAAAAAAewHUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T14:13:14.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T14:13:14.333Z"
             },
             {
               "$type": "Document",
@@ -162,8 +158,7 @@
               "RelativeToolTip": "IG1App\\Entity.h",
               "ViewState": "AgIAAEQAAAAAAAAAAAAgwFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T15:36:30.483Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T15:36:30.483Z"
             },
             {
               "$type": "Document",
@@ -173,7 +168,7 @@
               "RelativeDocumentMoniker": "IG1App\\Entity.cpp",
               "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp",
               "RelativeToolTip": "IG1App\\Entity.cpp",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAAAGIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-23T15:42:28.218Z",
               "EditorCaption": ""
@@ -188,8 +183,7 @@
               "RelativeToolTip": "libs\\glew\\include\\GL\\glew.h",
               "ViewState": "AgIAAIsBAAAAAAAAAAAQwJEBAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-03T14:22:59.908Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-03T14:22:59.908Z"
             },
             {
               "$type": "Document",
