@@ -42,7 +42,6 @@ class EntityWithColors : public Abs_Entity
 public:
 	explicit EntityWithColors();
 	virtual void render(const glm::mat4& modelViewMat) const override;
-	virtual void update() = 0;
 };
 
 class RGBAxes : public EntityWithColors
@@ -78,7 +77,6 @@ class RGBTriangle : public EntityWithColors
 {
 public:
 	explicit RGBTriangle(GLdouble h, GLuint offset);
-	void update() override;
 	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
 };
 
