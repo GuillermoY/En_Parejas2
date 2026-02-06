@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Mesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\IG1App.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -21,22 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\IG1App.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\IG1App.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Mesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Mesh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Viewport.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -62,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
@@ -78,13 +78,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Scene.cpp",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.cpp",
               "RelativeDocumentMoniker": "IG1App\\Scene.cpp",
               "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.cpp",
               "RelativeToolTip": "IG1App\\Scene.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAwBYAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-23T15:34:42.026Z",
               "EditorCaption": ""
@@ -97,9 +97,22 @@
               "RelativeDocumentMoniker": "IG1App\\Scene.h",
               "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.h",
               "RelativeToolTip": "IG1App\\Scene.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACIAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-01-28T14:51:56.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Mesh.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.h",
+              "RelativeDocumentMoniker": "IG1App\\Mesh.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.h",
+              "RelativeToolTip": "IG1App\\Mesh.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-23T15:47:15.895Z",
               "EditorCaption": ""
             },
             {
@@ -116,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Shader.cpp",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Shader.cpp",
               "RelativeDocumentMoniker": "IG1App\\Shader.cpp",
@@ -130,19 +143,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Mesh.h",
-              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.h",
-              "RelativeDocumentMoniker": "IG1App\\Mesh.h",
-              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.h",
-              "RelativeToolTip": "IG1App\\Mesh.h",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T15:47:15.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Mesh.cpp",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Mesh.cpp",
               "RelativeDocumentMoniker": "IG1App\\Mesh.cpp",
@@ -155,26 +155,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Entity.h",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.h",
               "RelativeDocumentMoniker": "IG1App\\Entity.h",
               "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.h*",
               "RelativeToolTip": "IG1App\\Entity.h*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAlwBUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-01-23T15:36:30.483Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Entity.cpp",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp",
               "RelativeDocumentMoniker": "IG1App\\Entity.cpp",
-              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp*",
-              "RelativeToolTip": "IG1App\\Entity.cpp*",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAwGcAAAABAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp",
+              "RelativeToolTip": "IG1App\\Entity.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAwGcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-23T15:42:28.218Z",
               "EditorCaption": ""
@@ -205,7 +205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "IG1App.h",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\IG1App.h",
               "RelativeDocumentMoniker": "IG1App\\IG1App.h",
@@ -218,7 +218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "IG1App.cpp",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\IG1App.cpp",
               "RelativeDocumentMoniker": "IG1App\\IG1App.cpp",

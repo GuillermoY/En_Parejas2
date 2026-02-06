@@ -102,3 +102,8 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
 	
 	}
 }
+
+void RGBTriangle::update()
+{
+
+}
