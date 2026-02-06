@@ -102,3 +102,15 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
 	
 	}
 }
+
+void RGBTriangle::update()
+{
+	selfRotation += 1;
+	double x = 0 + 200.0f * cos(glm::radians(angle));
+	double y = 0 + 200.0f * sin(glm::radians(angle));
+	angle += 1.0f;
+	mModelMat = glm::mat4(1.0);
+	mModelMat = translate(mModelMat, glm::vec3(x, y, 0.0));
+	mModelMat = rotate(mModelMat, glm::radians(selfRotation), glm::vec3(0, 0, -1.0f));
+
+}
