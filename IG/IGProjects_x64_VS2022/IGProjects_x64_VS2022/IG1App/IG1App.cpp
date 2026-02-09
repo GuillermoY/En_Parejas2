@@ -185,6 +185,8 @@ IG1App::key(unsigned int key)
 			break;
 		case 'u':
 			mUpdateEnabled = !mUpdateEnabled;
+			mNextUpdate = glfwGetTime() + FRAME_DURATION;
+
 			break;
 		default:
 			if (key >= '0' && key <= '9') {
