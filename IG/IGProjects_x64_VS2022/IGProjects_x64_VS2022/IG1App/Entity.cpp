@@ -112,5 +112,4 @@ void RGBTriangle::update()
 	mModelMat = glm::mat4(1.0);
 	mModelMat = translate(mModelMat, glm::vec3(x, y, 0.0));
 	mModelMat = rotate(mModelMat, glm::radians(selfRotation), glm::vec3(0, 0, -1.0f));
-
 }
