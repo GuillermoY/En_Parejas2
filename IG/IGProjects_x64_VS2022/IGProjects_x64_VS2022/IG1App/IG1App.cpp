@@ -29,13 +29,13 @@ void IG1App::run()
 	if (mWindow == 0) // if not initialized
 		init();
 
-	mNextUpdate = glfwGetTime() + FRAME_DURATION;
+	mNextUpdate = glfwGetTime() + FRAME_DURATION; // Iniciamos el mNextUpdate con el tiempo actual mas la duraci�n del frame
 
 	while (!glfwWindowShouldClose(mWindow)) {
-		double time = glfwGetTime();
+		double time = glfwGetTime(); // Obtenemos el tiempo actual
 
 		if (mNeedsRedisplay) {
-			display();
+			display(); 
 			mNeedsRedisplay = false;
 		}
 
@@ -44,7 +44,7 @@ void IG1App::run()
 			if (time > mNextUpdate)
 			{
 				mScenes[mCurrentScene]->update();
-				display();
+				mNeedsRedisplay = true; // representamos la actualizaci�n
 				mNextUpdate += FRAME_DURATION;
 			}
 
@@ -71,16 +71,18 @@ IG1App::init()
 	// allocate memory and resources
 	mViewPort = new Viewport(mWinW, mWinH);
 	mCamera = new Camera(mViewPort);
+
 	// En el apartado 6 he metido Scene1 para cuando le das al 1 carga la escena 1.
 	mScenes.push_back(new Scene);
 	mScenes.push_back(new Scene1);
+	// Lo mismo para las siguientes escenas
 	mScenes.push_back(new Scene2);
 	mScenes.push_back(new Scene3);
 	mCamera->set2D();
-	mScenes[0]->init();
-	mScenes[1]->init();
-	mScenes[2]->init();
-	mScenes[3]->init();
+	for (int i = 0; i < mScenes.size(); ++i)
+	{
+		mScenes[i]->init();
+	}
 	mScenes[mCurrentScene]->load();
 }
 
@@ -186,9 +188,11 @@ IG1App::key(unsigned int key)
 			mCamera->set2D();
 			break;
 		case 'u':
-			mUpdateEnabled = !mUpdateEnabled;
-			mNextUpdate = glfwGetTime() + FRAME_DURATION;
+			mUpdateEnabled = !mUpdateEnabled; // Al pulsar la 'u' pausamos o reanudaremos el update
+			mNextUpdate = glfwGetTime() + FRAME_DURATION; // Iniciamos el mNextUpdate para la siguiente vez que se actualizar�
 
+			// Apartado 12.3: Al mantener la 'u' se actualiza el update
+			// mScenes[mCurrentScene]->update();
 			break;
 		default:
 			if (key >= '0' && key <= '9') {

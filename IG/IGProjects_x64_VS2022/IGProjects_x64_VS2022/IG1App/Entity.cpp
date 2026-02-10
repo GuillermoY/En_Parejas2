@@ -52,7 +52,7 @@ SingleColorEntity::render(mat4 const& modelViewMat) const
 		mat4 aMat = modelViewMat * mModelMat;
 		mShader->use();
 		upload(aMat);
-		mShader->setUniform("color", mColor);
+		mShader->setUniform("color", mColor); // Cargamos color en la GPU 
 		mMesh->render();
 	}
 }
@@ -81,6 +81,11 @@ Cube::Cube(GLdouble l)
 	mMesh = Mesh::generateCube(l);
 }
 
+/// <summary>
+/// Apartado 9:
+/// Redefinimos el render para RGBRectangle, que, usando culling, hacemos que la trasera
+/// está rellena y la delantera use líneas
+/// </summary>
 void RGBRectangle::render(const glm::mat4& modelViewMat) const
 {
 	if (mMesh != nullptr) {
@@ -88,19 +93,21 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
 		mShader->use();
 		upload(aMat);
 
-		glEnable(GL_CULL_FACE);
+		glEnable(GL_CULL_FACE); 
 		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
-
-		glCullFace(GL_FRONT);
+		
+		// Quitamos cara delantera y rellenamos la trasera
+		glCullFace(GL_FRONT); 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		mMesh->render();
 
-
-		glCullFace(GL_BACK);
+		// Quitamos cara trasera y ponemos modo l�nea a la delantera
+		glCullFace(GL_BACK); 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		mMesh->render();
 
-		glDisable(GL_CULL_FACE);
+		// Habilitamos las dos caras, cada una con su relleno particular
+		glDisable(GL_CULL_FACE); 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	
 	}
@@ -130,11 +137,16 @@ void Cube::render(const glm::mat4& modelViewMat) const
 	}
 }
 
+/// <summary>
+/// Apartado 13:
+/// Sumamos 1 a la rotaci�n del tri�ngulo en sentido horario, que se rotar� despu�s de 
+/// trasladarse en la direcci�n antihoraria cuando va circulando sobre la circunferencia
+/// </summary>
 void RGBTriangle::update()
 {
 	selfRotation += 1;
-	double x = 0 + 200.0f * cos(glm::radians(angle));
-	double y = 0 + 200.0f * sin(glm::radians(angle));
+	double x = 0 + 1.0f * cos(glm::radians(angle));
+	double y = 0 + 400.0f * sin(glm::radians(angle));
 	angle += 1.0f;
 	mModelMat = glm::mat4(1.0);
 	mModelMat = translate(mModelMat, glm::vec3(x, y, 0.0));

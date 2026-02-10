@@ -19,7 +19,7 @@ public:
 	Scene& operator=(const Scene& s) = delete; // no copy assignment
 
 	virtual void init();
-	virtual void update();
+	virtual void update(); // Apartado 12.2: Método virtual update que llama al update de cada objeto.
 
 	void render(Camera const& cam) const;
 
@@ -48,12 +48,17 @@ public:
 
 		// Graphics objects (entities) of the scene
 		gObjects.push_back(new RGBAxes(400.0));
-		//gObjects.push_back(new RegularPolygon(7, 200.0));
-		gObjects.push_back(new RegularPolygon(360, 200.0, 0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f)));
-		gObjects.push_back(new RegularPolygon(6, 200.0, 0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f)));
+
+		//Apartado 5
+		gObjects.push_back(new RegularPolygon(360, 200.0, 0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f))); // Añadimos circunferencia amarilla (red, green, blue, alpha), lados 360
+		gObjects.push_back(new RegularPolygon(6, 200.0, 0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Añadimos hexágono magenta (red, green, blue, alpha), lados 6
 	}
 protected:
 };
+
+/// <summary>
+/// Apartado 10:
+/// </summary>
 class Scene2 : public Scene
 {
 public:
@@ -68,9 +73,9 @@ public:
 		// Graphics objects (entities) of the scene
 		gObjects.push_back(new RGBAxes(400.0));
 
-		gObjects.push_back(new RGBTriangle(100, 0));
-		gObjects.push_back(new RGBRectangle(280, 280));
-		gObjects.push_back(new RegularPolygon(360, 200.0, 0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); //Circunferencia
+		gObjects.push_back(new RGBTriangle(100, 200)); // Triángulo como el apartado 7 y 11 (Con pos en (R,0))
+		gObjects.push_back(new RGBRectangle(280, 280)); // Cuadrado como el apartado 8
+		gObjects.push_back(new RegularPolygon(360, 200.0, 0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Circunferencia como el apartado 5
 
 	}
 protected:

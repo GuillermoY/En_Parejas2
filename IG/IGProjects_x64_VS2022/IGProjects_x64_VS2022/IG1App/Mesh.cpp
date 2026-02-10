@@ -117,7 +117,7 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r, GLuint offset)
 {
 	Mesh* mesh = new Mesh();
 
-	mesh->mPrimitive = GL_LINE_LOOP;
+	mesh->mPrimitive = GL_LINE_LOOP; // Une el último vértice con el primero
 
 	mesh->mNumVertices = num;
 	double angle = 90.0;
@@ -125,15 +125,21 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r, GLuint offset)
 	// entre la línea y la circunferencia.
 	for (GLuint i = 0; i < num; ++i)
 	{
-		double x = offset + r * cos(glm::radians(angle));
+		// Las funciones trigonométricas tienen que estar en radianes para su aplicación
+		double x = 0 + r * cos(glm::radians(angle)); 
 		double y = 0 + r * sin(glm::radians(angle));
-		mesh->vVertices.emplace_back(x, y, 0.0);
+		mesh->vVertices.emplace_back(x+offset, y, 0.0);
 		angle += 360 / num;
-	
 	}
 
 	return mesh;
 }
+
+/// <summary>
+/// Apartado 7: 
+/// Generamos un polígono regular de 3 lados, cambiando sus vértices 1 a 1 para 
+/// que contenga RGB
+/// </summary>
 Mesh*
 Mesh::generateRGBTriangle(GLdouble h, GLuint offset)
 {
@@ -146,6 +152,11 @@ Mesh::generateRGBTriangle(GLdouble h, GLuint offset)
 	return mesh;
 }
 
+/// <summary>
+/// Apartado 8:
+/// Generamos los cuatro vértices del rectángulo centrado en el origen, sobre el plano Z = 0,
+/// de ancho y alto. Utilizando GL_TRIANGLE_STRIP.
+/// </summary>
 Mesh*
 Mesh::generateRectangle(GLdouble w, GLdouble h)
 {
@@ -161,7 +172,11 @@ Mesh::generateRectangle(GLdouble w, GLdouble h)
 
 	return mesh;
 }
-
+/// <summary>
+/// Apartado 8.2:
+/// 
+/// Al igual que el triángulo, añadimos un color primario a cada vértice de un rectángulo.
+/// </summary>
 Mesh*
 Mesh::generateRGBRectangle(GLdouble w, GLdouble h)
 {

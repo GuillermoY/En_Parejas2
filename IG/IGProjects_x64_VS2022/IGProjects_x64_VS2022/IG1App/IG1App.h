@@ -62,8 +62,8 @@ protected:
 	GLFWwindow* mWindow = nullptr; // window's handle
 	int mWinW = 800;               // window's width
 	int mWinH = 600;               // window's height
-	const double FRAME_DURATION = 0.01f;
-	bool mUpdateEnabled = false;
+	const double FRAME_DURATION = 0.01f; // Cada frame durará 0.01 s
+	bool mUpdateEnabled = false; // Empezamos la escena con el update en falso
 	double mNextUpdate;
 };
 

@@ -17,6 +17,7 @@ Scene::init() // En el apartado 6 he hecho una clase vacía con solo los ejes
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
 }
+
 void Scene::update()
 {
 	for (auto obj : gObjects) {
@@ -58,7 +59,8 @@ void
 Scene::setGL()
 {
 	// OpenGL basic setting
-	// Cambiamos fondo de la escena
+	// Cambiamos fondo de la escena para el apartado 1, 
+	// red, green, blue, alpha)
 	glClearColor(0.6, 0.7, 0.8, 1.0); // background color (alpha=1 -> opaque)
 	glEnable(GL_DEPTH_TEST);          // enable Depth test
 }

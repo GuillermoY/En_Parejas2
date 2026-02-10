@@ -11,8 +11,8 @@ class Mesh
 public:
 	static Mesh* createRGBAxes(GLdouble l); // creates a new 3D-RGB axes mesh
 
-	static Mesh* generateRegularPolygon(GLuint num, GLdouble r, GLuint posX);
-	static Mesh* generateRGBTriangle(GLdouble h, GLuint offset);
+	static Mesh* generateRegularPolygon(GLuint num, GLdouble r, GLuint offset); // Apartado 2: Crea un polígono regular dividiendo una circunferencia de radio r en secciones num
+	static Mesh* generateRGBTriangle(GLdouble h, GLuint offset); // Crea 
 	static Mesh* generateRectangle(GLdouble w, GLdouble h);
 	static Mesh* generateRGBRectangle(GLdouble w, GLdouble h);
 	static Mesh* generateCube(GLdouble length);
