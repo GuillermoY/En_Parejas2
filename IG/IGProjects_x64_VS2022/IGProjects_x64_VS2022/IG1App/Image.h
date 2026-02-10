@@ -53,7 +53,8 @@ public:
 	}
 
 	#ifdef __cpp_multidimensional_subscript
-	const rgba_color& operator[](GLsizei x, GLsizei y) const { return operator()(x, y); }
+	const rgba_color& operator
+	(GLsizei x, GLsizei y) const { return operator()(x, y); }
 	rgba_color& operator[](GLsizei x, GLsizei y) { return operator()(x, y); }
 	#endif
 

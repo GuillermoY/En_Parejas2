@@ -94,7 +94,7 @@ public:
 		// Graphics objects (entities) of the scene
 		gObjects.push_back(new RGBAxes(400.0));
 
-		gObjects.push_back(new Cube(200.0));
+		gObjects.push_back(new RGBCube(200.0f));
 
 	}
 protected:
