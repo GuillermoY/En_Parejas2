@@ -63,7 +63,7 @@ public:
 		mShader = Shader::get("simple");
 	}
 
-	void render(const glm::mat4& modelViewMat) const override;
+	virtual void render(const glm::mat4& modelViewMat) const override;
 	glm::vec4 getColor() const { return mColor; };
 	void setColor(glm::vec4 newColor) { mColor = newColor; };
 };
@@ -91,6 +91,11 @@ public:
 	void render(const glm::mat4& modelViewMat) const override;
 	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
 };
-
+class Cube : public SingleColorEntity
+{
+public:
+	explicit Cube(GLdouble l);
+	void render(const glm::mat4& modelViewMat) const override;
+};
 
 #endif //_H_Entities_H_

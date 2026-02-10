@@ -75,5 +75,24 @@ public:
 	}
 protected:
 };
+class Scene3 : public Scene
+{
+public:
+	void init() override
+	{
+		setGL(); // OpenGL settings
+
+		// allocate memory and load resources
+		// Lights
+		// Textures
+
+		// Graphics objects (entities) of the scene
+		gObjects.push_back(new RGBAxes(400.0));
+
+		gObjects.push_back(new Cube(200.0));
+
+	}
+protected:
+};
 
 #endif //_H_Scene_H_
