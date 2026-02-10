@@ -209,7 +209,17 @@ Mesh::generateCube(GLdouble l)
 	mesh->vVertices.emplace_back(-l, l, l);
 	mesh->vVertices.emplace_back(-l, -l, l);
 
-	//Cara derecha 1
+	//Cara 2
+
+	mesh->vVertices.emplace_back(-l, -l, -l);
+	mesh->vVertices.emplace_back(-l, l, -l);
+	mesh->vVertices.emplace_back(l, l, -l);
+
+	mesh->vVertices.emplace_back(l, l, -l);
+	mesh->vVertices.emplace_back(l, -l, -l);
+	mesh->vVertices.emplace_back(-l, -l, -l);
+
+	//Cara 3
 
 	mesh->vVertices.emplace_back(l, -l, -l);
 	mesh->vVertices.emplace_back(l, l, -l);
@@ -219,27 +229,7 @@ Mesh::generateCube(GLdouble l)
 	mesh->vVertices.emplace_back(l, l, l);
 	mesh->vVertices.emplace_back(l, -l, l);
 
-	//Cara arriba
-
-	mesh->vVertices.emplace_back(l, l, l);
-	mesh->vVertices.emplace_back(l, l, -l);
-	mesh->vVertices.emplace_back(-l, l, -l);
-
-	mesh->vVertices.emplace_back(l, l, l);
-	mesh->vVertices.emplace_back(-l, l, -l);
-	mesh->vVertices.emplace_back(-l, l, l);
-
-	//Cara opuesta a 1
-
-	mesh->vVertices.emplace_back(-l, -l, -l);
-	mesh->vVertices.emplace_back(-l, l, -l);
-	mesh->vVertices.emplace_back(l, l, -l);
-
-	mesh->vVertices.emplace_back(l, l, -l);
-	mesh->vVertices.emplace_back(l, -l, -l);
-	mesh->vVertices.emplace_back(-l, -l, -l);
-
-	//Cara izquierda 1
+	//Cara 4
 
 	mesh->vVertices.emplace_back(-l, -l, l);
 	mesh->vVertices.emplace_back(-l, l, l);
@@ -249,7 +239,17 @@ Mesh::generateCube(GLdouble l)
 	mesh->vVertices.emplace_back(-l, l, -l);
 	mesh->vVertices.emplace_back(-l, -l, -l);
 
-	//Cara abajo
+	//Cara 5
+
+	mesh->vVertices.emplace_back(l, l, l);
+	mesh->vVertices.emplace_back(l, l, -l);
+	mesh->vVertices.emplace_back(-l, l, -l);
+
+	mesh->vVertices.emplace_back(l, l, l);
+	mesh->vVertices.emplace_back(-l, l, -l);
+	mesh->vVertices.emplace_back(-l, l, l);
+
+	//Cara 6
 	mesh->vVertices.emplace_back(-l, -l, -l);
 	mesh->vVertices.emplace_back(l, -l, -l);
 	mesh->vVertices.emplace_back(l, -l, l);
@@ -257,6 +257,24 @@ Mesh::generateCube(GLdouble l)
 	mesh->vVertices.emplace_back(-l, -l, -l);
 	mesh->vVertices.emplace_back(l, -l, l);
 	mesh->vVertices.emplace_back(-l, -l, l);
+
+	return mesh;
+}
+
+Mesh*
+Mesh::generateRGBCubeTriangles(GLdouble l)
+{
+	Mesh* mesh = generateCube(l);
+	float aux[3] = { 0 };
+	for (int i = 0; i < 3; ++i)
+	{
+		aux[i] = 1.0;
+		for (int j = 0; j < 12; ++j)
+		{
+			mesh->vColors.emplace_back(aux[0], aux[1], aux[2], 1.0);
+		}
+		aux[i] = 0.0;
+	}
 
 	return mesh;
 }

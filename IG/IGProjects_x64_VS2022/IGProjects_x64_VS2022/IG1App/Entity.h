@@ -104,5 +104,12 @@ public:
 	explicit Cube(GLdouble l);
 	void render(const glm::mat4& modelViewMat) const override;
 };
+class RGBCube : public EntityWithColors
+{
+public:
+	explicit RGBCube(GLdouble l);
+	void render(const glm::mat4& modelViewMat) const override;
+	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
+};
 
 #endif //_H_Entities_H_

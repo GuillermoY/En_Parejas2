@@ -80,6 +80,10 @@ Cube::Cube(GLdouble l)
 {
 	mMesh = Mesh::generateCube(l);
 }
+RGBCube::RGBCube(GLdouble l)
+{
+	mMesh = Mesh::generateRGBCubeTriangles(l);
+}
 
 /// <summary>
 /// Apartado 9:
@@ -93,23 +97,23 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
 		mShader->use();
 		upload(aMat);
 
-		glEnable(GL_CULL_FACE); 
+		glEnable(GL_CULL_FACE);
 		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
-		
+
 		// Quitamos cara delantera y rellenamos la trasera
-		glCullFace(GL_FRONT); 
+		glCullFace(GL_FRONT);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		mMesh->render();
 
 		// Quitamos cara trasera y ponemos modo l�nea a la delantera
-		glCullFace(GL_BACK); 
+		glCullFace(GL_BACK);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		mMesh->render();
 
 		// Habilitamos las dos caras, cada una con su relleno particular
-		glDisable(GL_CULL_FACE); 
+		glDisable(GL_CULL_FACE);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
+
 	}
 }
 void Cube::render(const glm::mat4& modelViewMat) const
@@ -131,6 +135,32 @@ void Cube::render(const glm::mat4& modelViewMat) const
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		mMesh->render();
 
+		glDisable(GL_CULL_FACE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+	}
+}
+void RGBCube::render(const glm::mat4& modelViewMat) const
+{
+	if (mMesh != nullptr) {
+		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
+		mShader->use();
+		upload(aMat);
+
+		glEnable(GL_CULL_FACE);
+		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
+
+		// Quitamos cara delantera y rellenamos la trasera
+		glCullFace(GL_FRONT);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+		mMesh->render();
+
+		// Quitamos cara trasera y ponemos modo l�nea a la delantera
+		glCullFace(GL_BACK);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		mMesh->render();
+
+		// Habilitamos las dos caras, cada una con su relleno particular
 		glDisable(GL_CULL_FACE);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
