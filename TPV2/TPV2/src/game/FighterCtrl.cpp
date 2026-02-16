@@ -25,7 +25,6 @@ void FighterCtrl::handleInput(Container* o) {
 			if (vel.getY() < speedLimit)
 			{
 				newVel = vel + Vector2D(0, -1).rotate(r) * thrust;
-				
 			}
 			else
 			{

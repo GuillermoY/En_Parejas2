@@ -12,7 +12,7 @@ InfoMsgs::InfoMsgs() {
 InfoMsgs::~InfoMsgs() {
 }
 
-void InfoMsgs::render(Container *o) {
+void InfoMsgs::render(Container *o, float r) {
 	auto gm = static_cast<GameManager*>(o);
 
 	auto state = gm->getState();

@@ -1,7 +1,9 @@
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\AIPaddle.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\AIPaddle.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\BounceOnBorder.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\BounceOnBorder.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\Containter.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\Containter.obj
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\DeAcceleration.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\DeAcceleration.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\EmptyRectangleRenderer.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\EmptyRectangleRenderer.obj
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\FighterCtrl.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\FighterCtrl.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\Game.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\Game.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\GameCtrl.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\GameCtrl.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\GameManager.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\GameManager.obj
@@ -11,6 +13,7 @@ C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\MovePad
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\MovePaddleWithMouse.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\MovePaddleWithMouse.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\RectangleRenderer.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\RectangleRenderer.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\ScoreRenderer.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\ScoreRenderer.obj
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\ShowAtOpposieSide.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\ShowAtOpposieSide.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\SimpleMove.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\SimpleMove.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\game\StopOnBorder.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\StopOnBorder.obj
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\src\json\JSON.cpp;C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2\temp\x64\Debug\JSON.obj

@@ -14,5 +14,5 @@ ImageRenderer::~ImageRenderer() {
 
 void ImageRenderer::render(Container *o, float r) {
 	SDL_FRect dest = build_sdlfrect(o->getPos(), o->getWidth(), o->getHeight());
-	_img->render(dest);
+	_img->render(dest, r);
 }

@@ -9,7 +9,7 @@ class ScoreRenderer: public RenderComponent {
 public:
 	ScoreRenderer();
 	virtual ~ScoreRenderer();
-	void render(Container *o) override;
+	void render(Container *o, float r) override;
 private:
 	void updateScoreMsg();
 

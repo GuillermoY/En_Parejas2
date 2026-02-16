@@ -8,6 +8,6 @@ class InfoMsgs: public RenderComponent {
 public:
 	InfoMsgs();
 	virtual ~InfoMsgs();
-	void render(Container *o) override;
+	void render(Container *o, float r) override;
 };
 

@@ -11,7 +11,7 @@ public:
 	EmptyRectangleRenderer();
 	EmptyRectangleRenderer(SDL_Color color);
 	virtual ~EmptyRectangleRenderer();
-	void render(Container *o) override;
+	void render(Container *o, float r) override;
 private:
 	SDL_Color _color;
 };

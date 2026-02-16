@@ -16,7 +16,7 @@ EmptyRectangleRenderer::EmptyRectangleRenderer(SDL_Color color) :
 EmptyRectangleRenderer::~EmptyRectangleRenderer() {
 }
 
-void EmptyRectangleRenderer::render(Container *o) {
+void EmptyRectangleRenderer::render(Container *o, float r) {
 	auto &pos_ = o->getPos();
 	auto width_ = o->getWidth();
 	auto height_ = o->getHeight();

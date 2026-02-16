@@ -21,6 +21,7 @@
 #include "SimpleMove.h"
 #include "StopOnBorder.h"
 #include "FighterCtrl.h"
+#include "ShowAtOpposieSide.h"
 
 Game::Game() :
 	_fighter(nullptr) {
@@ -71,6 +72,7 @@ void Game::init() {
 	auto fighterCtrl = new FighterCtrl();
 	_fighter->addComponent(fighterCtrl);
 	_fighter->addComponent(new SimpleMove());
+	_fighter->addComponent(new ShowAtOpposieSide());
 	_objs.push_back(_fighter);
 
 	//	// the ball

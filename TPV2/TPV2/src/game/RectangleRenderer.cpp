@@ -18,7 +18,7 @@ RectangleRenderer::RectangleRenderer(SDL_Color color) :
 RectangleRenderer::~RectangleRenderer() {
 }
 
-void RectangleRenderer::render(Container *o) {
+void RectangleRenderer::render(Container *o, float r) {
 
 	auto &pos = o->getPos();
 	auto width = o->getWidth();

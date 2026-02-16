@@ -16,7 +16,7 @@ ScoreRenderer::ScoreRenderer() :
 ScoreRenderer::~ScoreRenderer() {
 }
 
-void ScoreRenderer::render(Container *o) {
+void ScoreRenderer::render(Container *o, float r) {
 	auto gm = static_cast<GameManager*>(o);
 
 	int curr_left_score = gm->getScore(0);

@@ -6,8 +6,8 @@
 
 class ShowAtOpposieSide : public PhysicsComponent {
 public:
-	ShowAtOpposieSide();
-	virtual ~ShowAtOpposieSide();
+	ShowAtOpposieSide(){}
+	virtual ~ShowAtOpposieSide(){}
 
 	void update(Container* o) override;
 
