@@ -187,12 +187,13 @@ IG1App::key(unsigned int key)
 		case 'o':
 			mCamera->set2D();
 			break;
-		case 'u':
+		case 'U':
 			mUpdateEnabled = !mUpdateEnabled; // Al pulsar la 'u' pausamos o reanudaremos el update
-			mNextUpdate = glfwGetTime() + FRAME_DURATION; // Iniciamos el mNextUpdate para la siguiente vez que se actualizar�
-
+			mNextUpdate = glfwGetTime() + FRAME_DURATION; // Iniciamos el mNextUpdate para la siguiente vez que se actualizar
+			break;
+		case 'u':
 			// Apartado 12.3: Al mantener la 'u' se actualiza el update
-			// mScenes[mCurrentScene]->update();
+			mScenes[mCurrentScene]->update();
 			break;
 		default:
 			if (key >= '0' && key <= '9') {

@@ -113,7 +113,7 @@ Mesh::createRGBAxes(GLdouble l)
 }
 
 Mesh*
-Mesh::generateRegularPolygon(GLuint num, GLdouble r, GLuint offset)
+Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 {
 	Mesh* mesh = new Mesh();
 
@@ -128,7 +128,7 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r, GLuint offset)
 		// Las funciones trigonométricas tienen que estar en radianes para su aplicación
 		double x = 0 + r * cos(glm::radians(angle)); 
 		double y = 0 + r * sin(glm::radians(angle));
-		mesh->vVertices.emplace_back(x+offset, y, 0.0);
+		mesh->vVertices.emplace_back(x, y, 0.0);
 		angle += 360 / num;
 	}
 
@@ -141,9 +141,9 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r, GLuint offset)
 /// que contenga RGB
 /// </summary>
 Mesh*
-Mesh::generateRGBTriangle(GLdouble h, GLuint offset)
+Mesh::generateRGBTriangle(GLdouble h)
 {
-	Mesh* mesh = generateRegularPolygon(3, h, offset);
+	Mesh* mesh = generateRegularPolygon(3, h);
 	mesh->mPrimitive = GL_TRIANGLE_STRIP;
 	mesh->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
 	mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);

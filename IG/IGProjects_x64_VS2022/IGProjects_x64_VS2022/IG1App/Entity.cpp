@@ -62,14 +62,14 @@ RGBAxes::RGBAxes(GLdouble l)
 	mMesh = Mesh::createRGBAxes(l);
 }
 
-RegularPolygon::RegularPolygon(GLuint num, GLdouble r, GLuint offset, glm::vec4 color) : SingleColorEntity(color)
+RegularPolygon::RegularPolygon(GLuint num, GLdouble r, glm::vec4 color) : SingleColorEntity(color)
 {
-	mMesh = Mesh::generateRegularPolygon(num, r, offset);
+	mMesh = Mesh::generateRegularPolygon(num, r);
 }
 
-RGBTriangle::RGBTriangle(GLdouble h, GLuint offset) : EntityWithColors()
+RGBTriangle::RGBTriangle(GLdouble h) : EntityWithColors()
 {
-	mMesh = Mesh::generateRGBTriangle(h, offset);
+	mMesh = Mesh::generateRGBTriangle(h);
 }
 
 RGBRectangle::RGBRectangle(GLdouble w, GLdouble h)

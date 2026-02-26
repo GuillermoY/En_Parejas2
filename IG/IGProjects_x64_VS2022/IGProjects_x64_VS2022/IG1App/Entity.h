@@ -77,13 +77,13 @@ public:
 class RegularPolygon : public SingleColorEntity // Apartado 4
 {
 public:
-	explicit RegularPolygon(GLuint num, GLdouble r, GLuint offset, glm::vec4 color = glm::vec4(1.0f));
+	explicit RegularPolygon(GLuint num, GLdouble r, glm::vec4 color = glm::vec4(1.0f));
 };
 
 class RGBTriangle : public EntityWithColors
 {
 public:
-	explicit RGBTriangle(GLdouble h, GLuint offset);
+	explicit RGBTriangle(GLdouble h);
 	void update() override;
 	double angle = 0.0f;
 	float selfRotation = 0.0f;

@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "Camera.h"
 #include "Entity.h"
@@ -50,8 +51,8 @@ public:
 		gObjects.push_back(new RGBAxes(400.0));
 
 		//Apartado 5
-		gObjects.push_back(new RegularPolygon(360, 200.0, 0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f))); // Añadimos circunferencia amarilla (red, green, blue, alpha), lados 360
-		gObjects.push_back(new RegularPolygon(6, 200.0, 0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Añadimos hexágono magenta (red, green, blue, alpha), lados 6
+		gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f))); // Añadimos circunferencia amarilla (red, green, blue, alpha), lados 360
+		gObjects.push_back(new RegularPolygon(6, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Añadimos hexágono magenta (red, green, blue, alpha), lados 6
 	}
 protected:
 };
@@ -72,10 +73,12 @@ public:
 
 		// Graphics objects (entities) of the scene
 		gObjects.push_back(new RGBAxes(400.0));
-
-		gObjects.push_back(new RGBTriangle(100, 200)); // Triángulo como el apartado 7 y 11 (Con pos en (R,0))
+		RGBTriangle* triangle = new RGBTriangle(100);
+		triangle->setModelMat(translate(triangle->modelMat(), glm::vec3(200, 0, 0.0)));
+		gObjects.push_back(triangle); // Triángulo como el apartado 7 y 11 (Con pos en (R,0))
 		gObjects.push_back(new RGBRectangle(280, 280)); // Cuadrado como el apartado 8
-		gObjects.push_back(new RegularPolygon(360, 200.0, 0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Circunferencia como el apartado 5
+		gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Circunferencia como el apartado 5
+
 
 	}
 protected:
