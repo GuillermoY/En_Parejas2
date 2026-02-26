@@ -20,7 +20,7 @@ Scene::init() // En el apartado 6 he hecho una clase vacía con solo los ejes
 
 void Scene::update()
 {
-	for (auto obj : gObjects) {
+	for (Abs_Entity* obj : gObjects) {
 		obj->update();
 	}
 }
