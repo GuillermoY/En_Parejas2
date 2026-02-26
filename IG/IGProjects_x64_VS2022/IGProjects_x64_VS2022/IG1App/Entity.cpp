@@ -176,8 +176,10 @@ void RGBTriangle::update()
 {
 	selfRotation += 1;
 	double y = 0 + orbitDiameter * sin(glm::radians(angle));
+	double x = 0 + orbitDiameter * cos(glm::radians(angle));
 	angle += 1.0f;
 	mModelMat = glm::mat4(1.0);
 	mModelMat = translate(mModelMat, glm::vec3(0, y, 0.0));
+	mModelMat = translate(mModelMat, glm::vec3(x, 0, 0.0));
 	mModelMat = rotate(mModelMat, glm::radians(selfRotation), glm::vec3(0, 0, -1.0f));
 }

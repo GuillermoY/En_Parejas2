@@ -87,7 +87,7 @@ public:
 	void update() override;
 	double angle = 0.0f;
 	float selfRotation = 0.0f;
-	float orbitDiameter = 400.0f;
+	float orbitDiameter = 200.0f;
 	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
 };
 
