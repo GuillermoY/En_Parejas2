@@ -78,6 +78,7 @@ IG1App::init()
 	// Lo mismo para las siguientes escenas
 	mScenes.push_back(new Scene2);
 	mScenes.push_back(new Scene3);
+	mScenes.push_back(new Scene4);
 	mCamera->set2D();
 	for (int i = 0; i < mScenes.size(); ++i)
 	{

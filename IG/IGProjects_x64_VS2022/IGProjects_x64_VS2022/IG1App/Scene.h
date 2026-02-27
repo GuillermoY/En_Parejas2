@@ -7,6 +7,11 @@
 
 #include "Camera.h"
 #include "Entity.h"
+#include "Cube.h"
+#include "RGBCube.h"
+#include "RGBRectangle.h"
+#include "RGBTriangle.h"
+#include "Ground.h"
 
 #include <vector>
 
@@ -36,71 +41,5 @@ protected:
 	std::vector<Abs_Entity*> gObjects; // Entities (graphic objects) of the scene
 };
 
-class Scene1 : public Scene // En el apartado 6 he hecho una clase con el polígono y el círculo (con los ejes)
-{
-public:
-	void init() override
-	{
-		setGL(); // OpenGL settings
-
-		// allocate memory and load resources
-		// Lights
-		// Textures
-
-		// Graphics objects (entities) of the scene
-		gObjects.push_back(new RGBAxes(400.0));
-
-		//Apartado 5
-		gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f))); // Añadimos circunferencia amarilla (red, green, blue, alpha), lados 360
-		gObjects.push_back(new RegularPolygon(6, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Añadimos hexágono magenta (red, green, blue, alpha), lados 6
-	}
-protected:
-};
-
-/// <summary>
-/// Apartado 10:
-/// </summary>
-class Scene2 : public Scene
-{
-public:
-	void init() override
-	{
-		setGL(); // OpenGL settings
-
-		// allocate memory and load resources
-		// Lights
-		// Textures
-
-		// Graphics objects (entities) of the scene
-		gObjects.push_back(new RGBAxes(400.0));
-		RGBTriangle* triangle = new RGBTriangle(100);
-		triangle->setModelMat(translate(triangle->modelMat(), glm::vec3(200, 0, 0.0)));
-		gObjects.push_back(triangle); // Triángulo como el apartado 7 y 11 (Con pos en (R,0))
-		gObjects.push_back(new RGBRectangle(280, 280)); // Cuadrado como el apartado 8
-		gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // Circunferencia como el apartado 5
-
-
-	}
-protected:
-};
-class Scene3 : public Scene
-{
-public:
-	void init() override
-	{
-		setGL(); // OpenGL settings
-
-		// allocate memory and load resources
-		// Lights
-		// Textures
-
-		// Graphics objects (entities) of the scene
-		gObjects.push_back(new RGBAxes(400.0));
-
-		gObjects.push_back(new RGBCube(200.0f));
-
-	}
-protected:
-};
 
 #endif //_H_Scene_H_

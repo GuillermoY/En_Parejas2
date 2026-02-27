@@ -6,20 +6,22 @@
 
 #include "Mesh.h"
 #include "Shader.h"
+#include "Texture.h"
 
 class Abs_Entity // abstract class
 {
 public:
 	Abs_Entity()
-	  : mModelMat(1.0)  // 4x4 identity matrix
-	  , mShader(nullptr) {};
+		: mModelMat(1.0)  // 4x4 identity matrix
+		, mShader(nullptr) {
+	};
 	virtual ~Abs_Entity();
 
 	Abs_Entity(const Abs_Entity& e) = delete;            // no copy constructor
 	Abs_Entity& operator=(const Abs_Entity& e) = delete; // no copy assignment
 
 	virtual void render(const glm::mat4& modelViewMat) const = 0; // abstract method
-	virtual void update(){}; // Apartado 12: A�adimos un update para que los objetos se actualicen
+	virtual void update() {}; // Apartado 12: A�adimos un update para que los objetos se actualicen
 	// modeling matrix
 	glm::mat4 const& modelMat() const { return mModelMat; };
 	void setModelMat(glm::mat4 const& aMat) { mModelMat = aMat; };
@@ -45,6 +47,18 @@ public:
 	virtual void update() {};
 };
 
+class EntityWithTexture : public Abs_Entity
+{
+protected: 
+	Texture* mTexture;
+	bool mModulate = false;
+public:
+	explicit EntityWithTexture(Texture* tex);
+	virtual void render(const glm::mat4& modelViewMat) const override;
+	virtual void update() {};
+};
+
+
 class RGBAxes : public EntityWithColors
 {
 public:
@@ -67,49 +81,17 @@ public:
 		: mColor(color)
 	{
 		mShader = Shader::get("simple"); // Funcionar� con shader simple
-	} 
+	}
 	virtual void render(const glm::mat4& modelViewMat) const override; // Sobreescribimos render 
 
 	glm::vec4 getColor() const { return mColor; };
 	void setColor(glm::vec4 newColor) { mColor = newColor; };
 };
-
+	
 class RegularPolygon : public SingleColorEntity // Apartado 4
 {
 public:
 	explicit RegularPolygon(GLuint num, GLdouble r, glm::vec4 color = glm::vec4(1.0f));
-};
-
-class RGBTriangle : public EntityWithColors
-{
-public:
-	explicit RGBTriangle(GLdouble h);
-	void update() override;
-	double angle = 0.0f;
-	float selfRotation = 0.0f;
-	float orbitDiameter = 200.0f;
-	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
-};
-
-class RGBRectangle : public EntityWithColors
-{
-public:
-	explicit RGBRectangle(GLdouble w, GLdouble h);
-	void render(const glm::mat4& modelViewMat) const override;
-	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
-};
-class Cube : public SingleColorEntity
-{
-public:
-	explicit Cube(GLdouble l);
-	void render(const glm::mat4& modelViewMat) const override;
-};
-class RGBCube : public EntityWithColors
-{
-public:
-	explicit RGBCube(GLdouble l);
-	void render(const glm::mat4& modelViewMat) const override;
-	//static Mesh* generateRectangle(GLdouble w, GLdouble h);
 };
 
 #endif //_H_Entities_H_

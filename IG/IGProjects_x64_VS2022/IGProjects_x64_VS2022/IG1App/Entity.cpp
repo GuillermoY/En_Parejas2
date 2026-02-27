@@ -57,6 +57,26 @@ SingleColorEntity::render(mat4 const& modelViewMat) const
 	}
 }
 
+// Apartado 19
+EntityWithTexture::EntityWithTexture(Texture* tex)
+{
+	mShader = Shader::get("vtexture");
+	mTexture = tex;
+}
+
+void
+EntityWithTexture::render(mat4 const& modelViewMat) const
+{
+	if (mMesh != nullptr && mTexture != nullptr) {
+		mTexture->bind();
+		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
+		mShader->use();
+		upload(aMat);
+		mMesh->render();
+		mTexture->unbind();
+	}
+}
+
 RGBAxes::RGBAxes(GLdouble l)
 {
 	mMesh = Mesh::createRGBAxes(l);
@@ -65,121 +85,4 @@ RGBAxes::RGBAxes(GLdouble l)
 RegularPolygon::RegularPolygon(GLuint num, GLdouble r, glm::vec4 color) : SingleColorEntity(color)
 {
 	mMesh = Mesh::generateRegularPolygon(num, r);
-}
-
-RGBTriangle::RGBTriangle(GLdouble h) : EntityWithColors()
-{
-	mMesh = Mesh::generateRGBTriangle(h);
-}
-
-RGBRectangle::RGBRectangle(GLdouble w, GLdouble h)
-{
-	mMesh = Mesh::generateRGBRectangle(w, h);
-}
-Cube::Cube(GLdouble l)
-{
-	mMesh = Mesh::generateCube(l);
-}
-RGBCube::RGBCube(GLdouble l)
-{
-	mMesh = Mesh::generateRGBCubeTriangles(l);
-}
-
-/// <summary>
-/// Apartado 9:
-/// Redefinimos el render para RGBRectangle, que, usando culling, hacemos que la trasera
-/// está rellena y la delantera use líneas
-/// </summary>
-void RGBRectangle::render(const glm::mat4& modelViewMat) const
-{
-	if (mMesh != nullptr) {
-		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
-		mShader->use();
-		upload(aMat);
-
-		glEnable(GL_CULL_FACE);
-		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
-
-		// Quitamos cara delantera y rellenamos la trasera
-		glCullFace(GL_FRONT);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		mMesh->render();
-
-		// Quitamos cara trasera y ponemos modo l�nea a la delantera
-		glCullFace(GL_BACK);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		mMesh->render();
-
-		// Habilitamos las dos caras, cada una con su relleno particular
-		glDisable(GL_CULL_FACE);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-	}
-}
-void Cube::render(const glm::mat4& modelViewMat) const
-{
-	if (mMesh != nullptr) {
-		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
-		mShader->use();
-		upload(aMat);
-
-		glEnable(GL_CULL_FACE);
-		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
-
-		glCullFace(GL_FRONT);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-		mMesh->render();
-
-
-		glCullFace(GL_BACK);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		mMesh->render();
-
-		glDisable(GL_CULL_FACE);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-	}
-}
-void RGBCube::render(const glm::mat4& modelViewMat) const
-{
-	if (mMesh != nullptr) {
-		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
-		mShader->use();
-		upload(aMat);
-
-		glEnable(GL_CULL_FACE);
-		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)
-
-		// Quitamos cara delantera y rellenamos la trasera
-		glCullFace(GL_FRONT);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-		mMesh->render();
-
-		// Quitamos cara trasera y ponemos modo l�nea a la delantera
-		glCullFace(GL_BACK);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		mMesh->render();
-
-		// Habilitamos las dos caras, cada una con su relleno particular
-		glDisable(GL_CULL_FACE);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-	}
-}
-
-/// <summary>
-/// Apartado 13:
-/// Sumamos 1 a la rotaci�n del tri�ngulo en sentido horario, que se rotar� despu�s de 
-/// trasladarse en la direcci�n antihoraria cuando va circulando sobre la circunferencia
-/// </summary>
-void RGBTriangle::update()
-{
-	selfRotation += 1;
-	double y = 0 + orbitDiameter * sin(glm::radians(angle));
-	double x = 0 + orbitDiameter * cos(glm::radians(angle));
-	angle += 1.0f;
-	mModelMat = glm::mat4(1.0);
-	mModelMat = translate(mModelMat, glm::vec3(0, y, 0.0));
-	mModelMat = translate(mModelMat, glm::vec3(x, 0, 0.0));
-	mModelMat = rotate(mModelMat, glm::radians(selfRotation), glm::vec3(0, 0, -1.0f));
 }

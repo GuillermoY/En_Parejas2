@@ -165,10 +165,11 @@ Mesh::generateRectangle(GLdouble w, GLdouble h)
 	mesh->mPrimitive = GL_TRIANGLE_STRIP;
 
 	mesh->mNumVertices = 4;
-	mesh->vVertices.emplace_back(w / 2, h / 2, 0.0);
-	mesh->vVertices.emplace_back(-w / 2, h / 2, 0.0);
-	mesh->vVertices.emplace_back(w / 2, -h / 2, 0.0);
-	mesh->vVertices.emplace_back(-w / 2, -h / 2, 0.0);
+
+	mesh->vVertices.emplace_back(w / 2, 0.0, -h / 2);
+	mesh->vVertices.emplace_back(-w / 2, 0.0, -h / 2);
+	mesh->vVertices.emplace_back(w / 2, 0.0, h / 2);
+	mesh->vVertices.emplace_back(-w / 2, 0.0, h/2);
 
 	return mesh;
 }
@@ -276,5 +277,17 @@ Mesh::generateRGBCubeTriangles(GLdouble l)
 		aux[i] = 0.0;
 	}
 
+	return mesh;
+}
+
+Mesh*
+Mesh::generateRectangleTexCor(GLdouble w, GLdouble h)
+{
+	Mesh* mesh = generateRectangle(w,h);
+	mesh->vTexCoords.reserve(mesh->mNumVertices);
+	mesh->vTexCoords.emplace_back(0, 1);
+	mesh->vTexCoords.emplace_back(0, 0);
+	mesh->vTexCoords.emplace_back(1, 1);
+	mesh->vTexCoords.emplace_back(1, 0);
 	return mesh;
 }

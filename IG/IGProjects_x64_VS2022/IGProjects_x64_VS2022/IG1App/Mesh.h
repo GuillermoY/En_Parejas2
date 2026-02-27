@@ -18,6 +18,7 @@ public:
 	static Mesh* generateCube(GLdouble length);
 	static Mesh* generateRGBCubeTriangles(GLdouble length);
 
+	static Mesh* generateRectangleTexCor(GLdouble w, GLdouble h); // Apartado 20
 
 	Mesh();
 	virtual ~Mesh();
@@ -38,6 +39,8 @@ protected:
 	GLuint mPrimitive =
 	  GL_TRIANGLES;          // graphic primitive: GL_POINTS, GL_LINES, GL_TRIANGLES, ...
 	GLuint mNumVertices = 0; // number of elements ( = vVertices.size())
+
+	std::vector<glm::vec2> vTexCoords; // texture array
 	std::vector<glm::vec3> vVertices; // vertex array
 	std::vector<glm::vec4> vColors;   // color array
 	virtual void draw() const;
