@@ -12,6 +12,7 @@
 #include "RGBRectangle.h"
 #include "RGBTriangle.h"
 #include "Ground.h"
+#include "BoxOutline.h"
 
 #include <vector>
 

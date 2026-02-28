@@ -18,7 +18,10 @@ public:
 	static Mesh* generateCube(GLdouble length);
 	static Mesh* generateRGBCubeTriangles(GLdouble length);
 
-	static Mesh* generateRectangleTexCor(GLdouble w, GLdouble h); // Apartado 20
+	static Mesh* generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh); // Apartado 20 y 21
+
+	static Mesh* generateBoxOutline(GLdouble length); // Ap 22
+	static Mesh* generateBoxOutlineTexCor(GLdouble length); // Ap 23
 
 	Mesh();
 	virtual ~Mesh();
@@ -29,6 +32,7 @@ public:
 	virtual void render() const;
 
 	GLuint size() const { return mNumVertices; }; // number of elements
+	std::vector<glm::vec2> const& textures() const { return vTexCoords; };
 	std::vector<glm::vec3> const& vertices() const { return vVertices; };
 	std::vector<glm::vec4> const& colors() const { return vColors; };
 
@@ -50,6 +54,7 @@ protected:
 private:
 	GLuint mVBO;  // vertex buffer object
 	GLuint mCBO;  // color buffer object
+	GLuint mTCO;  // texture buffer object
 };
 
 #endif //_H_Scene_H_

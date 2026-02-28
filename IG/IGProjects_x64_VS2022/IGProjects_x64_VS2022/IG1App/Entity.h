@@ -55,6 +55,7 @@ protected:
 public:
 	explicit EntityWithTexture(Texture* tex);
 	virtual void render(const glm::mat4& modelViewMat) const override;
+	void SetTexture(Texture* tex) { mTexture = tex; };
 	virtual void update() {};
 };
 

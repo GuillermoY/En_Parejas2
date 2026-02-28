@@ -60,20 +60,26 @@ SingleColorEntity::render(mat4 const& modelViewMat) const
 // Apartado 19
 EntityWithTexture::EntityWithTexture(Texture* tex)
 {
-	mShader = Shader::get("vtexture");
+	mShader = Shader::get("texture");
 	mTexture = tex;
 }
 
 void
 EntityWithTexture::render(mat4 const& modelViewMat) const
 {
-	if (mMesh != nullptr && mTexture != nullptr) {
-		mTexture->bind();
+	if (mMesh != nullptr) {
 		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 		mShader->use();
 		upload(aMat);
+		mShader->setUniform("modulate", mModulate); // Cargamos textura en la GPU 
+
+		if (mTexture != nullptr)
+			mTexture->bind();
+
 		mMesh->render();
-		mTexture->unbind();
+		
+		if (mTexture != nullptr)
+			mTexture->unbind();
 	}
 }
 

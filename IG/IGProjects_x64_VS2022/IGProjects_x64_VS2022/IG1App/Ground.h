@@ -11,8 +11,7 @@
 class Ground : public EntityWithTexture
 {
 public:
-	explicit Ground(GLdouble h, GLdouble l, Texture* tex) ;
-	virtual void render(const glm::mat4& modelViewMat) const override;
+	explicit Ground(GLdouble w, GLdouble h, GLuint rw, GLuint rh, Texture* tex);
 };
 
-#endif // RGBRECTANGLE_H
+#endif // GROUND_H
