@@ -84,7 +84,7 @@ public:
 		mShader = Shader::get("simple"); // Funcionar� con shader simple
 	}
 	virtual void render(const glm::mat4& modelViewMat) const override; // Sobreescribimos render 
-
+	void lineRender(const glm::mat4& modelViewMat) const;
 	glm::vec4 getColor() const { return mColor; };
 	void setColor(glm::vec4 newColor) { mColor = newColor; };
 };

@@ -1,18 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\",
+  "WorkspaceRootPath": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Guillermo I\\Projects\\DSI\\DSI\\Assets\\UXML\\Lab_4\\CControlLab4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\DeAcceleration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\DeAcceleration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\DeAcceleration.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\DeAcceleration.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\PaddleMouseCtrl.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\PaddleMouseCtrl.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\Transform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\Transform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\ecs\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\ecs\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\PaddleMouseCtrl.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\PaddleMouseCtrl.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\sdlutils\\SDLUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\sdlutils\\SDLUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\ecs\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\ecs\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\FighterCtrl.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\FighterCtrl.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +53,145 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Entity.h",
-              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\ecs\\Entity.h",
-              "RelativeDocumentMoniker": "src\\ecs\\Entity.h",
-              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\ecs\\Entity.h",
-              "RelativeToolTip": "src\\ecs\\Entity.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "CControlLab4.cs",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Projects\\DSI\\DSI\\Assets\\UXML\\Lab_4\\CControlLab4.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Projects\\DSI\\DSI\\Assets\\UXML\\Lab_4\\CControlLab4.cs",
+              "ToolTip": "C:\\Users\\Guillermo I\\Projects\\DSI\\DSI\\Assets\\UXML\\Lab_4\\CControlLab4.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Projects\\DSI\\DSI\\Assets\\UXML\\Lab_4\\CControlLab4.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAvwGkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T17:54:21.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Component.h",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\ecs\\Component.h",
+              "RelativeDocumentMoniker": "src\\ecs\\Component.h",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\ecs\\Component.h",
+              "RelativeToolTip": "src\\ecs\\Component.h",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-16T16:38:46.975Z",
+              "WhenOpened": "2026-03-05T17:03:12.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PaddleMouseCtrl.cpp",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\PaddleMouseCtrl.cpp",
+              "RelativeDocumentMoniker": "src\\components\\PaddleMouseCtrl.cpp",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\PaddleMouseCtrl.cpp",
+              "RelativeToolTip": "src\\components\\PaddleMouseCtrl.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAvwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-03T17:21:45.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DeAcceleration.cpp",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\DeAcceleration.cpp",
+              "RelativeDocumentMoniker": "src\\components\\DeAcceleration.cpp",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\DeAcceleration.cpp",
+              "RelativeToolTip": "src\\components\\DeAcceleration.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-03T16:46:14.013Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Game.h",
-              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.h",
-              "RelativeDocumentMoniker": "src\\game\\Game.h",
-              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.h",
-              "RelativeToolTip": "src\\game\\Game.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAUAAAAAAAAAA==",
+              "Title": "DeAcceleration.h",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\DeAcceleration.h",
+              "RelativeDocumentMoniker": "src\\components\\DeAcceleration.h",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\DeAcceleration.h",
+              "RelativeToolTip": "src\\components\\DeAcceleration.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-16T16:28:39.915Z",
+              "WhenOpened": "2026-03-03T16:46:13.014Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "Transform.h",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\Transform.h",
+              "RelativeDocumentMoniker": "src\\components\\Transform.h",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\Transform.h",
+              "RelativeToolTip": "src\\components\\Transform.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-03-02T16:42:39.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Game.h",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.h",
+              "RelativeDocumentMoniker": "src\\game\\Game.h",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.h",
+              "RelativeToolTip": "src\\game\\Game.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-03-02T17:40:47.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FighterCtrl.h",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\FighterCtrl.h",
+              "RelativeDocumentMoniker": "src\\components\\FighterCtrl.h",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\FighterCtrl.h",
+              "RelativeToolTip": "src\\components\\FighterCtrl.h",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-03-03T16:25:46.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Game.cpp",
-              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.cpp",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.cpp",
               "RelativeDocumentMoniker": "src\\game\\Game.cpp",
-              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.cpp",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\game\\Game.cpp",
               "RelativeToolTip": "src\\game\\Game.cpp",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAEsAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAH4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-16T16:28:39.028Z",
+              "WhenOpened": "2026-02-16T16:28:39.028Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SDLUtils.cpp",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\sdlutils\\SDLUtils.cpp",
+              "RelativeDocumentMoniker": "src\\sdlutils\\SDLUtils.cpp",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\sdlutils\\SDLUtils.cpp",
+              "RelativeToolTip": "src\\sdlutils\\SDLUtils.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-02T17:38:06.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PaddleMouseCtrl.h",
+              "DocumentMoniker": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\PaddleMouseCtrl.h",
+              "RelativeDocumentMoniker": "src\\components\\PaddleMouseCtrl.h",
+              "ToolTip": "C:\\Users\\Guillermo I\\Documents\\Curso2\\EN_PAREJAS\\En_Parejas2\\TPV2\\Practica_1\\TPV2\\src\\components\\PaddleMouseCtrl.h",
+              "RelativeToolTip": "src\\components\\PaddleMouseCtrl.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-03-03T17:07:39.856Z",
               "EditorCaption": ""
             }
           ]

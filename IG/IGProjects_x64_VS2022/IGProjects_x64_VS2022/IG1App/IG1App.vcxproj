@@ -87,6 +87,7 @@
     <ClInclude Include="Scene3.h" />
     <ClInclude Include="Scene4.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Star3D.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
@@ -105,6 +106,7 @@
     <ClCompile Include="RGBTriangle.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Star3D.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>

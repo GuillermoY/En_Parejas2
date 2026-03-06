@@ -13,6 +13,11 @@
 #include "../components/RectangleViewer.h"
 #include "../components/StopOnBorders.h"
 #include "../components/Transform.h"
+
+#include "../components/DeAcceleration.h"
+#include "../components/FighterCtrl.h"
+#include "../components/ShowAtOpposieSide.h"
+
 #include "../ecs/Entity.h"
 #include "../ecs/EntityManager.h"
 #include "../sdlutils/InputHandler.h"
@@ -67,19 +72,24 @@ void Game::init() {
 	// create the ball entity
 	//
 	
+
 	auto fighter = _mngr->addEntity();
+	_fighterTr = fighter->addComponent<Transform>();
+	//auto fighterCtrl = fighter->addComponent<FighterCtrl>();
+	//auto fighterAccel = fighter->addComponent<DeAcceleration>();
+	auto fighterSide = fighter->addComponent<ShowAtOpposieSide>();
+	fighter->addComponent<Image>(&sdlutils().images().at("tennis_ball"));
+
+
 	auto ball = _mngr->addEntity();
 	_mngr->setHandler(ecs::hdlr::BALL, ball);
-
 	_ballTr = ball->addComponent<Transform>();
-	_fighterTr = ball->addComponent<Transform>();
-	fighter->addComponent<Image>(&sdlutils().images().at("fighter"));
 	auto ballSize = 15.0f;
 	auto ballX = (sdlutils().width() - ballSize) / 2.0f;
 	auto ballY = (sdlutils().height() - ballSize) / 2.0f;
 	_ballTr->init(Vector2D(ballX, ballY), Vector2D(), ballSize, ballSize, 0.0f);
 
-	ball->addComponent<Image>(&sdlutils().images().at("tennis_ball"));
+	//ball->addComponent<Image>(&sdlutils().images().at("tennis_ball"));
 	ball->addComponent<BounceOnBorders>();
 
 	// create the left paddle

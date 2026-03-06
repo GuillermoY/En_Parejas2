@@ -71,4 +71,3 @@ private:
 	float _height;
 	float _rot;
 };
-

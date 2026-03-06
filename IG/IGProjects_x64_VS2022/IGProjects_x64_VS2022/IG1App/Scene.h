@@ -13,6 +13,7 @@
 #include "RGBTriangle.h"
 #include "Ground.h"
 #include "BoxOutline.h"
+#include "Star3D.h"
 
 #include <vector>
 

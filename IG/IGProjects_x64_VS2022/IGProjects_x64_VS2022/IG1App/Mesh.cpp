@@ -7,10 +7,10 @@ using namespace glm;
 constexpr GLuint NONE = numeric_limits<GLuint>::max();
 
 Mesh::Mesh()
- : mVAO(NONE)
- , mVBO(NONE)
- , mCBO(NONE)
- , mTCO(NONE)
+	: mVAO(NONE)
+	, mVBO(NONE)
+	, mCBO(NONE)
+	, mTCO(NONE)
 {
 }
 
@@ -23,9 +23,9 @@ void
 Mesh::draw() const
 {
 	glDrawArrays(
-	  mPrimitive,
-	  0,
-	  size()); // primitive graphic, first index and number of elements to be rendered
+		mPrimitive,
+		0,
+		size()); // primitive graphic, first index and number of elements to be rendered
 }
 
 void
@@ -143,7 +143,7 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 	for (GLuint i = 0; i < num; ++i)
 	{
 		// Las funciones trigonométricas tienen que estar en radianes para su aplicación
-		double x = 0 + r * cos(glm::radians(angle)); 
+		double x = 0 + r * cos(glm::radians(angle));
 		double y = 0 + r * sin(glm::radians(angle));
 		mesh->vVertices.emplace_back(x, y, 0.0);
 		angle += 360 / num;
@@ -186,7 +186,7 @@ Mesh::generateRectangle(GLdouble w, GLdouble h)
 	mesh->vVertices.emplace_back(w / 2, 0.0, -h / 2);
 	mesh->vVertices.emplace_back(-w / 2, 0.0, -h / 2);
 	mesh->vVertices.emplace_back(w / 2, 0.0, h / 2);
-	mesh->vVertices.emplace_back(-w / 2, 0.0, h/2);
+	mesh->vVertices.emplace_back(-w / 2, 0.0, h / 2);
 
 	return mesh;
 }
@@ -198,7 +198,7 @@ Mesh::generateRectangle(GLdouble w, GLdouble h)
 Mesh*
 Mesh::generateRGBRectangle(GLdouble w, GLdouble h)
 {
-	Mesh* mesh = generateRectangle(w,h);
+	Mesh* mesh = generateRectangle(w, h);
 	mesh->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
 	mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
 	mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
@@ -300,7 +300,7 @@ Mesh::generateRGBCubeTriangles(GLdouble l)
 Mesh*
 Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
 {
-	Mesh* mesh = generateRectangle(w,h);
+	Mesh* mesh = generateRectangle(w, h);
 	mesh->vTexCoords.reserve(mesh->mNumVertices);
 	mesh->vTexCoords.emplace_back(0, rh);
 	mesh->vTexCoords.emplace_back(0, 0);
@@ -309,7 +309,7 @@ Mesh::generateRectangleTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
 	return mesh;
 }
 
-Mesh* 
+Mesh*
 Mesh::generateBoxOutline(GLdouble length)
 {
 	Mesh* mesh = new Mesh();
@@ -353,6 +353,82 @@ Mesh::generateBoxOutlineTexCor(GLdouble length)
 
 	mesh->vTexCoords.emplace_back(0, 1);
 	mesh->vTexCoords.emplace_back(0, 0);
+
+	return mesh;
+}
+
+Mesh*
+Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
+{
+	Mesh* mesh = new Mesh();
+
+	mesh->mPrimitive = GL_TRIANGLE_FAN;
+
+	mesh->mNumVertices = np * 2 + 2; // Internos + Externos + El punto 0,0 + Cerrar Estrella
+
+	mesh->vVertices.emplace_back(0, 0, 0);
+
+	GLuint ri = re / 2;
+
+	double angle = 90.0;
+	double ai = (90.0 * 1.25); // Rotación añadida
+	// Dividimos un círculo como un pastel y ponemos vértices en cada intersección
+	// entre la línea y la circunferencia.
+	for (GLuint i = 0; i < np; ++i)
+	{
+		// Las funciones trigonométricas tienen que estar en radianes para su aplicación
+		double x = 0 + re * cos(glm::radians(angle));
+		double y = 0 + re * sin(glm::radians(angle));
+		mesh->vVertices.emplace_back(x, y, h); // Z = h
+
+		//Puntos internos
+		double x2 = 0 + ri * cos(glm::radians(ai));
+		double y2 = 0 + ri * sin(glm::radians(ai));
+		mesh->vVertices.emplace_back(x2, y2, h);
+
+		angle += 360 / np;
+
+		ai += 360 / np;
+	}
+	double x = 0 + re * cos(glm::radians(angle));
+	double y = 0 + re * sin(glm::radians(angle));
+	mesh->vVertices.emplace_back(x, y, h); // Último vértice que cierra la estrella
+
+	return mesh;
+}
+
+Mesh*
+Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) // Ap 29
+{
+	Mesh* mesh = generateStar3D(re, np, h);
+	mesh->vTexCoords.reserve(mesh->mNumVertices);
+	mesh->vTexCoords.emplace_back(0.5, 0.5);
+
+	mesh->vTexCoords.emplace_back(0.5, 1);
+	mesh->vTexCoords.emplace_back(0.375, 0.75);
+	mesh->vTexCoords.emplace_back(0.125, 0.5+0.375);
+
+	mesh->vTexCoords.emplace_back(0.25, 0.5+0.125);
+	mesh->vTexCoords.emplace_back(0.0, 0.5);
+
+	mesh->vTexCoords.emplace_back(0.25, 0.375);
+	mesh->vTexCoords.emplace_back(0.125, 0.125);
+	
+	mesh->vTexCoords.emplace_back(0.375, 0.25);
+
+	mesh->vTexCoords.emplace_back(0.5, 0);
+
+	mesh->vTexCoords.emplace_back(0.125+0.5, 0.25);
+	mesh->vTexCoords.emplace_back(0.375+0.5, 0.125);
+	mesh->vTexCoords.emplace_back(0.75, 0.375);
+
+	mesh->vTexCoords.emplace_back(1, 0.5);
+	mesh->vTexCoords.emplace_back(0.75, 0.5+0.125);
+	mesh->vTexCoords.emplace_back(0.5 + 0.375, 0.5 + 0.375);
+
+	mesh->vTexCoords.emplace_back(0.5+0.125, 0.75);
+	mesh->vTexCoords.emplace_back(0.5, 1);
+
 
 	return mesh;
 }

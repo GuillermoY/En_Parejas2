@@ -23,6 +23,10 @@ public:
 	static Mesh* generateBoxOutline(GLdouble length); // Ap 22
 	static Mesh* generateBoxOutlineTexCor(GLdouble length); // Ap 23
 
+	static Mesh* generateStar3D(GLdouble re, GLuint np, GLdouble h); // Ap 26
+
+	static Mesh* generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h); // Ap 29
+
 	Mesh();
 	virtual ~Mesh();
 
