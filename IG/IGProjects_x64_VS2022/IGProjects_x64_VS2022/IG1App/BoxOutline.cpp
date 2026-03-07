@@ -32,6 +32,7 @@ void BoxOutline::render(const glm::mat4& modelViewMat) const
 		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 		mShader->use();
 		upload(aMat);
+		mShader->setUniform("modulate", mModulate); // Cargamos textura en la GPU 
 
 		glEnable(GL_CULL_FACE);
 		glFrontFace(GL_CCW); // El sentido de la cara frontal es Counter ClockWise (Antihorario)

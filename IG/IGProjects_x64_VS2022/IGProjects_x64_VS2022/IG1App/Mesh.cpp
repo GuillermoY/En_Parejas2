@@ -53,15 +53,12 @@ Mesh::load()
 		}
 
 
-		if (vTexCoords.size() > 0) {             // upload colors
+		if (vTexCoords.size() > 0) {             // upload texture
 			glGenBuffers(1, &mTCO);
 			glBindBuffer(GL_ARRAY_BUFFER, mTCO);
-			glBufferData(GL_ARRAY_BUFFER,
-				vTexCoords.size() * sizeof(vec2),
-				vTexCoords.data(), GL_STATIC_DRAW);
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
-				sizeof(vec2), nullptr);
-			glEnableVertexAttribArray(2);
+			glBufferData(GL_ARRAY_BUFFER, vTexCoords.size() * sizeof(vec2), vTexCoords.data(), GL_STATIC_DRAW);
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vec2), nullptr); // 0 vértices, 1 es el color, 2 textura				 (x,y)
+			glEnableVertexAttribArray(2); // 0 vértices, 1 es el color, 2 textura
 		}
 	}
 }
@@ -183,11 +180,10 @@ Mesh::generateRectangle(GLdouble w, GLdouble h)
 
 	mesh->mNumVertices = 4;
 
-	mesh->vVertices.emplace_back(w / 2, 0.0, -h / 2);
-	mesh->vVertices.emplace_back(-w / 2, 0.0, -h / 2);
-	mesh->vVertices.emplace_back(w / 2, 0.0, h / 2);
-	mesh->vVertices.emplace_back(-w / 2, 0.0, h / 2);
-
+	mesh->vVertices.emplace_back(w / 2, h / 2, 0.0);
+	mesh->vVertices.emplace_back(-w / 2, h / 2, 0.0);
+	mesh->vVertices.emplace_back(w / 2, -h / 2, 0.0);
+	mesh->vVertices.emplace_back(-w / 2, -h / 2, 0.0);
 	return mesh;
 }
 /// <summary>
@@ -316,10 +312,8 @@ Mesh::generateBoxOutline(GLdouble length)
 
 	mesh->mPrimitive = GL_TRIANGLE_STRIP;
 
-	mesh->mNumVertices = 10;
-
-	//Cara 1
-
+	mesh->mNumVertices = 10;	
+	
 	mesh->vVertices.emplace_back(-length, -length, -length);
 	mesh->vVertices.emplace_back(-length, length, -length);
 	mesh->vVertices.emplace_back(-length, -length, length);
@@ -333,6 +327,7 @@ Mesh::generateBoxOutline(GLdouble length)
 
 	mesh->vVertices.emplace_back(-length, -length, -length);
 	mesh->vVertices.emplace_back(-length, length, -length);
+	
 	return mesh;
 }
 
@@ -341,6 +336,7 @@ Mesh::generateBoxOutlineTexCor(GLdouble length)
 {
 	Mesh* mesh = generateBoxOutline(length);
 	mesh->vTexCoords.reserve(mesh->mNumVertices);
+
 	mesh->vTexCoords.emplace_back(0, 1);
 	mesh->vTexCoords.emplace_back(0, 0);
 	mesh->vTexCoords.emplace_back(1, 1);
@@ -368,10 +364,10 @@ Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
 
 	mesh->vVertices.emplace_back(0, 0, 0);
 
-	GLuint ri = re / 2;
+	GLuint ri = re / 2.0;
 
 	double angle = 90.0;
-	double ai = (90.0 * 1.25); // Rotación añadida
+	double ai = angle + (180/np); // Rotación añadida
 	// Dividimos un círculo como un pastel y ponemos vértices en cada intersección
 	// entre la línea y la circunferencia.
 	for (GLuint i = 0; i < np; ++i)
@@ -396,39 +392,46 @@ Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
 
 	return mesh;
 }
-
+#include <iostream>
+#include <string>
 Mesh*
 Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) // Ap 29
 {
 	Mesh* mesh = generateStar3D(re, np, h);
 	mesh->vTexCoords.reserve(mesh->mNumVertices);
-	mesh->vTexCoords.emplace_back(0.5, 0.5);
 
-	mesh->vTexCoords.emplace_back(0.5, 1);
-	mesh->vTexCoords.emplace_back(0.375, 0.75);
-	mesh->vTexCoords.emplace_back(0.125, 0.5+0.375);
 
-	mesh->vTexCoords.emplace_back(0.25, 0.5+0.125);
-	mesh->vTexCoords.emplace_back(0.0, 0.5);
+	double center = 0.5; // el centro de la imagen es 0.5
+	double reImg = 0.5;
+	double riImg = 0.25;
 
-	mesh->vTexCoords.emplace_back(0.25, 0.375);
-	mesh->vTexCoords.emplace_back(0.125, 0.125);
-	
-	mesh->vTexCoords.emplace_back(0.375, 0.25);
+	mesh->vTexCoords.emplace_back(center, center);
 
-	mesh->vTexCoords.emplace_back(0.5, 0);
+	GLuint ri = re / 2;
 
-	mesh->vTexCoords.emplace_back(0.125+0.5, 0.25);
-	mesh->vTexCoords.emplace_back(0.375+0.5, 0.125);
-	mesh->vTexCoords.emplace_back(0.75, 0.375);
+	double angle = 90.0;
+	double ai = angle + (180 / np); // Rotación añadida
 
-	mesh->vTexCoords.emplace_back(1, 0.5);
-	mesh->vTexCoords.emplace_back(0.75, 0.5+0.125);
-	mesh->vTexCoords.emplace_back(0.5 + 0.375, 0.5 + 0.375);
+	// Dividimos un círculo como un pastel y ponemos vértices en cada intersección
+	// entre la línea y la circunferencia.
+	for (GLuint i = 0; i < np; ++i)
+	{
+		// Las funciones trigonométricas tienen que estar en radianes para su aplicación
+		double x = center + reImg * cos(glm::radians(angle));
+		double y = center + reImg * sin(glm::radians(angle));
+		mesh->vTexCoords.emplace_back(x, y);
+		//Puntos internos
+		double x2 = center + riImg * cos(glm::radians(ai));
+		double y2 = center + riImg * sin(glm::radians(ai));
+		mesh->vTexCoords.emplace_back(x2,y2);
 
-	mesh->vTexCoords.emplace_back(0.5+0.125, 0.75);
-	mesh->vTexCoords.emplace_back(0.5, 1);
+		angle += 360 / np;
 
+		ai += 360 / np;
+	}
+	double x = center + reImg * cos(glm::radians(angle));
+	double y = center + reImg * sin(glm::radians(angle));
+	mesh->vTexCoords.emplace_back(x, y); // Último vértice que cierra la estrella
 
 	return mesh;
 }
