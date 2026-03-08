@@ -41,8 +41,9 @@ public:
 		Texture* ruedTex = new Texture();
 		ruedTex->load("../assets/images/rueda.png");
 
-		Abs_Entity* star3D = new Star3D(40.0, 8, 40.0, ruedTex);
-		star3D->setModelMat(translate(star3D->modelMat(), glm::vec3(200.0f, 50.0f, -50.0f)));
+		glm::vec3 starPos = glm::vec3(200.0f, 50.0f, -50.0f);
+		Abs_Entity* star3D = new Star3D(30.0, 8, 30.0, ruedTex, starPos);
+		star3D->setModelMat(translate(star3D->modelMat(), starPos));
 		gObjects.push_back(star3D);
 
 		Texture* cristTex = new Texture();

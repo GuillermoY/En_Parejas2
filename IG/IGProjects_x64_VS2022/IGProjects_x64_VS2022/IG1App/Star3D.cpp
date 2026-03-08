@@ -5,9 +5,11 @@
 using namespace glm;
 
 
-Star3D::Star3D(GLdouble re, GLuint np, GLdouble h, Texture* tex) : EntityWithTexture(tex)
+Star3D::Star3D(GLdouble re, GLuint np, GLdouble h, Texture* tex, glm::vec3 iniPos) : EntityWithTexture(tex)
 {
-	mMesh = Mesh::generateStar3DTexCor(re,np,h);
+	mMesh = Mesh::generateStar3DTexCor(re, np, h);
+
+	mPosition = iniPos; // posición inicial
 }
 
 void Star3D::render(const glm::mat4& modelViewMat) const // Ap: 27
@@ -43,10 +45,14 @@ void Star3D::render(const glm::mat4& modelViewMat) const // Ap: 27
 	}
 }
 
+
 void Star3D::update() // Ap: 28
 {
 	selfRotation += 1;
 	mModelMat = glm::mat4(1.0);
+
+	mModelMat = translate(mModelMat, mPosition);
+
 	mModelMat = rotate(mModelMat, glm::radians(selfRotation), glm::vec3(0, -1.0f, 0.0f)); // Girar sobre su eje Y
 	mModelMat = rotate(mModelMat, glm::radians(selfRotation), glm::vec3(0, 0, -1.0f)); // Rotan sobre su eje Z
 }
