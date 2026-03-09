@@ -34,7 +34,7 @@ void FighterCtrl::update() {
 	}
 
 	// Acelerar hacia arriba (dirección donde apunta la nave)
-	if (ihdlr.isKeyDown(SDL_SCANCODE_UP)) {
+	else if (ihdlr.isKeyDown(SDL_SCANCODE_UP)) {
 		Vector2D new_vel = vel + Vector2D(0.0f, -1.0f).rotate(_tr->getRot()) * _THRUST;
 		if (new_vel.magnitude() > _SPEED_LIMIT) {
 			new_vel = new_vel.normalize() * _SPEED_LIMIT;
