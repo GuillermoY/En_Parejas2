@@ -1,0 +1,38 @@
+﻿  Deacceleration.cpp
+  FighterCtrl.cpp
+  Follow.cpp
+  Generations.cpp
+  Gun.cpp
+  Health.cpp
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P1\src\components\Health.cpp(25,8): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P1\src\components\Health.cpp(26,8): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+  Image.cpp
+  ImageWithFrames.cpp
+  MaterialConsistency.cpp
+  Showatoppositeside.cpp
+  TeleportOnExit.cpp
+  TowardDestination.cpp
+  EntityManager.cpp
+  AsteroidsUtils.cpp
+  Fighterutils.cpp
+  Game.cpp
+  Gameoverstate.cpp
+  Newgamestate.cpp
+  Newroundstate.cpp
+  Pausestate.cpp
+  Generando código...
+  Compilando...
+  Runningstate.cpp
+  JSON.cpp
+  JSONValue.cpp
+  json_demo.cpp
+  main.cpp
+  SDLUtils.cpp
+  SDLUtilsError.cpp
+  sdlutils_demo.cpp
+  SoundEffect.cpp
+  Texture.cpp
+  Collisions.cpp
+  Vector2D.cpp
+  Generando código...
+  TPV2.vcxproj -> C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P1\bin\x64\Debug\TPV2.exe
