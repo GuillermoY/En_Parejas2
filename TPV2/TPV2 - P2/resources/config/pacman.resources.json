@@ -1,0 +1,79 @@
+{
+    "fonts": [
+        {
+            "id": "ARIAL24",
+            "file": "resources/fonts/ARIAL.TTF",
+            "size": 24
+        },
+        {
+            "id": "ARIAL16",
+            "file": "resources/fonts/ARIAL.TTF",
+            "size": 16
+        }
+    ],
+    "images": [
+        {
+            "id": "pacman_sprites",
+            "file": "resources/images/pacman_sprites.png"
+        }
+    ],
+    "sounds": [
+        {
+            "id": "pacman_intro",
+            "file": "resources/sounds/pacman_intro.wav",
+            "type": "se"
+        },
+        {
+            "id": "pacman_chomp",
+            "file": "resources/sounds/pacman_chomp.wav",
+            "type": "se"
+        },
+        {
+            "id": "pacman_eat",
+            "file": "resources/sounds/pacman_eat.wav",
+            "type": "se"
+        },
+        {
+            "id": "pacman_death",
+            "file": "resources/sounds/pacman_death.wav",
+            "type": "se"
+        },
+        {
+            "id": "pacman_won",
+            "file": "resources/sounds/pacman_won.wav",
+            "type": "se"
+        }
+    ],
+    "msgs": [
+        {
+            "id": "new_game",
+            "text": "Press any key to start",
+            "font": "ARIAL24",
+            "color": "ffffffff"
+        },
+        {
+            "id": "new_round",
+            "text": "Press ENTER to start round",
+            "font": "ARIAL24",
+            "color": "ffffffff"
+        },
+        {
+            "id": "paused",
+            "text": "PAUSED - Press any key",
+            "font": "ARIAL24",
+            "color": "ffff00ff"
+        },
+        {
+            "id": "game_won",
+            "text": "YOU WIN! Press any key",
+            "font": "ARIAL24",
+            "color": "00ff00ff"
+        },
+        {
+            "id": "game_lost",
+            "text": "GAME OVER! Press any key",
+            "font": "ARIAL24",
+            "color": "ff0000ff"
+        }
+    ]
+}

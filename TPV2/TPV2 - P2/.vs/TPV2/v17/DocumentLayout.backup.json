@@ -1,0 +1,566 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\FoodSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\FoodSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\RenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\RenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\RenderSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\RenderSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\CollisionsSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\CollisionsSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\CollisionsSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\CollisionsSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\ImmunitySystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\ImmunitySystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\ImmunitySystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\ImmunitySystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\GhostSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\GhostSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\GhostSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\GhostSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\PacManSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\PacManSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\PacManSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\PacManSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\FoodSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\systems\\FoodSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\MiracleFood.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\MiracleFood.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Immunity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\Immunity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Health.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\Health.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\FramedImage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\FramedImage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Transform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\components\\Transform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Gameoverstate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Gameoverstate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Gameoverstate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Gameoverstate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Pausestate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Pausestate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Pausestate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Pausestate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Runningstate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Runningstate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Runningstate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Runningstate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newroundstate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Newroundstate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newroundstate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Newroundstate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newgamestate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Newgamestate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newgamestate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\Newgamestate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\GameState.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\GameState.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\messages_defs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\messages_defs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\ecs_defs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9948E05F-C760-4388-8502-49741C9A9509}|TPV2.vcxproj|solutionrelative:src\\game\\ecs_defs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\resources\\config\\pacman.resources.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:resources\\config\\pacman.resources.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\main.cpp",
+              "RelativeDocumentMoniker": "src\\main.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\main.cpp",
+              "RelativeToolTip": "src\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:50:30.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PacManSystem.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\PacManSystem.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\PacManSystem.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\PacManSystem.cpp",
+              "RelativeToolTip": "src\\systems\\PacManSystem.cpp",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwHYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:25:59.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FoodSystem.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\FoodSystem.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\FoodSystem.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\FoodSystem.cpp",
+              "RelativeToolTip": "src\\systems\\FoodSystem.cpp",
+              "ViewState": "AgIAAB4AAAAAAAAAAIAwwDEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:26:19.727Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GhostSystem.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\GhostSystem.h",
+              "RelativeDocumentMoniker": "src\\systems\\GhostSystem.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\GhostSystem.h",
+              "RelativeToolTip": "src\\systems\\GhostSystem.h",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAwwCUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:26:31.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GhostSystem.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\GhostSystem.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\GhostSystem.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\GhostSystem.cpp",
+              "RelativeToolTip": "src\\systems\\GhostSystem.cpp",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAwwL8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:26:39.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ImmunitySystem.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\ImmunitySystem.h",
+              "RelativeDocumentMoniker": "src\\systems\\ImmunitySystem.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\ImmunitySystem.h",
+              "RelativeToolTip": "src\\systems\\ImmunitySystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:26:52.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ImmunitySystem.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\ImmunitySystem.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\ImmunitySystem.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\ImmunitySystem.cpp",
+              "RelativeToolTip": "src\\systems\\ImmunitySystem.cpp",
+              "ViewState": "AgIAABAAAAAAAAAAAAAwwDQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:27:03.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CollisionsSystem.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\CollisionsSystem.h",
+              "RelativeDocumentMoniker": "src\\systems\\CollisionsSystem.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\CollisionsSystem.h",
+              "RelativeToolTip": "src\\systems\\CollisionsSystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:27:15.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CollisionsSystem.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\CollisionsSystem.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\CollisionsSystem.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\CollisionsSystem.cpp",
+              "RelativeToolTip": "src\\systems\\CollisionsSystem.cpp",
+              "ViewState": "AgIAACUAAAAAAAAAAAAwwEkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:27:23.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RenderSystem.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\RenderSystem.h",
+              "RelativeDocumentMoniker": "src\\systems\\RenderSystem.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\RenderSystem.h",
+              "RelativeToolTip": "src\\systems\\RenderSystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:27:34.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Game.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Game.h",
+              "RelativeDocumentMoniker": "src\\game\\Game.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Game.h",
+              "RelativeToolTip": "src\\game\\Game.h",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwC4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:46:11.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Game.cpp",
+              "RelativeDocumentMoniker": "src\\game\\Game.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Game.cpp",
+              "RelativeToolTip": "src\\game\\Game.cpp",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:46:18.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PacManSystem.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\PacManSystem.h",
+              "RelativeDocumentMoniker": "src\\systems\\PacManSystem.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\PacManSystem.h",
+              "RelativeToolTip": "src\\systems\\PacManSystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:25:44.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RenderSystem.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\RenderSystem.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\RenderSystem.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\RenderSystem.cpp",
+              "RelativeToolTip": "src\\systems\\RenderSystem.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAwwFEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:27:44.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FoodSystem.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\FoodSystem.h",
+              "RelativeDocumentMoniker": "src\\systems\\FoodSystem.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\systems\\FoodSystem.h",
+              "RelativeToolTip": "src\\systems\\FoodSystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:26:09.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MiracleFood.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\MiracleFood.h",
+              "RelativeDocumentMoniker": "src\\components\\MiracleFood.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\MiracleFood.h",
+              "RelativeToolTip": "src\\components\\MiracleFood.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:28:24.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Immunity.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Immunity.h",
+              "RelativeDocumentMoniker": "src\\components\\Immunity.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Immunity.h",
+              "RelativeToolTip": "src\\components\\Immunity.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:28:14.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Health.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Health.h",
+              "RelativeDocumentMoniker": "src\\components\\Health.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Health.h",
+              "RelativeToolTip": "src\\components\\Health.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:48:02.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "FramedImage.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\FramedImage.h",
+              "RelativeDocumentMoniker": "src\\components\\FramedImage.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\FramedImage.h",
+              "RelativeToolTip": "src\\components\\FramedImage.h",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwDgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:28:01.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Transform.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Transform.h",
+              "RelativeDocumentMoniker": "src\\components\\Transform.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\components\\Transform.h",
+              "RelativeToolTip": "src\\components\\Transform.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwBsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:47:43.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Gameoverstate.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Gameoverstate.cpp",
+              "RelativeDocumentMoniker": "src\\game\\Gameoverstate.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Gameoverstate.cpp",
+              "RelativeToolTip": "src\\game\\Gameoverstate.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:47:36.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Gameoverstate.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Gameoverstate.h",
+              "RelativeDocumentMoniker": "src\\game\\Gameoverstate.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Gameoverstate.h",
+              "RelativeToolTip": "src\\game\\Gameoverstate.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:47:30.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Pausestate.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Pausestate.cpp",
+              "RelativeDocumentMoniker": "src\\game\\Pausestate.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Pausestate.cpp",
+              "RelativeToolTip": "src\\game\\Pausestate.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:47:23.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Pausestate.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Pausestate.h",
+              "RelativeDocumentMoniker": "src\\game\\Pausestate.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Pausestate.h",
+              "RelativeToolTip": "src\\game\\Pausestate.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:47:17.236Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Runningstate.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\RunningState.cpp",
+              "RelativeDocumentMoniker": "src\\game\\RunningState.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\RunningState.cpp",
+              "RelativeToolTip": "src\\game\\RunningState.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:47:04.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Runningstate.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\RunningState.h",
+              "RelativeDocumentMoniker": "src\\game\\RunningState.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\RunningState.h",
+              "RelativeToolTip": "src\\game\\RunningState.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:47:00.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Newroundstate.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\NewRoundState.cpp",
+              "RelativeDocumentMoniker": "src\\game\\NewRoundState.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\NewRoundState.cpp",
+              "RelativeToolTip": "src\\game\\NewRoundState.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwBkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:46:50.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Newroundstate.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newroundstate.h",
+              "RelativeDocumentMoniker": "src\\game\\Newroundstate.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newroundstate.h",
+              "RelativeToolTip": "src\\game\\Newroundstate.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:46:45.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Newgamestate.cpp",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newgamestate.cpp",
+              "RelativeDocumentMoniker": "src\\game\\Newgamestate.cpp",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newgamestate.cpp",
+              "RelativeToolTip": "src\\game\\Newgamestate.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T20:46:27.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Newgamestate.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newgamestate.h",
+              "RelativeDocumentMoniker": "src\\game\\Newgamestate.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\Newgamestate.h",
+              "RelativeToolTip": "src\\game\\Newgamestate.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:46:31.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "GameState.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\GameState.h",
+              "RelativeDocumentMoniker": "src\\game\\GameState.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\GameState.h",
+              "RelativeToolTip": "src\\game\\GameState.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:46:04.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ecs_defs.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\ecs_defs.h",
+              "RelativeDocumentMoniker": "src\\game\\ecs_defs.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\ecs_defs.h",
+              "RelativeToolTip": "src\\game\\ecs_defs.h",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAwwCUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:45:48.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "pacman.resources.json",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\resources\\config\\pacman.resources.json",
+              "RelativeDocumentMoniker": "resources\\config\\pacman.resources.json",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\resources\\config\\pacman.resources.json",
+              "RelativeToolTip": "resources\\config\\pacman.resources.json",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAE4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-02T20:44:49.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "messages_defs.h",
+              "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\messages_defs.h",
+              "RelativeDocumentMoniker": "src\\game\\messages_defs.h",
+              "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\En_Parejas2\\TPV2\\TPV2 - P2\\src\\game\\messages_defs.h",
+              "RelativeToolTip": "src\\game\\messages_defs.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwCQAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T20:28:51.716Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
