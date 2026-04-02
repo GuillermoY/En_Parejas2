@@ -71,18 +71,18 @@ Texture::setWrap(GLuint wp) // GL_REPEAT, GL_CLAMP_TO_EDGE, ...
 void
 Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer) // Ap 34
 {
-	if (mId == 0)
-		init();
+	//if (mId == 0)
+	//	init();
 
-	glReadBuffer(buffer);	// Cargamos el buffer de color           
-	glBindTexture(GL_TEXTURE_2D, mId); //Asignamos un id
+	//glReadBuffer(buffer);	// Cargamos el buffer de color           
+	//glBindTexture(GL_TEXTURE_2D, mId); //Asignamos un id
 
-	// Asignamos las dimensiones
-	mWidth = width;
-	mHeight = height;
+	//// Asignamos las dimensiones
+	//mWidth = width;
+	//mHeight = height;
 
-	// Copiamos la textura de dimensiones deadas por los parámetros
-	glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 0, 0, mWidth, mHeight, 0); // Target, level, formato color, desplazamiento X e Y, anchura de la ventana X e Y, borde
+	//// Copiamos la textura de dimensiones deadas por los parámetros
+	//glCopyTexSubImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 0, 0, mWidth, mHeight, 0); // Target, level, formato color, desplazamiento X e Y, anchura de la ventana X e Y, borde
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+	//glBindTexture(GL_TEXTURE_2D, 0);
 }

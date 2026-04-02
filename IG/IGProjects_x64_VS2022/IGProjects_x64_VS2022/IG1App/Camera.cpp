@@ -115,3 +115,12 @@ Camera::upload() const
 	uploadVM();
 	uploadPM();
 }
+
+//Ap 34
+void
+Camera::setAxes()
+{
+	//mRight = row(mViewMat, 0);
+	//mUpward = row(mViewMat, 1);
+	//mFront = -row(mViewMat, 2);
+}

@@ -1,0 +1,261 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene4.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene4.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Star3D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Star3D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Photo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Photo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\IG1App.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\IG1App.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\GlassParapet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\GlassParapet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Scene1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Image.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Image.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C72F3A79-DA8E-4EC6-A14F-6C59650E8A7E}|IG1App\\IG1App.vcxproj|solutionrelative:IG1App\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Entity.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Entity.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Entity.cpp",
+              "RelativeToolTip": "IG1App\\Entity.cpp",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAEwFUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T17:55:02.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Star3D.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Star3D.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Star3D.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Star3D.cpp",
+              "RelativeToolTip": "IG1App\\Star3D.cpp",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwBUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T17:44:33.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Scene1.h",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene1.h",
+              "RelativeDocumentMoniker": "IG1App\\Scene1.h",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene1.h",
+              "RelativeToolTip": "IG1App\\Scene1.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T17:28:12.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GlassParapet.h",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\GlassParapet.h",
+              "RelativeDocumentMoniker": "IG1App\\GlassParapet.h",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\GlassParapet.h",
+              "RelativeToolTip": "IG1App\\GlassParapet.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T15:22:52.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Scene4.h",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene4.h",
+              "RelativeDocumentMoniker": "IG1App\\Scene4.h",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene4.h",
+              "RelativeToolTip": "IG1App\\Scene4.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T15:19:49.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Scene4.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene4.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Scene4.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene4.cpp",
+              "RelativeToolTip": "IG1App\\Scene4.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T17:29:08.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Scene.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Scene.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.cpp",
+              "RelativeToolTip": "IG1App\\Scene.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T15:17:30.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IG1App.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\IG1App.cpp",
+              "RelativeDocumentMoniker": "IG1App\\IG1App.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\IG1App.cpp",
+              "RelativeToolTip": "IG1App\\IG1App.cpp",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T17:28:20.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Texture.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Texture.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Texture.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Texture.cpp",
+              "RelativeToolTip": "IG1App\\Texture.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T17:28:23.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Photo.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Photo.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Photo.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Photo.cpp",
+              "RelativeToolTip": "IG1App\\Photo.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T17:35:10.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Scene1.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene1.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Scene1.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene1.cpp",
+              "RelativeToolTip": "IG1App\\Scene1.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T17:29:03.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Scene.h",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.h",
+              "RelativeDocumentMoniker": "IG1App\\Scene.h",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Scene.h",
+              "RelativeToolTip": "IG1App\\Scene.h",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T15:17:02.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Image.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Image.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Image.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Image.cpp",
+              "RelativeToolTip": "IG1App\\Image.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T15:14:21.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Camera.cpp",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Camera.cpp",
+              "RelativeDocumentMoniker": "IG1App\\Camera.cpp",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Camera.cpp",
+              "RelativeToolTip": "IG1App\\Camera.cpp",
+              "ViewState": "AgIAAGMAAAAAAAAAAAArwHgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-02T15:08:43.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Camera.h",
+              "DocumentMoniker": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Camera.h",
+              "RelativeDocumentMoniker": "IG1App\\Camera.h",
+              "ToolTip": "C:\\Users\\guill\\Documents\\Curso2\\En_Parejas2\\IG\\IGProjects_x64_VS2022\\IGProjects_x64_VS2022\\IG1App\\Camera.h",
+              "RelativeToolTip": "IG1App\\Camera.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-02T15:08:45.04Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

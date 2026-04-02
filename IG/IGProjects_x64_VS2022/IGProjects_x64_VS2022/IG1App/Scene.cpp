@@ -23,6 +23,10 @@ void Scene::update()
 	for (Abs_Entity* obj : gObjects) {
 		obj->update();
 	}
+
+	for (Abs_Entity* obj : gTrsObjects) {
+		obj->update();
+	}
 }
 
 Scene::~Scene()
@@ -39,6 +43,17 @@ Scene::destroy()
 		delete el;
 
 	gObjects.clear();
+
+	for (Abs_Entity* el : gTrsObjects)
+		delete el;
+
+	gTrsObjects.clear();
+
+
+	for (Texture* el : gTextures)
+		delete el;
+
+	gTextures.clear();
 }
 
 void
@@ -46,12 +61,18 @@ Scene::load()
 {
 	for (Abs_Entity* obj : gObjects)
 		obj->load();
+
+	for (Abs_Entity* obj : gTrsObjects)
+		obj->load();
 }
 
 void
 Scene::unload()
 {
 	for (Abs_Entity* obj : gObjects)
+		obj->unload();
+
+	for (Abs_Entity* obj : gTrsObjects)
 		obj->unload();
 }
 
@@ -78,4 +99,14 @@ Scene::render(Camera const& cam) const
 
 	for (Abs_Entity* el : gObjects)
 		el->render(cam.viewMat());
+
+
+	glDepthMask(GL_FALSE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	for (Abs_Entity* el : gTrsObjects)
+		el->render(cam.viewMat());
+
+	glDepthMask(GL_TRUE);
+	glDisable(GL_BLEND);
 }

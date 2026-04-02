@@ -12,7 +12,6 @@ class GlassParapet : public EntityWithTexture
 {
 public:
 	explicit GlassParapet(GLdouble length, GLdouble height, Texture* tex);
-	void render(const glm::mat4& modelViewMat) const override; // Ap 32
 };
 
 #endif // GLASSPARAPET_H

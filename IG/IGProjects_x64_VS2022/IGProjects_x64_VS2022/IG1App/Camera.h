@@ -41,6 +41,11 @@ protected:
 	glm::vec3 mLook = {0.0, 0.0, 0.0};  // target's position
 	glm::vec3 mUp = {0.0, 1.0, 0.0};    // the up vector
 
+	//Ap 38
+	glm::vec3 mRight, mUpward, mFront;
+
+	void setAxes();
+
 	glm::mat4 mViewMat;   // view matrix = inverse of modeling matrix
 	void uploadVM() const; // transfers viewMat to the GPU
 

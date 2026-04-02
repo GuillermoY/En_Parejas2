@@ -7,7 +7,7 @@
 #include "Mesh.h"
 #include "Entity.h"
 #include "Texture.h"
-
+class IG1App;
 class Photo : public EntityWithTexture
 {
 public:
