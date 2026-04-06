@@ -20,7 +20,7 @@ Texture::init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);     // GL_CLAMP
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);     // GL_CLAMP
 }
-
+#include <iostream>
 void
 Texture::bind()
 {
@@ -56,7 +56,9 @@ Texture::load(const std::string& name, GLubyte alpha)
 	             GL_UNSIGNED_BYTE,
 	             image.data());
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+	
+glBindTexture(GL_TEXTURE_2D, 0);
+
 }
 
 void
@@ -71,18 +73,19 @@ Texture::setWrap(GLuint wp) // GL_REPEAT, GL_CLAMP_TO_EDGE, ...
 void
 Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer) // Ap 34
 {
-	//if (mId == 0)
-	//	init();
+	if (mId == 0)
+		init();
 
-	//glReadBuffer(buffer);	// Cargamos el buffer de color           
-	//glBindTexture(GL_TEXTURE_2D, mId); //Asignamos un id
+	glReadBuffer(buffer);	// Cargamos el buffer de color           
+	glBindTexture(GL_TEXTURE_2D, mId); //Asignamos un id
 
-	//// Asignamos las dimensiones
-	//mWidth = width;
-	//mHeight = height;
+	// Asignamos las dimensiones
+	mWidth = width;
+	mHeight = height;
 
-	//// Copiamos la textura de dimensiones deadas por los parámetros
-	//glCopyTexSubImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 0, 0, mWidth, mHeight, 0); // Target, level, formato color, desplazamiento X e Y, anchura de la ventana X e Y, borde
+	// Copiamos la textura de dimensiones deadas por los parámetros
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mWidth, mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+	glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, mWidth, mHeight);
 
-	//glBindTexture(GL_TEXTURE_2D, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }

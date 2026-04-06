@@ -3,6 +3,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_access.hpp>
 
 using namespace glm;
 
@@ -28,6 +29,7 @@ void
 Camera::setVM()
 {
 	mViewMat = lookAt(mEye, mLook, mUp); // glm::lookAt defines the view matrix
+	setAxes();
 }
 
 void
@@ -52,6 +54,7 @@ void
 Camera::pitch(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(1.0, 0, 0));
+	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
 
@@ -59,6 +62,7 @@ void
 Camera::yaw(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(0, 1.0, 0));
+	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
 
@@ -66,6 +70,7 @@ void
 Camera::roll(GLfloat a)
 {
 	mViewMat = rotate(mViewMat, glm::radians(a), glm::vec3(0, 0, 1.0));
+	setAxes();
 	// glm::rotate returns mViewMat * rotationMatrix
 }
 
@@ -88,6 +93,7 @@ Camera::setScale(GLdouble s)
 	setPM();
 }
 
+//Ap 42
 void
 Camera::setPM()
 {
@@ -99,6 +105,20 @@ Camera::setPM()
 		                 mNearVal,
 		                 mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
+	}
+	else // if perspective projection
+	{
+		float aspectRatio = (mViewPort->width()/mViewPort->height());
+		float top = mNearVal * tan(radians(90.0f / 2.0f));
+		float right = top * aspectRatio;
+		mProjMat = frustum(-right * mScaleFact,
+			right * mScaleFact,
+			-top * mScaleFact,
+			top * mScaleFact,
+			mNearVal,
+			mFarVal);
+
+		// glm::frustum defines the perspective projection matrix
 	}
 }
 
@@ -116,11 +136,70 @@ Camera::upload() const
 	uploadPM();
 }
 
-//Ap 34
+//Ap 38
 void
 Camera::setAxes()
 {
-	//mRight = row(mViewMat, 0);
-	//mUpward = row(mViewMat, 1);
-	//mFront = -row(mViewMat, 2);
+	mRight = row(mViewMat, 0);
+	mUpward = row(mViewMat, 1);
+	mFront = -row(mViewMat, 2);
+}
+
+//Ap 40
+void
+Camera::moveLR(GLfloat cs)
+{
+	mEye += mRight * cs;
+	mLook += mRight * cs;
+	setVM();
+}
+
+void
+Camera::moveUD(GLfloat cs)
+{
+	mEye += mUpward * cs;
+	mLook += mUpward * cs;
+	setVM();
+}
+
+/// <summary>
+/// No se mueve en ortogonal porque en la perspectiva se sigue viendo la misma
+/// imagen, como apuntando con un cubo a un plano, no es lo mismo que el cambiar tamaño
+/// </summary>
+void
+Camera::moveFB(GLfloat cs)
+{
+	mEye += mFront * cs;
+	mLook += mFront * cs;
+	setVM();
+}
+
+//Ap 41
+void
+Camera::changePrj()
+{
+	bOrto = !bOrto;
+	setPM();
+}
+
+//Ap 45
+void 
+Camera::pitchReal(GLfloat cs)
+{
+	mLook += mUpward * cs;
+	setVM();
+}
+
+void
+Camera::yawReal(GLfloat cs)
+{
+	mLook += mRight * cs;
+	setVM();
+}
+
+void
+Camera::rollReal(GLfloat cs)
+{
+	mUp += mFront * cs;
+	setVM();
 }

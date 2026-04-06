@@ -50,7 +50,8 @@ void IG1App::run()
 
 			double timeout = mNextUpdate - time;
 
-			glfwWaitEventsTimeout(timeout);
+			glfwPollEvents();
+			//glfwWaitEventsTimeout(timeout);
 		}
 		else
 		{
@@ -196,6 +197,27 @@ IG1App::key(unsigned int key)
 			// Apartado 12.3: Al mantener la 'u' se actualiza el update
 			mScenes[mCurrentScene]->update();
 			break;
+		case 'a':
+			mCamera->moveLR(-5);
+			break;
+		case 'd':
+			mCamera->moveLR(+5);
+			break;
+		case 'w':
+			mCamera->moveUD(+5);
+			break;
+		case 's':
+			mCamera->moveUD(-5);
+			break;
+		case 'W':
+			mCamera->moveFB(+5);
+			break;
+		case 'S':
+			mCamera->moveFB(-5);
+			break;
+		case 'p':
+			mCamera->changePrj();
+			break;
 		default:
 			if (key >= '0' && key <= '9') {
 				if (changeScene(key - '0')) break;
@@ -228,19 +250,25 @@ IG1App::specialkey(int key, int scancode, int action, int mods)
 			if (mods == GLFW_MOD_CONTROL)
 				mCamera->pitch(-1); // rotates -1 on the X axis
 			else
-				mCamera->pitch(1); // rotates 1 on the X axis
+				mCamera->rollReal(+10);
+				//mCamera->yawReal(+10);
+				//mCamera->pitch(1); // rotates 1 on the X axis
 			break;
 		case GLFW_KEY_LEFT:
 			if (mods == GLFW_MOD_CONTROL)
 				mCamera->yaw(1); // rotates 1 on the Y axis
 			else
-				mCamera->yaw(-1); // rotate -1 on the Y axis
+				mCamera->rollReal(-10);
+				//mCamera->yawReal(-10);
+				//mCamera->yaw(-1); // rotate -1 on the Y axis
 			break;
 		case GLFW_KEY_UP:
-			mCamera->roll(1); // rotates 1 on the Z axis
+			mCamera->pitchReal(+10);
+			//mCamera->roll(1); // rotates 1 on the Z axis
 			break;
 		case GLFW_KEY_DOWN:
-			mCamera->roll(-1); // rotates -1 on the Z axis
+			mCamera->pitchReal(-10);
+			//mCamera->roll(-1); // rotates -1 on the Z axis
 			break;
 		default:
 			need_redisplay = false;

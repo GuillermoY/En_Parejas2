@@ -30,7 +30,7 @@ Scene4::init()
 	gTextures.push_back(intTex);
 
 	Abs_Entity* box = new BoxOutline(50.0f, outTex, intTex);
-	box->setModelMat(translate(box->modelMat(), glm::vec3(200.0f, 50.0f, -50.0f)));
+	box->setModelMat(translate(box->modelMat(), glm::vec3(150.0f, 50.0f, -130.0f)));
 	gObjects.push_back(box);
 
 	//gObjects.push_back(new Cube(200.0f));
@@ -39,14 +39,14 @@ Scene4::init()
 	ruedTex->load("../assets/images/rueda.png");
 	gTextures.push_back(ruedTex);
 
-	glm::vec3 starPos = glm::vec3(200.0f, 50.0f, -50.0f);
+	glm::vec3 starPos = glm::vec3(150.0f, 50.0f, -130.0f);
 	Abs_Entity* star3D = new Star3D(30.0, 8, 30.0, ruedTex, starPos);
 	star3D->setModelMat(translate(star3D->modelMat(), starPos));
 	gObjects.push_back(star3D);
 
 	Texture* cristTex = new Texture();
-	gTextures.push_back(cristTex);
 	cristTex->load("../assets/images/windowC.png", 160);
+	gTextures.push_back(cristTex);
 
 	gTrsObjects.push_back(new GlassParapet(275.0, 100.0, cristTex));
 
@@ -54,6 +54,7 @@ Scene4::init()
 	gTextures.push_back(photoTex);
 	Abs_Entity* photo = new Photo(150.0, 150.0, photoTex);
 	photo->setModelMat(translate(photo->modelMat(), glm::vec3(0.0f, 5.0f, 5.0f)));
-	photo->setModelMat(rotate(photo->modelMat() , glm::radians(90.0f), glm::vec3(-1.0f, 0.0f, 0.0f)));
+	photo->setModelMat(rotate(photo->modelMat(), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+	photo->setModelMat(rotate(photo->modelMat(), glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
 	gObjects.push_back(photo);
 }

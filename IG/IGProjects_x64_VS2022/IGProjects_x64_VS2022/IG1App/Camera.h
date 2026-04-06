@@ -36,6 +36,19 @@ public:
 	// transfers its viewport, the view matrix and projection matrix to the GPU
 	void upload() const;
 
+	//AP 40
+	void moveLR(GLfloat cs); // Izquierda / Derecha [a,d]
+	void moveFB(GLfloat cs); // Alante / Atrás [w,s]
+	void moveUD(GLfloat cs); // Arriba / Abajo [W,S]
+
+	//AP 41
+	void changePrj(); // cambia proyección ortogonal a perspectiva
+
+	//AP 45 Inclinaciones
+	void pitchReal(GLfloat cs); // Arriba / Abajo [flecha arriba, abajo] 
+	void yawReal(GLfloat cs); // Left / Right [<- , -> si no tiene la tecla "Control"]
+	void rollReal(GLfloat cs); // Alante / Atrás [<- , -> si tiene la tecla "Control"]
+
 protected:
 	glm::vec3 mEye = {0.0, 0.0, 500.0}; // camera's position
 	glm::vec3 mLook = {0.0, 0.0, 0.0};  // target's position
