@@ -86,6 +86,13 @@ IG1App::init()
 		mScenes[i]->init();
 	}
 	mScenes[mCurrentScene]->load();
+
+	//AP 49
+	mLeftViewPort = new Viewport(mWinW/2, mWinH);
+	mRightViewPort = new Viewport(mWinW/2, mWinH);
+
+	mLeftCamera = new Camera(mViewPort);
+	mRightCamera = new Camera(mViewPort);
 }
 
 void
@@ -147,6 +154,18 @@ IG1App::destroy()
 	mCamera = nullptr;
 	delete mViewPort;
 	mViewPort = nullptr;
+
+	//AP 49
+	delete mLeftCamera;
+	mLeftCamera = nullptr;
+	delete mLeftViewPort;
+	mLeftViewPort = nullptr;
+
+	delete mRightCamera;
+	mRightCamera = nullptr;
+	delete mRightViewPort;
+	mRightViewPort = nullptr;
+
 
 	glfwTerminate();
 }

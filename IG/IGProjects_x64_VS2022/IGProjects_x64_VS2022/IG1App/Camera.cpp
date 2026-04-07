@@ -188,23 +188,36 @@ Camera::changePrj()
 
 //Ap 45
 void
-Camera::pitchReal(GLfloat cs)
-{
-	mLook += mUpward * cs;
+Camera::pitchReal(GLfloat cs) {
+	glm::mat4 mat = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mRight);
+
+	mFront = glm::vec3(mat * glm::vec4(mLook - mEye, 0.0f));
+	mUp = glm::normalize(glm::cross(mRight, mFront));
+
+	mLook = mEye + mFront;
+
 	setVM();
 }
 
 void
-Camera::yawReal(GLfloat cs)
-{
-	mLook += mRight * cs;
+Camera::yawReal(GLfloat cs) {
+	glm::mat4 mat = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mUpward);
+
+	mFront = glm::vec3(mat * glm::vec4(mLook - mEye, 0.0f));
+	mRight = glm::normalize(glm::cross(mUpward, mFront));
+
+	mLook = mEye + mFront;
+
 	setVM();
 }
 
 void
-Camera::rollReal(GLfloat cs)
-{
-	mUp += mFront * cs;
+Camera::rollReal(GLfloat cs) {
+	glm::mat4 mat = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mFront);
+
+	mUp = glm::vec3(mat * glm::vec4(mUp, 0.0f));
+	mRight = glm::normalize(glm::cross(mFront, mUp));
+
 	setVM();
 }
 

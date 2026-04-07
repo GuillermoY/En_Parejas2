@@ -77,6 +77,11 @@ protected:
 	//AP 49
 	void alterRenderViews();
 	bool m2Vistas=false;
+	Camera* mLeftCamera = nullptr;
+	Camera* mRightCamera = nullptr;
+	Viewport* mLeftViewPort = nullptr;
+	Viewport* mRightViewPort = nullptr;
+
 
 	//AP 50
 	glm::dvec2 mMouseCoord;
