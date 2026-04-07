@@ -8,13 +8,13 @@
 using namespace glm;
 
 Camera::Camera(Viewport* vp)
-  : mViewMat(1.0)
-  , mProjMat(1.0)
-  , xRight(vp->width() / 2.0)
-  , xLeft(-xRight)
-  , yTop(vp->height() / 2.0)
-  , yBot(-yTop)
-  , mViewPort(vp)
+	: mViewMat(1.0)
+	, mProjMat(1.0)
+	, xRight(vp->width() / 2.0)
+	, xLeft(-xRight)
+	, yTop(vp->height() / 2.0)
+	, yBot(-yTop)
+	, mViewPort(vp)
 {
 	setPM();
 }
@@ -35,18 +35,22 @@ Camera::setVM()
 void
 Camera::set2D()
 {
-	mEye = {0, 0, 500};
-	mLook = {0, 0, 0};
-	mUp = {0, 1, 0};
+	mEye = { 0, 0, 500 };
+	mLook = { 0, 0, 0 };
+	mUp = { 0, 1, 0 };
+	mRadio = length(mEye - mLook); // Radio de la distancia entre la cámara y el objetivo
+	mAng = 0.0f;
 	setVM();
 }
 
 void
 Camera::set3D()
 {
-	mEye = {500, 500, 500};
-	mLook = {0, 10, 0};
-	mUp = {0, 1, 0};
+	mEye = { 500, 500, 500 };
+	mLook = { 0, 10, 0 };
+	mUp = { 0, 1, 0 };
+	mRadio = length(mEye - mLook); // Radio de la distancia entre la cámara y el objetivo
+	mAng = 0.0f;
 	setVM();
 }
 
@@ -99,16 +103,16 @@ Camera::setPM()
 {
 	if (bOrto) { //  if orthogonal projection
 		mProjMat = ortho(xLeft * mScaleFact,
-		                 xRight * mScaleFact,
-		                 yBot * mScaleFact,
-		                 yTop * mScaleFact,
-		                 mNearVal,
-		                 mFarVal);
+			xRight * mScaleFact,
+			yBot * mScaleFact,
+			yTop * mScaleFact,
+			mNearVal,
+			mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
 	}
 	else // if perspective projection
 	{
-		float aspectRatio = (mViewPort->width()/mViewPort->height());
+		float aspectRatio = (mViewPort->width() / mViewPort->height());
 		float top = mNearVal * tan(radians(90.0f / 2.0f));
 		float right = top * aspectRatio;
 		mProjMat = frustum(-right * mScaleFact,
@@ -183,7 +187,7 @@ Camera::changePrj()
 }
 
 //Ap 45
-void 
+void
 Camera::pitchReal(GLfloat cs)
 {
 	mLook += mUpward * cs;
@@ -201,5 +205,28 @@ void
 Camera::rollReal(GLfloat cs)
 {
 	mUp += mFront * cs;
+	setVM();
+}
+
+//Ap 46
+
+void 
+Camera::orbit(GLdouble incAng, GLdouble incY) {
+	mAng += incAng;
+	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
+	mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
+	mEye.y += incY;
+	setVM();
+}
+
+//Ap 48
+
+void
+Camera::setCenital() {
+	mRadio = length(mEye - mLook); // Radio de la distancia entre la cámara y el objetivo
+	mAng = 0.0f;
+	mLook = { 0, 0, 0 };
+	mEye = {0, mRadio, 0};
+	mUp = { 0, 0, -1 };
 	setVM();
 }

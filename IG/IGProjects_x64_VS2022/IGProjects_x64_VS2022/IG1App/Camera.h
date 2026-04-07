@@ -49,6 +49,13 @@ public:
 	void yawReal(GLfloat cs); // Left / Right [<- , -> si no tiene la tecla "Control"]
 	void rollReal(GLfloat cs); // Alante / Atrás [<- , -> si tiene la tecla "Control"]
 
+	//AP 46
+	void orbit(GLdouble incAng, GLdouble incY); // Desplaza la cámara a lo largo de una circunferencia 
+												// Situada sobre el plano XZ
+
+	//AP 48
+	void setCenital();
+
 protected:
 	glm::vec3 mEye = {0.0, 0.0, 500.0}; // camera's position
 	glm::vec3 mLook = {0.0, 0.0, 0.0};  // target's position
@@ -56,8 +63,11 @@ protected:
 
 	//Ap 38
 	glm::vec3 mRight, mUpward, mFront;
-
 	void setAxes();
+
+	//Ap 46
+	GLdouble mRadio, mAng; // Atributos para gestionar radio y ángulo de la circunferencia
+
 
 	glm::mat4 mViewMat;   // view matrix = inverse of modeling matrix
 	void uploadVM() const; // transfers viewMat to the GPU

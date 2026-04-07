@@ -53,6 +53,10 @@ protected:
 	static void s_resize(GLFWwindow*, int newWidth, int newHeight) { s_ig1app.resize(newWidth, newHeight); };
 	static void s_key(GLFWwindow* win, unsigned int codepoint) { s_ig1app.key(codepoint); };
 	static void s_specialkey(GLFWwindow* win, int key, int scancode, int action, int mods) { s_ig1app.specialkey(key, scancode, action, mods); };
+	//AP 51 static callbacks
+	static void s_mouse(GLFWwindow*, int button, int state, int mods) { s_ig1app.mouse(button,state,mods); };
+	static void s_motion(GLFWwindow*, double x, double y) { s_ig1app.motion(x,y); };
+	static void s_mouseWheel(GLFWwindow*, double dx, double dy) { s_ig1app.mouseWheel(dx,dy); };
 
 	// Viewport position and size
 	Viewport* mViewPort = nullptr;
@@ -69,6 +73,19 @@ protected:
 	const double FRAME_DURATION = 0.01f; // Cada frame durará 0.01 s
 	bool mUpdateEnabled = false; // Empezamos la escena con el update en falso
 	double mNextUpdate;
+
+	//AP 49
+	void alterRenderViews();
+	bool m2Vistas=false;
+
+	//AP 50
+	glm::dvec2 mMouseCoord;
+	int mMouseButt=-1;
+
+	//AP 51 
+	void mouse(int button, int state, int mods);
+	void motion(double x, double y);
+	void mouseWheel(double dx, double dy);
 };
 
 inline Viewport const&

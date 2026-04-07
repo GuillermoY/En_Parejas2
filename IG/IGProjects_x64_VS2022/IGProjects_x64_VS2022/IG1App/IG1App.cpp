@@ -122,6 +122,10 @@ IG1App::iniWinOpenGL()
 	glfwSetCharCallback(mWindow, s_key);
 	glfwSetKeyCallback(mWindow, s_specialkey);
 	glfwSetWindowRefreshCallback(mWindow, s_display);
+	//AP 51
+	glfwSetMouseButtonCallback(mWindow, s_mouse);
+	glfwSetCursorPosCallback(mWindow, s_motion);
+	glfwSetScrollCallback(mWindow, s_mouseWheel);
 
 	// Error message callback (all messages)
 	glEnable(GL_DEBUG_OUTPUT);
@@ -153,7 +157,31 @@ IG1App::display() const
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clears the back buffer
 
-	mScenes[mCurrentScene]->render(*mCamera); // uploads the viewport and camera to the GPU
+	if (m2Vistas)
+	{
+		Camera auxCam = *mCamera;
+		Viewport auxVp = *mViewPort;
+		mViewPort->setSize(mWinW / 2, mWinH);
+
+		//Vista 3D
+		auxCam.setSize(mViewPort->width(), mViewPort->height());
+		mViewPort->setPos(0, 0);
+		auxCam.set3D();
+		mScenes[mCurrentScene]->render(auxCam);
+
+		//Vista cenital
+		Camera auxCamTop = *mCamera;
+		auxCamTop.setSize(mViewPort->width(), mViewPort->height());
+		mViewPort->setPos(mWinW / 2, 0);
+		auxCamTop.setCenital();
+		auxCamTop.changePrj();
+		mScenes[mCurrentScene]->render(auxCamTop);
+		*mViewPort = auxVp;
+	}
+	else
+	{
+		mScenes[mCurrentScene]->render(*mCamera); // uploads the viewport and camera to the GPU
+	}
 
 	glfwSwapBuffers(mWindow); // swaps the front and back buffer
 }
@@ -218,6 +246,9 @@ IG1App::key(unsigned int key)
 		case 'p':
 			mCamera->changePrj();
 			break;
+		case 'k': // AP 49
+			alterRenderViews();
+			break;
 		default:
 			if (key >= '0' && key <= '9') {
 				if (changeScene(key - '0')) break;
@@ -248,18 +279,18 @@ IG1App::specialkey(int key, int scancode, int action, int mods)
 			break;
 		case GLFW_KEY_RIGHT:
 			if (mods == GLFW_MOD_CONTROL)
-				mCamera->pitch(-1); // rotates -1 on the X axis
+				mCamera->rollReal(+5);
 			else
-				mCamera->rollReal(+10);
-				//mCamera->yawReal(+10);
+				mCamera->yawReal(+10);
+				//mCamera->pitch(-1); // rotates -1 on the X axis
 				//mCamera->pitch(1); // rotates 1 on the X axis
 			break;
 		case GLFW_KEY_LEFT:
 			if (mods == GLFW_MOD_CONTROL)
-				mCamera->yaw(1); // rotates 1 on the Y axis
+				mCamera->rollReal(-5);
 			else
-				mCamera->rollReal(-10);
-				//mCamera->yawReal(-10);
+				mCamera->yawReal(-10);
+				//mCamera->yaw(1); // rotates 1 on the Y axis
 				//mCamera->yaw(-1); // rotate -1 on the Y axis
 			break;
 		case GLFW_KEY_UP:
@@ -294,4 +325,83 @@ IG1App::changeScene(size_t sceneNr)
 	}
 
 	return true;
+}
+
+//AP 49
+void
+IG1App::alterRenderViews()
+{
+	m2Vistas = !m2Vistas;
+}
+
+//AP 51
+///
+/// Se genera cuando se presiona o se suelta (action) un botón
+/// del ratón(button) (con alguna tecla de modificación pulsada,
+/// mods).La posición se puede consultar con glfwGetCursorPos .
+///
+void 
+IG1App::mouse(int button, int state, int mods) {
+	if (state == GLFW_PRESS) {
+		//1 Guarda en mBot el valor de button
+		mMouseButt = button;
+		//2 Guarda en mCoord la posición(x, y) del ratón.
+		glfwGetCursorPos(mWindow, &mMouseCoord.x, &mMouseCoord.y);
+	}
+	else
+	{
+		mMouseButt = -1;
+	}
+}
+
+//Se genera cuando el ratón se mueve y recibe su posición (x, y)
+//en coordenadas de la ventana.
+void 
+IG1App::motion(double x, double y) {
+	//1 Guarda en una variable auxiliar mp la diferencia entre
+	//mCoord y (x, y)
+	glm::dvec2 mp = { mMouseCoord.x-x ,mMouseCoord.y-y};
+	//2 Guarda en mCoord la posición(x, y) del ratón
+	
+	//glfwGetCursorPos(mWindow, &mMouseCoord.x, &mMouseCoord.y);
+	mMouseCoord = { x,y };
+
+	//3 Si mBot es el botón izquierdo, la cámara orbita
+	//(mp.x * 0.05, mp.y)
+	if (mMouseButt==GLFW_MOUSE_BUTTON_LEFT)
+	{
+		mCamera->orbit(mp.x*0.05,-mp.y);
+	}
+	//4 Si mBot es el botón derecho, la cámara se desplaza
+	//moveUD() y moveLR() según mp
+	else if (mMouseButt == GLFW_MOUSE_BUTTON_RIGHT)
+	{
+		mCamera->moveLR(mp.x);
+		mCamera->moveUD(-mp.y);
+	}
+	//5 mNeedsRedisplay = true;
+	mNeedsRedisplay = true;
+}
+
+// Se genera cuando se mueve la rueda del ratón o equivalente
+// en dx unidades horizontales y dy verticales
+void 
+IG1App::mouseWheel(double dx, double dy) {
+	//	1 Averigua si algún modificador está pulsado con
+//	glfwGetKey()
+	if (glfwGetKey(mWindow, GLFW_KEY_RIGHT_CONTROL) ||
+		glfwGetKey(mWindow, GLFW_KEY_LEFT_CONTROL))
+	{
+		mCamera->setScale(dy);
+	}
+	//	2 Si no hay ninguna, la cámara se mueve con moveFB(),
+	//	según el valor de dy
+	else
+	{
+		mCamera->moveFB(dy);
+	}
+	//	3 Si está pulsada la tecla Ctrl(GLFW_MOD_CONTROL), la cámara
+	//	cambia la escala con setScale(), según el valor de dy
+	//	4 mNeedsRedisplay = true;
+	mNeedsRedisplay = true;
 }
