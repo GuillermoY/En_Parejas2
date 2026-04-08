@@ -112,8 +112,8 @@ Camera::setPM()
 	}
 	else // if perspective projection
 	{
-		float aspectRatio = (mViewPort->width() / mViewPort->height());
-		float top = mNearVal * tan(radians(90.0f / 2.0f));
+		float aspectRatio = float(mViewPort->width()) / float(mViewPort->height());
+		float top = mNearVal * tan(radians(60.0f / 2.0f));
 		float right = top * aspectRatio;
 		mProjMat = frustum(-right * mScaleFact,
 			right * mScaleFact,
@@ -237,9 +237,8 @@ Camera::orbit(GLdouble incAng, GLdouble incY) {
 void
 Camera::setCenital() {
 	mRadio = length(mEye - mLook); // Radio de la distancia entre la cámara y el objetivo
-	mAng = 0.0f;
 	mLook = { 0, 0, 0 };
-	mEye = {0, mRadio, 0};
-	mUp = { 0, 0, -1 };
+	mEye = {0, mRadio, 0}; // Giramos el radio de la vista y lo que se ve
+	mUp = { 0, 0, -1 }; // Lo giramos hacia arriba
 	setVM();
 }

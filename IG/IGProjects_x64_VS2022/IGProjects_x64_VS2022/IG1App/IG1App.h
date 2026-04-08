@@ -82,6 +82,9 @@ protected:
 	Viewport* mLeftViewPort = nullptr;
 	Viewport* mRightViewPort = nullptr;
 
+	Camera* mMainCam;
+	bool mLeftSide;
+
 
 	//AP 50
 	glm::dvec2 mMouseCoord;

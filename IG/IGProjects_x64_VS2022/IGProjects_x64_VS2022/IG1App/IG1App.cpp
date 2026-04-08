@@ -89,10 +89,14 @@ IG1App::init()
 
 	//AP 49
 	mLeftViewPort = new Viewport(mWinW/2, mWinH);
-	mRightViewPort = new Viewport(mWinW/2, mWinH);
+	mLeftCamera = new Camera(mLeftViewPort);
+	mLeftCamera->set3D();
 
-	mLeftCamera = new Camera(mViewPort);
-	mRightCamera = new Camera(mViewPort);
+	mRightViewPort = new Viewport(mWinW/2, mWinH);
+	mRightCamera = new Camera(mRightViewPort);
+	mRightCamera->setCenital();		
+
+	mMainCam = mCamera;
 }
 
 void
@@ -166,7 +170,6 @@ IG1App::destroy()
 	delete mRightViewPort;
 	mRightViewPort = nullptr;
 
-
 	glfwTerminate();
 }
 
@@ -178,28 +181,26 @@ IG1App::display() const
 
 	if (m2Vistas)
 	{
-		Camera auxCam = *mCamera;
-		Viewport auxVp = *mViewPort;
-		mViewPort->setSize(mWinW / 2, mWinH);
+		// Vista izquierda (3D)
+		mLeftViewPort->setSize(mWinW / 2, mWinH);
 
-		//Vista 3D
-		auxCam.setSize(mViewPort->width(), mViewPort->height());
-		mViewPort->setPos(0, 0);
-		auxCam.set3D();
-		mScenes[mCurrentScene]->render(auxCam);
+		mLeftCamera->setSize(mLeftViewPort->width(), mLeftViewPort->height());
+		//mLeftCamera->set3D();
+		mRightViewPort->setPos(0, 0);
 
-		//Vista cenital
-		Camera auxCamTop = *mCamera;
-		auxCamTop.setSize(mViewPort->width(), mViewPort->height());
-		mViewPort->setPos(mWinW / 2, 0);
-		auxCamTop.setCenital();
-		auxCamTop.changePrj();
-		mScenes[mCurrentScene]->render(auxCamTop);
-		*mViewPort = auxVp;
+		mScenes[mCurrentScene]->render(*mLeftCamera);
+
+		// Vista derecha (cenital)
+		mRightViewPort->setSize(mWinW / 2, mWinH);
+
+		mRightCamera->setSize(mRightViewPort->width(), mRightViewPort->height());
+		mRightViewPort->setPos(mWinW / 2, 0);
+
+		mScenes[mCurrentScene]->render(*mRightCamera);
 	}
 	else
 	{
-		mScenes[mCurrentScene]->render(*mCamera); // uploads the viewport and camera to the GPU
+		mScenes[mCurrentScene]->render(*mCamera);
 	}
 
 	glfwSwapBuffers(mWindow); // swaps the front and back buffer
@@ -225,16 +226,16 @@ IG1App::key(unsigned int key)
 
 	switch (key) {
 		case '+':
-			mCamera->setScale(+0.01); // zoom in  (increases the scale)
+			mMainCam->setScale(+0.01); // zoom in  (increases the scale)
 			break;
 		case '-':
-			mCamera->setScale(-0.01); // zoom out (decreases the scale)
+			mMainCam->setScale(-0.01); // zoom out (decreases the scale)
 			break;
 		case 'l':
-			mCamera->set3D();
+			mMainCam->set3D();
 			break;
 		case 'o':
-			mCamera->set2D();
+			mMainCam->set2D();
 			break;
 		case 'U':
 			mUpdateEnabled = !mUpdateEnabled; // Al pulsar la 'u' pausamos o reanudaremos el update
@@ -245,25 +246,25 @@ IG1App::key(unsigned int key)
 			mScenes[mCurrentScene]->update();
 			break;
 		case 'a':
-			mCamera->moveLR(-5);
+			mMainCam->moveLR(-5);
 			break;
 		case 'd':
-			mCamera->moveLR(+5);
+			mMainCam->moveLR(+5);
 			break;
 		case 'w':
-			mCamera->moveUD(+5);
+			mMainCam->moveUD(+5);
 			break;
 		case 's':
-			mCamera->moveUD(-5);
+			mMainCam->moveUD(-5);
 			break;
 		case 'W':
-			mCamera->moveFB(+5);
+			mMainCam->moveFB(+5);
 			break;
 		case 'S':
-			mCamera->moveFB(-5);
+			mMainCam->moveFB(-5);
 			break;
 		case 'p':
-			mCamera->changePrj();
+			mMainCam->changePrj();
 			break;
 		case 'k': // AP 49
 			alterRenderViews();
@@ -298,26 +299,26 @@ IG1App::specialkey(int key, int scancode, int action, int mods)
 			break;
 		case GLFW_KEY_RIGHT:
 			if (mods == GLFW_MOD_CONTROL)
-				mCamera->rollReal(+5);
+				mMainCam->rollReal(+5);
 			else
-				mCamera->yawReal(+10);
+				mMainCam->yawReal(+10);
 				//mCamera->pitch(-1); // rotates -1 on the X axis
 				//mCamera->pitch(1); // rotates 1 on the X axis
 			break;
 		case GLFW_KEY_LEFT:
 			if (mods == GLFW_MOD_CONTROL)
-				mCamera->rollReal(-5);
+				mMainCam->rollReal(-5);
 			else
-				mCamera->yawReal(-10);
+				mMainCam->yawReal(-10);
 				//mCamera->yaw(1); // rotates 1 on the Y axis
 				//mCamera->yaw(-1); // rotate -1 on the Y axis
 			break;
 		case GLFW_KEY_UP:
-			mCamera->pitchReal(+10);
+			mMainCam->pitchReal(+10);
 			//mCamera->roll(1); // rotates 1 on the Z axis
 			break;
 		case GLFW_KEY_DOWN:
-			mCamera->pitchReal(-10);
+			mMainCam->pitchReal(-10);
 			//mCamera->roll(-1); // rotates -1 on the Z axis
 			break;
 		default:
@@ -351,6 +352,9 @@ void
 IG1App::alterRenderViews()
 {
 	m2Vistas = !m2Vistas;
+	mLeftCamera->set3D();
+	mRightCamera->changePrj();
+	mRightCamera->setCenital();
 }
 
 //AP 51
@@ -385,18 +389,34 @@ IG1App::motion(double x, double y) {
 	//glfwGetCursorPos(mWindow, &mMouseCoord.x, &mMouseCoord.y);
 	mMouseCoord = { x,y };
 
+	mLeftSide = mMouseCoord.x < mWinW / 2;
+	if (!m2Vistas)
+	{
+		mMainCam = mCamera;
+	}
+	else
+	{
+		if (mLeftSide)
+		{
+			mMainCam = mLeftCamera;
+		}
+		else
+		{
+			mMainCam = mRightCamera;
+		}
+	}
 	//3 Si mBot es el botón izquierdo, la cámara orbita
 	//(mp.x * 0.05, mp.y)
 	if (mMouseButt==GLFW_MOUSE_BUTTON_LEFT)
 	{
-		mCamera->orbit(mp.x*0.05,-mp.y);
+		mMainCam->orbit(mp.x * 0.05, -mp.y);
 	}
 	//4 Si mBot es el botón derecho, la cámara se desplaza
 	//moveUD() y moveLR() según mp
 	else if (mMouseButt == GLFW_MOUSE_BUTTON_RIGHT)
 	{
-		mCamera->moveLR(mp.x);
-		mCamera->moveUD(-mp.y);
+		mMainCam->moveLR(mp.x);
+		mMainCam->moveUD(-mp.y);
 	}
 	//5 mNeedsRedisplay = true;
 	mNeedsRedisplay = true;
@@ -411,13 +431,13 @@ IG1App::mouseWheel(double dx, double dy) {
 	if (glfwGetKey(mWindow, GLFW_KEY_RIGHT_CONTROL) ||
 		glfwGetKey(mWindow, GLFW_KEY_LEFT_CONTROL))
 	{
-		mCamera->setScale(dy);
+		mMainCam->setScale(dy);
 	}
 	//	2 Si no hay ninguna, la cámara se mueve con moveFB(),
 	//	según el valor de dy
 	else
 	{
-		mCamera->moveFB(dy);
+		mMainCam->moveFB(dy);
 	}
 	//	3 Si está pulsada la tecla Ctrl(GLFW_MOD_CONTROL), la cámara
 	//	cambia la escala con setScale(), según el valor de dy
