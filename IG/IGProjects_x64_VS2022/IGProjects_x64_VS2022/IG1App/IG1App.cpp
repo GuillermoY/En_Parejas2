@@ -94,7 +94,8 @@ IG1App::init()
 
 	mRightViewPort = new Viewport(mWinW/2, mWinH);
 	mRightCamera = new Camera(mRightViewPort);
-	mRightCamera->setCenital();		
+	//mRightCamera->setCenital();		
+	mRightCamera->set2D();
 
 	mMainCam = mCamera;
 }
@@ -183,20 +184,22 @@ IG1App::display() const
 	{
 		// Vista izquierda (3D)
 		mLeftViewPort->setSize(mWinW / 2, mWinH);
-
 		mLeftCamera->setSize(mLeftViewPort->width(), mLeftViewPort->height());
-		//mLeftCamera->set3D();
-		mRightViewPort->setPos(0, 0);
 
-		mScenes[mCurrentScene]->render(*mLeftCamera);
+		//mLeftCamera->set3D();
+		mLeftViewPort->setPos(0, 0);
+
+		mScenes[mLeftScene]->render(*mLeftCamera);
+		//mScenes[mCurrentScene]->render(*mLeftCamera);
 
 		// Vista derecha (cenital)
 		mRightViewPort->setSize(mWinW / 2, mWinH);
-
 		mRightCamera->setSize(mRightViewPort->width(), mRightViewPort->height());
+
 		mRightViewPort->setPos(mWinW / 2, 0);
 
-		mScenes[mCurrentScene]->render(*mRightCamera);
+		mScenes[mRightScene]->render(*mRightCamera);
+		//mScenes[mCurrentScene]->render(*mRightCamera);
 	}
 	else
 	{
@@ -217,6 +220,9 @@ IG1App::resize(int newWidth, int newHeight)
 
 	// Resize Scene Visible Area such that the scale is not modified
 	mCamera->setSize(mViewPort->width(), mViewPort->height());
+
+	mRightCamera->setSize(mRightViewPort->width(), mRightViewPort->height());
+	mLeftCamera->setSize(mLeftViewPort->width(), mLeftViewPort->height());
 }
 
 void
@@ -243,7 +249,17 @@ IG1App::key(unsigned int key)
 			break;
 		case 'u':
 			// Apartado 12.3: Al mantener la 'u' se actualiza el update
-			mScenes[mCurrentScene]->update();
+			if (!m2Vistas)
+			{
+				mScenes[mCurrentScene]->update();
+			}
+			else
+			{
+				if (mLeftSide)
+					mScenes[mLeftScene]->update();
+				else
+					mScenes[mRightScene]->update();
+			}
 			break;
 		case 'a':
 			mMainCam->moveLR(-5);
@@ -333,6 +349,10 @@ IG1App::specialkey(int key, int scancode, int action, int mods)
 bool
 IG1App::changeScene(size_t sceneNr)
 {
+	if (m2Vistas)
+	{
+		alterRenderViews();
+	}
 	// Check whether the scene exists
 	if (sceneNr >= mScenes.size())
 		return false;
@@ -352,9 +372,25 @@ void
 IG1App::alterRenderViews()
 {
 	m2Vistas = !m2Vistas;
+
+	if (m2Vistas)
+	{
+		mScenes[mCurrentScene]->unload();
+		//AP 50
+		mScenes[mLeftScene]->load();
+		mScenes[mRightScene]->load();
+	}
+	else
+	{
+		mScenes[mLeftScene]->unload();
+		mScenes[mRightScene]->unload();
+		mScenes[mCurrentScene]->load();
+	}
+
+
 	mLeftCamera->set3D();
-	mRightCamera->changePrj();
-	mRightCamera->setCenital();
+	//mRightCamera->changePrj();
+	//mRightCamera->setCenital();
 }
 
 //AP 51
@@ -428,8 +464,8 @@ void
 IG1App::mouseWheel(double dx, double dy) {
 	//	1 Averigua si algún modificador está pulsado con
 //	glfwGetKey()
-	if (glfwGetKey(mWindow, GLFW_KEY_RIGHT_CONTROL) ||
-		glfwGetKey(mWindow, GLFW_KEY_LEFT_CONTROL))
+	if (glfwGetKey(mWindow, GLFW_KEY_RIGHT_CONTROL) == GLFW_PRESS ||
+		glfwGetKey(mWindow, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
 	{
 		mMainCam->setScale(dy);
 	}

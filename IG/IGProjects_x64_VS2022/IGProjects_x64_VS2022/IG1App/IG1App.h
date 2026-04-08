@@ -94,12 +94,31 @@ protected:
 	void mouse(int button, int state, int mods);
 	void motion(double x, double y);
 	void mouseWheel(double dx, double dy);
+
+	//AP 52
+	size_t mLeftScene = 4;
+	size_t mRightScene = 2;
 };
 
 inline Viewport const&
 IG1App::viewPort()
 {
-	return *mViewPort;
+	//return *mViewPort;
+	if (!m2Vistas)
+	{
+		return *mViewPort;
+	}
+	else
+	{
+		if (mLeftSide)
+		{
+			return *mLeftViewPort;
+		}
+		else
+		{
+			return *mRightViewPort;
+		}
+	}
 }
 
 inline Camera const&
