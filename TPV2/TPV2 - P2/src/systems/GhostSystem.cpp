@@ -124,7 +124,7 @@ void GhostSystem::update() {
 
 		auto tr = _mngr->getComponent<Transform>(e);
 
-		if (rand.nextFloat(0.0f, 1.0f) < CHASE_PROB) {
+		if (rand.nextInt(0, 999) < 5) {
 			Vector2D dir = pmTR->_pos - tr->_pos;
 			if (dir.magnitude() > 0)
 				tr->_vel = dir.normalize() * GHOST_SPEED;

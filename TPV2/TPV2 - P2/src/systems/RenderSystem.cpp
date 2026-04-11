@@ -59,24 +59,32 @@ void RenderSystem::drawLives() {
 	auto health = _mngr->getComponent<Health>(e);
 	auto fi = _mngr->getComponent<FramedImage>(e);
 
-	// Usamos el frame 0 (boca cerrada) como icono de vida
-	SDL_Rect srcRect = { 0, 0, fi->_frameW, fi->_frameH };
-
 	for (int i = 0; i < health->_lives; i++) {
-		SDL_FRect dest = build_sdlfrect(
+		SDL_FRect src = {
+			0.0f, 0.0f,
+			static_cast<float>(fi->_frameW),
+			static_cast<float>(fi->_frameH)
+		};
+		SDL_FRect dest = {
 			10.0f + i * (LIFE_ICON_SIZE + LIFE_ICON_PAD),
 			10.0f,
 			LIFE_ICON_SIZE,
 			LIFE_ICON_SIZE
-		);
+		};
 		assert(fi->_tex != nullptr);
-		fi->_tex->render(dest, 0.0f, &srcRect);
+		fi->_tex->render(src, dest, 0.0f);
 	}
 }
 
 void RenderSystem::drawFramed(Transform* tr, FramedImage* fi) {
+	SDL_Rect srcInt = fi->currentClip();
+	SDL_FRect src = {
+		static_cast<float>(srcInt.x),
+		static_cast<float>(srcInt.y),
+		static_cast<float>(srcInt.w),
+		static_cast<float>(srcInt.h)
+	};
 	SDL_FRect dest = build_sdlfrect(tr->_pos, tr->_width, tr->_height);
-	SDL_Rect  src = fi->currentClip();
 	assert(fi->_tex != nullptr);
-	fi->_tex->render(dest, tr->_rot, &src);
+	fi->_tex->render(src, dest, tr->_rot);
 }

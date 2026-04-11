@@ -20,31 +20,31 @@
     "sounds": [
         {
             "id": "pacman_intro",
-            "file": "resources/sounds/pacman_intro.wav",
+            "file": "resources/sound/pacman_intro.wav",
             "type": "se"
         },
         {
             "id": "pacman_chomp",
-            "file": "resources/sounds/pacman_chomp.wav",
+            "file": "resources/sound/pacman_chomp.wav",
             "type": "se"
         },
         {
             "id": "pacman_eat",
-            "file": "resources/sounds/pacman_eat.wav",
+            "file": "resources/sound/pacman_eat.wav",
             "type": "se"
         },
         {
             "id": "pacman_death",
-            "file": "resources/sounds/pacman_death.wav",
+            "file": "resources/sound/pacman_death.wav",
             "type": "se"
         },
         {
             "id": "pacman_won",
-            "file": "resources/sounds/pacman_won.wav",
+            "file": "resources/sound/pacman_won.wav",
             "type": "se"
         }
     ],
-    "msgs": [
+    "messages": [
         {
             "id": "new_game",
             "text": "Press any key to start",
@@ -65,13 +65,13 @@
         },
         {
             "id": "game_won",
-            "text": "YOU WIN! Press any key",
+            "text": "Game Over Champion! Press any key to continue",
             "font": "ARIAL24",
             "color": "00ff00ff"
         },
         {
             "id": "game_lost",
-            "text": "GAME OVER! Press any key",
+            "text": "Game Over Loser! Press any key to continue",
             "font": "ARIAL24",
             "color": "ff0000ff"
         }

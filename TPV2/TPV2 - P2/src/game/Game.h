@@ -7,11 +7,11 @@
 #include "GameState.h"
 #include "messages_defs.h"
 
-class NewGameState;
-class NewRoundState;
-class RunningState;
-class PauseState;
-class GameOverState;
+#include "NewGameState.h"
+#include "NewRoundState.h"
+#include "RunningState.h"
+#include "PauseState.h"
+#include "GameOverState.h"
 
 class Game {
 public:

@@ -47,7 +47,7 @@ void FoodSystem::createFoodGrid() {
 			auto tr = _mngr->addComponent<Transform>(e);
 			tr->init(Vector2D(x, y), Vector2D(), FOOD_SIZE, FOOD_SIZE, 0.0f);
 
-			bool miracle = (rand.nextFloat(0.0f, 1.0f) < MIRACLE_PROB);
+			bool miracle = (rand.nextInt(0, 99) < 10);
 
 			_mngr->addComponent<FramedImage>(e,
 				tex, SPR_FRAME_W, SPR_FRAME_H, SPR_COLS,
