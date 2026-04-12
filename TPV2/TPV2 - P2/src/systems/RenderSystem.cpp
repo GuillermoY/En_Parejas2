@@ -28,7 +28,7 @@ void RenderSystem::update() {
 
 void RenderSystem::drawFood() {
 	for (auto e : _mngr->getEntities(ecs::grp::FOOD)) {
-		if (!_mngr->isAlive(e)) continue;
+		if (_mngr->isAlive(e));
 		drawFramed(
 			_mngr->getComponent<Transform>(e),
 			_mngr->getComponent<FramedImage>(e)
@@ -38,7 +38,7 @@ void RenderSystem::drawFood() {
 
 void RenderSystem::drawGhosts() {
 	for (auto e : _mngr->getEntities(ecs::grp::GHOSTS)) {
-		if (!_mngr->isAlive(e)) continue;
+		if (_mngr->isAlive(e));
 		drawFramed(
 			_mngr->getComponent<Transform>(e),
 			_mngr->getComponent<FramedImage>(e)

@@ -51,10 +51,10 @@ void FoodSystem::createFoodGrid() {
 
 			_mngr->addComponent<FramedImage>(e,
 				tex, SPR_FRAME_W, SPR_FRAME_H, SPR_COLS,
-				CHERRY_FRAME, 1, 0u);
+				CHERRY_FRAME, 1, 0);
 
 			if (miracle) {
-				Uint32 N_ms = rand.nextInt(10, 20) * 1000u;
+				int N_ms = rand.nextInt(10, 20) * 1000;
 				auto* mf = _mngr->addComponent<MiracleFood>(e);
 				mf->init(N_ms, sdlutils().currRealTime());
 			}
@@ -74,35 +74,36 @@ void FoodSystem::update() {
 	auto& rand = sdlutils().rand();
 
 	auto& foods = _mngr->getEntities(ecs::grp::FOOD);
-	auto  n = foods.size();
+	auto n = foods.size();
 
-	for (auto i = 0u; i < n; i++) {
+	for (auto i = 0; i < n; i++) {
 		auto e = foods[i];
-		if (!_mngr->isAlive(e)) continue;
-		if (!_mngr->hasComponent<MiracleFood>(e)) continue;
+		if (_mngr->isAlive(e)) {
+			if (_mngr->hasComponent<MiracleFood>(e)) {
+				auto* mf = _mngr->getComponent<MiracleFood>(e);
+				auto* fi = _mngr->getComponent<FramedImage>(e);
 
-		auto* mf = _mngr->getComponent<MiracleFood>(e);
-		auto* fi = _mngr->getComponent<FramedImage>(e);
-
-		if (mf->_state == MiracleFood::NORMAL) {
-			if (currTime - mf->_stateStartTime >= mf->_N) {
-				mf->_state = MiracleFood::MIRACULOUS;
-				mf->_stateStartTime = currTime;
-				mf->_M = rand.nextInt(1, 5) * 1000u;
-				fi->setAnimation(PEAR_FRAME, 1);
-			}
-		}
-		else {
-			if (currTime - mf->_stateStartTime >= mf->_M) {
-				mf->_state = MiracleFood::NORMAL;
-				mf->_stateStartTime = currTime;
-				fi->setAnimation(CHERRY_FRAME, 1);
+				if (mf->_state == MiracleFood::NORMAL) {
+					if (currTime - mf->_stateStartTime >= mf->_N) {
+						mf->_state = MiracleFood::MIRACULOUS;
+						mf->_stateStartTime = currTime;
+						mf->_M = rand.nextInt(1, 5) * 1000;
+						fi->setAnimation(PEAR_FRAME, 1);
+					}
+				}
+				else {
+					if (currTime - mf->_stateStartTime >= mf->_M) {
+						mf->_state = MiracleFood::NORMAL;
+						mf->_stateStartTime = currTime;
+						fi->setAnimation(CHERRY_FRAME, 1);
+					}
+				}
 			}
 		}
 	}
 }
 
-void FoodSystem::onFoodEaten(ecs::entity_t e, bool miraculous) {
+void FoodSystem::onFoodEaten(ecs::entity_t e) {
 	_mngr->setAlive(e, false);
 	_eatenFood++;
 
@@ -137,7 +138,7 @@ void FoodSystem::recieve(const Message& m) {
 	}
 	break;
 	case _m_PACMAN_FOOD_COLLISION:
-		onFoodEaten(m.food_collision_data.e, m.food_collision_data.miraculous);
+		onFoodEaten(m.food_collision_data.e);
 		break;
 	case _m_GAME_OVER:
 	{

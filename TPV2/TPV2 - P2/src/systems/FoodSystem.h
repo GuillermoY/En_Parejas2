@@ -18,5 +18,5 @@ private:
 
 	void createFoodGrid();
 	void removeAllFood();
-	void onFoodEaten(ecs::entity_t e, bool miraculous);
+	void onFoodEaten(ecs::entity_t e);
 };

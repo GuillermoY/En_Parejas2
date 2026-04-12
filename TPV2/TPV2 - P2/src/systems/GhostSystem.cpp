@@ -60,14 +60,14 @@ void GhostSystem::removeAllGhosts() {
 
 void GhostSystem::setGhostsBlue() {
 	for (auto e : _mngr->getEntities(ecs::grp::GHOSTS)) {
-		if (!_mngr->isAlive(e)) continue;
+		if (_mngr->isAlive(e));
 		_mngr->getComponent<FramedImage>(e)->setAnimation(BLUE_FIRST_FRAME, BLUE_NUM_FRAMES);
 	}
 }
 
 void GhostSystem::setGhostsRed() {
 	for (auto e : _mngr->getEntities(ecs::grp::GHOSTS)) {
-		if (!_mngr->isAlive(e)) continue;
+		if (_mngr->isAlive(e));
 		_mngr->getComponent<FramedImage>(e)->setAnimation(RED_FIRST_FRAME, RED_NUM_FRAMES);
 	}
 }
@@ -104,9 +104,7 @@ void GhostSystem::onPacManHit() {
 void GhostSystem::update() {
 	auto currTime = sdlutils().currRealTime();
 
-	if (!_immunityActive
-		&& _currNumGhosts < MAX_GHOSTS
-		&& currTime - _lastSpawnTime >= SPAWN_INTERVAL) {
+	if (!_immunityActive && _currNumGhosts < MAX_GHOSTS && currTime - _lastSpawnTime >= SPAWN_INTERVAL) {
 		spawnGhost();
 		_lastSpawnTime = currTime;
 	}
@@ -116,40 +114,40 @@ void GhostSystem::update() {
 	auto& rand = sdlutils().rand();
 
 	auto& ghosts = _mngr->getEntities(ecs::grp::GHOSTS);
-	auto  n = ghosts.size();
+	auto n = ghosts.size();
 
-	for (auto i = 0u; i < n; i++) {
+	for (auto i = 0; i < n; i++) {
 		auto e = ghosts[i];
-		if (!_mngr->isAlive(e)) continue;
+		if (_mngr->isAlive(e)) {
+			auto tr = _mngr->getComponent<Transform>(e);
 
-		auto tr = _mngr->getComponent<Transform>(e);
+			if (rand.nextInt(0, 999) < 5) {
+				Vector2D dir = pmTR->_pos - tr->_pos;
+				if (dir.magnitude() > 0)
+					tr->_vel = dir.normalize() * GHOST_SPEED;
+			}
 
-		if (rand.nextInt(0, 999) < 5) {
-			Vector2D dir = pmTR->_pos - tr->_pos;
-			if (dir.magnitude() > 0)
-				tr->_vel = dir.normalize() * GHOST_SPEED;
-		}
+			tr->_pos = tr->_pos + tr->_vel;
 
-		tr->_pos = tr->_pos + tr->_vel;
+			if (tr->_pos.getX() < 0) {
+				tr->_pos.setX(0.0f);
+				tr->_vel.set(-tr->_vel.getX(), tr->_vel.getY());
+			}
+			else if (tr->_pos.getX() + tr->_width > sdlutils().width()) {
+				tr->_pos.setX(sdlutils().width() - tr->_width);
+				tr->_vel.set(-tr->_vel.getX(), tr->_vel.getY());
+			}
+			if (tr->_pos.getY() < 0) {
+				tr->_pos.setY(0.0f);
+				tr->_vel.set(tr->_vel.getX(), -tr->_vel.getY());
+			}
+			else if (tr->_pos.getY() + tr->_height > sdlutils().height()) {
+				tr->_pos.setY(sdlutils().height() - tr->_height);
+				tr->_vel.set(tr->_vel.getX(), -tr->_vel.getY());
+			}
 
-		if (tr->_pos.getX() < 0) {
-			tr->_pos.setX(0.0f);
-			tr->_vel.set(-tr->_vel.getX(), tr->_vel.getY());
+			_mngr->getComponent<FramedImage>(e)->update(currTime);
 		}
-		else if (tr->_pos.getX() + tr->_width > sdlutils().width()) {
-			tr->_pos.setX(sdlutils().width() - tr->_width);
-			tr->_vel.set(-tr->_vel.getX(), tr->_vel.getY());
-		}
-		if (tr->_pos.getY() < 0) {
-			tr->_pos.setY(0.0f);
-			tr->_vel.set(tr->_vel.getX(), -tr->_vel.getY());
-		}
-		else if (tr->_pos.getY() + tr->_height > sdlutils().height()) {
-			tr->_pos.setY(sdlutils().height() - tr->_height);
-			tr->_vel.set(tr->_vel.getX(), -tr->_vel.getY());
-		}
-
-		_mngr->getComponent<FramedImage>(e)->update(currTime);
 	}
 }
 

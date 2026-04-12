@@ -20,9 +20,9 @@ private:
 	static constexpr float  CHASE_PROB = 0.005f;
 	static constexpr float  GHOST_SPEED = 1.1f;
 
-	static constexpr int RED_FIRST_FRAME = 32; // row 4, col 0
+	static constexpr int RED_FIRST_FRAME = 32; // fila 4, col 0
 	static constexpr int RED_NUM_FRAMES = 8;
-	static constexpr int BLUE_FIRST_FRAME = 30; // row 3, col 6
+	static constexpr int BLUE_FIRST_FRAME = 30; // fila 3, col 6
 	static constexpr int BLUE_NUM_FRAMES = 2;
 
 	Uint32 _lastSpawnTime;

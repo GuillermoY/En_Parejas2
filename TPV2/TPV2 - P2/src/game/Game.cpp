@@ -92,16 +92,17 @@ void Game::start() {
 
 		if (ihdlr.isKeyDown(SDL_SCANCODE_ESCAPE)) {
 			exit = true;
-			continue;
 		}
+		else
+		{
+			_state->update();
 
-		_state->update();
+			_mngr->flushMessages();
+			_mngr->refresh();
 
-		_mngr->flushMessages();
-		_mngr->refresh();
-
-		Uint32 frameTime = sdlutils().currRealTime() - startTime;
-		if (frameTime < 10)
-			SDL_Delay(10 - frameTime);
+			Uint32 frameTime = sdlutils().currRealTime() - startTime;
+			if (frameTime < 10)
+				SDL_Delay(10 - frameTime);
+		}
 	}
 }

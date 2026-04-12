@@ -1,10 +1,52 @@
-﻿  EntityManager.cpp
+﻿  Game.cpp
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\game\Game.cpp(89,20): warning C4244: 'inicializando': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\game\Game.cpp(103,21): warning C4244: 'inicializando': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(87,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::sysId_t'; posible pérdida de datos
+  (compilando archivo de origen "src/game/Game.cpp")
+      C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(87,56):
+      el contexto de creación de instancias de la plantilla (el más antiguo primero) es
+          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\game\Game.cpp(61,9):
+          Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::EntityManager::addSystem<RenderSystem,>(void)" que se está compilando
+          with
+          [
+              T=RenderSystem
+          ]
+          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\EntityManager.h(184,27):
+          vea la referencia a la plantilla de variables 'const ecs::sysId_t sysId<RenderSystem>' que se está compilando
+  
+  Runningstate.cpp
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(87,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::sysId_t'; posible pérdida de datos
+  (compilando archivo de origen "src/game/Runningstate.cpp")
+      C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(87,56):
+      el contexto de creación de instancias de la plantilla (el más antiguo primero) es
+          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\game\Runningstate.cpp(20,9):
+          Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::EntityManager::getSystem<PacManSystem>(void)" que se está compilando
+          with
+          [
+              T=PacManSystem
+          ]
+          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\EntityManager.h(227,27):
+          vea la referencia a la plantilla de variables 'const ecs::sysId_t sysId<PacManSystem>' que se está compilando
+  
+  CollisionsSystem.cpp
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::cmpId_t'; posible pérdida de datos
+  (compilando archivo de origen "src/systems/CollisionsSystem.cpp")
+      C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56):
+      el contexto de creación de instancias de la plantilla (el más antiguo primero) es
+          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\CollisionsSystem.cpp(22,21):
+          Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::EntityManager::getComponent<Transform>(ecs::entity_t)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\EntityManager.h(132,27):
+          vea la referencia a la plantilla de variables 'const ecs::cmpId_t cmpId<Transform>' que se está compilando
+  
   FoodSystem.cpp
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(59,43): warning C4244: 'argumento': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(90,27): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(98,27): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(105,52): warning C4100: 'miraculous': parámetro formal sin referencia
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(134,26): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(89,29): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(97,29): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\FoodSystem.cpp(135,26): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::cmpId_t'; posible pérdida de datos
   (compilando archivo de origen "src/systems/FoodSystem.cpp")
       C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56):
@@ -19,11 +61,13 @@ C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs
           vea la referencia a la plantilla de variables 'const ecs::cmpId_t cmpId<Transform>' que se está compilando
   
   GhostSystem.cpp
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(111,20): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(152,47): warning C4244: 'argumento': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(160,43): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(164,43): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(177,43): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(63,25): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(70,25): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(109,20): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(149,48): warning C4244: 'argumento': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(158,43): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(162,43): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\GhostSystem.cpp(175,43): warning C4244: '=': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
 C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::cmpId_t'; posible pérdida de datos
   (compilando archivo de origen "src/systems/GhostSystem.cpp")
       C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56):
@@ -37,37 +81,5 @@ C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs
           C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\EntityManager.h(87,27):
           vea la referencia a la plantilla de variables 'const ecs::cmpId_t cmpId<Transform>' que se está compilando
   
-  ImmunitySystem.cpp
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\ImmunitySystem.cpp(20,49): warning C4244: 'argumento': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\ImmunitySystem.cpp(36,47): warning C4244: 'argumento': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::cmpId_t'; posible pérdida de datos
-  (compilando archivo de origen "src/systems/ImmunitySystem.cpp")
-      C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56):
-      el contexto de creación de instancias de la plantilla (el más antiguo primero) es
-          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\ImmunitySystem.cpp(16,25):
-          Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::EntityManager::getComponent<Immunity>(ecs::entity_t)" que se está compilando
-          with
-          [
-              T=Immunity
-          ]
-          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\EntityManager.h(132,27):
-          vea la referencia a la plantilla de variables 'const ecs::cmpId_t cmpId<Immunity>' que se está compilando
-  
-  RenderSystem.cpp
-C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::cmpId_t'; posible pérdida de datos
-  (compilando archivo de origen "src/systems/RenderSystem.cpp")
-      C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(83,56):
-      el contexto de creación de instancias de la plantilla (el más antiguo primero) es
-          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\systems\RenderSystem.cpp(33,11):
-          Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::EntityManager::getComponent<Transform>(ecs::entity_t)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-          C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\src\ecs\EntityManager.h(132,27):
-          vea la referencia a la plantilla de variables 'const ecs::cmpId_t cmpId<Transform>' que se está compilando
-  
-  Collisions.cpp
-  Vector2D.cpp
   Generando código...
   TPV2.vcxproj -> C:\Users\rodri\OneDrive\Documentos\GitHub\En_Parejas2\TPV2\TPV2 - P2\bin\x64\Debug\TPV2.exe

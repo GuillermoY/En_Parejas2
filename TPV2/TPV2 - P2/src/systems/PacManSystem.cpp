@@ -56,7 +56,7 @@ void PacManSystem::resetLives() {
 }
 
 void PacManSystem::update() {
-	auto& ihdlr = ih();
+	auto &ihdlr = ih();
 
 	if (ihdlr.keyDownEvent()) {
 		if (ihdlr.isKeyDown(SDL_SCANCODE_RIGHT)) {
@@ -68,8 +68,11 @@ void PacManSystem::update() {
 			_pmTR->_vel = _pmTR->_vel.rotate(-90.0f);
 		}
 		else if (ihdlr.isKeyDown(SDL_SCANCODE_UP)) {
-			_pmTR->_vel = Vector2D(0.0f, -3.0f).rotate(_pmTR->_rot);
-			sdlutils().soundEffects().at("pacman_chomp").play("se");
+			if (_pmTR->_vel.magnitude() == 0.0f)
+			{
+				_pmTR->_vel = Vector2D(0.0f, -3.0f).rotate(_pmTR->_rot);
+				sdlutils().soundEffects().at("pacman_chomp").play("se");
+			}
 		}
 		else if (ihdlr.isKeyDown(SDL_SCANCODE_DOWN)) {
 			_pmTR->_vel = Vector2D(0.0f, 0.0f);
@@ -78,22 +81,28 @@ void PacManSystem::update() {
 
 	_pmTR->_pos = _pmTR->_pos + _pmTR->_vel;
 
+	constexpr float BORDER_EPSILON = 0.1f;
+
 	if (_pmTR->_pos.getX() < 0) {
 		_pmTR->_pos.setX(0.0f);
-		_pmTR->_vel.set(0.0f, 0.0f);
+		if (_pmTR->_vel.getX() < -BORDER_EPSILON)
+			_pmTR->_vel.set(0.0f, 0.0f);
 	}
 	else if (_pmTR->_pos.getX() + _pmTR->_width > sdlutils().width()) {
 		_pmTR->_pos.setX(sdlutils().width() - _pmTR->_width);
-		_pmTR->_vel.set(0.0f, 0.0f);
+		if (_pmTR->_vel.getX() > BORDER_EPSILON)
+			_pmTR->_vel.set(0.0f, 0.0f);
 	}
 
 	if (_pmTR->_pos.getY() < 0) {
 		_pmTR->_pos.setY(0.0f);
-		_pmTR->_vel.set(0.0f, 0.0f);
+		if (_pmTR->_vel.getY() < -BORDER_EPSILON)
+			_pmTR->_vel.set(0.0f, 0.0f);
 	}
 	else if (_pmTR->_pos.getY() + _pmTR->_height > sdlutils().height()) {
 		_pmTR->_pos.setY(sdlutils().height() - _pmTR->_height);
-		_pmTR->_vel.set(0.0f, 0.0f);
+		if (_pmTR->_vel.getY() > BORDER_EPSILON)
+			_pmTR->_vel.set(0.0f, 0.0f);
 	}
 
 	auto pm = _mngr->getHandler(ecs::hdlr::PACMAN);
