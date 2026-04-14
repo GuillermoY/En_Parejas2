@@ -104,21 +104,9 @@ inline Viewport const&
 IG1App::viewPort()
 {
 	//return *mViewPort;
-	if (!m2Vistas)
-	{
-		return *mViewPort;
-	}
-	else
-	{
-		if (mLeftSide)
-		{
-			return *mLeftViewPort;
-		}
-		else
-		{
-			return *mRightViewPort;
-		}
-	}
+	Viewport* vp = (!m2Vistas) ? mViewPort :
+           (mLeftSide ? mLeftViewPort : mRightViewPort);
+	return *vp;
 }
 
 inline Camera const&

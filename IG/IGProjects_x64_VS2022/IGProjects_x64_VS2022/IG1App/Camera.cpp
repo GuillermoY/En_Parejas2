@@ -25,6 +25,7 @@ Camera::uploadVM() const
 	Shader::setUniform4All("modelView", mViewMat);
 }
 
+// Recalculamos la matriz de vista
 void
 Camera::setVM()
 {
@@ -141,6 +142,7 @@ Camera::upload() const
 }
 
 //Ap 38
+// Calculamos los ejes desde la matriz de vista (consistencia global)
 void
 Camera::setAxes()
 {
@@ -187,40 +189,63 @@ Camera::changePrj()
 }
 
 //Ap 45
-void
-Camera::pitchReal(GLfloat cs) {
-	glm::mat4 mat = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mRight);
+void 
+Camera::pitchReal(GLfloat cs)
+{
+	// Dirección actual de la cámara (desde el ojo hacia el objetivo)
+	glm::vec3 forward = glm::normalize(mLook - mEye);
 
-	mFront = glm::vec3(mat * glm::vec4(mLook - mEye, 0.0f));
-	mUp = glm::normalize(glm::cross(mRight, mFront));
+	// Eje de rotación: el eje derecho de la cámara (rotación horizontal local)
+	glm::vec3 right = glm::normalize(glm::cross(forward, mUp));
 
-	mLook = mEye + mFront;
+	// Matriz de rotación alrededor del eje "right"
+	glm::mat4 rot = glm::rotate(glm::mat4(1.0f), glm::radians(cs), right);
 
-	setVM();
-}
+	// Aplicamos la rotación al vector forward (mirada)
+	forward = glm::vec3(rot * glm::vec4(forward, 0.0f));
 
-void
-Camera::yawReal(GLfloat cs) {
-	glm::mat4 mat = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mUpward);
+	// Aplicamos la rotación al vector up 
+	mUp = glm::vec3(rot * glm::vec4(mUp, 0.0f));
 
-	mFront = glm::vec3(mat * glm::vec4(mLook - mEye, 0.0f));
-	mRight = glm::normalize(glm::cross(mUpward, mFront));
-
-	mLook = mEye + mFront;
-
-	setVM();
-}
-
-void
-Camera::rollReal(GLfloat cs) {
-	glm::mat4 mat = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mFront);
-
-	mUp = glm::vec3(mat * glm::vec4(mUp, 0.0f));
-	mRight = glm::normalize(glm::cross(mFront, mUp));
+	// Recalculamos el punto de mirada a partir de la nueva dirección
+	mLook = mEye + forward;
 
 	setVM();
 }
 
+void 
+Camera::yawReal(GLfloat cs)
+{
+	// Dirección actual de visión
+	glm::vec3 forward = glm::normalize(mLook - mEye);
+
+	// Rotación alrededor del eje vertical de la cámara (up local)
+	glm::mat4 rot = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mUp);
+
+	// Aplicamos la rotación al vector forward (giro izquierda/derecha)
+	forward = glm::vec3(rot * glm::vec4(forward, 0.0f));
+
+	// Actualizamos el punto de mirada
+	mLook = mEye + forward;
+
+	setVM();
+}
+
+void Camera::rollReal(GLfloat cs)
+{
+    // Matriz de rotación alrededor del eje frontal de la cámara
+    // (giro tipo "cabeza inclinada")
+    glm::mat4 mat = glm::rotate(glm::mat4(1.0f), glm::radians(cs), mFront);
+
+    // Rotamos el vector up alrededor del eje forward
+    mUp = glm::vec3(mat * glm::vec4(mUp, 0.0f));
+
+    // Recalculamos el eje derecho para mantener ortonormalidad
+    mRight = glm::normalize(glm::cross(mFront, mUp));
+
+    setVM();
+    setAxes();
+}
 //Ap 46
 
 void 
@@ -229,6 +254,9 @@ Camera::orbit(GLdouble incAng, GLdouble incY) {
 	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
 	mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
 	mEye.y += incY;
+	glm::vec3 forward = glm::normalize(mLook - mEye);
+	glm::vec3 right = glm::normalize(glm::cross(glm::vec3(0, 1, 0), forward));
+	mUp = glm::cross(forward, right);
 	setVM();
 }
 

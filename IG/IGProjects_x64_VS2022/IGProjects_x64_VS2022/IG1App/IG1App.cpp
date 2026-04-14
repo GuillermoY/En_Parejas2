@@ -285,6 +285,9 @@ IG1App::key(unsigned int key)
 		case 'k': // AP 49
 			alterRenderViews();
 			break;
+		case 'i': 
+			mMainCam->setCenital();
+			break;
 		default:
 			if (key >= '0' && key <= '9') {
 				if (changeScene(key - '0')) break;
@@ -426,21 +429,9 @@ IG1App::motion(double x, double y) {
 	mMouseCoord = { x,y };
 
 	mLeftSide = mMouseCoord.x < mWinW / 2;
-	if (!m2Vistas)
-	{
-		mMainCam = mCamera;
-	}
-	else
-	{
-		if (mLeftSide)
-		{
-			mMainCam = mLeftCamera;
-		}
-		else
-		{
-			mMainCam = mRightCamera;
-		}
-	}
+
+	mMainCam = (!m2Vistas) ? mCamera :
+		(mLeftSide ? mLeftCamera : mRightCamera);
 	//3 Si mBot es el botón izquierdo, la cámara orbita
 	//(mp.x * 0.05, mp.y)
 	if (mMouseButt==GLFW_MOUSE_BUTTON_LEFT)
