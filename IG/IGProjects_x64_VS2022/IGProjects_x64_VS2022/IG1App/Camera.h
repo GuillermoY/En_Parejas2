@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 
 #include "Viewport.h"
-
+#include "Shader.h"
 class Camera
 {
 public:
@@ -84,6 +84,9 @@ protected:
 
 	void setVM();
 	void setPM();
+
+	// AP 58
+
 };
 
 #endif //_H_Camera_H_

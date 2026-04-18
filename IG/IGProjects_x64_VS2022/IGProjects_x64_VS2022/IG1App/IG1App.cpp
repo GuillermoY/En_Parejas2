@@ -80,6 +80,9 @@ IG1App::init()
 	mScenes.push_back(new Scene2);
 	mScenes.push_back(new Scene3);
 	mScenes.push_back(new Scene4);
+	// AP 56
+	mScenes.push_back(new Scene5);
+
 	mCamera->set2D();
 	for (int i = 0; i < mScenes.size(); ++i)
 	{

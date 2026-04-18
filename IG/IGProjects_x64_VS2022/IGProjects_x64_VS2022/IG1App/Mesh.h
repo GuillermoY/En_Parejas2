@@ -40,8 +40,8 @@ public:
 	std::vector<glm::vec3> const& vertices() const { return vVertices; };
 	std::vector<glm::vec4> const& colors() const { return vColors; };
 
-	void load();
-	void unload();
+	virtual void load();
+	virtual void unload();
 
 protected:
 	GLuint mPrimitive =
@@ -55,10 +55,16 @@ protected:
 
 	GLuint mVAO;  // vertex array object
 
+	//AP 57
+	std::vector<glm::vec3> vNormals;
+
 private:
 	GLuint mVBO;  // vertex buffer object
 	GLuint mCBO;  // color buffer object
 	GLuint mTCO;  // texture buffer object
+
+	//AP 57
+	GLuint mNBO; // identificador de su vertex array object asociado.
 };
 
 #endif //_H_Scene_H_

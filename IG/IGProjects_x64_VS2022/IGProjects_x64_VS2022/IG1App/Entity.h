@@ -74,14 +74,14 @@ public:
 /// </summary>
 class SingleColorEntity : public Abs_Entity
 {
-private:
+protected:
 	glm::vec4 mColor;
 
 public:
 	SingleColorEntity(glm::vec4 color = glm::vec4(1.0f))
 		: mColor(color)
 	{
-		mShader = Shader::get("simple"); // Funcionar� con shader simple
+		mShader = Shader::get("simple"); // Funcionar con shader simple
 	}
 	virtual void render(const glm::mat4& modelViewMat) const override; // Sobreescribimos render 
 	void lineRender(const glm::mat4& modelViewMat) const;

@@ -11,6 +11,7 @@ Mesh::Mesh()
 	, mVBO(NONE)
 	, mCBO(NONE)
 	, mTCO(NONE)
+	, mNBO(NONE)
 {
 }
 
@@ -60,6 +61,15 @@ Mesh::load()
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vec2), nullptr); // 0 vértices, 1 es el color, 2 textura				 (x,y)
 			glEnableVertexAttribArray(2); // 0 vértices, 1 es el color, 2 textura
 		}
+
+		//AP 57
+		if (vNormals.size() > 0) {             // upload normals
+			glGenBuffers(1, &mNBO);
+			glBindBuffer(GL_ARRAY_BUFFER, mNBO);
+			glBufferData(GL_ARRAY_BUFFER, vNormals.size() * sizeof(vec3), vNormals.data(), GL_STATIC_DRAW);
+			glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(vec3), nullptr); // 0 vértices, 1 es el color, 2 textura, 3 normales	 (x,y)
+			glEnableVertexAttribArray(3); // 0 vértices, 1 es el color, 2 textura, 3 normales
+		}
 	}
 }
 
@@ -79,6 +89,10 @@ Mesh::unload()
 		if (mTCO != NONE) {
 			glDeleteBuffers(1, &mTCO);
 			mTCO = NONE;
+		}
+		if (mNBO != NONE) {
+			glDeleteBuffers(1, &mNBO);
+			mNBO = NONE;
 		}
 	}
 }
