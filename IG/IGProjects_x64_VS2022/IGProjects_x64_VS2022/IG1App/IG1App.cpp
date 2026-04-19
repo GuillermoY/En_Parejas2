@@ -82,6 +82,8 @@ IG1App::init()
 	mScenes.push_back(new Scene4);
 	// AP 56
 	mScenes.push_back(new Scene5);
+	// AP 61
+	mScenes.push_back(new Scene6);
 
 	mCamera->set2D();
 	for (int i = 0; i < mScenes.size(); ++i)
@@ -290,6 +292,10 @@ IG1App::key(unsigned int key)
 			break;
 		case 'i': 
 			mMainCam->setCenital();
+			break;
+		case 'N':
+			ColorMaterialEntity::toggleShowNormals();
+			need_redisplay = true;
 			break;
 		default:
 			if (key >= '0' && key <= '9') {

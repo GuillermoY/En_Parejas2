@@ -1,4 +1,4 @@
-#include "Shader.h"
+ï»¿#include "Shader.h"
 #include "Camera.h"
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -26,12 +26,13 @@ Camera::uploadVM() const
 {
 	Shader::setUniform4All("modelView", mViewMat);
 
-	//AP 58
+	// AP 58: solo si el shader ya existe (evitar crearlo antes de tiempo)
+	glm::vec4 lightDirWorld(-1.0f, -1.5f, -1.25f, 0.0f);
+	glm::vec4 lightDirView = mViewMat * lightDirWorld;
 
-	glm::mat4 lightDirWorld({ -1.0f, -1.5f, -1.25f, 0.0f });
-	glm::mat4 lightDirView = mViewMat * lightDirWorld; // multiplicamos por la matriz de vista
-
-	Shader::setUniform4All("lightDir", lightDirView);
+	Shader* lightShader = Shader::get("simple_light");
+	lightShader->use();
+	lightShader->setUniform("lightDir", lightDirView);
 }
 
 // Recalculamos la matriz de vista
@@ -48,7 +49,7 @@ Camera::set2D()
 	mEye = { 0, 0, 500 };
 	mLook = { 0, 0, 0 };
 	mUp = { 0, 1, 0 };
-	mRadio = length(mEye - mLook); // Radio de la distancia entre la cámara y el objetivo
+	mRadio = length(mEye - mLook); // Radio de la distancia entre la cï¿½mara y el objetivo
 	mAng = 0.0f;
 	setVM();
 }
@@ -59,7 +60,7 @@ Camera::set3D()
 	mEye = { 500, 500, 500 };
 	mLook = { 0, 10, 0 };
 	mUp = { 0, 1, 0 };
-	mRadio = length(mEye - mLook); // Radio de la distancia entre la cámara y el objetivo
+	mRadio = length(mEye - mLook); // Radio de la distancia entre la cï¿½mara y el objetivo
 	mAng = 0.0f;
 	setVM();
 }
@@ -179,7 +180,7 @@ Camera::moveUD(GLfloat cs)
 
 /// <summary>
 /// No se mueve en ortogonal porque en la perspectiva se sigue viendo la misma
-/// imagen, como apuntando con un cubo a un plano, no es lo mismo que el cambiar tamaño
+/// imagen, como apuntando con un cubo a un plano, no es lo mismo que el cambiar tamaï¿½o
 /// </summary>
 void
 Camera::moveFB(GLfloat cs)
@@ -198,7 +199,7 @@ Camera::changePrj()
 }
 
 //Ap 45
-void 
+void
 Camera::pitchReal(GLfloat cs)
 {
 	mLook = mEye + rotate(mLook - mEye, glm::radians(cs), mRight);
@@ -207,7 +208,7 @@ Camera::pitchReal(GLfloat cs)
 	setVM();
 }
 
-void 
+void
 Camera::yawReal(GLfloat cs)
 {
 	mLook = mEye + rotate(mLook - mEye, glm::radians(cs), mUpward);
@@ -220,11 +221,11 @@ void Camera::rollReal(GLfloat cs)
 {
 	mUp = rotate(mUp, glm::radians(cs), mFront);
 
-    setVM();
+	setVM();
 }
 //Ap 46
 
-void 
+void
 Camera::orbit(GLdouble incAng, GLdouble incY) {
 	mAng += incAng;
 	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
@@ -240,9 +241,9 @@ Camera::orbit(GLdouble incAng, GLdouble incY) {
 
 void
 Camera::setCenital() {
-	mRadio = length(mEye - mLook); // Radio de la distancia entre la cámara y el objetivo
+	mRadio = length(mEye - mLook); // Radio de la distancia entre la camara y el objetivo
 	mLook = { 0, 0, 0 };
-	mEye = {0, mRadio, 0}; // Giramos el radio de la vista y lo que se ve
+	mEye = { 0, mRadio, 0 }; // Giramos el radio de la vista y lo que se ve
 	mUp = { 0, 0, -1 }; // Lo giramos hacia arriba
 	setVM();
 }
