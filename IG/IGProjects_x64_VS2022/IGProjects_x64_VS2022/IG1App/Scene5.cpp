@@ -19,5 +19,5 @@ Scene5::init()
 
 	Torus* torus = new Torus(200, 100);
 	gObjects.push_back(torus);
-	torus->setColor({ 0.13,0.54,0.13,1 });
+	torus->setColor({ 0,1,0,1 });
 }

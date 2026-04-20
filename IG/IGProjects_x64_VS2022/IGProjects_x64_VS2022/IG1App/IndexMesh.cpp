@@ -109,8 +109,7 @@ IndexMesh::buildNormalVectors() {
 		// El vector n normal a una cara formada por los v�rtices de
 		// �ndices ind0, ind1 e ind2 se puede calcular :
 		// Usando el producto vectorial. Sea vi el v�rtice de �ndice indi
-		glm::vec3 normal = glm::cross(v1 - v0, v2 - v0);
-
+		glm::vec3 normal = glm::normalize(glm::cross(v1 - v0, v2 - v0));
 		// Acumular en los v�rtices (suavizado)
 		vNormals[i0] += normal; // suma la normal del tri�ngulo
 		vNormals[i1] += normal; // a todos sus v�rtices
@@ -131,17 +130,17 @@ IndexMesh::generateIndexedBox8(GLdouble l)
 	mesh->mPrimitive = GL_TRIANGLES;
 
 	mesh->vVertices = {
-		{-l, -l, -l}, { l, -l, -l}, { l,  l, -l}, {-l,  l, -l},
-		{-l, -l,  l}, { l, -l,  l}, { l,  l,  l}, {-l,  l,  l}
+		{l, l, -l}, { l, -l, -l}, { l,  l, l}, {l,  -l, l},
+		{-l, l,  l}, { -l, -l,  l}, { -l,  l,  -l}, {-l,  -l,  -l}
 	};
 
 	mesh->vIndexes = {
-		0, 2, 1,  0, 3, 2,   // Z-
-		4, 5, 6,  4, 6, 7,   // Z+
-		0, 7, 3,  0, 4, 7,   // X-
-		1, 2, 6,  1, 6, 5,   // X+
-		0, 1, 5,  0, 5, 4,   // Y-
-		3, 7, 6,  3, 6, 2    // Y+
+		2, 1, 0,  3, 1, 2, // -X
+		4, 3, 2,  5, 3, 4, // +Z
+		6, 5, 4,  7, 5, 6, // +X
+		0, 7, 6,  1, 7, 0, // -Z
+		2, 6, 4,  0, 6, 2, // +Y
+		3, 7, 1,  5, 7, 3  // -Y
 	};
 
 	mesh->mNumVertices = (GLuint)mesh->vVertices.size();
