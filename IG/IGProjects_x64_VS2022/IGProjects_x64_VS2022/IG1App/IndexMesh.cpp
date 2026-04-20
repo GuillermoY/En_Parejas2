@@ -76,11 +76,11 @@ IndexMesh::generateByRevolution(
 		for (int j = 0; j < tamPerfil - 1; ++j) { // una cara
 			if (profile[j].x != 0.0)
 				// triángulo inferior (orden invertido)
-				for (auto [s, t] : { pair{i + 1, j}, {i, j + 1}, {i, j} })
+				for (auto [s, t] : { pair{i, j}, {i + 1, j}, {i, j + 1} })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 			if (profile[j + 1].x != 0.0)
 				// triángulo superior (orden invertido)
-				for (auto [s, t] : { pair{i + 1, j}, {i + 1, j + 1}, {i, j + 1} })
+				for (auto [s, t] : { pair {i, j + 1}, {i + 1, j}, {i + 1, j + 1} })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 		}
 	mesh->mNumVertices = mesh->vVertices.size();
@@ -109,7 +109,7 @@ IndexMesh::buildNormalVectors() {
 		// El vector n normal a una cara formada por los v�rtices de
 		// �ndices ind0, ind1 e ind2 se puede calcular :
 		// Usando el producto vectorial. Sea vi el v�rtice de �ndice indi
-		glm::vec3 normal = glm::normalize(glm::cross(v1 - v0, v2 - v0));
+		glm::vec3 normal = glm::cross(v1 - v0, v2 - v0);
 
 		// Acumular en los v�rtices (suavizado)
 		vNormals[i0] += normal; // suma la normal del tri�ngulo
