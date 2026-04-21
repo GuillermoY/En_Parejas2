@@ -1,3 +1,5 @@
+#ifndef INDEXEDBOX_H
+#define INDEXEDBOX_H_H
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "IndexMesh.h"
@@ -13,3 +15,4 @@ class IndexedBox : public ColorMaterialEntity
 public:
     explicit IndexedBox(GLdouble l);
 };
+#endif

@@ -9,5 +9,4 @@ Disk::Disk(GLdouble R, GLdouble r, GLuint nRings, GLuint nSamples)
         profile.emplace_back(x, 0.0);
     }
     mMesh = IndexMesh::generateByRevolution(profile, nSamples);
-    mMesh->load();
 }

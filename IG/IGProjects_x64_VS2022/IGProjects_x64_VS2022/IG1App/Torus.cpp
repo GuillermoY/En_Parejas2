@@ -16,12 +16,12 @@ Torus::Torus(GLdouble R, GLdouble r, GLuint nPoints, GLuint nSamples)
     std::vector<vec2> profile;
 
     for (GLuint i = 0; i <= nPoints; ++i) {
-        float t = 2.0f * std::numbers::pi * i / nPoints;
+        float theta = 2.0f * std::numbers::pi * i / nPoints;
 
-        float x = R + r * cos(t); // desplazamiento
-        float y = r * sin(t);
+        float x = R + r * cos(theta); // desplazamiento
+        float y = r * sin(theta);
 
-        profile.push_back({ x, y });
+        profile.emplace_back(x, y);
     }
 
     mMesh = IndexMesh::generateByRevolution(profile, nSamples, 2.0f * pi<float>());

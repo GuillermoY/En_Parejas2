@@ -10,5 +10,4 @@ Sphere::Sphere(GLdouble radius, GLuint nParallels, GLuint nMeridians)
         profile.emplace_back(radius * cos(theta), radius * sin(theta));
     }
     mMesh = IndexMesh::generateByRevolution(profile, nMeridians);
-    mMesh->load();
 }

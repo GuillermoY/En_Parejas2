@@ -1,4 +1,8 @@
 #include "Cone.h"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+using namespace glm;
 
 Cone::Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples)
     : ColorMaterialEntity(glm::vec4(0.8f, 0.8f, 0.0f, 1.0f))
@@ -9,5 +13,4 @@ Cone::Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples)
         profile.emplace_back(r + (R - r) * t, h * t);
     }
     mMesh = IndexMesh::generateByRevolution(profile, nSamples);
-    mMesh->load();
 }

@@ -1,3 +1,6 @@
+#ifndef COLORMATERIALENTITY_H
+#define COLORMATERIALENTITY_H
+
 #include "Entity.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -19,3 +22,4 @@ public:
     // AP 63: activa/desactiva la visualización de normales (tecla N)
     static void toggleShowNormals() { mShowNormals = !mShowNormals; }
 };
+#endif

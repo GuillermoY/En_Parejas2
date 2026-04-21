@@ -6,7 +6,7 @@
 
 #include "Scene.h"
 #include "Entity.h"
-
+#include "ColorMaterialEntity.h"
 
 class Scene5 : public Scene 
 {
