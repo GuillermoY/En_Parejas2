@@ -10,7 +10,7 @@
 
 class Cone : public ColorMaterialEntity {
 public:
-    explicit Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples);
+    explicit Cone(GLdouble h, GLdouble r, GLdouble R, GLuint nRings, GLuint nSamples =40);
 };
 
 #endif

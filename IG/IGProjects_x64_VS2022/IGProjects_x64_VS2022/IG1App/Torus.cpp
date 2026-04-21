@@ -16,7 +16,7 @@ Torus::Torus(GLdouble R, GLdouble r, GLuint nPoints, GLuint nSamples)
     std::vector<vec2> profile;
 
     for (GLuint i = 0; i <= nPoints; ++i) {
-        float theta = 2.0f * std::numbers::pi * i / nPoints;
+        float theta =  -90.0 + 2.0f * std::numbers::pi * i / nPoints;
 
         float x = R + r * cos(theta); // desplazamiento
         float y = r * sin(theta);

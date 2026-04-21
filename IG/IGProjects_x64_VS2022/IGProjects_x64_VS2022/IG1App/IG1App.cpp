@@ -84,6 +84,12 @@ IG1App::init()
 	mScenes.push_back(new Scene5);
 	// AP 61
 	mScenes.push_back(new Scene6);
+	// AP 68
+	mScenes.push_back(new Scene7);
+	// AP 69
+	mScenes.push_back(new Scene8);
+	// AP 71
+	mScenes.push_back(new Scene9);
 
 	mCamera->set2D();
 	for (int i = 0; i < mScenes.size(); ++i)
@@ -296,6 +302,12 @@ IG1App::key(unsigned int key)
 		case 'N':
 			ColorMaterialEntity::toggleShowNormals();
 			need_redisplay = true;
+			break;
+		case 'f':
+			mScenes[mCurrentScene]->rotates();
+			break;
+		case 'g':
+			mScenes[mCurrentScene]->orbit();
 			break;
 		default:
 			if (key >= '0' && key <= '9') {

@@ -69,22 +69,29 @@ IndexMesh::generateByRevolution(
 	GLdouble theta1 = angleMax / nSamples;
 	for (int i = 0; i <= nSamples; ++i) { // muestra i-�sima
 		GLdouble c = cos(i * theta1), s = sin(i * theta1);
-		for (auto p : profile) // rota el perfil
+		for (int j = 0; j < tamPerfil; ++j) // rota el perfil
+		{
+			auto p = profile[j];
 			mesh->vVertices.emplace_back(p.x * c, p.y, -p.x * s);
+
+			// AP 67: se añade coordenadas de textura a la malla
+			mesh->vTexCoords.emplace_back(float(i) / float(nSamples),
+				1.0 - (float(j) / float(profile.size() - 1.0)));
+		}
 	}
+	//Genera los índices de las muestras
 	for (int i = 0; i < nSamples; ++i) // caras i a i + 1
 		for (int j = 0; j < tamPerfil - 1; ++j) { // una cara
 			if (profile[j].x != 0.0)
 				// triángulo inferior (orden invertido)
-				for (auto [s, t] : { pair{i, j}, {i + 1, j}, {i, j + 1} })
+				for (auto [s, t] : { pair{i, j}, {i+1, j}, {i, j + 1} })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 			if (profile[j + 1].x != 0.0)
 				// triángulo superior (orden invertido)
-				for (auto [s, t] : { pair {i, j + 1}, {i + 1, j}, {i + 1, j + 1} })
+				for (auto [s, t] : { pair {i, j + 1}, {i+1, j}, {i + 1, j + 1} })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 		}
 	mesh->mNumVertices = mesh->vVertices.size();
-
 
 	//AP 60
 	mesh->buildNormalVectors();
@@ -183,5 +190,29 @@ IndexMesh::generateIndexedBox(GLdouble l)
 	}
 
 	mesh->mNumVertices = (GLuint)mesh->vVertices.size();
+	return mesh;
+}
+
+// ---- AP 67 ----
+/// <summary>
+///  Este método solo ha de construir el perfil de la esfera y llamar
+/// a generateByRevolution para obtener la malla
+/// </summary>
+/// <param name="radius"> radio de la esfera </param>
+/// <param name="nParallel"> el número de paralelos </param>
+/// <param name="nMeridians"> número de meridianos </param>
+/// <returns></returns>
+IndexMesh* 
+IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians)
+{
+	IndexMesh* mesh = new IndexMesh();
+
+	std::vector<glm::vec2> profile;
+	for (GLuint i = 0; i <= nParallel; ++i) {
+		GLdouble theta = glm::radians(-90.0 + 180.0 * i / nParallel);
+		profile.emplace_back(radius * cos(theta), radius * sin(theta));
+	}
+	mesh = IndexMesh::generateByRevolution(profile, nMeridians);
+
 	return mesh;
 }

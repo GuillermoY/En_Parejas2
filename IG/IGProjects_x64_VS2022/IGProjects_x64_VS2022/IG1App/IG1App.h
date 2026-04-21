@@ -13,6 +13,9 @@
 #include "Scene4.h"
 #include "Scene5.h"
 #include "Scene6.h"
+#include "Scene7.h"
+#include "Scene8.h"
+#include "Scene9.h"
 #include "Viewport.h"
 #include "ColorMaterialEntity.h"
 

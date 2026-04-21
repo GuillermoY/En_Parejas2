@@ -37,10 +37,16 @@ public:
 	void load();
 	void unload();
 
+	// AP 70:
+	virtual void rotates() {};
+	virtual void orbit() {};
+
 protected:
 	void destroy();
-	void setGL();
+	// AP: 69
+	virtual void setGL();
 	void resetGL();
+
 
 	std::vector<Abs_Entity*> gObjects; // Entities (graphic objects) of the scene
 	std::vector<Abs_Entity*> gTrsObjects; // Entities (graphic translucent objects) of the scene

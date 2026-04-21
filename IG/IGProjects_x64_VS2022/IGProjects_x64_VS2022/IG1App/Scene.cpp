@@ -59,6 +59,7 @@ Scene::destroy()
 void
 Scene::load()
 {
+	setGL();
 	for (Abs_Entity* obj : gObjects)
 		obj->load();
 
@@ -74,6 +75,8 @@ Scene::unload()
 
 	for (Abs_Entity* obj : gTrsObjects)
 		obj->unload();
+
+	resetGL();
 }
 
 void
