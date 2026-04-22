@@ -82,13 +82,14 @@ IndexMesh::generateByRevolution(
 	//Genera los índices de las muestras
 	for (int i = 0; i < nSamples; ++i) // caras i a i + 1
 		for (int j = 0; j < tamPerfil - 1; ++j) { // una cara
+			//int next = (i + 1) % nSamples;
 			if (profile[j].x != 0.0)
 				// triángulo inferior (orden invertido)
-				for (auto [s, t] : { pair{i, j}, {i+1, j}, {i, j + 1} })
+				for (auto [s, t] : { pair{i, j}, {/*next*/i +1, j}, {i, j + 1} })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 			if (profile[j + 1].x != 0.0)
 				// triángulo superior (orden invertido)
-				for (auto [s, t] : { pair {i, j + 1}, {i+1, j}, {i + 1, j + 1} })
+				for (auto [s, t] : { pair {i, j + 1}, {/*next*/i +1, j}, {/*next*/i+1, j + 1} })
 					mesh->vIndexes.push_back(s * tamPerfil + t);
 		}
 	mesh->mNumVertices = mesh->vVertices.size();
