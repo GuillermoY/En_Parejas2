@@ -44,5 +44,8 @@ void
 CompoundEntity::unload()
 {
 	for (Abs_Entity* obj : gObjects)
+	{
 		obj->unload();
+		//delete obj;
+	}
 }

@@ -7,8 +7,8 @@
 
 Droid::~Droid()
 {
-    ballTexture = nullptr;
     delete ballTexture;
+    ballTexture = nullptr;
 }
 
 Droid::Droid(GLdouble radius)

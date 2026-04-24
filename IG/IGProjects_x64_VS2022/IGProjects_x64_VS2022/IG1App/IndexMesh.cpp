@@ -182,7 +182,7 @@ IndexMesh::generateIndexedBox(GLdouble l)
 	mesh->vNormals.insert(mesh->vNormals.end(), 4, { 0,1,0 });
 	// Cara Y- (normal: 0,-1,0)
 	mesh->vVertices.insert(mesh->vVertices.end(), { {-l,-l, l},{ l,-l, l},{ l,-l,-l},{-l,-l,-l} });
-	mesh->vNormals.insert(mesh->vNormals.end(), 4, { 0,-1,0 });
+	mesh->vNormals.insert(mesh-> vNormals.end(), 4, { 0,-1,0 });
 
 	// 2 triángulos por cara × 6 caras = 36 índices
 	for (GLuint i = 0; i < 6; ++i) {
@@ -206,14 +206,13 @@ IndexMesh::generateIndexedBox(GLdouble l)
 IndexMesh* 
 IndexMesh::generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians)
 {
-	IndexMesh* mesh = new IndexMesh();
 
 	std::vector<glm::vec2> profile;
 	for (GLuint i = 0; i <= nParallel; ++i) {
 		GLdouble theta = glm::radians(-90.0 + 180.0 * i / nParallel);
 		profile.emplace_back(radius * cos(theta), radius * sin(theta));
 	}
-	mesh = IndexMesh::generateByRevolution(profile, nMeridians);
+	IndexMesh* mesh = IndexMesh::generateByRevolution(profile, nMeridians);
 
 	return mesh;
 }
