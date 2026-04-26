@@ -12,11 +12,11 @@
 #include "../systems/PacManSystem.h"
 #include "../systems/RenderSystem.h"
 
-#include "NewGameState.h"
-#include "NewRoundState.h"
-#include "RunningState.h"
-#include "PauseState.h"
-#include "GameOverState.h"
+#include "Newgamestate.h"
+#include "Newroundstate.h"
+#include "Runningstate.h"
+#include "Pausestate.h"
+#include "Gameoverstate.h"
 
 Game* Game::_instance = nullptr;
 
@@ -55,7 +55,10 @@ void Game::init() {
 	if (!InputHandler::Init()) {
 		throw std::string("Could not initialise InputHandler");
 	}
+	initGame();
+}
 
+void Game::initGame() {
 	_mngr = new ecs::EntityManager();
 
 	_mngr->addSystem<RenderSystem>();
@@ -89,6 +92,8 @@ void Game::start() {
 		Uint32 startTime = sdlutils().currRealTime();
 
 		ihdlr.refresh();
+
+		sdlutils().virtualTimer().regCurrTime();
 
 		if (ihdlr.isKeyDown(SDL_SCANCODE_ESCAPE)) {
 			exit = true;

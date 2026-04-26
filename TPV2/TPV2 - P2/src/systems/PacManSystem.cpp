@@ -106,7 +106,7 @@ void PacManSystem::update() {
 	}
 
 	auto pm = _mngr->getHandler(ecs::hdlr::PACMAN);
-	_mngr->getComponent<FramedImage>(pm)->update(sdlutils().currRealTime());
+	_mngr->getComponent<FramedImage>(pm)->update(sdlutils().virtualTimer().currTime());
 }
 
 void PacManSystem::recieve(const Message& m) {

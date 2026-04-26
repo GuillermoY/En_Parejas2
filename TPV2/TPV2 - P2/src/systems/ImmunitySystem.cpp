@@ -17,7 +17,7 @@ void ImmunitySystem::update() {
 
 	if (!immunity->_active) return;
 
-	if (immunity->isExpired(sdlutils().currRealTime())) {
+	if (immunity->isExpired(sdlutils().virtualTimer().currTime())) {
 		immunity->deactivate();
 
 		Message m;
@@ -33,7 +33,7 @@ void ImmunitySystem::recieve(const Message& m) {
 			auto pm = _mngr->getHandler(ecs::hdlr::PACMAN);
 			auto immunity = _mngr->getComponent<Immunity>(pm);
 			if (!immunity->_active) {
-				immunity->activate(sdlutils().currRealTime());
+				immunity->activate(sdlutils().virtualTimer().currTime());
 				Message im;
 				im.id = _m_IMMUNITY_START;
 				_mngr->send(im);

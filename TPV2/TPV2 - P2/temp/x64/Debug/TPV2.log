@@ -1,1 +1,17 @@
-﻿
+﻿  Game.cpp
+C:\Users\isaac\Documents\Curso2\En_Parejas2\TPV2\TPV2 - P2\src\game\Game.cpp(92,20): warning C4244: 'inicializando': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\isaac\Documents\Curso2\En_Parejas2\TPV2\TPV2 - P2\src\game\Game.cpp(108,21): warning C4244: 'inicializando': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+C:\Users\isaac\Documents\Curso2\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(87,56): warning C4267: 'inicializando': conversión de 'size_t' a 'const ecs::sysId_t'; posible pérdida de datos
+  (compilando archivo de origen "src/game/Game.cpp")
+      C:\Users\isaac\Documents\Curso2\En_Parejas2\TPV2\TPV2 - P2\src\ecs\ecs.h(87,56):
+      el contexto de creación de instancias de la plantilla (el más antiguo primero) es
+          C:\Users\isaac\Documents\Curso2\En_Parejas2\TPV2\TPV2 - P2\src\game\Game.cpp(64,9):
+          Vea la referencia a la creación de una instancia de la función plantilla "T *ecs::EntityManager::addSystem<RenderSystem,>(void)" que se está compilando
+          with
+          [
+              T=RenderSystem
+          ]
+          C:\Users\isaac\Documents\Curso2\En_Parejas2\TPV2\TPV2 - P2\src\ecs\EntityManager.h(184,27):
+          vea la referencia a la plantilla de variables 'const ecs::sysId_t sysId<RenderSystem>' que se está compilando
+  
+  TPV2.vcxproj -> C:\Users\isaac\Documents\Curso2\En_Parejas2\TPV2\TPV2 - P2\bin\x64\Debug\TPV2.exe

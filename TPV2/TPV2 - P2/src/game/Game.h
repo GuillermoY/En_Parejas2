@@ -7,11 +7,11 @@
 #include "GameState.h"
 #include "messages_defs.h"
 
-#include "NewGameState.h"
-#include "NewRoundState.h"
-#include "RunningState.h"
-#include "PauseState.h"
-#include "GameOverState.h"
+#include "Newgamestate.h"
+#include "Newroundstate.h"
+#include "Runningstate.h"
+#include "Pausestate.h"
+#include "Gameoverstate.h"
 
 class Game {
 public:
@@ -19,6 +19,7 @@ public:
 	virtual ~Game();
 
 	void init();
+	void initGame();
 	void start();
 
 	void setState(GameState* s);

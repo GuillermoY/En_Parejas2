@@ -1,6 +1,6 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
-#include "RunningState.h"
+#include "Runningstate.h"
 #include "Game.h"
 #include "../systems/PacManSystem.h"
 #include "../systems/FoodSystem.h"

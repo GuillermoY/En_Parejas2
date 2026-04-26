@@ -9,8 +9,8 @@
 #include "../ecs/EntityManager.h"
 #include "../game/messages_defs.h"
 #include "../game/Game.h"
-#include "../game/GameOverState.h"
-#include "../game/NewRoundState.h"
+#include "../game/Gameoverstate.h"
+#include "../game/Newroundstate.h"
 #include "../sdlutils/SDLUtils.h"
 
 constexpr int    SPR_FRAME_W = 128;
@@ -60,15 +60,15 @@ void GhostSystem::removeAllGhosts() {
 
 void GhostSystem::setGhostsBlue() {
 	for (auto e : _mngr->getEntities(ecs::grp::GHOSTS)) {
-		if (_mngr->isAlive(e));
-		_mngr->getComponent<FramedImage>(e)->setAnimation(BLUE_FIRST_FRAME, BLUE_NUM_FRAMES);
+		if (_mngr->isAlive(e))
+			_mngr->getComponent<FramedImage>(e)->setAnimation(BLUE_FIRST_FRAME, BLUE_NUM_FRAMES);
 	}
 }
 
 void GhostSystem::setGhostsRed() {
 	for (auto e : _mngr->getEntities(ecs::grp::GHOSTS)) {
-		if (_mngr->isAlive(e));
-		_mngr->getComponent<FramedImage>(e)->setAnimation(RED_FIRST_FRAME, RED_NUM_FRAMES);
+		if (_mngr->isAlive(e))
+			_mngr->getComponent<FramedImage>(e)->setAnimation(RED_FIRST_FRAME, RED_NUM_FRAMES);
 	}
 }
 
@@ -102,7 +102,7 @@ void GhostSystem::onPacManHit() {
 }
 
 void GhostSystem::update() {
-	auto currTime = sdlutils().currRealTime();
+	auto currTime = sdlutils().virtualTimer().currTime();
 
 	if (!_immunityActive && _currNumGhosts < MAX_GHOSTS && currTime - _lastSpawnTime >= SPAWN_INTERVAL) {
 		spawnGhost();
@@ -155,11 +155,11 @@ void GhostSystem::recieve(const Message& m) {
 	switch (m.id) {
 	case _m_NEW_GAME:
 		removeAllGhosts();
-		_lastSpawnTime = sdlutils().currRealTime();
+		_lastSpawnTime = sdlutils().virtualTimer().currTime();
 		_immunityActive = false;
 		break;
 	case _m_ROUND_START:
-		_lastSpawnTime = sdlutils().currRealTime();
+		_lastSpawnTime = sdlutils().virtualTimer().currTime();
 		_immunityActive = false;
 		break;
 	case _m_ROUND_OVER:
@@ -172,7 +172,7 @@ void GhostSystem::recieve(const Message& m) {
 	case _m_IMMUNITY_END:
 		_immunityActive = false;
 		setGhostsRed();
-		_lastSpawnTime = sdlutils().currRealTime();
+		_lastSpawnTime = sdlutils().virtualTimer().currTime();
 		break;
 	case _m_PACMAN_GHOST_COLLISION:
 	{

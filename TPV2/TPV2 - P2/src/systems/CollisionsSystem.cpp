@@ -24,7 +24,7 @@ void CollisionsSystem::checkFoodCollisions() {
 	auto& foods = _mngr->getEntities(ecs::grp::FOOD);
 	auto n = foods.size();
 
-	for (auto i = 0; i < n; i++) {
+	for (auto i = 0u; i < n; i++) {
 		auto e = foods[i];
 		if (_mngr->isAlive(e)){
 			auto eTR = _mngr->getComponent<Transform>(e);
