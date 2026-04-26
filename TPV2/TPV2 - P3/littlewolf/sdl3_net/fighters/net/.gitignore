@@ -1,0 +1,24 @@
+# Visual Studio
+.vs/
+*.vsidx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+
+# Build output
+bin/
+temp/
+x64/
+Debug/
+Release/
+
+# Compiled files
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.dll
+*.exe
