@@ -5,6 +5,14 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/InputHandler.h"
 
+void PauseState::enter() {
+	sdlutils().virtualTimer().pause();
+}
+
+void PauseState::leave() {
+	sdlutils().virtualTimer().resume();
+}
+
 void PauseState::update() {
 	sdlutils().clearRenderer();
 
@@ -13,6 +21,7 @@ void PauseState::update() {
 		(sdlutils().width() - msg.width()) / 2,
 		(sdlutils().height() - msg.height()) / 2
 	);
+
 
 	sdlutils().presentRenderer();
 

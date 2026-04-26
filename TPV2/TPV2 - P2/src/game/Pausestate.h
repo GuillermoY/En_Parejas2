@@ -8,6 +8,8 @@ class PauseState : public GameState {
 public:
 	PauseState(ecs::EntityManager* mngr) : _mngr(mngr) {}
 	void update() override;
+	void enter() override;
+	void leave() override;
 private:
 	ecs::EntityManager* _mngr;
 };
