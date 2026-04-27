@@ -154,11 +154,16 @@
     <ClInclude Include="src\game\Fighterutils.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\game\Gameoverstate.h" />
+    <ClInclude Include="src\game\LittleWolf.h" />
+    <ClInclude Include="src\game\messages.h" />
     <ClInclude Include="src\game\messages_defs.h" />
+    <ClInclude Include="src\game\Networking.h" />
     <ClInclude Include="src\game\Newgamestate.h" />
     <ClInclude Include="src\game\Newroundstate.h" />
     <ClInclude Include="src\game\Pausestate.h" />
     <ClInclude Include="src\game\Runningstate.h" />
+    <ClInclude Include="src\game\SDLNetUtils.h" />
+    <ClInclude Include="src\game\TCPServer.h" />
     <ClInclude Include="src\json\JSON.h" />
     <ClInclude Include="src\json\JSONValue.h" />
     <ClInclude Include="src\json\json_demo.h" />

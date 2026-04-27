@@ -21,7 +21,7 @@ public:
 private:
 	Game();
 	virtual ~Game();
-	bool init();
+	bool init(); // requerido por Singleton
 
 	LittleWolf* _lw;
 	Networking* _net;

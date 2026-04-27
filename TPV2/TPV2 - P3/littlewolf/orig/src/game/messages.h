@@ -51,7 +51,8 @@ enum MsgId : Uint8 {
 	_PLAYER_INFO,         // info completa al conectar
 	_SHOOT,               // jugador dispara, master decide
 	_DEAD,                // master avisa quién murió
-	_RESTART,             // master envía posiciones de reset (una por jugador)
+	_CORRECTION,          // master corrige posición inválida
+	_RESTART,             // master envía posición de reset para un jugador
 	_RESTART_COUNTDOWN    // master envía cuenta atrás
 };
 
@@ -70,48 +71,41 @@ struct MsgWithMasterId : MsgWithClientId {
 	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), masterId)
 };
 
-// Posición, velocidad y rotación cada frame + posición anterior para validación
+// Posición, velocidad y rotación cada frame + posición anterior
 struct PlayerStateMsg : MsgWithClientId {
-	float x;
-	float y;
-	float vx;
-	float vy;
+	float x, y;
+	float vx, vy;
 	float theta;
-	float prev_x;
-	float prev_y;
-	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), x, y, vx, vy, theta, prev_x, prev_y)
+	float prev_x, prev_y;
+	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this),
+		x, y, vx, vy, theta, prev_x, prev_y)
 };
 
-// Info completa (estado incluido) al conectar o cuando cambia algo importante
+// Info completa (estado incluido) — al conectar o corrección de posición
 struct PlayerInfoMsg : MsgWithClientId {
-	float x;
-	float y;
-	float vx;
-	float vy;
+	float x, y;
+	float vx, vy;
 	float theta;
 	Uint8 state;
-	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), x, y, vx, vy, theta, state)
+	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this),
+		x, y, vx, vy, theta, state)
 };
 
-// Jugador dispara — master valida y envía DEAD si da
+// Jugador dispara — master valida
 struct ShootMsg : MsgWithClientId {
-	float x;
-	float y;
+	float x, y;
 	float theta;
 	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), x, y, theta)
 };
 
-// Master avisa quién murió y quién disparó
+// Master avisa quién murió
 struct DeadMsg : MsgWithClientId {
-	Uint8 shooter;
-	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), shooter)
+	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this))
 };
 
-// Master envía posición de reset para un jugador concreto
+// Master envía posición de reset para un jugador
 struct RestartPlayerMsg : MsgWithClientId {
-	float x;
-	float y;
-	float theta;
+	float x, y, theta;
 	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), x, y, theta)
 };
 
