@@ -26,15 +26,15 @@ public:
 	void load() override;
 	void unload() override;
 
-	Abs_Entity* getFirst() {
-		if (gObjects[0]) 
-		{ 
-			return gObjects[0]; 
-		}
-		else
-		{
-			return nullptr;
-		}
-	};
+	//Abs_Entity* getFirst() {
+	//	if (gObjects[0]) 
+	//	{ 
+	//		return gObjects[0]; 
+	//	}
+	//	else
+	//	{
+	//		return nullptr;
+	//	}
+	//};
 };
 #endif

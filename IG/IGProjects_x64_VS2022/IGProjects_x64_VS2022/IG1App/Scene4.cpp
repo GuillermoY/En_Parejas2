@@ -8,8 +8,6 @@ using namespace glm;
 void
 Scene4::init()
 {
-	setGL(); // OpenGL settings
-
 	// allocate memory and load resources
 	// Lights
 	// Textures

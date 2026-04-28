@@ -27,12 +27,12 @@ Camera::uploadVM() const
 	Shader::setUniform4All("modelView", mViewMat);
 
 	// AP 58: solo si el shader ya existe (evitar crearlo antes de tiempo)
-	glm::vec4 lightDirWorld(-1.0f, -1.5f, -1.25f, 0.0f);
-	glm::vec4 lightDirView = normalize(mViewMat * lightDirWorld);
+	//glm::vec4 lightDirWorld(-1.0f, -1.5f, -1.25f, 0.0f);
+	//glm::vec4 lightDirView = normalize(mViewMat * lightDirWorld);
 
-	Shader* lightShader = Shader::get("simple_light");
-	lightShader->use();
-	lightShader->setUniform("lightDir", lightDirView);
+	//Shader* lightShader = Shader::get("simple_light");
+	//lightShader->use();
+	//lightShader->setUniform("lightDir", lightDirView);
 }
 
 // Recalculamos la matriz de vista

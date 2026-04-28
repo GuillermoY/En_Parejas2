@@ -1,7 +1,4 @@
 #include "Scene8.h"
-#include "Entity.h"
-#include "Sphere.h"
-#include "Droid.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -11,17 +8,15 @@ using namespace glm;
 void
 Scene8::init()
 {
-	setGL(); // OpenGL settings
 
 	// allocate memory and load resources
 	// Lights
 	// Textures
 
 	// Graphics objects (entities) of the scene
-	gObjects.push_back(new RGBAxes(400.0));
 	Sphere* planet = new Sphere(150, 150.0, 150.0);
-
-	planet->setColor({0.67,0.13,0.28, 1});
+		
+	planet->setMaterial(Material(glm::vec3{0.67,0.13,0.28}));
 	gObjects.push_back(planet);
 
 	droid = new Droid(20);
@@ -33,11 +28,20 @@ Scene8::init()
 	gObjects.push_back(inventedNode);
 	droid->setModelMat(translate(mat4(1.0f), glm::vec3(0.0f, 170, 0.0f)));
 
-
 	//inventedNodeBall = new CompoundEntity();
 	////inventedNodeBall->addEntity(droid->getFirst());
 	//gObjects.push_back(inventedNodeBall);
 	//droid->setModelMat(translate(mat4(1.0f), glm::vec3(0.0f, 170, 0.0f)));
+	
+	// AP 77:
+	PosLight* posLight = new PosLight();
+	posLight->setPosition(glm::vec3(0.0f, 170, 0.0f));
+	//posLight->setDirection(glm::vec3(-1.0f, -1.0f, -1.0f));
+	posLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
+	posLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
+	posLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+	posLight->setEnabled(true);
+	gLights.push_back(posLight);
 }
 
 void
@@ -50,7 +54,7 @@ void
 Scene8::orbit()
 {
 	inventedNode->setModelMat(rotate(inventedNode->modelMat(), glm::radians(5.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
-	droid->getFirst()->setModelMat(rotate(droid->getFirst()->modelMat(), glm::radians(10.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+	droid->rotateBall(20.0f);
 }
 
 void

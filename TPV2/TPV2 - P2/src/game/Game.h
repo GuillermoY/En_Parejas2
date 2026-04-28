@@ -18,7 +18,7 @@ public:
 	Game();
 	virtual ~Game();
 
-	void init();
+	static void init();
 	void initGame();
 	void start();
 

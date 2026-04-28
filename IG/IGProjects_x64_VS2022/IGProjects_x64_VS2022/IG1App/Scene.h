@@ -16,13 +16,14 @@
 #include "Star3D.h"
 #include "GlassParapet.h"
 #include "Photo.h"
+#include "Light.h"
 
 #include <vector>
 
 class Scene
 {
 public:
-	Scene() = default;
+	Scene();
 	virtual ~Scene();
 
 	Scene(const Scene& s) = delete;            // no copy constructor
@@ -41,6 +42,9 @@ public:
 	virtual void rotates() {};
 	virtual void orbit() {};
 
+	// AP 73:
+	void uploadLights(Camera const& cam) const;
+	void toggleLight() { if (dirLight) dirLight->setEnabled(!dirLight->enabled()); }// AP 76: controla si se muestra la luz 
 protected:
 	void destroy();
 	// AP: 69
@@ -52,6 +56,9 @@ protected:
 	std::vector<Abs_Entity*> gTrsObjects; // Entities (graphic translucent objects) of the scene
 
 	std::vector<Texture*> gTextures; // Entities (textures) of the scene
+
+	std::vector<Light*> gLights; // Entities (lights) of the scene
+	DirLight* dirLight;
 };
 
 

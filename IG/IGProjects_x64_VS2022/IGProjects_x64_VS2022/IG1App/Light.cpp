@@ -56,7 +56,11 @@ DirLight::DirLight(int id)
 
 void DirLight::upload(Shader& shader, glm::mat4 const& modelViewMat) const
 {
+	// Carga los atributos comunes
 	Light::upload(shader, modelViewMat);
+	
+	// Carga la dirección de la luz transformada
+	// por la matriz de modelado-vista
 	shader.setUniform(lightID + ".direction", normalize(vec3(modelViewMat * direction)));
 }
 

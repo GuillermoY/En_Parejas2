@@ -3,6 +3,9 @@
 
 #include "CompoundEntity.h"
 #include "IndexMesh.h"
+#include "Cone.h"
+#include "SphereWithTexture.h"
+#include "Disk.h"
 #include <vector>
 
 #include <GL/glew.h>
@@ -11,8 +14,10 @@
 class Droid : public CompoundEntity {
 private:
     Texture* ballTexture;
+    SphereWithTexture* ballBody;
 public:
     Droid(GLdouble radius);
+    void rotateBall(float degrees);
     ~Droid();
 };
 

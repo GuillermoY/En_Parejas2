@@ -11,18 +11,9 @@ using namespace glm;
 void
 Scene5::init()
 {
-	setGL(); // OpenGL settings
-
-	// allocate memory and load resources
-	// Lights
-	// Textures
-
-	// Graphics objects (entities) of the scene
-	gObjects.push_back(new RGBAxes(400.0));
-
 	Torus* torus = new Torus(200, 100);
 	gObjects.push_back(torus);
-	torus->setColor({ 0,1,0,1 });
+	torus->setMaterial(Material(glm::vec4{ 0,1,0,1 }));
 
 	//gObjects.push_back(new Sphere(150.0, 150.0,150.0));
 	//gObjects.push_back(new Cone(150.0, 0.0, 150.0,150.0,150.0));

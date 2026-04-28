@@ -14,4 +14,4 @@ public:
 	void init() override;
 protected:
 };
-#endif // RGBRECTANGLE_H
+#endif // Scene 1

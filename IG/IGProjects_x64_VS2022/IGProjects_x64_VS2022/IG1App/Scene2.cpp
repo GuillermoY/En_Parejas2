@@ -8,14 +8,11 @@ using namespace glm;
 void
 Scene2::init()
 {
-	setGL(); // OpenGL settings
-
 	// allocate memory and load resources
 	// Lights
 	// Textures
 
 	// Graphics objects (entities) of the scene
-	gObjects.push_back(new RGBAxes(400.0));
 	RGBTriangle* triangle = new RGBTriangle(100);
 	triangle->setModelMat(translate(triangle->modelMat(), glm::vec3(200, 0, 0.0)));
 	gObjects.push_back(triangle); // Triángulo como el apartado 7 y 11 (Con pos en (R,0))

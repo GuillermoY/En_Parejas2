@@ -5,6 +5,11 @@
 
 using namespace glm;
 
+Scene::Scene()
+{
+	init();
+}
+
 void
 Scene::init() // En el apartado 6 he hecho una clase vacía con solo los ejes
 {
@@ -16,6 +21,13 @@ Scene::init() // En el apartado 6 he hecho una clase vacía con solo los ejes
 
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
+	dirLight = new DirLight();
+	dirLight->setDirection(glm::vec3(-1.0f, -1.0f, -1.0f));
+	dirLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
+	dirLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
+	dirLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+	dirLight->setEnabled(true);
+	gLights.push_back(dirLight);
 }
 
 void Scene::update()
@@ -54,6 +66,12 @@ Scene::destroy()
 		delete el;
 
 	gTextures.clear();
+
+
+	for (Light* el : gLights)
+		delete el;
+
+	gLights.clear();
 }
 
 void
@@ -75,6 +93,9 @@ Scene::unload()
 
 	for (Abs_Entity* obj : gTrsObjects)
 		obj->unload();
+
+	for (Light* obj : gLights)
+		obj->unload(*Shader::get("simple_light"));
 
 	resetGL();
 }
@@ -100,6 +121,8 @@ Scene::render(Camera const& cam) const
 {
 	cam.upload();
 
+	uploadLights(cam);
+
 	for (Abs_Entity* el : gObjects)
 		el->render(cam.viewMat());
 
@@ -112,4 +135,18 @@ Scene::render(Camera const& cam) const
 
 	glDepthMask(GL_TRUE);
 	glDisable(GL_BLEND);
+}
+
+void
+Scene::uploadLights(Camera const& cam) const
+{
+	Shader* shader = Shader::get("light");
+	shader->use();
+	for (Light* el : gLights)
+	{
+		el->upload(*shader, cam.viewMat());
+	}
+	//glm::vec4 lightDirWorld(-1.0f, -1.5f, -1.25f, 0.0f);
+	//glm::vec4 lightDirView = normalize(cam.viewMat() * lightDirWorld);
+	//shader->setUniform("lightDir", lightDirView);
 }

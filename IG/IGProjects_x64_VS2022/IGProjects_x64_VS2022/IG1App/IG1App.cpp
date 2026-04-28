@@ -73,8 +73,10 @@ IG1App::init()
 	mViewPort = new Viewport(mWinW, mWinH);
 	mCamera = new Camera(mViewPort);
 
+	// AP 73
+	mScenes.push_back(new Scene0);
 	// En el apartado 6 he metido Scene1 para cuando le das al 1 carga la escena 1.
-	mScenes.push_back(new Scene);
+	//mScenes.push_back(new Scene);
 	mScenes.push_back(new Scene1);
 	// Lo mismo para las siguientes escenas
 	mScenes.push_back(new Scene2);
@@ -308,6 +310,9 @@ IG1App::key(unsigned int key)
 			break;
 		case 'g':
 			mScenes[mCurrentScene]->orbit();
+			break;
+		case 'r':
+			mScenes[mCurrentScene]->toggleLight();
 			break;
 		default:
 			if (key >= '0' && key <= '9') {

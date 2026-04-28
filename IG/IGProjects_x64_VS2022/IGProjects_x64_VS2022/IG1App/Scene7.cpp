@@ -4,9 +4,6 @@
 
 void Scene7::init()
 {
-    setGL();
-    gObjects.push_back(new RGBAxes(400.0));
-
     gObjects.push_back(new Droid(150.0f));
 
     //gObjects.push_back(new Cone(150.0, 150.0, 150.0,150.0,150.0));

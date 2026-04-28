@@ -46,7 +46,7 @@ Game::~Game() {
 		SDLUtils::Release();
 }
 
-void Game::init() {
+static void init() {
 	if (!SDLUtils::Init("PacMan - TPV2@UCM", 800, 600,
 		"resources/config/pacman.resources.json")) {
 		throw std::string("Could not initialise SDLUtils");
@@ -55,7 +55,6 @@ void Game::init() {
 	if (!InputHandler::Init()) {
 		throw std::string("Could not initialise InputHandler");
 	}
-	initGame();
 }
 
 void Game::initGame() {

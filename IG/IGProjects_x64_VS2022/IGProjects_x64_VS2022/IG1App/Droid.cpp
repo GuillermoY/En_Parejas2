@@ -1,7 +1,4 @@
 #include "Droid.h"
-#include "Cone.h"
-#include "SphereWithTexture.h"
-#include "Disk.h"
 
 #include <glm/gtc/constants.hpp>
 
@@ -15,7 +12,8 @@ Droid::Droid(GLdouble radius)
 {
     ballTexture= new Texture();
     ballTexture->load("../assets/images/container.jpg");
-    addEntity(new SphereWithTexture(radius, 150.0, 150.0, ballTexture));
+    ballBody = new SphereWithTexture(radius, 150.0, 150.0, ballTexture);
+    addEntity(ballBody);
 
     GLdouble halfRad = radius / 2;
     GLdouble quartRad = radius / 4;
@@ -37,24 +35,29 @@ Droid::Droid(GLdouble radius)
     Cone* cannonL = new Cone(halfRad, tenRad, tenRad, radius);
     cannonL->setModelMat(translate(cannonL->modelMat(), glm::vec3(-seventRad, radius+quartRad, halfRad)));
     cannonL->setModelMat(rotate(cannonL->modelMat(), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
-    cannonL->setColor({ 0,0.8,0,1 });
+    cannonL->setMaterial(Material(glm::vec3{ 0,0.8,0 }));
     addEntity(cannonL);
 
     Disk* cannonLTap = new Disk(tenRad, 0.0, radius);
     cannonLTap->setModelMat(translate(cannonLTap->modelMat(), glm::vec3(-seventRad, radius + quartRad, radius)));
     cannonLTap->setModelMat(rotate(cannonLTap->modelMat(), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
-    cannonLTap->setColor({ 0,0.8,0,1 });
+    cannonLTap->setMaterial(Material(glm::vec4{ 0,0.8,0,1 }));
     addEntity(cannonLTap);
 
     Disk* cannonRTap = new Disk(tenRad, 0.0, radius);
     cannonRTap->setModelMat(translate(cannonRTap->modelMat(), glm::vec3(seventRad, radius + quartRad, radius)));
     cannonRTap->setModelMat(rotate(cannonRTap->modelMat(), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
-    cannonRTap->setColor({ 0,0.8,0,1 });
+    cannonRTap->setMaterial(Material(glm::vec4{ 0,0.8,0,1 }));
     addEntity(cannonRTap);
 
     Cone* cannonR = new Cone(halfRad, tenRad, tenRad, radius);
     cannonR->setModelMat(translate(cannonR->modelMat(), glm::vec3(seventRad, radius + quartRad, halfRad)));
     cannonR->setModelMat(rotate(cannonR->modelMat(), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
-    cannonR->setColor({ 0,0.8,0,1 });
+    cannonR->setMaterial(Material(glm::vec4{ 0,0.8,0,1 }));
     addEntity(cannonR);
+}
+
+void Droid::rotateBall(float degrees)
+{
+    ballBody->setModelMat(rotate(ballBody->modelMat(), glm::radians(degrees), glm::vec3(1.0f, 0.0f, 0.0f)));
 }
