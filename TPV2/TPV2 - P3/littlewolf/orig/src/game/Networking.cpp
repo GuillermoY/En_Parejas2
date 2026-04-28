@@ -140,10 +140,6 @@ void Networking::update() {
 	}
 }
 
-// ----------------------------------------------------------------
-// Envío
-// ----------------------------------------------------------------
-
 void Networking::send_state(float x, float y, float vx, float vy,
 	float theta, float prev_x, float prev_y) {
 	PlayerStateMsg m;
@@ -246,7 +242,6 @@ void Networking::handle_shoot(const ShootMsg& m) {
 }
 
 void Networking::handle_dead(const DeadMsg& m) {
-	std::cout << "handle_dead called for id=" << (int)m.clientId << std::endl;
 	Game::Instance()->get_littlewolf().kill_player(m.clientId);
 }
 

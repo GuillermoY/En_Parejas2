@@ -35,10 +35,6 @@ LittleWolf::LittleWolf() :
 LittleWolf::~LittleWolf() {
 }
 
-// ================================================================
-// init / load  — sin cambios respecto al original
-// ================================================================
-
 void LittleWolf::init(SDL_Window* window, SDL_Renderer* render) {
 	SDL_Texture* const texture = SDL_CreateTexture(sdlutils().renderer(),
 		SDL_PIXELFORMAT_XRGB8888, SDL_TEXTUREACCESS_STREAMING, _yres,
@@ -155,10 +151,6 @@ void LittleWolf::load(std::string filename) {
 					_map.user_walling[i][j];
 }
 
-// ================================================================
-// addPlayer — igual que el original, guarda _local_id
-// ================================================================
-
 bool LittleWolf::addPlayer(Uint8 id) {
 	assert(id < _max_player);
 
@@ -200,10 +192,6 @@ bool LittleWolf::addPlayer(Uint8 id) {
 
 	return true;
 }
-
-// ================================================================
-// update — igual que el original pero sin N/R, con red
-// ================================================================
 
 void LittleWolf::update() {
 	auto& ihdlr = ih();
@@ -249,10 +237,6 @@ void LittleWolf::update() {
 		check_restart_condition();
 }
 
-// ================================================================
-// render — igual que el original + cuenta atrás
-// ================================================================
-
 void LittleWolf::render() {
 	if (_players[_curr_player_id].state == DEAD)
 		render_upper_view();
@@ -275,9 +259,6 @@ void LittleWolf::render() {
 	}
 }
 
-// ================================================================
-// cast — igual que el original
-// ================================================================
 
 LittleWolf::Hit LittleWolf::cast(const Point where, Point direction,
 	Uint8** walling, bool ignore_players, bool ignore_deads) {
@@ -304,10 +285,6 @@ LittleWolf::Hit LittleWolf::cast(const Point where, Point direction,
 	}
 }
 
-// ================================================================
-// project — igual que el original (con 0.05 * corrected.x)
-// ================================================================
-
 LittleWolf::Wall LittleWolf::project(const int xres, const int yres,
 	const float focal, const Point corrected) {
 	const float normal = corrected.x < 1e-2f ? 1e-2f : 0.05 * corrected.x;
@@ -317,9 +294,6 @@ LittleWolf::Wall LittleWolf::project(const int xres, const int yres,
 	return { top > yres ? yres : top, bot < 0 ? 0 : bot, size };
 }
 
-// ================================================================
-// render_map — igual que el original
-// ================================================================
 
 void LittleWolf::render_map(Player& p) {
 	const Display display = lock(_gpu);
@@ -372,9 +346,6 @@ void LittleWolf::render_map(Player& p) {
 		NULL, SDL_FLIP_NONE);
 }
 
-// ================================================================
-// render_upper_view — igual que el original
-// ================================================================
 
 void LittleWolf::render_upper_view() {
 	const Display display = lock(_gpu);
@@ -417,9 +388,6 @@ void LittleWolf::render_upper_view() {
 	}
 }
 
-// ================================================================
-// render_players_info — igual que el original + "(you)"
-// ================================================================
 
 void LittleWolf::render_players_info() {
 	uint_fast16_t y = 0;
@@ -444,10 +412,6 @@ void LittleWolf::render_players_info() {
 	}
 }
 
-// ================================================================
-// render_countdown
-// ================================================================
-
 void LittleWolf::render_countdown() {
 	std::string msg = "The game will restart in "
 		+ std::to_string((int)_countdown) + " seconds";
@@ -458,10 +422,6 @@ void LittleWolf::render_countdown() {
 	int y = (sdlutils().height() - t.height()) / 2;
 	t.render(x, y);
 }
-
-// ================================================================
-// move — igual que el original
-// ================================================================
 
 void LittleWolf::move(Player& p) {
 	auto& ihdlr = ih();
@@ -513,9 +473,6 @@ void LittleWolf::move(Player& p) {
 	}
 }
 
-// ================================================================
-// spin — igual que el original
-// ================================================================
 
 void LittleWolf::spin(Player& p) {
 	auto& ihdlr = ih();
@@ -526,9 +483,6 @@ void LittleWolf::spin(Player& p) {
 		p.theta += d;
 }
 
-// ================================================================
-// shoot — envía al servidor, el master decide
-// ================================================================
 
 bool LittleWolf::shoot(Player& p) {
 	auto& ihdlr = ih();
@@ -541,10 +495,6 @@ bool LittleWolf::shoot(Player& p) {
 	}
 	return false;
 }
-
-// ================================================================
-// switchToNextPlayer / bringAllToLife / muteSound — sin cambios
-// ================================================================
 
 void LittleWolf::switchToNextPlayer() {
 	int j = (_curr_player_id + 1) % _max_player;
@@ -566,10 +516,6 @@ void LittleWolf::muteSound() {
 	SoundManager::Instance()->stop_all(0);
 	SoundManager::Instance()->set_master_volume(gain);
 }
-
-// ================================================================
-// Métodos de red
-// ================================================================
 
 void LittleWolf::send_my_info() {
 	Player& p = _players[_local_id];
@@ -672,7 +618,6 @@ void LittleWolf::process_shoot(Uint8 shooter_id, float x, float y, float theta) 
 }
 
 void LittleWolf::kill_player(Uint8 id) {
-	std::cout << "kill_player called for id=" << (int)id << std::endl;
 	if (_players[id].state == ALIVE) {
 		_players[id].state = DEAD;
 		sdlutils().soundEffects().at("pain").play("se");
@@ -712,7 +657,7 @@ void LittleWolf::reset_player(Uint8 id, float x, float y, float theta) {
 void LittleWolf::set_countdown(Uint8 seconds) {
 	_countdown = seconds;
 	_in_countdown = (seconds > 0);
-	_last_countdown_t = sdlutils().currRealTime();
+	_last_countdown_t = sdlutils().virtualTimer().currTime();
 }
 
 void LittleWolf::check_restart_condition() {
