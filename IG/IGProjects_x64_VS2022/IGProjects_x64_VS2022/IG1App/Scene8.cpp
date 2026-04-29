@@ -19,14 +19,14 @@ Scene8::init()
 	planet->setMaterial(Material(glm::vec3{0.67,0.13,0.28}));
 	gObjects.push_back(planet);
 
-	droid = new Droid(20);
+	mDroid = new Droid(20);
 	//gObjects.push_back(droid);
 
 	// AP 70: Nodo Ficticio
-	inventedNode = new CompoundEntity();
-	inventedNode->addEntity(droid);
-	gObjects.push_back(inventedNode);
-	droid->setModelMat(translate(mat4(1.0f), glm::vec3(0.0f, 170, 0.0f)));
+	mInventedNode = new CompoundEntity();
+	mInventedNode->addEntity(mDroid);
+	gObjects.push_back(mInventedNode);
+	mDroid->setModelMat(translate(mat4(1.0f), glm::vec3(0.0f, 170, 0.0f)));
 
 	//inventedNodeBall = new CompoundEntity();
 	////inventedNodeBall->addEntity(droid->getFirst());
@@ -34,27 +34,37 @@ Scene8::init()
 	//droid->setModelMat(translate(mat4(1.0f), glm::vec3(0.0f, 170, 0.0f)));
 	
 	// AP 77:
-	PosLight* posLight = new PosLight();
-	posLight->setPosition(glm::vec3(0.0f, 170, 0.0f));
-	//posLight->setDirection(glm::vec3(-1.0f, -1.0f, -1.0f));
-	posLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
-	posLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
-	posLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
-	posLight->setEnabled(true);
-	gLights.push_back(posLight);
+	mPosLight = new PosLight();
+	mPosLight->setPosition(glm::vec3(0.0f, 170, 0.0f));
+	mPosLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
+	mPosLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
+	mPosLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
+	mPosLight->setEnabled(true);
+	gLights.push_back(mPosLight);
+
+	// AP 78:
+	mSpotLight = new SpotLight();
+	mSpotLight->setPosition(glm::vec3(0.0f, 0.0f, 170.0f));
+	mSpotLight->setDirection(glm::vec3(-1.0f, -1.0f, -1.0f));
+	mSpotLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
+	mSpotLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
+	mSpotLight->setSpec(glm::vec3(0.0f, 1.0f, 0.0f));
+	mSpotLight->setEnabled(true);
+	mSpotLight->setCutoff(12.0f, 17.0f);
+	gLights.push_back(mSpotLight);
 }
 
 void
 Scene8::rotates()
 {
-	inventedNode->setModelMat(rotate(inventedNode->modelMat(), glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f)));
+	mInventedNode->setModelMat(rotate(mInventedNode->modelMat(), glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f)));
 }
 
 void
 Scene8::orbit()
 {
-	inventedNode->setModelMat(rotate(inventedNode->modelMat(), glm::radians(5.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
-	droid->rotateBall(20.0f);
+	mInventedNode->setModelMat(rotate(mInventedNode->modelMat(), glm::radians(5.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+	mDroid->rotateBall(20.0f);
 }
 
 void

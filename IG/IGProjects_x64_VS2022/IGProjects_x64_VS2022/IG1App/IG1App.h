@@ -105,6 +105,10 @@ protected:
 	//AP 52
 	size_t mLeftScene = 4;
 	size_t mRightScene = 2;
+
+	// AP 77
+	Scene8* mPlanetScene;
+	size_t mNumPlanetScene=8;
 };
 
 inline Viewport const&

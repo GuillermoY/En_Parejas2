@@ -23,7 +23,7 @@ Scene0::init()
 	//Apartado 73
 	//Amarillo
 	Sphere* sphereY = new Sphere(100.0, 100.0, 100.0);
-	sphereY->setMaterial(Material(glm::vec3(1.0f, 0.84f, 0.0f)));
+	sphereY->setMaterial(Material(glm::vec3(1.0f, 0.84f, 0.0f),0));
 	sphereY->setModelMat(translate(sphereY->modelMat(), glm::vec3(-150.0, 0, 0)));
 	gObjects.push_back(sphereY); // Añadimos círculo amarillo estándar
 

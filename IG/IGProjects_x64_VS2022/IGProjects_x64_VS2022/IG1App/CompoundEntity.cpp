@@ -9,12 +9,35 @@ CompoundEntity::~CompoundEntity()
 		delete el;
 
 	gObjects.clear();
+
+	for (Texture* el : gTextures)
+		delete el;
+
+	gTextures.clear();
+
+	for (Light* el : gLights)
+		delete el;
+
+	gLights.clear();
 }
 
 void
 CompoundEntity::addEntity(Abs_Entity* ae)
 {
 	gObjects.push_back(ae);
+}
+
+void
+CompoundEntity::addTexture(Texture* tex)
+{
+	gTextures.push_back(tex);
+}
+
+// AP 79
+void
+CompoundEntity::addLight(Light* el)
+{
+	gLights.push_back(el);
 }
 
 void CompoundEntity::update()
@@ -31,6 +54,8 @@ CompoundEntity::render(const glm::mat4& modelViewMat) const
 	// Renderizar entidades hijas
 	for (Abs_Entity* el : gObjects)
 		el->render(aMat);
+
+	uploadLights(aMat);
 }
 
 void
@@ -47,5 +72,20 @@ CompoundEntity::unload()
 	{
 		obj->unload();
 		//delete obj;
+	}
+
+	for (Light* obj : gLights)
+	{
+		obj->unload(*Shader::get("simple_light"));
+	}
+}
+
+// AP 79
+void
+CompoundEntity::uploadLights(glm::mat4& aMat) const
+{
+	for (Light* el : gLights)
+	{
+		el->upload(*Shader::get("light"), aMat);
 	}
 }

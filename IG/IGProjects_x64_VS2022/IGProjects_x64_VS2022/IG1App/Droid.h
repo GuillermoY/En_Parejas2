@@ -6,6 +6,7 @@
 #include "Cone.h"
 #include "SphereWithTexture.h"
 #include "Disk.h"
+#include "Light.h"
 #include <vector>
 
 #include <GL/glew.h>
@@ -15,10 +16,11 @@ class Droid : public CompoundEntity {
 private:
     Texture* ballTexture;
     SphereWithTexture* ballBody;
+    SpotLight* mDroidLight;
 public:
     Droid(GLdouble radius);
     void rotateBall(float degrees);
-    ~Droid();
+    void alterLight() { mDroidLight->setEnabled(!mDroidLight->enabled()); };
 };
 
 #endif

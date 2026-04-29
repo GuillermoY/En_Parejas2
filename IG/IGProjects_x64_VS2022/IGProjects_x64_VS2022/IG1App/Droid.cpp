@@ -2,16 +2,11 @@
 
 #include <glm/gtc/constants.hpp>
 
-Droid::~Droid()
-{
-    delete ballTexture;
-    ballTexture = nullptr;
-}
-
 Droid::Droid(GLdouble radius)
 {
     ballTexture= new Texture();
     ballTexture->load("../assets/images/container.jpg");
+    addTexture(ballTexture);
     ballBody = new SphereWithTexture(radius, 150.0, 150.0, ballTexture);
     addEntity(ballBody);
 
@@ -55,6 +50,17 @@ Droid::Droid(GLdouble radius)
     cannonR->setModelMat(rotate(cannonR->modelMat(), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
     cannonR->setMaterial(Material(glm::vec4{ 0,0.8,0,1 }));
     addEntity(cannonR);
+
+    // AP 79
+    mDroidLight = new SpotLight();
+    mDroidLight->setPosition(glm::vec3(0.0f, -radius, 0.0f));
+    mDroidLight->setDirection(glm::vec3(0.0f, -1.0f, 0.0f));
+    mDroidLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
+    mDroidLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
+    mDroidLight->setSpec(glm::vec3(0.0f, 1.0f, 0.0f));
+    mDroidLight->setCutoff(12.0f, 17.0f);
+    mDroidLight->setEnabled(true);
+    addLight(mDroidLight);
 }
 
 void Droid::rotateBall(float degrees)

@@ -14,13 +14,18 @@
 class Scene8 : public Scene
 {
 protected:
-    CompoundEntity* inventedNode;
-    Droid* droid;
+    CompoundEntity* mInventedNode;
+    Droid* mDroid;
+    PosLight* mPosLight;
+    SpotLight* mSpotLight;
 public:
     void init() override;
 
     void rotates() override;
     void orbit() override;
+    void alterPosLight() { mPosLight->setEnabled(!mPosLight->enabled()); };
+    void alterSpotLight() { mSpotLight->setEnabled(!mSpotLight->enabled()); };
+    void alterDroidLight() { if (mDroid) mDroid->alterLight(); };
 
     void setGL() override;
 };

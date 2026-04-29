@@ -89,7 +89,8 @@ IG1App::init()
 	// AP 68
 	mScenes.push_back(new Scene7);
 	// AP 69
-	mScenes.push_back(new Scene8);
+	mPlanetScene = new Scene8();
+	mScenes.push_back(mPlanetScene);
 	// AP 71
 	mScenes.push_back(new Scene9);
 
@@ -303,7 +304,7 @@ IG1App::key(unsigned int key)
 			break;
 		case 'N':
 			ColorMaterialEntity::toggleShowNormals();
-			need_redisplay = true;
+			display();
 			break;
 		case 'f':
 			mScenes[mCurrentScene]->rotates();
@@ -313,6 +314,19 @@ IG1App::key(unsigned int key)
 			break;
 		case 'r':
 			mScenes[mCurrentScene]->toggleLight();
+			break;
+		case 't':
+			if (mCurrentScene == mNumPlanetScene)
+				mPlanetScene->alterPosLight();
+			break;
+		case 'y':
+			if (mCurrentScene == mNumPlanetScene)
+				mPlanetScene->alterSpotLight();
+			break;
+		case 'h':
+			if (mCurrentScene == mNumPlanetScene)
+				mPlanetScene->alterDroidLight();
+			display();
 			break;
 		default:
 			if (key >= '0' && key <= '9') {
