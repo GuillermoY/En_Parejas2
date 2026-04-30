@@ -22,14 +22,14 @@ Scene0::init()
 
 	//Apartado 73
 	//Amarillo
-	Sphere* sphereY = new Sphere(100.0, 100.0, 100.0);
-	sphereY->setMaterial(Material(glm::vec3(1.0f, 0.84f, 0.0f),1));
+	Sphere* sphereY = new Sphere(100.0, 100.0, 40.0);
+	sphereY->setMaterial(Material(glm::vec3(1.0f, 1.0f, 0.0f),1));
 	sphereY->setModelMat(translate(sphereY->modelMat(), glm::vec3(-150.0, 0, 0)));
 	gObjects.push_back(sphereY); // Añadimos círculo amarillo estándar
 
 	//Dorado
-	Sphere* sphereG = new Sphere(100.0, 100.0, 100.0);
-	sphereG->setMaterial(Material(glm::vec3(1.0f, 0.84f, 0.0f),0));
+	Sphere* sphereG = new Sphere(100.0, 100.0, 40.0);
+	sphereG->setMaterial(Material(glm::vec3(1.0f, 0.84f, 0.0f)));
 	sphereG->setModelMat(translate(sphereG->modelMat(), glm::vec3(150.0, 0, 0)));
 	gObjects.push_back(sphereG); // Añadimos círculo amarillo estándar
 

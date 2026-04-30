@@ -89,8 +89,7 @@ IG1App::init()
 	// AP 68
 	mScenes.push_back(new Scene7);
 	// AP 69
-	mPlanetScene = new Scene8();
-	mScenes.push_back(mPlanetScene);
+	mScenes.push_back(new Scene8);
 	// AP 71
 	mScenes.push_back(new Scene9);
 
@@ -316,16 +315,13 @@ IG1App::key(unsigned int key)
 			mScenes[mCurrentScene]->toggleLight();
 			break;
 		case 't':
-			if (mCurrentScene == mNumPlanetScene)
-				mPlanetScene->alterPosLight();
+			mScenes[mCurrentScene]->handleTKey();
 			break;
 		case 'y':
-			if (mCurrentScene == mNumPlanetScene)
-				mPlanetScene->alterSpotLight();
+			mScenes[mCurrentScene]->handleYKey();
 			break;
 		case 'h':
-			if (mCurrentScene == mNumPlanetScene)
-				mPlanetScene->alterDroidLight();
+			mScenes[mCurrentScene]->handleHKey();
 			display();
 			break;
 		default:
