@@ -236,6 +236,11 @@ void Networking::handle_player_info(const PlayerInfoMsg& m) {
 }
 
 void Networking::handle_shoot(const ShootMsg& m) {
+	float vol = Game::Instance()->get_littlewolf()
+		.volume_from_distance_pos(m.x, m.y);
+	SoundManager::Instance()->set_track_volume("se", vol);
+	sdlutils().soundEffects().at("gunshot").play("se");
+
 	if (!is_master()) return;
 	Game::Instance()->get_littlewolf().process_shoot(
 		m.clientId, m.x, m.y, m.theta);

@@ -131,6 +131,7 @@ public:
 	int get_xres() { return _xres; }
 	int get_yres() { return _yres; }
 
+
 	// ---- Métodos de red ----
 
 	// Envía el estado del jugador local
@@ -158,6 +159,9 @@ public:
 
 	// Recibe la cuenta atrás del master
 	void set_countdown(Uint8 seconds);
+
+	float volume_from_distance(Uint8 id);
+	float volume_from_distance_pos(float x, float y);
 
 private:
 

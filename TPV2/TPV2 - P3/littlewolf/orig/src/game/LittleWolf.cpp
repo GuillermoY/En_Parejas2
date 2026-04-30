@@ -488,7 +488,6 @@ bool LittleWolf::shoot(Player& p) {
 	auto& ihdlr = ih();
 
 	if (ihdlr.keyDownEvent() && ihdlr.isKeyDown(SDL_SCANCODE_SPACE)) {
-		sdlutils().soundEffects().at("gunshot").play("se");
 		Game::Instance()->get_networking().send_shoot(
 			p.where.x, p.where.y, p.theta);
 		return true;
@@ -620,8 +619,11 @@ void LittleWolf::process_shoot(Uint8 shooter_id, float x, float y, float theta) 
 void LittleWolf::kill_player(Uint8 id) {
 	if (_players[id].state == ALIVE) {
 		_players[id].state = DEAD;
+
+		float vol = volume_from_distance(id);
+		SoundManager::Instance()->set_track_volume("se", vol);
 		sdlutils().soundEffects().at("pain").play("se");
-		// Si somos el muerto, pasamos a vista aérea
+
 		if (id == _local_id)
 			_curr_player_id = _local_id;
 	}
@@ -658,6 +660,23 @@ void LittleWolf::set_countdown(Uint8 seconds) {
 	_countdown = seconds;
 	_in_countdown = (seconds > 0);
 	_last_countdown_t = sdlutils().virtualTimer().currTime();
+}
+
+float LittleWolf::volume_from_distance(Uint8 id) {
+	if (_players[id].state == NOT_USED) return 0.f;
+	if (_players[_local_id].state == NOT_USED) return 1.f;
+	Point a = _players[_local_id].where;
+	Point b = _players[id].where;
+	float dist = mag(sub(a, b));
+	return std::clamp(1.0f - (dist / (_shoot_distace * 2.5f)), 0.0f, 1.0f);
+}
+
+float LittleWolf::volume_from_distance_pos(float x, float y) {
+	if (_players[_local_id].state == NOT_USED) return 1.f;
+	Point a = _players[_local_id].where;
+	Point b = { x, y };
+	float dist = mag(sub(a, b));
+	return std::clamp(1.0f - (dist / (_shoot_distace * 2.5f)), 0.0f, 1.0f);
 }
 
 void LittleWolf::check_restart_condition() {
