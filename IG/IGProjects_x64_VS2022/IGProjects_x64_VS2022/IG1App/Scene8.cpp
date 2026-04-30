@@ -14,10 +14,6 @@ Scene8::init()
 	// Textures
 
 	// Graphics objects (entities) of the scene
-	Sphere* planet = new Sphere(150, 150.0, 150.0);
-		
-	planet->setMaterial(Material(glm::vec3{0.67,0.13,0.28}));
-	gObjects.push_back(planet);
 
 	mDroid = new Droid(20);
 	//gObjects.push_back(droid);
@@ -52,6 +48,11 @@ Scene8::init()
 	mSpotLight->setEnabled(true);
 	mSpotLight->setCutoff(12.0f, 17.0f);
 	gLights.push_back(mSpotLight);
+
+	Sphere* planet = new Sphere(150, 150.0, 150.0);
+		
+	planet->setMaterial(Material(glm::vec3{0.67,0.13,0.28}));
+	gObjects.push_back(planet);
 }
 
 void
