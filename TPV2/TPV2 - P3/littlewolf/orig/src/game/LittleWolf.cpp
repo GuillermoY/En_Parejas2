@@ -182,7 +182,8 @@ bool LittleWolf::addPlayer(Uint8 id) {
 			0.9f, //
 			0.0f, //
 			ALIVE,//
-			1.0f
+			1.0f,
+			0
 	};
 
 	_map.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(id);
@@ -401,7 +402,8 @@ void LittleWolf::render_players_info() {
 				+ std::to_string(i)
 				+ (i == _local_id ? " (you)" : "")
 				+ (s == DEAD ? " (dead)" : "")
-				+ " HP:" + std::to_string((int)(_players[i].health * 100)) + "%";
+				+ " HP:" + std::to_string((int)(_players[i].health * 100)) + "%"
+				+ " Score:" + std::to_string(_players[i].score);
 
 			Texture info(sdlutils().renderer(), msg,
 				sdlutils().fonts().at("MFR24"),
@@ -578,7 +580,7 @@ void LittleWolf::update_player_info(Uint8 id, float x, float y,
 	if (_players[id].state == NOT_USED && state != NOT_USED) {
 		// Nuevo jugador remoto
 		Player p = { id, viewport(0.8f), { x, y }, { vx, vy },
-					 2.0f, 0.9f, theta, state };
+					 2.0f, 0.9f, theta, state, 1.0f, 0 };
 		_map.walling[(int)y][(int)x] = player_to_tile(id);
 		_players[id] = p;
 	}
@@ -614,21 +616,21 @@ void LittleWolf::process_shoot(Uint8 shooter_id, float x, float y, float theta) 
 				// Más daño cuanto más cerca: 100% a distancia 0, menos a más distancia
 				float damage = std::clamp(
 					1.0f - (dist / _shoot_distace), 0.1f, 1.0f);
-				Game::Instance()->get_networking().send_damage(victim, damage);
+				Game::Instance()->get_networking().send_damage(victim, damage, shooter_id);
 				return;
 			}
 		}
 	}
 }
 
-void LittleWolf::apply_damage(Uint8 id, float damage) {
+void LittleWolf::apply_damage(Uint8 id, float damage, Uint8 shooter_id) {
 	if (_players[id].state != ALIVE) return;
 	_players[id].health -= damage;
 	if (_players[id].health <= 0.f) {
 		_players[id].health = 0.f;
-		// Solo el master envía send_dead
 		if (Game::Instance()->get_networking().is_master()) {
 			Game::Instance()->get_networking().send_dead(id);
+			Game::Instance()->get_networking().send_score(shooter_id);
 		}
 	}
 }
@@ -739,4 +741,9 @@ void LittleWolf::launch_restart() {
 		reset_player(i, x, y, theta);
 		Game::Instance()->get_networking().send_restart_player(i, x, y, theta);
 	}
+}
+
+void LittleWolf::add_score(Uint8 id) {
+	if (_players[id].state == NOT_USED) return;
+	_players[id].score++;
 }

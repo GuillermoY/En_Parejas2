@@ -121,8 +121,8 @@ void Networking::update() {
 		case _DAMAGE:
 			DamageMsg md;
 			md.deserialize(buf.data);
-			Game::Instance()->get_littlewolf().apply_damage(md.clientId, md.damage);
-			break;
+			Game::Instance()->get_littlewolf().apply_damage(md.clientId, md.damage, md.shooter);
+		break;
 		case _DEAD:
 			m5.deserialize(buf.data);
 			handle_dead(m5);
@@ -139,6 +139,11 @@ void Networking::update() {
 			m7.deserialize(buf.data);
 			handle_countdown(m7);
 			break;
+		case _SCORE:
+			ScoreMsg ms;
+			ms.deserialize(buf.data);
+			Game::Instance()->get_littlewolf().add_score(ms.clientId);
+		break;
 		default:
 			break;
 		}
@@ -213,6 +218,22 @@ void Networking::send_countdown(Uint8 seconds) {
 	SDLNetUtils::serialized_send(m, _sock);
 }
 
+void Networking::send_damage(Uint8 id, float damage, Uint8 shooter) {
+	DamageMsg m;
+	m.type = _DAMAGE;
+	m.clientId = id;
+	m.damage = damage;
+	m.shooter = shooter;
+	SDLNetUtils::serialized_send(m, _sock);
+}
+
+void Networking::send_score(Uint8 id) {
+	ScoreMsg m;
+	m.type = _SCORE;
+	m.clientId = id;
+	SDLNetUtils::serialized_send(m, _sock);
+}
+
 // ----------------------------------------------------------------
 // Recepción
 // ----------------------------------------------------------------
@@ -251,14 +272,6 @@ void Networking::handle_shoot(const ShootMsg& m) {
 		m.clientId, m.x, m.y, m.theta);
 }
 
-void Networking::send_damage(Uint8 id, float damage) {
-	DamageMsg m;
-	m.type = _DAMAGE;
-	m.clientId = id;
-	m.damage = damage;
-	SDLNetUtils::serialized_send(m, _sock);
-}
-
 void Networking::handle_dead(const DeadMsg& m) {
 	Game::Instance()->get_littlewolf().kill_player(m.clientId);
 }
@@ -278,3 +291,4 @@ void Networking::handle_restart_player(const RestartPlayerMsg& m) {
 void Networking::handle_countdown(const CountdownMsg& m) {
 	Game::Instance()->get_littlewolf().set_countdown(m.seconds);
 }
+

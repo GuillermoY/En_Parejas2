@@ -40,7 +40,9 @@ public:
 	// Master envía cuenta atrás
 	void send_countdown(Uint8 seconds);
 
-	void send_damage(Uint8 id, float damage);
+	void send_damage(Uint8 id, float damage, Uint8 shooter);
+
+	void send_score(Uint8 id);
 
 private:
 	void handle_new_client(Uint8 id);
