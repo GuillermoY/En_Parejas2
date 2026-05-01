@@ -118,6 +118,11 @@ void Networking::update() {
 			m4.deserialize(buf.data);
 			handle_shoot(m4);
 			break;
+		case _DAMAGE:
+			DamageMsg md;
+			md.deserialize(buf.data);
+			Game::Instance()->get_littlewolf().apply_damage(md.clientId, md.damage);
+			break;
 		case _DEAD:
 			m5.deserialize(buf.data);
 			handle_dead(m5);
@@ -244,6 +249,14 @@ void Networking::handle_shoot(const ShootMsg& m) {
 	if (!is_master()) return;
 	Game::Instance()->get_littlewolf().process_shoot(
 		m.clientId, m.x, m.y, m.theta);
+}
+
+void Networking::send_damage(Uint8 id, float damage) {
+	DamageMsg m;
+	m.type = _DAMAGE;
+	m.clientId = id;
+	m.damage = damage;
+	SDLNetUtils::serialized_send(m, _sock);
 }
 
 void Networking::handle_dead(const DeadMsg& m) {

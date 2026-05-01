@@ -40,6 +40,8 @@ public:
 	// Master envía cuenta atrás
 	void send_countdown(Uint8 seconds);
 
+	void send_damage(Uint8 id, float damage);
+
 private:
 	void handle_new_client(Uint8 id);
 	void handle_disconnect(Uint8 id);

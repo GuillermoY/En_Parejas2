@@ -53,7 +53,8 @@ enum MsgId : Uint8 {
 	_DEAD,                // master avisa quién murió
 	_CORRECTION,          // master corrige posición inválida
 	_RESTART,             // master envía posición de reset para un jugador
-	_RESTART_COUNTDOWN    // master envía cuenta atrás
+	_RESTART_COUNTDOWN,   // master envía cuenta atrás
+	_DAMAGE				  // master avisa de daño recibido
 };
 
 struct Msg {
@@ -96,6 +97,11 @@ struct ShootMsg : MsgWithClientId {
 	float x, y;
 	float theta;
 	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), x, y, theta)
+};
+
+struct DamageMsg : MsgWithClientId {
+	float damage;
+	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this), damage)
 };
 
 // Master avisa quién murió

@@ -75,6 +75,7 @@ public:
 		float acceleration;  // acceleration
 		float theta;         // rotation (in rad)
 		PlayerState state;   // the state
+		float health;		 // vida del jugador, va de 0 a 1
 	};
 
 	// Representing a map, the user_walling is the walling provided by the user, and
@@ -159,6 +160,8 @@ public:
 
 	// Recibe la cuenta atrás del master
 	void set_countdown(Uint8 seconds);
+
+	void apply_damage(Uint8 id, float damage);
 
 	float volume_from_distance(Uint8 id);
 	float volume_from_distance_pos(float x, float y);

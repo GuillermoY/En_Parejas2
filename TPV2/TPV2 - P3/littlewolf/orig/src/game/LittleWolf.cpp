@@ -181,7 +181,8 @@ bool LittleWolf::addPlayer(Uint8 id) {
 			2.0f, //
 			0.9f, //
 			0.0f, //
-			ALIVE //
+			ALIVE,//
+			1.0f
 	};
 
 	_map.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(id);
@@ -195,7 +196,7 @@ bool LittleWolf::addPlayer(Uint8 id) {
 
 void LittleWolf::update() {
 	auto& ihdlr = ih();
-	auto currTime = sdlutils().currRealTime();
+	auto currTime = sdlutils().virtualTimer().currRealTime();
 
 	if (ihdlr.keyDownEvent()) {
 		if (ihdlr.isKeyDown(SDL_SCANCODE_T)) _show_help = !_show_help;
@@ -399,7 +400,8 @@ void LittleWolf::render_players_info() {
 			std::string msg = (i == _curr_player_id ? "*P" : " P")
 				+ std::to_string(i)
 				+ (i == _local_id ? " (you)" : "")
-				+ (s == DEAD ? " (dead)" : "");
+				+ (s == DEAD ? " (dead)" : "")
+				+ " HP:" + std::to_string((int)(_players[i].health * 100)) + "%";
 
 			Texture info(sdlutils().renderer(), msg,
 				sdlutils().fonts().at("MFR24"),
@@ -594,7 +596,6 @@ void LittleWolf::update_player_info(Uint8 id, float x, float y,
 }
 
 void LittleWolf::process_shoot(Uint8 shooter_id, float x, float y, float theta) {
-	// El master simula el disparo igual que el original
 	Point where = { x, y };
 	Line fov = viewport(0.8f);
 
@@ -609,9 +610,25 @@ void LittleWolf::process_shoot(Uint8 shooter_id, float x, float y, float theta) 
 		if (hit.tile > 9 && mag(sub(where, hit.where)) < _shoot_distace) {
 			Uint8 victim = tile_to_player(hit.tile);
 			if (victim != shooter_id) {
-				Game::Instance()->get_networking().send_dead(victim);
+				float dist = mag(sub(where, hit.where));
+				// Más daño cuanto más cerca: 100% a distancia 0, menos a más distancia
+				float damage = std::clamp(
+					1.0f - (dist / _shoot_distace), 0.1f, 1.0f);
+				Game::Instance()->get_networking().send_damage(victim, damage);
 				return;
 			}
+		}
+	}
+}
+
+void LittleWolf::apply_damage(Uint8 id, float damage) {
+	if (_players[id].state != ALIVE) return;
+	_players[id].health -= damage;
+	if (_players[id].health <= 0.f) {
+		_players[id].health = 0.f;
+		// Solo el master envía send_dead
+		if (Game::Instance()->get_networking().is_master()) {
+			Game::Instance()->get_networking().send_dead(id);
 		}
 	}
 }
@@ -650,6 +667,7 @@ void LittleWolf::reset_player(Uint8 id, float x, float y, float theta) {
 	p.velocity = { 0.f, 0.f };
 	p.theta = theta;
 	p.state = ALIVE;
+	p.health = 1.0f;
 	_map.walling[(int)y][(int)x] = player_to_tile(id);
 
 	if (id == _local_id)
@@ -659,7 +677,7 @@ void LittleWolf::reset_player(Uint8 id, float x, float y, float theta) {
 void LittleWolf::set_countdown(Uint8 seconds) {
 	_countdown = seconds;
 	_in_countdown = (seconds > 0);
-	_last_countdown_t = sdlutils().virtualTimer().currTime();
+	_last_countdown_t = sdlutils().virtualTimer().currRealTime();
 }
 
 float LittleWolf::volume_from_distance(Uint8 id) {
@@ -694,7 +712,7 @@ void LittleWolf::check_restart_condition() {
 	if (total > 1 && alive < 2) {
 		_in_countdown = true;
 		_countdown = 5;
-		_last_countdown_t = sdlutils().currRealTime();
+		_last_countdown_t = sdlutils().virtualTimer().currRealTime();
 		Game::Instance()->get_networking().send_countdown(_countdown);
 	}
 }
