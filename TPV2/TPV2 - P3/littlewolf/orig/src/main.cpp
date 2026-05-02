@@ -19,9 +19,14 @@ void server(Uint16 port) {
 
 void client(const char* host, Uint16 port, const char* map) {
 	try {
+		std::string name;
+		std::cout << "Enter your name (max 10 chars): ";
+		std::cin >> name;
+		if (name.size() > 10) name = name.substr(0, 10);
+
 		if (Game::Init()) {
 			Game& g = *Game::Instance();
-			if (g.init_game(host, port, map)) {
+			if (g.init_game(host, port, map, name.c_str())) {
 				g.start();
 			}
 			Game::Release();

@@ -15,6 +15,17 @@
 
 #include "../sdlutils/InputHandler.h"
 
+inline void string_to_chars(const std::string& str, char c_str[11]) {
+	auto i = 0u;
+	for (; i < str.size() && i < 10; i++) c_str[i] = str[i];
+	c_str[i] = 0;
+}
+
+inline void chars_to_string(std::string& str, char c_str[11]) {
+	c_str[10] = 0;
+	str = std::string(c_str);
+}
+
 class LittleWolf {
 public:
 
@@ -77,6 +88,7 @@ public:
 		PlayerState state;   // the state
 		float health;		 // vida del jugador, va de 0 a 1
 		int score;			 // marcador del jugador
+		char name[11];		 // nombre jugador
 	};
 
 	// Representing a map, the user_walling is the walling provided by the user, and
@@ -119,7 +131,7 @@ public:
 	void load(std::string filename);
 
 	// add a new player with identifier <id>, returns false if the id is already occupied
-	bool addPlayer(Uint8 id);
+	bool addPlayer(Uint8 id, const char* name);
 
 	// initialize the SDL window information
 	void init(SDL_Window* window, SDL_Renderer* render);
@@ -145,7 +157,7 @@ public:
 
 	// Recibe info completa de un jugador remoto (al conectar)
 	void update_player_info(Uint8 id, float x, float y, float vx, float vy,
-		float theta, PlayerState state);
+		float theta, PlayerState state, const char* name);
 
 	// Master: procesa un disparo remoto y decide si da
 	void process_shoot(Uint8 shooter_id, float x, float y, float theta);

@@ -1,6 +1,7 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #include "Networking.h"
+#include "LittleWolf.h"
 
 #include <cassert>
 #include <iostream>
@@ -163,7 +164,7 @@ void Networking::send_state(float x, float y, float vx, float vy,
 }
 
 void Networking::send_my_info(float x, float y, float vx, float vy,
-	float theta, Uint8 state) {
+	float theta, Uint8 state, const char* name) {
 	PlayerInfoMsg m;
 	m.type = _PLAYER_INFO;
 	m.clientId = _clientId;
@@ -171,6 +172,9 @@ void Networking::send_my_info(float x, float y, float vx, float vy,
 	m.vx = vx; m.vy = vy;
 	m.theta = theta;
 	m.state = state;
+	std::string nameStr(name);
+	string_to_chars(nameStr, m.name);
+	m.name[10] = 0;
 	SDLNetUtils::serialized_send(m, _sock);
 }
 
@@ -258,7 +262,8 @@ void Networking::handle_player_info(const PlayerInfoMsg& m) {
 	if (m.clientId == _clientId) return;
 	Game::Instance()->get_littlewolf().update_player_info(
 		m.clientId, m.x, m.y, m.vx, m.vy, m.theta,
-		static_cast<LittleWolf::PlayerState>(m.state));
+		static_cast<LittleWolf::PlayerState>(m.state),
+		m.name);
 }
 
 void Networking::handle_shoot(const ShootMsg& m) {
@@ -277,10 +282,10 @@ void Networking::handle_dead(const DeadMsg& m) {
 }
 
 void Networking::handle_correction(const PlayerInfoMsg& m) {
-	// Corrección de posición enviada por el master
 	Game::Instance()->get_littlewolf().update_player_info(
 		m.clientId, m.x, m.y, m.vx, m.vy, m.theta,
-		static_cast<LittleWolf::PlayerState>(m.state));
+		static_cast<LittleWolf::PlayerState>(m.state),
+		m.name);
 }
 
 void Networking::handle_restart_player(const RestartPlayerMsg& m) {

@@ -12,7 +12,7 @@ class Game : public Singleton<Game> {
 	friend Singleton<Game>;
 
 public:
-	bool init_game(const char* host, Uint16 port, const char* map);
+	bool init_game(const char* host, Uint16 port, const char* map, const char* name);
 	void start();
 
 	LittleWolf& get_littlewolf() { return *_lw; }

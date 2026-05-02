@@ -85,12 +85,11 @@ struct PlayerStateMsg : MsgWithClientId {
 
 // Info completa (estado incluido) — al conectar o corrección de posición
 struct PlayerInfoMsg : MsgWithClientId {
-	float x, y;
-	float vx, vy;
-	float theta;
+	float x, y, vx, vy, theta;
 	Uint8 state;
+	char  name[11];
 	_IMPL_SERIALIZATION_(*static_cast<MsgWithClientId*>(this),
-		x, y, vx, vy, theta, state)
+		x, y, vx, vy, theta, state, name)
 };
 
 // Jugador dispara — master valida

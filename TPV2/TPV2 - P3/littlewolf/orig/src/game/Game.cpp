@@ -26,7 +26,7 @@ bool Game::init() {
 	return true; // requerido por Singleton
 }
 
-bool Game::init_game(const char* host, Uint16 port, const char* map) {
+bool Game::init_game(const char* host, Uint16 port, const char* map, const char* name) {
 
 	// Crear LittleWolf y cargar mapa primero (necesitamos la resolución)
 	_lw = new LittleWolf();
@@ -57,7 +57,7 @@ bool Game::init_game(const char* host, Uint16 port, const char* map) {
 
 	// Inicializar renderer y añadir jugador local
 	_lw->init(sdlutils().window(), sdlutils().renderer());
-	_lw->addPlayer(_net->get_client_id());
+	_lw->addPlayer(_net->get_client_id(), name);
 
 	// Enviar info al resto
 	_lw->send_my_info();

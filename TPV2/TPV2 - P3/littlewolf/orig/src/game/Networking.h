@@ -22,7 +22,7 @@ public:
 
 	// Envía info completa del jugador local
 	void send_my_info(float x, float y, float vx, float vy,
-		float theta, Uint8 state);
+		float theta, Uint8 state, const char* name);
 
 	// Jugador dispara
 	void send_shoot(float x, float y, float theta);

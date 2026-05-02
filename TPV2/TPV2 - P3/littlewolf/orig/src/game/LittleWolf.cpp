@@ -151,7 +151,7 @@ void LittleWolf::load(std::string filename) {
 					_map.user_walling[i][j];
 }
 
-bool LittleWolf::addPlayer(Uint8 id) {
+bool LittleWolf::addPlayer(Uint8 id, const char* name) {
 	assert(id < _max_player);
 
 	if (_players[id].state != NOT_USED)
@@ -185,6 +185,9 @@ bool LittleWolf::addPlayer(Uint8 id) {
 			1.0f,
 			0
 	};
+	std::string nameStr(name);
+	string_to_chars(nameStr, p.name);
+	p.name[10] = 0;
 
 	_map.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(id);
 	_players[id] = p;
@@ -399,7 +402,8 @@ void LittleWolf::render_players_info() {
 
 		if (s != NOT_USED) {
 			std::string msg = (i == _curr_player_id ? "*P" : " P")
-				+ std::to_string(i)
+				//+ std::to_string(i)
+				+ std::string(_players[i].name)
 				+ (i == _local_id ? " (you)" : "")
 				+ (s == DEAD ? " (dead)" : "")
 				+ " HP:" + std::to_string((int)(_players[i].health * 100)) + "%"
@@ -526,7 +530,8 @@ void LittleWolf::send_my_info() {
 		p.where.x, p.where.y,
 		p.velocity.x, p.velocity.y,
 		p.theta,
-		static_cast<Uint8>(p.state));
+		static_cast<Uint8>(p.state),
+		p.name);
 }
 
 void LittleWolf::update_player_state(Uint8 id, float x, float y,
@@ -575,12 +580,15 @@ void LittleWolf::update_player_state(Uint8 id, float x, float y,
 }
 
 void LittleWolf::update_player_info(Uint8 id, float x, float y,
-	float vx, float vy, float theta, PlayerState state) {
+	float vx, float vy, float theta, PlayerState state, const char* name) {
 
 	if (_players[id].state == NOT_USED && state != NOT_USED) {
 		// Nuevo jugador remoto
 		Player p = { id, viewport(0.8f), { x, y }, { vx, vy },
 					 2.0f, 0.9f, theta, state, 1.0f, 0 };
+		p.name[0] = 0;
+		if (name != nullptr)
+			string_to_chars(std::string(name), p.name);
 		_map.walling[(int)y][(int)x] = player_to_tile(id);
 		_players[id] = p;
 	}
@@ -594,6 +602,8 @@ void LittleWolf::update_player_info(Uint8 id, float x, float y,
 		_map.walling[py1][px1] = player_to_tile(id);
 		p.where = { x, y }; p.velocity = { vx, vy };
 		p.theta = theta;    p.state = state;
+		if (name != nullptr)
+			string_to_chars(std::string(name), p.name);
 	}
 }
 
