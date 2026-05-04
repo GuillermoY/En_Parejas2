@@ -17,7 +17,10 @@ Scene8::init()
 
 	mDroid = new Droid(20);
 	//gObjects.push_back(droid);
+	Sphere* planet = new Sphere(150, 150.0, 150.0);
 
+	planet->setMaterial(Material(glm::vec3{ 0.67,0.13,0.28 }));
+	gObjects.push_back(planet);
 	// AP 70: Nodo Ficticio
 	mInventedNode = new CompoundEntity();
 	mInventedNode->addEntity(mDroid);
@@ -39,20 +42,15 @@ Scene8::init()
 	gLights.push_back(mPosLight);
 
 	// AP 78:
-	mSpotLight = new SpotLight();
-	mSpotLight->setPosition(glm::vec3(0.0f, 0.0f, 170.0f));
-	mSpotLight->setDirection(glm::vec3(-1.0f, -1.0f, -1.0f));
+	mSpotLight = new SpotLight(glm::vec3{ 0, 0, 200 }, 0);
+	mSpotLight->setDirection(glm::vec3(0.0f, 0.0f, -1.0f));
 	mSpotLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
 	mSpotLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
 	mSpotLight->setSpec(glm::vec3(0.0f, 1.0f, 0.0f));
 	mSpotLight->setEnabled(true);
 	mSpotLight->setCutoff(12.0f, 17.0f);
 	gLights.push_back(mSpotLight);
-
-	Sphere* planet = new Sphere(150, 150.0, 150.0);
-		
-	planet->setMaterial(Material(glm::vec3{0.67,0.13,0.28}));
-	gObjects.push_back(planet);
+	//gLights.push_back(mDroid->getLight()); 
 }
 
 void

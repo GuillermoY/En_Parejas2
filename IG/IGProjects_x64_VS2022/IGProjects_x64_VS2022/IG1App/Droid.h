@@ -21,6 +21,7 @@ public:
     Droid(GLdouble radius);
     void rotateBall(float degrees);
     void alterLight() { mDroidLight->setEnabled(!mDroidLight->enabled()); };
+    SpotLight* getLight() { return mDroidLight; };
 };
 
 #endif

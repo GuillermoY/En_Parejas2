@@ -95,7 +95,7 @@ Scene::unload()
 		obj->unload();
 
 	for (Light* obj : gLights)
-		obj->unload(*Shader::get("simple_light"));
+		obj->unload(*Shader::get("light"));
 
 	resetGL();
 }

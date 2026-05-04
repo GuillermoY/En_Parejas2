@@ -52,13 +52,12 @@ Droid::Droid(GLdouble radius)
     addEntity(cannonR);
 
     // AP 79
-    mDroidLight = new SpotLight();
-    mDroidLight->setPosition(glm::vec3(0.0f, -radius, 0.0f));
+    mDroidLight = new SpotLight(glm::vec3 { 0, radius, 0 }, 1);
     mDroidLight->setDirection(glm::vec3(0.0f, -1.0f, 0.0f));
     mDroidLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
     mDroidLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
     mDroidLight->setSpec(glm::vec3(0.0f, 1.0f, 0.0f));
-    mDroidLight->setCutoff(12.0f, 17.0f);
+    mDroidLight->setCutoff(16.0f, 17.0f);
     mDroidLight->setEnabled(true);
     addLight(mDroidLight);
 }

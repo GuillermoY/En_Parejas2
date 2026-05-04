@@ -89,7 +89,7 @@ public:
 protected:
 	// Atributos del foco
 	glm::vec3 direction = {0, 0, -1};
-	GLfloat cutoff = 60, outerCutoff = 120;
+	GLfloat cutoff = 0.91, outerCutoff = 0.82;
 };
 
 #endif //_H_Light_H_

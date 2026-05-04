@@ -10,6 +10,7 @@ ColorMaterialEntity::ColorMaterialEntity(glm::vec3 color)
 {
     // AP 73:
     setMaterial(Material(color));
+    mShader = Shader::get("light");
     // AP 58: usamos el shader simple_light en lugar de simple
     //mShader = Shader::get("simple_light");
 }

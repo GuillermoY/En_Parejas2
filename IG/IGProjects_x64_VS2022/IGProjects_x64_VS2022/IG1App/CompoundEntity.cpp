@@ -52,10 +52,11 @@ CompoundEntity::render(const glm::mat4& modelViewMat) const
 {
 	mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
 	// Renderizar entidades hijas
+	uploadLights(aMat);
+	
 	for (Abs_Entity* el : gObjects)
 		el->render(aMat);
 
-	uploadLights(aMat);
 }
 
 void
@@ -76,7 +77,7 @@ CompoundEntity::unload()
 
 	for (Light* obj : gLights)
 	{
-		obj->unload(*Shader::get("simple_light"));
+		obj->unload(*Shader::get("light"));
 	}
 }
 
@@ -84,8 +85,10 @@ CompoundEntity::unload()
 void
 CompoundEntity::uploadLights(glm::mat4& aMat) const
 {
+	Shader* shader = Shader::get("light");
+	//shader->use();
 	for (Light* el : gLights)
 	{
-		el->upload(*Shader::get("light"), aMat);
+		el->upload(*shader, aMat);
 	}
 }
