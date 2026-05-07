@@ -16,22 +16,18 @@ Scene8::init()
 	// Graphics objects (entities) of the scene
 
 	mDroid = new Droid(20);
-	//gObjects.push_back(droid);
-	Sphere* planet = new Sphere(150, 150.0, 150.0);
-
-	planet->setMaterial(Material(glm::vec3{ 0.67,0.13,0.28 }));
-	gObjects.push_back(planet);
 	// AP 70: Nodo Ficticio
 	mInventedNode = new CompoundEntity();
 	mInventedNode->addEntity(mDroid);
 	gObjects.push_back(mInventedNode);
 	mDroid->setModelMat(translate(mat4(1.0f), glm::vec3(0.0f, 170, 0.0f)));
-
-	//inventedNodeBall = new CompoundEntity();
-	////inventedNodeBall->addEntity(droid->getFirst());
-	//gObjects.push_back(inventedNodeBall);
-	//droid->setModelMat(translate(mat4(1.0f), glm::vec3(0.0f, 170, 0.0f)));
 	
+	// Render planet after Droid
+	Sphere* planet = new Sphere(150, 150.0, 150.0);
+
+	planet->setMaterial(Material(glm::vec3{ 0.67,0.13,0.28 }));
+	gObjects.push_back(planet);
+
 	// AP 77:
 	mPosLight = new PosLight();
 	mPosLight->setPosition(glm::vec3(0.0f, 170, 0.0f));
@@ -51,6 +47,30 @@ Scene8::init()
 	mSpotLight->setCutoff(12.0f, 17.0f);
 	gLights.push_back(mSpotLight);
 	//gLights.push_back(mDroid->getLight()); 
+}
+
+void Scene8::handleKeys(unsigned int key)
+{
+	switch (key) {
+	case 't':
+		alterPosLight();
+		break;
+	case 'h':
+		alterDroidLight();
+		break;
+	case 'y':
+		alterSpotLight();
+		break;
+	case 'f':
+		rotates();
+		break;
+	case 'g':
+		orbit();
+		break;
+	default:
+		Scene::handleKeys(key);
+		break;
+	}
 }
 
 void

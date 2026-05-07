@@ -46,9 +46,7 @@ public:
 	void uploadLights(Camera const& cam) const;
 	void toggleLight() { if (dirLight) dirLight->setEnabled(!dirLight->enabled()); }// AP 76: controla si se muestra la luz 
 
-	virtual void handleTKey() {};
-	virtual void handleYKey() {};
-	virtual void handleHKey() {};
+	virtual void handleKeys(unsigned int key);
 
 protected:
 	void destroy();

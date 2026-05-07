@@ -95,7 +95,11 @@ Scene::unload()
 		obj->unload();
 
 	for (Light* obj : gLights)
-		obj->unload(*Shader::get("light"));
+	{
+		Shader* shader = Shader::get("light");
+		shader->use();
+		obj->unload(*shader);
+	}
 
 	resetGL();
 }
@@ -149,4 +153,16 @@ Scene::uploadLights(Camera const& cam) const
 	//glm::vec4 lightDirWorld(-1.0f, -1.5f, -1.25f, 0.0f);
 	//glm::vec4 lightDirView = normalize(cam.viewMat() * lightDirWorld);
 	//shader->setUniform("lightDir", lightDirView);
+}
+
+void 
+Scene::handleKeys(unsigned int key)
+{
+	switch (key) {
+	case 'r':
+		toggleLight();
+		break;
+	default:
+		break;
+	}
 }

@@ -14,6 +14,7 @@ class CompoundEntity : public Abs_Entity
 {
 private:
 	std::vector<Abs_Entity*> gObjects;
+	std::vector<Abs_Entity*> gTrsObjects;
 	std::vector<Texture*> gTextures;
 	std::vector<Light*> gLights;
 public:
@@ -21,6 +22,7 @@ public:
 	~CompoundEntity();
 
 	void addEntity(Abs_Entity* ae);
+	void addTrsEntity(Abs_Entity* ae);
 	void addTexture(Texture* mat);
 	void addLight(Light* el);
 

@@ -305,29 +305,15 @@ IG1App::key(unsigned int key)
 			ColorMaterialEntity::toggleShowNormals();
 			display();
 			break;
-		case 'f':
-			mScenes[mCurrentScene]->rotates();
-			break;
-		case 'g':
-			mScenes[mCurrentScene]->orbit();
-			break;
-		case 'r':
-			mScenes[mCurrentScene]->toggleLight();
-			break;
-		case 't':
-			mScenes[mCurrentScene]->handleTKey();
-			break;
-		case 'y':
-			mScenes[mCurrentScene]->handleYKey();
-			break;
-		case 'h':
-			mScenes[mCurrentScene]->handleHKey();
-			display();
-			break;
 		default:
 			if (key >= '0' && key <= '9') {
 				if (changeScene(key - '0')) break;
 				cout << "[NOTE] There is no scene " << char(key) << ".\n";
+			}
+			else
+			{
+				mScenes[mCurrentScene]->handleKeys(key);
+				display();
 			}
 			need_redisplay = false;
 			break;

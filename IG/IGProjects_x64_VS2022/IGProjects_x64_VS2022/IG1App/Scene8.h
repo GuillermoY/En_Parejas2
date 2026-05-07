@@ -28,8 +28,6 @@ public:
     void alterDroidLight() { if (mDroid) mDroid->alterLight(); };
 
     void setGL() override;
-    void handleTKey() override { alterPosLight(); };
-    void handleYKey() override { alterSpotLight(); };
-    void handleHKey() override { alterDroidLight(); };
+    void handleKeys(unsigned int key) override;
 };
 #endif

@@ -10,6 +10,11 @@ CompoundEntity::~CompoundEntity()
 
 	gObjects.clear();
 
+	for (Abs_Entity* el : gTrsObjects)
+		delete el;
+
+	gTrsObjects.clear();
+
 	for (Texture* el : gTextures)
 		delete el;
 
@@ -25,6 +30,12 @@ void
 CompoundEntity::addEntity(Abs_Entity* ae)
 {
 	gObjects.push_back(ae);
+}
+
+void
+CompoundEntity::addTrsEntity(Abs_Entity* ae)
+{
+	gTrsObjects.push_back(ae);
 }
 
 void
@@ -45,6 +56,9 @@ void CompoundEntity::update()
 	for (Abs_Entity* obj : gObjects) {
 		obj->update();
 	}
+	for (Abs_Entity* obj : gTrsObjects) {
+		obj->update();
+	}
 }
 
 void
@@ -57,12 +71,23 @@ CompoundEntity::render(const glm::mat4& modelViewMat) const
 	for (Abs_Entity* el : gObjects)
 		el->render(aMat);
 
+	glDepthMask(GL_FALSE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	for (Abs_Entity* el : gTrsObjects)
+		el->render(aMat);
+
+	glDepthMask(GL_TRUE);
+	glDisable(GL_BLEND);
 }
 
 void
 CompoundEntity::load()
 {
 	for (Abs_Entity* obj : gObjects)
+		obj->load();
+
+	for (Abs_Entity* obj : gTrsObjects)
 		obj->load();
 }
 
@@ -75,9 +100,17 @@ CompoundEntity::unload()
 		//delete obj;
 	}
 
+	for (Abs_Entity* obj : gTrsObjects)
+	{
+		obj->unload();
+		//delete obj;
+	}
+
 	for (Light* obj : gLights)
 	{
-		obj->unload(*Shader::get("light"));
+		Shader* shader = Shader::get("light");
+		shader->use();
+		obj->unload(*shader);
 	}
 }
 
@@ -86,6 +119,7 @@ void
 CompoundEntity::uploadLights(glm::mat4& aMat) const
 {
 	Shader* shader = Shader::get("light");
+	shader->use();
 	//shader->use();
 	for (Light* el : gLights)
 	{
