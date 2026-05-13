@@ -6,6 +6,7 @@
 #include "../ecs/EntityManager.h"
 #include "GameState.h"
 #include "messages_defs.h"
+#include "../utils/Singleton.h"
 
 #include "Newgamestate.h"
 #include "Newroundstate.h"
@@ -18,7 +19,7 @@ public:
 	Game();
 	virtual ~Game();
 
-	static void init();
+	void init();
 	void initGame();
 	void start();
 
