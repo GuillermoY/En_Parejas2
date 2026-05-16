@@ -7,6 +7,7 @@ int main(int, char**) {
 	try {
 		Game g;
 		g.init();
+		g.initGame();
 		g.start();
 	}
 	catch (const std::string& e) {
