@@ -1,4 +1,4 @@
-#ifndef _H_Mesh_H_
+﻿#ifndef _H_Mesh_H_
 #define _H_Mesh_H_
 
 #include <GL/glew.h>
@@ -11,7 +11,7 @@ class Mesh
 public:
 	static Mesh* createRGBAxes(GLdouble l); // creates a new 3D-RGB axes mesh
 
-	static Mesh* generateRegularPolygon(GLuint num, GLdouble r); // Apartado 2: Crea un pol�gono regular dividiendo una circunferencia de radio r en secciones num
+	static Mesh* generateRegularPolygon(GLuint num, GLdouble r); // Apartado 2: Crea un polígono regular dividiendo una circunferencia de radio r en secciones num
 	static Mesh* generateRGBTriangle(GLdouble h); // Crea 
 	static Mesh* generateRectangle(GLdouble w, GLdouble h);
 	static Mesh* generateRGBRectangle(GLdouble w, GLdouble h);

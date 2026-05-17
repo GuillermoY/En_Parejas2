@@ -1,5 +1,14 @@
 #include "IG1App.h"
-
+#include "Scene1.h"
+#include "Scene2.h"
+#include "Scene3.h"
+#include "Scene4.h"
+#include "Scene5.h"
+#include "Scene6.h"
+#include "Scene7.h"
+#include "Scene8.h"
+#include "Scene9.h"
+#include "Scene0.h"
 #include <iostream>
 
 using namespace std;
@@ -303,19 +312,19 @@ IG1App::key(unsigned int key)
 			break;
 		case 'N':
 			ColorMaterialEntity::toggleShowNormals();
-			display();
+			need_redisplay = true;
 			break;
 		default:
 			if (key >= '0' && key <= '9') {
 				if (changeScene(key - '0')) break;
 				cout << "[NOTE] There is no scene " << char(key) << ".\n";
+				need_redisplay = false;
 			}
 			else
 			{
 				mScenes[mCurrentScene]->handleKeys(key);
-				display();
+				need_redisplay = true;
 			}
-			need_redisplay = false;
 			break;
 	} // switch
 

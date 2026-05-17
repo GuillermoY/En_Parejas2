@@ -1,4 +1,4 @@
-#include "Scene.h"
+ï»¿#include "Scene.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -11,7 +11,7 @@ Scene::Scene()
 }
 
 void
-Scene::init() // En el apartado 6 he hecho una clase vacía con solo los ejes
+Scene::init() // En el apartado 6 he hecho una clase vacÃ­a con solo los ejes
 {
 	setGL(); // OpenGL settings
 
@@ -21,8 +21,9 @@ Scene::init() // En el apartado 6 he hecho una clase vacía con solo los ejes
 
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
+
 	dirLight = new DirLight();
-	dirLight->setDirection(normalize(glm::vec3(-1.0f, -1.0f, -1.0f)));
+	dirLight->setDirection(glm::vec3(-1.0f, -1.0f, -1.0f));
 	dirLight->setAmb(glm::vec3(0.25f, 0.25f, 0.25f));
 	dirLight->setDiff(glm::vec3(0.6f, 0.6f, 0.6f));
 	dirLight->setSpec(glm::vec3(0.0f, 0.2f, 0.0f));
@@ -94,10 +95,10 @@ Scene::unload()
 	for (Abs_Entity* obj : gTrsObjects)
 		obj->unload();
 
+	Shader* shader = Shader::get("light");
+	shader->use();
 	for (Light* obj : gLights)
 	{
-		Shader* shader = Shader::get("light");
-		shader->use();
 		obj->unload(*shader);
 	}
 

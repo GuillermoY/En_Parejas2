@@ -1,4 +1,4 @@
-#include "Star3D.h"
+﻿#include "Star3D.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -9,7 +9,7 @@ Star3D::Star3D(GLdouble re, GLuint np, GLdouble h, Texture* tex, glm::vec3 iniPo
 {
 	mMesh = Mesh::generateStar3DTexCor(re, np, h);
 
-	mPosition = iniPos; // posici�n inicial
+	mPosition = iniPos; // posición inicial
 }
 
 void Star3D::render(const glm::mat4& modelViewMat) const // Ap: 27

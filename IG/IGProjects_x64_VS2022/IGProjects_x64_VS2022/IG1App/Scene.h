@@ -1,4 +1,4 @@
-#ifndef _H_Scene_H_
+﻿#ifndef _H_Scene_H_
 #define _H_Scene_H_
 
 #include <GL/glew.h>
@@ -30,7 +30,7 @@ public:
 	Scene& operator=(const Scene& s) = delete; // no copy assignment
 
 	virtual void init();
-	virtual void update(); // Apartado 12.2: M�todo virtual update que llama al update de cada objeto.
+	virtual void update(); // Apartado 12.2: Método virtual update que llama al update de cada objeto.
 
 	void render(Camera const& cam) const;
 

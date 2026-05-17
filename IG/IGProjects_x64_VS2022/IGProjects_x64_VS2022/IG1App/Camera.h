@@ -1,4 +1,4 @@
-#ifndef _H_Camera_H_
+Ôªø#ifndef _H_Camera_H_
 #define _H_Camera_H_
 
 #include <GL/glew.h>
@@ -38,19 +38,19 @@ public:
 
 	//AP 40
 	void moveLR(GLfloat cs); // Izquierda / Derecha [a,d]
-	void moveFB(GLfloat cs); // Alante / Atr·s [w,s]
+	void moveFB(GLfloat cs); // Alante / Atr√°s [w,s]
 	void moveUD(GLfloat cs); // Arriba / Abajo [W,S]
 
 	//AP 41
-	void changePrj(); // cambia proyecciÛn ortogonal a perspectiva
+	void changePrj(); // cambia proyecci√≥n ortogonal a perspectiva
 
 	//AP 45 Inclinaciones
 	void pitchReal(GLfloat cs); // Arriba / Abajo [flecha arriba, abajo] 
 	void yawReal(GLfloat cs); // Left / Right [<- , -> si no tiene la tecla "Control"]
-	void rollReal(GLfloat cs); // Alante / Atr·s [<- , -> si tiene la tecla "Control"]
+	void rollReal(GLfloat cs); // Alante / Atr√°s [<- , -> si tiene la tecla "Control"]
 
 	//AP 46
-	void orbit(GLdouble incAng, GLdouble incY); // Desplaza la c·mara a lo largo de una circunferencia 
+	void orbit(GLdouble incAng, GLdouble incY); // Desplaza la c√°mara a lo largo de una circunferencia 
 												// Situada sobre el plano XZ
 
 	//AP 48
@@ -66,7 +66,7 @@ protected:
 	void setAxes();
 
 	//Ap 46
-	GLdouble mRadio, mAng; // Atributos para gestionar radio y ·ngulo de la circunferencia
+	GLdouble mRadio, mAng; // Atributos para gestionar radio y √°ngulo de la circunferencia
 
 
 	glm::mat4 mViewMat;   // view matrix = inverse of modeling matrix

@@ -1,4 +1,4 @@
-#ifndef INDEXMESH_H
+ï»¿#ifndef INDEXMESH_H
 #define INDEXMESH_H
 
 #include <GL/glew.h>
@@ -21,8 +21,8 @@ public:
 	void load() override;
 	void unload() override;
 	static IndexMesh* generateByRevolution(const std::vector<glm::vec2>& profile, GLuint nSamples, GLfloat angleMax = 2 * std::numbers::pi);
-	static IndexMesh* generateIndexedBox8(GLdouble l); // AP 61: 8 vértices compartidos
-	static IndexMesh* generateIndexedBox(GLdouble l);  // AP 64: 24 vértices, normales correctas
+	static IndexMesh* generateIndexedBox8(GLdouble l); // AP 61: 8 vÃ©rtices compartidos
+	static IndexMesh* generateIndexedBox(GLdouble l);  // AP 64: 24 vÃ©rtices, normales correctas
 
 	static IndexMesh* generateSphere(GLdouble radius, GLuint nParallel, GLuint nMeridians); //AP 67:
 

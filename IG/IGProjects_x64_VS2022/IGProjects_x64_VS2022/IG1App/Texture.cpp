@@ -1,4 +1,4 @@
-#include "Texture.h"
+﻿#include "Texture.h"
 
 #include "Image.h"
 
@@ -83,7 +83,7 @@ Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer) // Ap 34
 	mWidth = width;
 	mHeight = height;
 
-	// Copiamos la textura de dimensiones deadas por los par�metros
+	// Copiamos la textura de dimensiones deadas por los parámetros
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mWidth, mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 	glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, mWidth, mHeight);
 

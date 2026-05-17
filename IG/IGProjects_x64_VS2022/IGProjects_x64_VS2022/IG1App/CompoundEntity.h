@@ -1,4 +1,4 @@
-#ifndef COMPOUNDENTITY_H
+﻿#ifndef COMPOUNDENTITY_H
 #define COMPOUNDENTITY_H
 
 #include "Entity.h"
@@ -8,7 +8,7 @@
 
 /// <summary>
 /// AP 66: Define la destructora ~CompoundEntity() y, sobre todo, reescribe convenientemente los
-/// m�todos render, update, load y unload.
+/// métodos render, update, load y unload.
 /// </summary>
 class CompoundEntity : public Abs_Entity
 {
