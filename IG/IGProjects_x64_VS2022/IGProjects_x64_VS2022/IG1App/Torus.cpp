@@ -1,4 +1,4 @@
-#include "Torus.h"
+ï»¿#include "Torus.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <numbers>
@@ -9,8 +9,8 @@ using namespace glm;
 /// </summary>
 /// <param name="R"> radio rosquilla </param>
 /// <param name="r"> Grosor rosquilla </param>
-/// <param name="nPoints"> número de muestras </param>
-/// <param name="nSamples"> número de puntos con que se aproxima a la circunferencia </param>
+/// <param name="nPoints"> nÃºmero de muestras </param>
+/// <param name="nSamples"> nÃºmero de puntos con que se aproxima a la circunferencia </param>
 Torus::Torus(GLdouble R, GLdouble r, GLuint nPoints, GLuint nSamples)
 {
     std::vector<vec2> profile;

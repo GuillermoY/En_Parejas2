@@ -13,9 +13,13 @@
 class EntityWithMaterial : public Abs_Entity
 {
 public:
+	static bool mShowNormals;
 	EntityWithMaterial();
 	void setMaterial(const Material& m) { mMaterial = m; };
 	void render(const glm::mat4& modelViewMat) const override;
+
+	// AP 63: activa/desactiva la visualización de normales (tecla N)
+	static void toggleShowNormals() { mShowNormals = !mShowNormals; }
 protected:
 	Material mMaterial;
 };

@@ -1,4 +1,4 @@
-#include "Scene0.h"
+Ôªø#include "Scene0.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -25,7 +25,7 @@ Scene0::init()
 	Sphere* sphereY = new Sphere(100.0, 100.0, 40.0);
 	sphereY->setMaterial(Material(glm::vec3(1.0f, 1.0f, 0.0f),5));
 	sphereY->setModelMat(translate(sphereY->modelMat(), glm::vec3(200.0, 0.0f, 0.0)));
-	gObjects.push_back(sphereY); // AÒadimos cÌrculo amarillo est·ndar
+	gObjects.push_back(sphereY); // A√±adimos c√≠rculo amarillo est√°ndar
 
 	//Dorado
 	Sphere* sphereG = new Sphere(100.0, 100.0, 40.0);
@@ -36,6 +36,6 @@ Scene0::init()
 	gold.setExp(51.2f);
 	sphereG->setMaterial(gold);
 	sphereG->setModelMat(translate(sphereG->modelMat(), glm::vec3(0.0, 0, 200.0)));
-	gObjects.push_back(sphereG); // AÒadimos cÌrculo amarillo est·ndar
+	gObjects.push_back(sphereG); // A√±adimos c√≠rculo amarillo est√°ndar
 
 }

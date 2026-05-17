@@ -1,13 +1,13 @@
-#ifndef INDEXEDBOX_H
-#define INDEXEDBOX_H_H
+ï»¿#ifndef INDEXEDBOX_H
+#define INDEXEDBOX_H
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "IndexMesh.h"
 #include "ColorMaterialEntity.h"
 
 /// <summary>
-/// AP 62: Cubo indexado que hereda de ColorMaterialEntity para tener iluminación.
-/// AP 64: Usa generateIndexedBox (24 vértices) en lugar de generateIndexedBox8 (8 vértices)
+/// AP 62: Cubo indexado que hereda de ColorMaterialEntity para tener iluminaciÃ³n.
+/// AP 64: Usa generateIndexedBox (24 vÃ©rtices) en lugar de generateIndexedBox8 (8 vÃ©rtices)
 ///        para tener normales correctas por cara.
 /// </summary>
 class IndexedBox : public ColorMaterialEntity

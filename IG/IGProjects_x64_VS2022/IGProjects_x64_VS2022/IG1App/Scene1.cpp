@@ -1,4 +1,4 @@
-#include "Scene1.h"
+Ôªø#include "Scene1.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -15,6 +15,6 @@ Scene1::init()
 	// Graphics objects (entities) of the scene
 
 	//Apartado 5
-	gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f))); // AÒadimos circunferencia amarilla (red, green, blue, alpha), lados 360
-	gObjects.push_back(new RegularPolygon(6, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // AÒadimos hex·gono magenta (red, green, blue, alpha), lados 6
+	gObjects.push_back(new RegularPolygon(360, 200.0, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f))); // A√±adimos circunferencia amarilla (red, green, blue, alpha), lados 360
+	gObjects.push_back(new RegularPolygon(6, 200.0, glm::vec4(1.0f, 0.0f, 1.0f, 1.0f))); // A√±adimos hex√°gono magenta (red, green, blue, alpha), lados 6
 }

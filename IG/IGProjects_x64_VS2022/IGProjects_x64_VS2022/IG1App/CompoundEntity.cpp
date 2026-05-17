@@ -106,10 +106,10 @@ CompoundEntity::unload()
 		//delete obj;
 	}
 
+	Shader* shader = Shader::get("light");
+	shader->use();
 	for (Light* obj : gLights)
 	{
-		Shader* shader = Shader::get("light");
-		shader->use();
 		obj->unload(*shader);
 	}
 }

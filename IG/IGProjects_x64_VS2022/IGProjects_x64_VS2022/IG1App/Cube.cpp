@@ -1,4 +1,4 @@
-#include "Cube.h"
+Ôªø#include "Cube.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -7,7 +7,7 @@ using namespace glm;
 /// <summary>
 /// Apartado 9:
 /// Redefinimos el render para RGBRectangle, que, usando culling, hacemos que la trasera
-/// est· rellena y la delantera use lÌneas
+/// est√° rellena y la delantera use l√≠neas
 /// </summary>
 Cube::Cube(GLdouble l)
 {

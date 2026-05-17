@@ -28,7 +28,7 @@ SnowMan::SnowMan(GLdouble radius)
     // hat
     CompoundEntity* hat = new CompoundEntity();
 
-    Disk* bottomHat = new Disk(radius, 0.0, radius);
+    Disk* bottomHat = new Disk(0.0, radius, radius);
     bottomHat->setModelMat(translate(bottomHat->modelMat(), glm::vec3(0.0f, radius*1.4+radius/1.6, 0.0f)));
     bottomHat->setModelMat(rotate(bottomHat->modelMat(), glm::radians(180.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
     hat->addEntity(bottomHat);
@@ -40,7 +40,7 @@ SnowMan::SnowMan(GLdouble radius)
     hat->addEntity(bodyHat);
     bodyHat->setMaterial(Material(glm::vec4{ 0,0,1,1 }));
 
-    Disk* topHat = new Disk(headRad, 0.0, radius);
+    Disk* topHat = new Disk(0.0, headRad, radius);
     topHat->setModelMat(translate(topHat->modelMat(), glm::vec3(0.0f, radius * 1.6 + headRad + quartRad, 0.0f)));
     topHat->setModelMat(rotate(topHat->modelMat(), glm::radians(180.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
     hat->addEntity(topHat);
@@ -67,6 +67,4 @@ SnowMan::SnowMan(GLdouble radius)
     eyeR->setModelMat(rotate(eyeR->modelMat(), glm::radians(15.0f), glm::vec3(-1.0f, 0.0f, -1.0f)));
     addEntity(eyeR);
     eyeR->setMaterial(Material(glm::vec4{ 0,0.5,0.5,1 }));
-
-
 }

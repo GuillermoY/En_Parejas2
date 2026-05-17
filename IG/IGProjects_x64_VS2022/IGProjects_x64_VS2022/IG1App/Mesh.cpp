@@ -1,4 +1,4 @@
-#include "Mesh.h"
+Ôªø#include "Mesh.h"
 
 using namespace std;
 using namespace glm;
@@ -58,8 +58,8 @@ Mesh::load()
 			glGenBuffers(1, &mTCO);
 			glBindBuffer(GL_ARRAY_BUFFER, mTCO);
 			glBufferData(GL_ARRAY_BUFFER, vTexCoords.size() * sizeof(vec2), vTexCoords.data(), GL_STATIC_DRAW);
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vec2), nullptr); // 0 vÈrtices, 1 es el color, 2 textura				 (x,y)
-			glEnableVertexAttribArray(2); // 0 vÈrtices, 1 es el color, 2 textura
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vec2), nullptr); // 0 v√©rtices, 1 es el color, 2 textura				 (x,y)
+			glEnableVertexAttribArray(2); // 0 v√©rtices, 1 es el color, 2 textura
 		}
 
 		//AP 57
@@ -67,8 +67,8 @@ Mesh::load()
 			glGenBuffers(1, &mNBO);
 			glBindBuffer(GL_ARRAY_BUFFER, mNBO);
 			glBufferData(GL_ARRAY_BUFFER, vNormals.size() * sizeof(vec3), vNormals.data(), GL_STATIC_DRAW);
-			glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(vec3), nullptr); // 0 vÈrtices, 1 es el color, 2 textura, 3 normales	 (x,y)
-			glEnableVertexAttribArray(3); // 0 vÈrtices, 1 es el color, 2 textura, 3 normales
+			glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(vec3), nullptr); // 0 v√©rtices, 1 es el color, 2 textura, 3 normales	 (x,y)
+			glEnableVertexAttribArray(3); // 0 v√©rtices, 1 es el color, 2 textura, 3 normales
 		}
 	}
 }
@@ -145,15 +145,15 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 {
 	Mesh* mesh = new Mesh();
 
-	mesh->mPrimitive = GL_LINE_LOOP; // Une el ˙ltimo vÈrtice con el primero
+	mesh->mPrimitive = GL_LINE_LOOP; // Une el √∫ltimo v√©rtice con el primero
 
 	mesh->mNumVertices = num;
 	double angle = 90.0;
-	// Dividimos un cÌrculo como un pastel y ponemos vÈrtices en cada intersecciÛn
-	// entre la lÌnea y la circunferencia.
+	// Dividimos un c√≠rculo como un pastel y ponemos v√©rtices en cada intersecci√≥n
+	// entre la l√≠nea y la circunferencia.
 	for (GLuint i = 0; i < num; ++i)
 	{
-		// Las funciones trigonomÈtricas tienen que estar en radianes para su aplicaciÛn
+		// Las funciones trigonom√©tricas tienen que estar en radianes para su aplicaci√≥n
 		double x = 0 + r * cos(glm::radians(angle));
 		double y = 0 + r * sin(glm::radians(angle));
 		mesh->vVertices.emplace_back(x, y, 0.0);
@@ -165,7 +165,7 @@ Mesh::generateRegularPolygon(GLuint num, GLdouble r)
 
 /// <summary>
 /// Apartado 7: 
-/// Generamos un polÌgono regular de 3 lados, cambiando sus vÈrtices 1 a 1 para 
+/// Generamos un pol√≠gono regular de 3 lados, cambiando sus v√©rtices 1 a 1 para 
 /// que contenga RGB
 /// </summary>
 Mesh*
@@ -182,7 +182,7 @@ Mesh::generateRGBTriangle(GLdouble h)
 
 /// <summary>
 /// Apartado 8:
-/// Generamos los cuatro vÈrtices del rect·ngulo centrado en el origen, sobre el plano Z = 0,
+/// Generamos los cuatro v√©rtices del rect√°ngulo centrado en el origen, sobre el plano Z = 0,
 /// de ancho y alto. Utilizando GL_TRIANGLE_STRIP.
 /// </summary>
 Mesh*
@@ -203,7 +203,7 @@ Mesh::generateRectangle(GLdouble w, GLdouble h)
 /// <summary>
 /// Apartado 8.2:
 /// 
-/// Al igual que el tri·ngulo, aÒadimos un color primario a cada vÈrtice de un rect·ngulo.
+/// Al igual que el tri√°ngulo, a√±adimos un color primario a cada v√©rtice de un rect√°ngulo.
 /// </summary>
 Mesh*
 Mesh::generateRGBRectangle(GLdouble w, GLdouble h)
@@ -381,12 +381,12 @@ Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
 	GLuint ri = re / 2.0;
 
 	double angle = 90.0;
-	double ai = angle + (180/np); // RotaciÛn aÒadida
-	// Dividimos un cÌrculo como un pastel y ponemos vÈrtices en cada intersecciÛn
-	// entre la lÌnea y la circunferencia.
+	double ai = angle + (180/np); // Rotaci√≥n a√±adida
+	// Dividimos un c√≠rculo como un pastel y ponemos v√©rtices en cada intersecci√≥n
+	// entre la l√≠nea y la circunferencia.
 	for (GLuint i = 0; i < np; ++i)
 	{
-		// Las funciones trigonomÈtricas tienen que estar en radianes para su aplicaciÛn
+		// Las funciones trigonom√©tricas tienen que estar en radianes para su aplicaci√≥n
 		double x = 0 + re * cos(glm::radians(angle));
 		double y = 0 + re * sin(glm::radians(angle));
 		mesh->vVertices.emplace_back(x, y, h); // Z = h
@@ -402,7 +402,7 @@ Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
 	}
 	double x = 0 + re * cos(glm::radians(angle));
 	double y = 0 + re * sin(glm::radians(angle));
-	mesh->vVertices.emplace_back(x, y, h); // ⁄ltimo vÈrtice que cierra la estrella
+	mesh->vVertices.emplace_back(x, y, h); // √öltimo v√©rtice que cierra la estrella
 
 	return mesh;
 }
@@ -424,13 +424,13 @@ Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) // Ap 29
 	GLuint ri = re / 2;
 
 	double angle = 90.0;
-	double ai = angle + (180 / np); // RotaciÛn aÒadida
+	double ai = angle + (180 / np); // Rotaci√≥n a√±adida
 
-	// Dividimos un cÌrculo como un pastel y ponemos vÈrtices en cada intersecciÛn
-	// entre la lÌnea y la circunferencia.
+	// Dividimos un c√≠rculo como un pastel y ponemos v√©rtices en cada intersecci√≥n
+	// entre la l√≠nea y la circunferencia.
 	for (GLuint i = 0; i < np; ++i)
 	{
-		// Las funciones trigonomÈtricas tienen que estar en radianes para su aplicaciÛn
+		// Las funciones trigonom√©tricas tienen que estar en radianes para su aplicaci√≥n
 		double x = center + reImg * cos(glm::radians(angle));
 		double y = center + reImg * sin(glm::radians(angle));
 		mesh->vTexCoords.emplace_back(x, y);
@@ -445,7 +445,7 @@ Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h) // Ap 29
 	}
 	double x = center + reImg * cos(glm::radians(angle));
 	double y = center + reImg * sin(glm::radians(angle));
-	mesh->vTexCoords.emplace_back(x, y); // ⁄ltimo vÈrtice que cierra la estrella
+	mesh->vTexCoords.emplace_back(x, y); // √öltimo v√©rtice que cierra la estrella
 
 	return mesh;
 }

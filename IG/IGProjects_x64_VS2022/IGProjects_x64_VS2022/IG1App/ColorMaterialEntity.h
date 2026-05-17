@@ -1,4 +1,4 @@
-#ifndef COLORMATERIALENTITY_H
+﻿#ifndef COLORMATERIALENTITY_H
 #define COLORMATERIALENTITY_H
 
 //#include "Entity.h"
@@ -16,14 +16,18 @@
 class ColorMaterialEntity : public EntityWithMaterial
 {
 private:
-    static bool mShowNormals; // AP 63: controla si se muestran las normales
+    //Mover a EntityWithMaterial
+    //static bool mShowNormals; // AP 63: controla si se muestran las normales
 
 public:
     ColorMaterialEntity(glm::vec3 color = glm::vec4(1.0f));
+    
+    void setColor(glm::vec3 newColor) { setMaterial(Material(newColor)); };
 
-    void render(const glm::mat4& modelViewMat) const override; // AP 63
+    // Eliminar render
+    //void render(const glm::mat4& modelViewMat) const override; // AP 63
 
-    // AP 63: activa/desactiva la visualizaci�n de normales (tecla N)
-    static void toggleShowNormals() { mShowNormals = !mShowNormals; }
+    // AP 63: activa/desactiva la visualización de normales (tecla N)
+    //static void toggleShowNormals() { mShowNormals = !mShowNormals; }
 };
 #endif

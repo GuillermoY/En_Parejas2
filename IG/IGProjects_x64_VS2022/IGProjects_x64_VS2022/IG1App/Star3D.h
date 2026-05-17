@@ -1,4 +1,4 @@
-#ifndef STAR3D_H
+﻿#ifndef STAR3D_H
 #define STAR3D_H
 
 #include <GL/glew.h>
@@ -16,7 +16,7 @@ public:
 	void update() override; // Ap 28
 
 	float selfRotation = 0.0f;
-	glm::vec3 mPosition; // La posici�n actual del objeto
+	glm::vec3 mPosition; // La posición actual del objeto
 };
 
 #endif // STAR3D_H

@@ -1,8 +1,8 @@
-#include "IndexedBox.h"
+ï»¿#include "IndexedBox.h"
 
 IndexedBox::IndexedBox(GLdouble l)
     : ColorMaterialEntity(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)) // color verde
 {
-    // AP 64: usamos la versión de 24 vértices para normales correctas
+    // AP 64: usamos la versiÃ³n de 24 vÃ©rtices para normales correctas
     mMesh = IndexMesh::generateIndexedBox(l);
 }

@@ -1,22 +1,12 @@
-#ifndef _H_IG1App_H_
+﻿#ifndef _H_IG1App_H_
 #define _H_IG1App_H_
 
 #include <GL/glew.h>     // OpenGL Extension Wrangler
 #include <GLFW/glfw3.h>  // OpenGL Library
 #include <glm/glm.hpp>   // OpenGL Mathematics
 
-#include "Camera.h"
 #include "Scene.h"
-#include "Scene1.h"
-#include "Scene2.h"
-#include "Scene3.h"
-#include "Scene4.h"
-#include "Scene5.h"
-#include "Scene6.h"
-#include "Scene7.h"
-#include "Scene8.h"
-#include "Scene9.h"
-#include "Scene0.h"
+#include "Camera.h"
 #include "Viewport.h"
 #include "ColorMaterialEntity.h"
 
@@ -77,7 +67,7 @@ protected:
 	GLFWwindow* mWindow = nullptr; // window's handle
 	int mWinW = 800;               // window's width
 	int mWinH = 600;               // window's height
-	const double FRAME_DURATION = 0.01f; // Cada frame durar� 0.01 s
+	const double FRAME_DURATION = 0.01f; // Cada frame durará 0.01 s
 	bool mUpdateEnabled = false; // Empezamos la escena con el update en falso
 	double mNextUpdate;
 
