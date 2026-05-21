@@ -1,4 +1,4 @@
-#ifndef _H_MaterialEntity_H_
+﻿#ifndef _H_MaterialEntity_H_
 #define _H_MaterialEntity_H_
 
 #include "Entity.h"
@@ -18,7 +18,7 @@ public:
 	void setMaterial(const Material& m) { mMaterial = m; };
 	void render(const glm::mat4& modelViewMat) const override;
 
-	// AP 63: activa/desactiva la visualizaci�n de normales (tecla N)
+	// AP 63: activa/desactiva la visualización de normales (tecla N)
 	static void toggleShowNormals() { mShowNormals = !mShowNormals; }
 protected:
 	Material mMaterial;

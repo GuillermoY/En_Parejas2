@@ -1,4 +1,4 @@
-#include "EntityWithMaterial.h"
+﻿#include "EntityWithMaterial.h"
 
 bool EntityWithMaterial::mShowNormals = false;
 
