@@ -15,5 +15,6 @@ using namespace Ogre;
 
 class Wall : public Block {
 public:
-	Wall() {};
+	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
+		: Block(initPos, node, sceneMng, mesh) { };
 };

@@ -93,9 +93,8 @@ void IG2Project::setupScene(void) {
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     mLightNode->attachObject(luz);
     mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
- 
-
-    createLabyrinth("stage1.txt");
+    labyrinth = new Labyrinth();
+    labyrinth->createLabyrinth("stage1.txt", mSM);
 
 
     //------------------------------------------------------------------------
@@ -135,12 +134,12 @@ void IG2Project::setupScene(void) {
     //------------------------------------------------------------------------
    // Creating the dragon
 
-    Ogre::Entity* entDragon = mSM->createEntity("cube.mesh");
-    Ogre::SceneNode* mDragonNode = mSM->getRootSceneNode()->createChildSceneNode("nDragon");
-    mDragonNode->attachObject(entDragon);
+    //Ogre::Entity* entDragon = mSM->createEntity("cube.mesh");
+    //Ogre::SceneNode* mDragonNode = mSM->getRootSceneNode()->createChildSceneNode("nDragon");
+    //mDragonNode->attachObject(entDragon);
 
-    // Show bounding box
-    mDragonNode->showBoundingBox(true);
+    //// Show bounding box
+    //mDragonNode->showBoundingBox(true);
 
     // Set position of the dragon
     //mDragonNode->setPosition(x, y, z);
@@ -150,34 +149,4 @@ void IG2Project::setupScene(void) {
 
     //mDragonNode->yaw(Ogre::Degree(-45));
     //mDragonNode->setVisible(false);
-}
-
-void IG2Project::createLabyrinth(string stageFileName) {
-    stageFile.open(stageFileName);
-    // Read the number of files and columns
-    stageFile >> numRows;
-    stageFile >> numCols;
-    while (iRow < numRows && ok) {
-        iCol = 0;
-        while (iCol < numCols && ok) {
-            stageFile >> cell;
-            // Inserts an empty block!
-            if (cell == EMPTY_BLOCK) {
-                block = new Empty();
-                labyrinth->addBlock(block);
-            }
-            // Wall block
-            else if (cell == WALL_BLOCK) {
-                block = new Wall();
-                labyrinth->addBlock(block);
-            }
-            // Wrong type of block
-            else {
-                
-            }
-            iCol++;
-        }
-        iRow++;
-    }
-    stageFile.close();
 }

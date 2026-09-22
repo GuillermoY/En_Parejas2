@@ -15,5 +15,6 @@ using namespace Ogre;
 
 class Empty : public Block {
 public:
-	Empty() {};
+	Empty(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
+		: Block(initPos, node, sceneMng) { };
 };

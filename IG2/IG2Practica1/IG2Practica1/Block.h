@@ -15,5 +15,8 @@ using namespace Ogre;
 
 class Block : public IG2Object {
 public:
-	Block() {};
+	Block(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
+		: IG2Object(initPos, node, sceneMng, mesh) { };
+	Block(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
+		: IG2Object(initPos, node, sceneMng) { };
 };

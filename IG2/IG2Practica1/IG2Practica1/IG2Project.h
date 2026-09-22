@@ -15,8 +15,6 @@
 #include <iostream>
 #include <string>
 #include "Ogre.h"
-#include "Wall.h"
-#include "Empty.h"
 #include "Labyrinth.h"
 #include <OgreWindowEventUtilities.h>
 #include <SDL_keycode.h>
@@ -33,7 +31,6 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
-    void createLabyrinth(std::string stageFileName);
 
 
     Ogre::SceneNode* mSinbadNode = nullptr;
@@ -48,17 +45,8 @@ protected:
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
 
-    int numRows;
-    int numCols;
-    bool ok;
-    int iRow = 0;
-    int iCol = 0;
-    const char WALL_BLOCK = 'x';
-    const char EMPTY_BLOCK = 'o';
-    std::ifstream stageFile;
-    char cell;
-    Block* block;
     Labyrinth* labyrinth;
+
 };
 
 #endif
