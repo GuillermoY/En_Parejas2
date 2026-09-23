@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include "Ogre.h"
+#include "Simbad.h"
 #include "Labyrinth.h"
 #include <OgreWindowEventUtilities.h>
 #include <SDL_keycode.h>
@@ -26,14 +27,22 @@ public:
     explicit IG2Project() : OgreBites::ApplicationContext("IG2Project") {};
     virtual ~IG2Project() {};
 
+    //Directions
+    typedef enum { UP, DOWN, LEFT, RIGHT } tDir;
+    static const int SPEED;
+
 protected:
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+    virtual void frameRendered(const Ogre::FrameEvent& evt);
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
-
+    bool isDirectionModified();
+    Vector3 getNexDirVector();
+    Quaternion getQuaternionForNewDirection();
 
     Ogre::SceneNode* mSinbadNode = nullptr;
+    tDir sinbadDirectorion = UP;
 
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
@@ -46,6 +55,7 @@ protected:
     OgreBites::CameraMan* mCamMgr = nullptr;
 
     Labyrinth* labyrinth;
+    Simbad* heroe;
 
 };
 

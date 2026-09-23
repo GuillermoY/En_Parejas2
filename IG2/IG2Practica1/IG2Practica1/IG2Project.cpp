@@ -3,6 +3,7 @@
 using namespace std;
 using namespace Ogre;
 
+const int IG2Project::SPEED = 100;
 
 bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
@@ -14,6 +15,22 @@ bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
     else if (evt.keysym.sym == SDLK_k) {
         cout << "Position of Sinbad: " << mSinbadNode->getPosition() << endl;
         cout << "Position of the camera: " << mCamNode->getPosition() << endl;
+    }
+    else if (evt.keysym.sym == SDLK_UP) {
+        cout << "Pressed UP" << endl;
+        sinbadDirectorion = UP;
+    }
+    else if (evt.keysym.sym == SDLK_DOWN) {
+        cout << "Pressed DOWN" << endl;
+        sinbadDirectorion = DOWN;
+    }
+    else if (evt.keysym.sym == SDLK_LEFT) {
+        cout << "Pressed LEFT" << endl;
+        sinbadDirectorion = LEFT;
+    }
+    else if (evt.keysym.sym == SDLK_RIGHT) {
+        cout << "Pressed RIGHT" << endl;
+        sinbadDirectorion = RIGHT;
     }
 
     return true;
@@ -56,6 +73,44 @@ void IG2Project::setup(void) {
     setupScene();
 }
 
+bool IG2Project::isDirectionModified() {
+    return heroe->getGridOrientation() != getNexDirVector();
+}
+
+
+Vector3 IG2Project::getNexDirVector() {
+
+    Vector3 newDirVector = Vector3::ZERO;
+
+    if (sinbadDirectorion == RIGHT)
+        newDirVector = Vector3::UNIT_X;
+    else if (sinbadDirectorion == LEFT)
+        newDirVector = Vector3::NEGATIVE_UNIT_X;
+    else if (sinbadDirectorion == DOWN)
+        newDirVector = Vector3::UNIT_Z;
+    else if (sinbadDirectorion == UP)
+        newDirVector = Vector3::NEGATIVE_UNIT_Z;
+
+    return newDirVector;
+}
+
+Quaternion IG2Project::getQuaternionForNewDirection() {
+
+    Vector3 newDirVector = getNexDirVector();
+    Quaternion q = heroe->getOrientation().getRotationTo(newDirVector);
+    return q;
+}
+
+void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
+
+    if (heroe != nullptr) {
+        if (!isDirectionModified())
+            heroe->move(getNexDirVector() * SPEED * evt.timeSinceLastFrame);
+        else
+            heroe->rotate(getQuaternionForNewDirection());
+    }
+}
+
 void IG2Project::setupScene(void) {
 
     //------------------------------------------------------------------------
@@ -93,13 +148,29 @@ void IG2Project::setupScene(void) {
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     mLightNode->attachObject(luz);
     mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
-    labyrinth = new Labyrinth();
-    labyrinth->createLabyrinth("stage1.txt", mSM);
 
 
     //------------------------------------------------------------------------
     // Creating Sinbad
+    mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode();
+    heroe = new Simbad({0, 0, 0}, mSinbadNode, mSM, "Sinbad.mesh");
+    heroe->setScale(Vector3(20, 20, 20));
+    mSinbadNode->showBoundingBox(true);
+    //mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+    //sinbad = new IG2Object(Vector3(0, 0, 0),
+    //    mSinbadNode,
+    //    mSM,
+    //    "Sinbad.mesh");
 
+    //------------------------------------------------------------------------
+    // Creating labyrinth
+
+    labyrinth = new Labyrinth();
+    labyrinth->createLabyrinth("stage1.txt", mSM, heroe);
+
+    ////mSinbadNode->showBoundingBox(true);
+    //sinbad->setScale(Vector3(15, 15, 15));
+    //sinbad->move(Vector3(0, sinbad->calculateBoxSize().y / 2 + 1, 0));
     //Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
     //mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
     //mSinbadNode->attachObject(ent);
