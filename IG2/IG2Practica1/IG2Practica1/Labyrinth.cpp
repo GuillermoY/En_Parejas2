@@ -1,8 +1,8 @@
 #include "Labyrinth.h"
 
-void Labyrinth::addBlock(Block* block, int row)
+void Labyrinth::addBlock(Block* block, int row, int col)
 {
-    blocks[row].push_back(block);
+    blocks[row][col] = block;
 }
 
 Block* Labyrinth::getBlock(Vector3 position)
@@ -23,7 +23,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
     stageFile >> numRows;
     stageFile >> numCols;
 
-    blocks[numRows][numRows];
+    blocks.resize(numCols, std::vector<Block*>(numRows));
 
     bool ok = true;
     int iRow = 0;
@@ -47,7 +47,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
                 block = new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM);
                 block->setScale(Vector3(propX, propY, propZ));
                 nodoTmp->showBoundingBox(true);
-                addBlock(block, iRow);
+                addBlock(block, iRow, iCol);
             }
             // Wall block
             else if (cell == WALL_BLOCK) {
@@ -55,7 +55,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
                 block = new Wall({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM, "cube.mesh");
                 block->setScale(Vector3(propX, propY, propZ));
                 nodoTmp->showBoundingBox(true);
-                addBlock(block, iRow);
+                addBlock(block, iRow, iCol);
             }
             // Hero position
             else if (cell == HERO_CELL) {
@@ -64,7 +64,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
                 block = new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM);
                 block->setScale(Vector3(propX, propY, propZ));
                 nodoTmp->showBoundingBox(true);
-                addBlock(block, iRow);
+                addBlock(block, iRow, iCol);
             }
             // Wrong type of block
 
@@ -75,29 +75,40 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
     stageFile.close();
 }
 
-//void Labyrinth::moveCharacter(Character* character, Real time) {
-//    Block* charBlock, * inFrontBlock;
-//    // Get the block where the character is placed, and the next one
-//    charBlock = this->getBlock(character->getPosition());
-//    inFrontBlock = this->getBlock((character->getGridOrientation() * BLOCK_SIZE) + character->getPosition());
-//    // Character does not change its direction -> step forward!
-//    if (!character->isDirectionModified())
-//        stepForward(character, . . ., time);
-//    // New direction
-//    else {
-//        // Check the block in front of the character for the new direction
-//        Block* newDirBlock = this->getBlock(character->getPosition() + (character->getNexDirVector() * WallBlock::BLOCK_SIZE));
-//        // New position of the character after moving... (for checking if the center of the block is reached)
-//        Vector3 charNewPos = character->getPosition() + (character->getGridOrientation() * character->getSpeed() * time);
-//        Vector3 difference = Vector3(charNewPos.x - charBlock->getPosition().x, 0, charNewPos.z - charBlock->getPosition().z);
-//        // Check if the character can rotate for a new VALID direction
-//        if (newDirBlock->canPassThrough() && blockCenterReached(difference, character->getGridOrientation()))
-//            character->rotateToNewDirection();
-//        // 180 turn?
-//        else if (character->is180Turn())
-//            character->rotateToNewDirection();
-//        // Rotation cannot be performed... check if character can step forward
-//        else
-//            stepForward(character, . . ., time);
-//    }
-//}
+void Labyrinth::moveCharacter(Character* character, Real time) {
+    Block* charBlock, * inFrontBlock;
+    // Get the block where the character is placed, and the next one
+    charBlock = this->getBlock(character->getPosition());
+    inFrontBlock = this->getBlock((character->getGridOrientation() * BLOCK_SIZE) + character->getPosition());
+    // Character does not change its direction -> step forward!
+    if (!character->isDirectionModified())
+        stepForward(character, /*...,*/ time);
+    // New direction
+    else {
+        // Check the block in front of the character for the new direction
+        Block* newDirBlock = this->getBlock(character->getPosition() + (character->getNexDirVector() * BLOCK_SIZE));
+        // New position of the character after moving... (for checking if the center of the block is reached)
+        Vector3 charNewPos = character->getPosition() + (character->getGridOrientation() * character->getSpeed() * time);
+        Vector3 difference = Vector3(charNewPos.x - charBlock->getPosition().x, 0, charNewPos.z - charBlock->getPosition().z);
+        // Check if the character can rotate for a new VALID direction
+        if (newDirBlock->canPassThrough() && blockCenterReached(difference, character->getGridOrientation()))
+            character->rotateToNewDirection();
+        // 180 turn?
+        else if (character->is180Turn())
+            character->rotateToNewDirection();
+        // Rotation cannot be performed... check if character can step forward
+        else
+            stepForward(character,/* ...,*/ time);
+    }
+}
+
+void Labyrinth::stepForward(Character* character, /*...,*/ Real time)
+{
+    if (!character->isDirectionModified())
+        character->move(character->getNexDirVector() * character->getSpeed() * time);
+}
+
+bool Labyrinth::blockCenterReached(Vector3 difference, Vector3 direction)
+{
+
+}

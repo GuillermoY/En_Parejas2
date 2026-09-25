@@ -28,8 +28,8 @@ public:
     virtual ~IG2Project() {};
 
     //Directions
-    typedef enum { UP, DOWN, LEFT, RIGHT } tDir;
-    static const int SPEED;
+    typedef enum { UP, DOWN, LEFT, RIGHT } tDir; // Dentro de character 
+    static const int SPEED; // Dentro de character
 
 protected:
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
@@ -37,9 +37,9 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
-    bool isDirectionModified();
-    Vector3 getNexDirVector();
-    Quaternion getQuaternionForNewDirection();
+    bool isDirectionModified(); // Dentro de character
+    Vector3 getNexDirVector(); // Dentro de character
+    Quaternion getQuaternionForNewDirection(); // Dentro de character
 
     Ogre::SceneNode* mSinbadNode = nullptr;
     tDir sinbadDirectorion = UP;
@@ -56,7 +56,6 @@ protected:
 
     Labyrinth* labyrinth;
     Simbad* heroe;
-
 };
 
 #endif

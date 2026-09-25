@@ -17,7 +17,7 @@ using namespace Ogre;
 
 class Labyrinth {
 public:
-    void addBlock(Block* block, int row);
+    void addBlock(Block* block, int row, int col);
     void createLabyrinth(std::string stageFileName, SceneManager* SceneManager, Simbad* heroe);
     void moveCharacter(Character* character, Real time);
 
@@ -37,8 +37,6 @@ protected:
     SceneNode* SN;
 
     Block* getBlock(Vector3 position);
-    //void stepForward(Character * character, ..., Real time);
-    //bool canPassThrough();
-    //bool blockCenterReached(Vector3 difference, Vector3 direction);
-    //void rotateToNewDirection();
+    void stepForward(Character* character, /*...,*/ Real time);
+    bool blockCenterReached(Vector3 difference, Vector3 direction);
 };

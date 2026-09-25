@@ -16,7 +16,7 @@ bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
         cout << "Position of Sinbad: " << mSinbadNode->getPosition() << endl;
         cout << "Position of the camera: " << mCamNode->getPosition() << endl;
     }
-    else if (evt.keysym.sym == SDLK_UP) {
+    else if (evt.keysym.sym == SDLK_UP) { //rotateToNewDirection character
         cout << "Pressed UP" << endl;
         sinbadDirectorion = UP;
     }
@@ -103,12 +103,12 @@ Quaternion IG2Project::getQuaternionForNewDirection() {
 
 void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
 
-    if (heroe != nullptr) {
-        if (!isDirectionModified())
-            heroe->move(getNexDirVector() * SPEED * evt.timeSinceLastFrame);
-        else
-            heroe->rotate(getQuaternionForNewDirection());
-    }
+    //if (heroe != nullptr) {
+    //    if (!isDirectionModified())
+    //        heroe->move(getNexDirVector() * SPEED * evt.timeSinceLastFrame);
+    //    else
+    //        heroe->rotate(getQuaternionForNewDirection());
+    //}
 }
 
 void IG2Project::setupScene(void) {
