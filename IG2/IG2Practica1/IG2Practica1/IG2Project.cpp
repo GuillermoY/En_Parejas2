@@ -18,19 +18,19 @@ bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
     }
     else if (evt.keysym.sym == SDLK_UP) { //rotateToNewDirection character
         cout << "Pressed UP" << endl;
-        sinbadDirectorion = UP;
+        heroe->changeDirection(heroe->UP);
     }
     else if (evt.keysym.sym == SDLK_DOWN) {
         cout << "Pressed DOWN" << endl;
-        sinbadDirectorion = DOWN;
+        heroe->changeDirection(heroe->DOWN);
     }
     else if (evt.keysym.sym == SDLK_LEFT) {
         cout << "Pressed LEFT" << endl;
-        sinbadDirectorion = LEFT;
+        heroe->changeDirection(heroe->LEFT);
     }
     else if (evt.keysym.sym == SDLK_RIGHT) {
         cout << "Pressed RIGHT" << endl;
-        sinbadDirectorion = RIGHT;
+        heroe->changeDirection(heroe->RIGHT);
     }
 
     return true;
@@ -102,13 +102,9 @@ Quaternion IG2Project::getQuaternionForNewDirection() {
 }
 
 void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
+    if (labyrinth != nullptr && heroe != nullptr)
+        labyrinth->moveCharacter(heroe, evt.timeSinceLastFrame);
 
-    //if (heroe != nullptr) {
-    //    if (!isDirectionModified())
-    //        heroe->move(getNexDirVector() * SPEED * evt.timeSinceLastFrame);
-    //    else
-    //        heroe->rotate(getQuaternionForNewDirection());
-    //}
 }
 
 void IG2Project::setupScene(void) {
@@ -125,8 +121,8 @@ void IG2Project::setupScene(void) {
     mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
     mCamNode->attachObject(cam);
 
-    mCamNode->setPosition(0, 0, 1000);
-    mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+    mCamNode->setPosition(0, -5000, 1000);
+    mCamNode->lookAt(Ogre::Vector3(0, -5000, 0), Ogre::Node::TS_WORLD);
 
     // and tell it to render into the main window
     Viewport* vp = getRenderWindow()->addViewport(cam);
@@ -167,6 +163,7 @@ void IG2Project::setupScene(void) {
 
     labyrinth = new Labyrinth();
     labyrinth->createLabyrinth("stage1.txt", mSM, heroe);
+
 
     ////mSinbadNode->showBoundingBox(true);
     //sinbad->setScale(Vector3(15, 15, 15));

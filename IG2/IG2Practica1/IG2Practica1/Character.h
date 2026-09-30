@@ -15,16 +15,17 @@ public:
 	Character(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
 		: IG2Object(initPos, node, sceneMng, mesh) {
 	};
+	typedef enum { UP, DOWN, LEFT, RIGHT } tDir;
 private:
 	static const int SPEED; 
 protected:
-	typedef enum { UP, DOWN, LEFT, RIGHT } tDir;
 	tDir sinbadDirectorion = UP;
 public:
 	bool isDirectionModified();
 	Vector3 getNexDirVector();
 	Quaternion getQuaternionForNewDirection();
 	int getSpeed();
+	void changeDirection(tDir dir);
 	void rotateToNewDirection();
-	bool is180Turn() {};
+	bool is180Turn();
 };

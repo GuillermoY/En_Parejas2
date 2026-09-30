@@ -54,8 +54,8 @@ protected:
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
 
-    Labyrinth* labyrinth;
-    Simbad* heroe;
+    Labyrinth* labyrinth = nullptr;
+    Simbad* heroe = nullptr;
 };
 
 #endif

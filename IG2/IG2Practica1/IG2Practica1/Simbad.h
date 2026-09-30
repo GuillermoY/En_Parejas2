@@ -16,6 +16,5 @@ public:
 		: Character(initPos, node, sceneMng, mesh) {
 	};
 
-protected:
 
 };

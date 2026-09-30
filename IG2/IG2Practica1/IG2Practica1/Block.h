@@ -22,7 +22,7 @@ public:
 
 	bool canPassThrough()
 	{
-		return mMesh != "";
+		return mMesh == "";
 	}
 	String mMesh="";
 };

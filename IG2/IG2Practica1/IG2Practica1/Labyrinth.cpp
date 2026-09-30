@@ -7,8 +7,8 @@ void Labyrinth::addBlock(Block* block, int row, int col)
 
 Block* Labyrinth::getBlock(Vector3 position)
 {
-    int x = position.x;
-    int z = position.z;
+    int x = position.x / BLOCK_SIZE;
+    int z = position.z / BLOCK_SIZE;
 
     return blocks[x][z];
 }
@@ -68,6 +68,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
             }
             // Wrong type of block
 
+            cout << iRow << " " << iCol << " " << blocks[iRow][iCol]->canPassThrough() << endl;
             iCol++;
         }
         iRow++;
@@ -79,14 +80,15 @@ void Labyrinth::moveCharacter(Character* character, Real time) {
     Block* charBlock, * inFrontBlock;
     // Get the block where the character is placed, and the next one
     charBlock = this->getBlock(character->getPosition());
-    inFrontBlock = this->getBlock((character->getGridOrientation() * BLOCK_SIZE) + character->getPosition());
+    inFrontBlock = this->getBlock((character->getGridOrientation()) + character->getPosition());
+    //cout << inFrontBlock->getPosition() << " " << inFrontBlock->canPassThrough() << " ";
     // Character does not change its direction -> step forward!
     if (!character->isDirectionModified())
-        stepForward(character, /*...,*/ time);
+        stepForward(character, inFrontBlock, time);
     // New direction
     else {
         // Check the block in front of the character for the new direction
-        Block* newDirBlock = this->getBlock(character->getPosition() + (character->getNexDirVector() * BLOCK_SIZE));
+        Block* newDirBlock = this->getBlock(character->getPosition() + (character->getNexDirVector()));
         // New position of the character after moving... (for checking if the center of the block is reached)
         Vector3 charNewPos = character->getPosition() + (character->getGridOrientation() * character->getSpeed() * time);
         Vector3 difference = Vector3(charNewPos.x - charBlock->getPosition().x, 0, charNewPos.z - charBlock->getPosition().z);
@@ -98,17 +100,17 @@ void Labyrinth::moveCharacter(Character* character, Real time) {
             character->rotateToNewDirection();
         // Rotation cannot be performed... check if character can step forward
         else
-            stepForward(character,/* ...,*/ time);
+            stepForward(character,newDirBlock, time);
     }
 }
 
-void Labyrinth::stepForward(Character* character, /*...,*/ Real time)
+void Labyrinth::stepForward(Character* character, Block* block, Real time)
 {
-    if (!character->isDirectionModified())
+    if (block->canPassThrough())
         character->move(character->getNexDirVector() * character->getSpeed() * time);
 }
 
 bool Labyrinth::blockCenterReached(Vector3 difference, Vector3 direction)
 {
-
+    return difference < Vector3({BLOCK_SIZE, 0, BLOCK_SIZE});
 }

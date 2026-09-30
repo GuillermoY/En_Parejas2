@@ -21,13 +21,13 @@
     <ClCompile Include="Labyrinth.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Character.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="IG2Project.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,9 +41,6 @@
     <ClInclude Include="IG2Object.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="IG2Project.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Labyrinth.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -54,6 +51,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Simbad.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="IG2Project.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

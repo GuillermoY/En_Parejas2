@@ -1,8 +1,13 @@
 #include "Character.h"
-const int Character::SPEED = 100;
+const int Character::SPEED = 500;
 
 bool Character::isDirectionModified() {
     return getGridOrientation() != getNexDirVector();
+}
+
+void Character::changeDirection(tDir dir)
+{
+    sinbadDirectorion = dir;
 }
 
 Vector3 Character::getNexDirVector() {
@@ -39,4 +44,13 @@ void Character::rotateToNewDirection()
         move(getNexDirVector() * SPEED /* evt.timeSinceLastFrame*/);
     else
         rotate(getQuaternionForNewDirection());
+}
+
+bool Character::is180Turn()
+{
+    return sinbadDirectorion == UP && getOrientation() == Vector3::UNIT_Z ||
+        sinbadDirectorion == DOWN && getOrientation() == Vector3::NEGATIVE_UNIT_Z ||
+        sinbadDirectorion == LEFT && getOrientation() == Vector3::UNIT_X ||
+        sinbadDirectorion == RIGHT && getOrientation() == Vector3::NEGATIVE_UNIT_X;
+
 }
