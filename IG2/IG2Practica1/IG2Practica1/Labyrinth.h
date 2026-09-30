@@ -37,6 +37,6 @@ protected:
     SceneNode* SN;
 
     Block* getBlock(Vector3 position);
-    void stepForward(Character* character, Block* block, Real time);
-    bool blockCenterReached(Vector3 difference, Vector3 direction);
+    void stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time);
+    bool blockCenterReached(Vector3 difference, Vector3 direction, float tolerance);
 };

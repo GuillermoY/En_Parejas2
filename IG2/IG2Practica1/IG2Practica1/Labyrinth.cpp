@@ -7,10 +7,9 @@ void Labyrinth::addBlock(Block* block, int row, int col)
 
 Block* Labyrinth::getBlock(Vector3 position)
 {
-    int x = position.x / BLOCK_SIZE;
-    int z = position.z / BLOCK_SIZE;
-
-    return blocks[x][z];
+    int x = round(position.x / BLOCK_SIZE);
+    int z = round(position.z / BLOCK_SIZE);
+    return blocks[z][x];
 }
 
 void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Simbad* heroe)
@@ -37,80 +36,119 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
     float propZ = BLOCK_SIZE / tam.z;
     delete referencia;
 
-    while (iRow < numRows && ok) {
-        iCol = 0;
-        while (iCol < numCols && ok) {
-            stageFile >> cell;
-            // Inserts an empty block!
-            if (cell == EMPTY_BLOCK) {
-                SceneNode* nodoTmp = SN->createChildSceneNode();
-                block = new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM);
-                block->setScale(Vector3(propX, propY, propZ));
-                nodoTmp->showBoundingBox(true);
-                addBlock(block, iRow, iCol);
-            }
-            // Wall block
-            else if (cell == WALL_BLOCK) {
-                SceneNode* nodoTmp = SN->createChildSceneNode();
-                block = new Wall({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM, "cube.mesh");
-                block->setScale(Vector3(propX, propY, propZ));
-                nodoTmp->showBoundingBox(true);
-                addBlock(block, iRow, iCol);
-            }
-            // Hero position
-            else if (cell == HERO_CELL) {
-                heroe->setPosition({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE });
-                SceneNode* nodoTmp = SN->createChildSceneNode();
-                block = new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM);
-                block->setScale(Vector3(propX, propY, propZ));
-                nodoTmp->showBoundingBox(true);
-                addBlock(block, iRow, iCol);
-            }
-            // Wrong type of block
 
-            cout << iRow << " " << iCol << " " << blocks[iRow][iCol]->canPassThrough() << endl;
-            iCol++;
+while (iRow < numRows && ok) {
+    iCol = 0;
+    while (iCol < numCols && ok) {
+        stageFile >> cell;
+        // Inserts an empty block!
+        if (cell == EMPTY_BLOCK) {
+            SceneNode* nodoTmp = SN->createChildSceneNode();
+            block = new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM);
+            block->setScale(Vector3(propX, propY, propZ));
+            nodoTmp->showBoundingBox(true);
+            addBlock(block, iRow, iCol);
         }
-        iRow++;
+        // Wall block
+        else if (cell == WALL_BLOCK) {
+            SceneNode* nodoTmp = SN->createChildSceneNode();
+            block = new Wall({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM, "cube.mesh");
+            block->setScale(Vector3(propX, propY, propZ));
+            nodoTmp->showBoundingBox(true);
+            addBlock(block, iRow, iCol);
+        }
+        // Hero position
+        else if (cell == HERO_CELL) {
+            heroe->setPosition({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE });
+            SceneNode* nodoTmp = SN->createChildSceneNode();
+            block = new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, nodoTmp, mSM);
+            block->setScale(Vector3(propX, propY, propZ));
+            nodoTmp->showBoundingBox(true);
+            addBlock(block, iRow, iCol);
+        }
+        // Wrong type of block
+
+
+        iCol++;
     }
-    stageFile.close();
+    iRow++;
+}
+stageFile.close();
 }
 
 void Labyrinth::moveCharacter(Character* character, Real time) {
     Block* charBlock, * inFrontBlock;
+
     // Get the block where the character is placed, and the next one
     charBlock = this->getBlock(character->getPosition());
-    inFrontBlock = this->getBlock((character->getGridOrientation()) + character->getPosition());
-    //cout << inFrontBlock->getPosition() << " " << inFrontBlock->canPassThrough() << " ";
+
+    inFrontBlock = this->getBlock(
+        charBlock->getPosition() + character->getGridOrientation() * BLOCK_SIZE
+    );
     // Character does not change its direction -> step forward!
-    if (!character->isDirectionModified())
-        stepForward(character, inFrontBlock, time);
+    if (!character->isDirectionModified()) {
+        stepForward(character, charBlock, inFrontBlock, time);
+    }
     // New direction
     else {
         // Check the block in front of the character for the new direction
-        Block* newDirBlock = this->getBlock(character->getPosition() + (character->getNexDirVector()));
+        Block* newDirBlock = this->getBlock(
+            charBlock->getPosition() + character->getNexDirVector() * BLOCK_SIZE
+        );
+
         // New position of the character after moving... (for checking if the center of the block is reached)
-        Vector3 charNewPos = character->getPosition() + (character->getGridOrientation() * character->getSpeed() * time);
-        Vector3 difference = Vector3(charNewPos.x - charBlock->getPosition().x, 0, charNewPos.z - charBlock->getPosition().z);
+        Vector3 charNewPos = character->getPosition() +
+            character->getGridOrientation() * character->getSpeed() * time;
+
+        Vector3 difference(
+            charNewPos.x - charBlock->getPosition().x,
+            0,
+            charNewPos.z - charBlock->getPosition().z
+        );
+
+        float tolerance = character->getSpeed() * time;
+
         // Check if the character can rotate for a new VALID direction
-        if (newDirBlock->canPassThrough() && blockCenterReached(difference, character->getGridOrientation()))
+        if (newDirBlock->canPassThrough() &&
+            blockCenterReached(difference, character->getGridOrientation(), tolerance)) {
+            character->setPosition(charBlock->getPosition());
             character->rotateToNewDirection();
+        }
         // 180 turn?
-        else if (character->is180Turn())
+        else if (character->is180Turn()) {
             character->rotateToNewDirection();
+        }
         // Rotation cannot be performed... check if character can step forward
-        else
-            stepForward(character,newDirBlock, time);
+        else {
+            stepForward(character, charBlock, inFrontBlock, time);
+        }
     }
 }
 
-void Labyrinth::stepForward(Character* character, Block* block, Real time)
+void Labyrinth::stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time)
 {
-    if (block->canPassThrough())
-        character->move(character->getNexDirVector() * character->getSpeed() * time);
+    Vector3 direction = character->getGridOrientation();
+    float step = character->getSpeed() * time;
+
+    if (inFrontBlock->canPassThrough()) {
+        character->move(direction * step);
+        return;
+    }
+
+    Vector3 position = character->getPosition();
+    Vector3 center = charBlock->getPosition();
+    float remaining = (center - position).dotProduct(direction);
+
+    if (remaining > 0.0f) {
+        if (step >= remaining)
+            character->setPosition(center);
+        else
+            character->move(direction * step);
+    }
 }
 
-bool Labyrinth::blockCenterReached(Vector3 difference, Vector3 direction)
+bool Labyrinth::blockCenterReached(Vector3 difference, Vector3 direction, float tolerance)
 {
-    return difference < Vector3({BLOCK_SIZE, 0, BLOCK_SIZE});
+    return Ogre::Math::Abs(difference.x) <= tolerance &&
+        Ogre::Math::Abs(difference.z) <= tolerance;
 }
