@@ -13,10 +13,11 @@
 
 using namespace Ogre;
 
-class Wall : public Block {
+class FakeBlock : public Block {
 public:
-	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
+	FakeBlock(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
 		: Block(initPos, node, sceneMng, mesh) {
-		walkable = false;
+		walkable = true;
 	};
 };
+

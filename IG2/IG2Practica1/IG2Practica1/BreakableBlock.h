@@ -13,10 +13,17 @@
 
 using namespace Ogre;
 
-class Wall : public Block {
+class BreakableBlock : public Block {
 public:
-	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
+	BreakableBlock(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
 		: Block(initPos, node, sceneMng, mesh) {
 		walkable = false;
 	};
+
+	void breakBlock()
+	{
+		this->setVisible(false);
+		walkable = true;
+	}
 };
+

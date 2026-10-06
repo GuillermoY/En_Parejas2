@@ -11,21 +11,28 @@
 #include <fstream>
 #include "Wall.h"
 #include "Empty.h"
+#include "InvisibleBlock.h"
+#include "FakeBlock.h"
+#include "BreakableBlock.h"
 #include "Simbad.h"
 
 using namespace Ogre;
 
 class Labyrinth {
 public:
-    void addBlock(Block* block, int row, int col);
+    void addBlock(Block* block, int row, int col, Vector3 tam);
     void createLabyrinth(std::string stageFileName, SceneManager* SceneManager, Simbad* heroe);
     void moveCharacter(Character* character, Real time);
+    void update();
 
 protected:
     int numRows;
     int numCols;
     const char WALL_BLOCK = 'x';
     const char EMPTY_BLOCK = 'o';
+    const char INVISIBLE_BLOCK = 'i';
+    const char FAKE_BLOCK = 'f';
+    const char BREAKABLE_BLOCK = 'b';
     const char HERO_CELL = 'h';
     std::ifstream stageFile;
     char cell;
