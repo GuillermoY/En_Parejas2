@@ -53,9 +53,6 @@
     <ClInclude Include="IG2Project.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Simbad.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="BreakableBlock.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

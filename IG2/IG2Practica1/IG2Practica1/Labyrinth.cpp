@@ -142,63 +142,47 @@ void Labyrinth::moveCharacter(Character* character, Real time) {
     }
 }
 
-void Labyrinth::moveVillain(Villain* character, Real time) {
-    Block* charBlock, * inFrontBlock;
-    // Get the block where the character is placed, and the next one
-    charBlock = this->getBlock(character->getPosition());
+void Labyrinth::moveVillain(Villain* villain, Real time)
+{
+    Block* charBlock = getBlock(villain->getPosition());
+    Vector3 center = charBlock->getPosition();
+    float step = villain->getSpeed() * time;
 
-    inFrontBlock = this->getBlock(
-        charBlock->getPosition() + character->getGridOrientation() * BLOCK_SIZE
-    );
+    float remaining = (center - villain->getPosition()).dotProduct(villain->getGridOrientation());
+    if (remaining >= 0.0f && remaining <= step)
+        chooseVillainDirection(villain, charBlock);
 
-    stepForward(character, charBlock, inFrontBlock, time);
-    // New direction
-    // Check the block in front of the character for the new direction
-    std::vector<pair<Block*, Character::tDir>> newBlocks;
+    Block* inFrontBlock = getBlock(center + villain->getGridOrientation() * BLOCK_SIZE);
+    stepForward(villain, charBlock, inFrontBlock, time);
+}
 
-    Block* newDirBlockDer = this->getBlock(
-        charBlock->getPosition() + (character->getNexDirVector() + character->RIGHT) * BLOCK_SIZE
-    );
-    if (newDirBlockDer->canPassThrough())
-        newBlocks.push_back({ newDirBlockDer, Character::RIGHT });
-    Block* newDirBlockIzq = this->getBlock(
-        charBlock->getPosition() + (character->getNexDirVector() + character->LEFT) * BLOCK_SIZE
-    );
-    if (newDirBlockIzq->canPassThrough())
-        newBlocks.push_back({newDirBlockIzq, Character::LEFT});
-    Block* newDirBlockUp = this->getBlock(
-        charBlock->getPosition() + (character->getNexDirVector() + character->UP) * BLOCK_SIZE
-    );
-    if (newDirBlockUp->canPassThrough())
-        newBlocks.push_back({ newDirBlockUp ,Character::UP});
-    Block* newDirBlockDown = this->getBlock(
-        charBlock->getPosition() + (character->getNexDirVector() + character->DOWN) * BLOCK_SIZE
-    );
-    if (newDirBlockDown->canPassThrough())
-        newBlocks.push_back({ newDirBlockDown ,Character::DOWN });
+void Labyrinth::chooseVillainDirection(Villain* villain, Block* charBlock)
+{
+    Vector3 center = charBlock->getPosition();
+    Character::tDir current = villain->sinbadDirectorion;
+    Character::tDir back = Character::opposite(current);
 
-    // New position of the character after moving... (for checking if the center of the block is reached)
-    Vector3 charNewPos = character->getPosition() +
-        character->getGridOrientation() * character->getSpeed() * time;
-
-    Vector3 difference(
-        charNewPos.x - charBlock->getPosition().x,
-        0,
-        charNewPos.z - charBlock->getPosition().z
-    );
-
-    float tolerance = character->getSpeed() * time;
-
-    // Check if the character can rotate for a new VALID direction
-    random_device rd;
-    mt19937 gen(rd());
-    if (newBlocks.size() > 0)
-    {
-        uniform_int_distribution<int> dist(0, newBlocks.size());
-        int dir = dist(gen);
-        character->changeDirection(newBlocks[dir].second);
+    std::vector<Character::tDir> options;
+    bool canTurn90 = false;
+    for (Character::tDir d : { Character::UP, Character::DOWN, Character::LEFT, Character::RIGHT }) {
+        if (getBlock(center + Character::dirToVector(d) * BLOCK_SIZE)->canPassThrough()) {
+            options.push_back(d);
+            if (d != current && d != back) canTurn90 = true;
+        }
     }
-    character->rotateToNewDirection();
+
+    bool blocked = !getBlock(center + Character::dirToVector(current) * BLOCK_SIZE)->canPassThrough();
+
+    if (!blocked && !canTurn90)
+        return;
+
+    if (options.empty())
+        return;
+
+    std::uniform_int_distribution<size_t> dist(0, options.size() - 1);
+    villain->setPosition(center);
+    villain->changeDirection(options[dist(gen)]);
+    villain->rotateToNewDirection();
 }
 
 void Labyrinth::stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time)

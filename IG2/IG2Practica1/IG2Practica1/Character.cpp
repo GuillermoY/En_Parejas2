@@ -1,6 +1,25 @@
 #include "Character.h"
 const int Character::SPEED = 150;
 
+Vector3 Character::dirToVector(tDir dir) {
+    switch (dir) {
+    case RIGHT: return Vector3::UNIT_X;
+    case LEFT:  return Vector3::NEGATIVE_UNIT_X;
+    case DOWN:  return Vector3::UNIT_Z;
+    case UP:    return Vector3::NEGATIVE_UNIT_Z;
+    }
+    return Vector3::ZERO;
+}
+
+Character::tDir Character::opposite(tDir dir) {
+    switch (dir) {
+    case UP:    return DOWN;
+    case DOWN:  return UP;
+    case LEFT:  return RIGHT;
+    default:    return LEFT;
+    }
+}
+
 bool Character::isDirectionModified() {
     return getGridOrientation() != getNexDirVector();
 }
@@ -11,19 +30,7 @@ void Character::changeDirection(tDir dir)
 }
 
 Vector3 Character::getNexDirVector() {
-
-    Vector3 newDirVector = Vector3::ZERO;
-
-    if (sinbadDirectorion == RIGHT)
-        newDirVector = Vector3::UNIT_X;
-    else if (sinbadDirectorion == LEFT)
-        newDirVector = Vector3::NEGATIVE_UNIT_X;
-    else if (sinbadDirectorion == DOWN)
-        newDirVector = Vector3::UNIT_Z;
-    else if (sinbadDirectorion == UP)
-        newDirVector = Vector3::NEGATIVE_UNIT_Z;
-
-    return newDirVector;
+    return dirToVector(sinbadDirectorion);
 }
 
 Quaternion Character::getQuaternionForNewDirection() {
@@ -41,9 +48,7 @@ int Character::getSpeed()
 
 void Character::rotateToNewDirection()
 {
-    if (!isDirectionModified())
-        move(getNexDirVector() * SPEED /* evt.timeSinceLastFrame*/);
-    else
+    if (isDirectionModified())
         rotate(getQuaternionForNewDirection());
 }
 

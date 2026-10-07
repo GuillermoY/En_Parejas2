@@ -9,6 +9,7 @@
 #include <SDL_keycode.h>
 #include <iostream>
 #include <fstream>
+#include <random>
 #include "Wall.h"
 #include "Empty.h"
 #include "InvisibleBlock.h"
@@ -52,4 +53,7 @@ protected:
     Block* getBlock(Vector3 position);
     void stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time);
     bool blockCenterReached(Vector3 difference, Vector3 direction, float tolerance);
+
+    void chooseVillainDirection(Villain* villain, Block* charBlock);
+    std::mt19937 gen{ std::random_device{}() };
 };

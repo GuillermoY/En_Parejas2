@@ -16,8 +16,9 @@ public:
 		: Character(initPos, node, sceneMng, mesh) {
 	};
 
-	void orientationChanger(tDir dir)
-	{
-	}
+	int getSpeed() override { return VILLAIN_SPEED; }
+
+private:
+	const int VILLAIN_SPEED = 100;
 
 };

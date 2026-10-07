@@ -16,16 +16,19 @@ public:
 		: IG2Object(initPos, node, sceneMng, mesh) {
 	};
 	typedef enum { UP, DOWN, LEFT, RIGHT } tDir;
-private:
-	static const int SPEED; 
-protected:
-public:
+
+	static Vector3 dirToVector(tDir dir);
+	static tDir opposite(tDir dir);
+	virtual int getSpeed();
+
 	tDir sinbadDirectorion = DOWN;
 	bool isDirectionModified();
 	Vector3 getNexDirVector();
 	Quaternion getQuaternionForNewDirection();
-	int getSpeed();
+
 	void changeDirection(tDir dir);
 	void rotateToNewDirection();
 	bool is180Turn();
+private:
+	static const int SPEED; 
 };
