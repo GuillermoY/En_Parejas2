@@ -104,7 +104,7 @@ Quaternion IG2Project::getQuaternionForNewDirection() {
 void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
     if (labyrinth != nullptr && heroe != nullptr) {
         labyrinth->moveCharacter(heroe, evt.timeSinceLastFrame);
-        labyrinth->update();
+        labyrinth->update(evt.timeSinceLastFrame);
     }
 
 }

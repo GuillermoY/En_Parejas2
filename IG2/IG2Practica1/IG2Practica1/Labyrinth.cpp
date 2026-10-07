@@ -1,10 +1,16 @@
 #include "Labyrinth.h"
-
+#include <random>
 void Labyrinth::addBlock(Block* block, int row, int col, Vector3 tam)
 {
     block->setScale(tam);
 
     blocks[row][col] = block;
+}
+
+void Labyrinth::addVillain(Villain* villain, int row, int col)
+{
+    villain->setPosition({ col * BLOCK_SIZE, 0, row * BLOCK_SIZE });
+    villains.push_back(villain);
 }
 
 Block* Labyrinth::getBlock(Vector3 position)
@@ -74,6 +80,10 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
                 heroe->setPosition({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE });
                 addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
             }
+            else if (cell == VILLAIN_CELL) {
+                addVillain(new Villain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "ogrehead.mesh"), iRow, iCol);
+                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
+            }
             // Wrong type of block
 
 
@@ -86,7 +96,6 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
 
 void Labyrinth::moveCharacter(Character* character, Real time) {
     Block* charBlock, * inFrontBlock;
-
     // Get the block where the character is placed, and the next one
     charBlock = this->getBlock(character->getPosition());
 
@@ -133,6 +142,65 @@ void Labyrinth::moveCharacter(Character* character, Real time) {
     }
 }
 
+void Labyrinth::moveVillain(Villain* character, Real time) {
+    Block* charBlock, * inFrontBlock;
+    // Get the block where the character is placed, and the next one
+    charBlock = this->getBlock(character->getPosition());
+
+    inFrontBlock = this->getBlock(
+        charBlock->getPosition() + character->getGridOrientation() * BLOCK_SIZE
+    );
+
+    stepForward(character, charBlock, inFrontBlock, time);
+    // New direction
+    // Check the block in front of the character for the new direction
+    std::vector<pair<Block*, Character::tDir>> newBlocks;
+
+    Block* newDirBlockDer = this->getBlock(
+        charBlock->getPosition() + (character->getNexDirVector() + character->RIGHT) * BLOCK_SIZE
+    );
+    if (newDirBlockDer->canPassThrough())
+        newBlocks.push_back({ newDirBlockDer, Character::RIGHT });
+    Block* newDirBlockIzq = this->getBlock(
+        charBlock->getPosition() + (character->getNexDirVector() + character->LEFT) * BLOCK_SIZE
+    );
+    if (newDirBlockIzq->canPassThrough())
+        newBlocks.push_back({newDirBlockIzq, Character::LEFT});
+    Block* newDirBlockUp = this->getBlock(
+        charBlock->getPosition() + (character->getNexDirVector() + character->UP) * BLOCK_SIZE
+    );
+    if (newDirBlockUp->canPassThrough())
+        newBlocks.push_back({ newDirBlockUp ,Character::UP});
+    Block* newDirBlockDown = this->getBlock(
+        charBlock->getPosition() + (character->getNexDirVector() + character->DOWN) * BLOCK_SIZE
+    );
+    if (newDirBlockDown->canPassThrough())
+        newBlocks.push_back({ newDirBlockDown ,Character::DOWN });
+
+    // New position of the character after moving... (for checking if the center of the block is reached)
+    Vector3 charNewPos = character->getPosition() +
+        character->getGridOrientation() * character->getSpeed() * time;
+
+    Vector3 difference(
+        charNewPos.x - charBlock->getPosition().x,
+        0,
+        charNewPos.z - charBlock->getPosition().z
+    );
+
+    float tolerance = character->getSpeed() * time;
+
+    // Check if the character can rotate for a new VALID direction
+    random_device rd;
+    mt19937 gen(rd());
+    if (newBlocks.size() > 0)
+    {
+        uniform_int_distribution<int> dist(0, newBlocks.size());
+        int dir = dist(gen);
+        character->changeDirection(newBlocks[dir].second);
+    }
+    character->rotateToNewDirection();
+}
+
 void Labyrinth::stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time)
 {
     Vector3 direction = character->getGridOrientation();
@@ -155,15 +223,19 @@ void Labyrinth::stepForward(Character* character, Block* charBlock, Block* inFro
     }
 }
 
+
 bool Labyrinth::blockCenterReached(Vector3 difference, Vector3 direction, float tolerance)
 {
     return Ogre::Math::Abs(difference.x) <= tolerance &&
         Ogre::Math::Abs(difference.z) <= tolerance;
 }
 
-void Labyrinth::update()
+void Labyrinth::update(Real time)
 {
     for (auto& fila : blocks)
         for (Block* b : fila)
             b->update();
+
+    for (Villain* v : villains)
+        moveVillain(v, time);
 }

@@ -19,8 +19,8 @@ public:
 private:
 	static const int SPEED; 
 protected:
-	tDir sinbadDirectorion = UP;
 public:
+	tDir sinbadDirectorion = DOWN;
 	bool isDirectionModified();
 	Vector3 getNexDirVector();
 	Quaternion getQuaternionForNewDirection();

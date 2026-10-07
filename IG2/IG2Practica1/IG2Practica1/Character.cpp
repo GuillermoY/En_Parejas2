@@ -1,5 +1,5 @@
 #include "Character.h"
-const int Character::SPEED = 500;
+const int Character::SPEED = 150;
 
 bool Character::isDirectionModified() {
     return getGridOrientation() != getNexDirVector();
@@ -30,6 +30,7 @@ Quaternion Character::getQuaternionForNewDirection() {
 
     Vector3 newDirVector = getNexDirVector();
     Quaternion q = getOrientation().getRotationTo(newDirVector);
+
     return q;
 }
 
