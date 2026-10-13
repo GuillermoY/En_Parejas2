@@ -21,7 +21,6 @@ public:
 	static tDir opposite(tDir dir);
 	virtual int getSpeed();
 
-	tDir sinbadDirectorion = DOWN;
 	bool isDirectionModified();
 	Vector3 getNexDirVector();
 	Quaternion getQuaternionForNewDirection();
@@ -29,6 +28,8 @@ public:
 	void changeDirection(tDir dir);
 	void rotateToNewDirection();
 	bool is180Turn();
+	tDir getDirectiorion() { return sinbadDirectorion; };
 private:
+	tDir sinbadDirectorion = DOWN;
 	static const int SPEED; 
 };

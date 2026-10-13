@@ -1,5 +1,5 @@
 #include "Character.h"
-const int Character::SPEED = 150;
+const int Character::SPEED = 500;
 
 Vector3 Character::dirToVector(tDir dir) {
     switch (dir) {

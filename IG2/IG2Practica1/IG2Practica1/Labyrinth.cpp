@@ -84,6 +84,13 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
                 addVillain(new Villain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "ogrehead.mesh"), iRow, iCol);
                 addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
             }
+            else if (cell == OG_VILLAIN_CELL)
+            {
+                Villain* v = new Villain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "springtrapHead.glb");
+                v->setScale(Vector3(30, 30, 30));
+                addVillain(v, iRow, iCol);
+                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
+            }
             // Wrong type of block
 
 
@@ -159,7 +166,7 @@ void Labyrinth::moveVillain(Villain* villain, Real time)
 void Labyrinth::chooseVillainDirection(Villain* villain, Block* charBlock)
 {
     Vector3 center = charBlock->getPosition();
-    Character::tDir current = villain->sinbadDirectorion;
+    Character::tDir current = villain->getDirectiorion();
     Character::tDir back = Character::opposite(current);
 
     std::vector<Character::tDir> options;
