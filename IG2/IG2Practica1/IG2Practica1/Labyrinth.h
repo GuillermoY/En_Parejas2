@@ -17,6 +17,7 @@
 #include "BreakableBlock.h"
 #include "Simbad.h"
 #include "Villain.h"
+#include "OGVillain.h"
 
 using namespace Ogre;
 

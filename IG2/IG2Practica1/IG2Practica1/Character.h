@@ -13,7 +13,7 @@
 class Character : public IG2Object {
 public:
 	Character(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
-		: IG2Object(initPos, node, sceneMng, mesh) {
+		: IG2Object(initPos, node, sceneMng, mesh), sM(sceneMng) {
 	};
 	typedef enum { UP, DOWN, LEFT, RIGHT } tDir;
 
@@ -29,6 +29,10 @@ public:
 	void rotateToNewDirection();
 	bool is180Turn();
 	tDir getDirectiorion() { return sinbadDirectorion; };
+
+protected:
+	SceneManager* sM;
+
 private:
 	tDir sinbadDirectorion = DOWN;
 	static const int SPEED; 

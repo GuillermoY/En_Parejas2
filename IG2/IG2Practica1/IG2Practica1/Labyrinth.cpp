@@ -86,7 +86,8 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
             }
             else if (cell == OG_VILLAIN_CELL)
             {
-                Villain* v = new Villain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "springtrapHead.glb");
+                //Villain* v = new Villain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "springtrapHead.glb");
+                OGVillain* v = new OGVillain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "springtrapHead.glb");
                 v->setScale(Vector3(30, 30, 30));
                 addVillain(v, iRow, iCol);
                 addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
@@ -228,5 +229,9 @@ void Labyrinth::update(Real time)
             b->update();
 
     for (Villain* v : villains)
+    {
         moveVillain(v, time);
+        if (v->getOG())
+            v->update(time);
+    }
 }
