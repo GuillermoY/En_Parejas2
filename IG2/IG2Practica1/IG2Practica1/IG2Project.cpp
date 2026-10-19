@@ -105,8 +105,17 @@ void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
     if (labyrinth != nullptr && heroe != nullptr) {
         labyrinth->moveCharacter(heroe, evt.timeSinceLastFrame);
         labyrinth->update(evt.timeSinceLastFrame);
+        showCurrentInfo();
     }
 
+}
+
+void IG2Project::showCurrentInfo()
+{
+    std::stringstream ss;
+    ss << "Lives: " << heroe->getRemainingLives() << "\n";
+    ss << "Points: " << heroe->getPoints();
+    mInfoBox->setText(ss.str());
 }
 
 void IG2Project::setupScene(void) {
@@ -165,6 +174,12 @@ void IG2Project::setupScene(void) {
 
     labyrinth = new Labyrinth();
     labyrinth->createLabyrinth("stage1.txt", mSM, heroe);
+
+    //------------------------------------------------------------------------
+    // HUD
+    mInfoLabel = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Stage: 1", 200);
+    mInfoBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Status", 200, 100);
+    showCurrentInfo();
 
 
     ////mSinbadNode->showBoundingBox(true);

@@ -48,6 +48,9 @@ protected:
     SceneManager* mSM = nullptr;
     std::vector<std::vector<Block*>> blocks;
     std::vector<Villain*> villains;
+    SceneNode* floorNode = nullptr;
+    static int floorCount;
+    Simbad* hero = nullptr;
 
     SceneNode* SN;
 
@@ -56,5 +59,8 @@ protected:
     bool blockCenterReached(Vector3 difference, Vector3 direction, float tolerance);
 
     void chooseVillainDirection(Villain* villain, Block* charBlock);
+    void createFloor();
+    void checkVillainCollisions();
+
     std::mt19937 gen{ std::random_device{}() };
 };

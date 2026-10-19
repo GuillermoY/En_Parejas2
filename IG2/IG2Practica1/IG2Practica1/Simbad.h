@@ -16,5 +16,29 @@ public:
 		: Character(initPos, node, sceneMng, mesh) {
 	};
 
+	int getRemainingLives() const { return lives; }
+	int getPoints() const { return points; }
+	bool isInvulnerable() const { return invulnerableTime > 0.0f; }
 
+	void hit()
+	{
+		if (isInvulnerable() || lives == 0)
+			return;
+		lives--;
+		invulnerableTime = INVULNERABLE_DURATION;
+	}
+
+	void update(Real dt)
+	{
+		if (invulnerableTime > 0.0f)
+			invulnerableTime -= dt;
+	}
+
+private:
+	static constexpr int INITIAL_LIVES = 3;
+	static constexpr float INVULNERABLE_DURATION = 2.0f;
+
+	int lives = INITIAL_LIVES;
+	int points = 0;
+	float invulnerableTime = 0.0f;
 };

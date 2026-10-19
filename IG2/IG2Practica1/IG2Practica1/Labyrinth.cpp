@@ -1,5 +1,8 @@
 #include "Labyrinth.h"
 #include <random>
+
+int Labyrinth::floorCount = 0;
+
 void Labyrinth::addBlock(Block* block, int row, int col, Vector3 tam)
 {
     block->setScale(tam);
@@ -23,6 +26,7 @@ Block* Labyrinth::getBlock(Vector3 position)
 void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Simbad* heroe)
 {
     mSM = SM;
+    hero = heroe;
     SN = mSM->getRootSceneNode()->createChildSceneNode();
 
     stageFile.open(stageFileName);
@@ -99,7 +103,33 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
         }
         iRow++;
     }
+
+    createFloor();
+
     stageFile.close();
+}
+
+void Labyrinth::createFloor()
+{
+    float width = numCols * BLOCK_SIZE;
+    float depth = numRows * BLOCK_SIZE;
+
+    std::string meshName = "labyrinthFloor" + std::to_string(floorCount++);
+
+    MeshManager::getSingleton().createPlane(meshName,
+        ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        Plane(Vector3::UNIT_Y, 0),
+        width, depth,
+        numCols * 4, numRows * 4,
+        true, 1,
+        numCols, numRows,
+        Vector3::UNIT_Z);
+
+    Entity* floor = mSM->createEntity(meshName);
+    floorNode = SN->createChildSceneNode();
+    floorNode->attachObject(floor);
+
+    floorNode->setPosition((numCols - 1) * BLOCK_SIZE / 2.0f, -BLOCK_SIZE / 2.0f, (numRows - 1) * BLOCK_SIZE / 2.0f);
 }
 
 void Labyrinth::moveCharacter(Character* character, Real time) {
@@ -162,6 +192,13 @@ void Labyrinth::moveVillain(Villain* villain, Real time)
 
     Block* inFrontBlock = getBlock(center + villain->getGridOrientation() * BLOCK_SIZE);
     stepForward(villain, charBlock, inFrontBlock, time);
+}
+
+void Labyrinth::checkVillainCollisions()
+{
+    for (Villain* v : villains)
+        if (hero->getAABB().intersects(v->getAABB()))
+            hero->hit();
 }
 
 void Labyrinth::chooseVillainDirection(Villain* villain, Block* charBlock)
@@ -234,4 +271,7 @@ void Labyrinth::update(Real time)
         if (v->getOG())
             v->update(time);
     }
+
+    hero->update(time);
+    checkVillainCollisions();
 }

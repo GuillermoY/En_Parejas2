@@ -40,6 +40,7 @@ protected:
     bool isDirectionModified(); // Dentro de character
     Vector3 getNexDirVector(); // Dentro de character
     Quaternion getQuaternionForNewDirection(); // Dentro de character
+    void showCurrentInfo();
 
     Ogre::SceneNode* mSinbadNode = nullptr;
     tDir sinbadDirectorion = UP;
@@ -56,6 +57,9 @@ protected:
 
     Labyrinth* labyrinth = nullptr;
     Simbad* heroe = nullptr;
+
+    OgreBites::Label* mInfoLabel = nullptr;
+    OgreBites::TextBox* mInfoBox = nullptr;
 };
 
 #endif
