@@ -37,13 +37,9 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
-    bool isDirectionModified(); // Dentro de character
-    Vector3 getNexDirVector(); // Dentro de character
-    Quaternion getQuaternionForNewDirection(); // Dentro de character
     void showCurrentInfo();
 
     Ogre::SceneNode* mSinbadNode = nullptr;
-    tDir sinbadDirectorion = UP;
 
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;

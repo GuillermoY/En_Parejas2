@@ -73,34 +73,6 @@ void IG2Project::setup(void) {
     setupScene();
 }
 
-bool IG2Project::isDirectionModified() {
-    return heroe->getGridOrientation() != getNexDirVector();
-}
-
-
-Vector3 IG2Project::getNexDirVector() {
-
-    Vector3 newDirVector = Vector3::ZERO;
-
-    if (sinbadDirectorion == RIGHT)
-        newDirVector = Vector3::UNIT_X;
-    else if (sinbadDirectorion == LEFT)
-        newDirVector = Vector3::NEGATIVE_UNIT_X;
-    else if (sinbadDirectorion == DOWN)
-        newDirVector = Vector3::UNIT_Z;
-    else if (sinbadDirectorion == UP)
-        newDirVector = Vector3::NEGATIVE_UNIT_Z;
-
-    return newDirVector;
-}
-
-Quaternion IG2Project::getQuaternionForNewDirection() {
-
-    Vector3 newDirVector = getNexDirVector();
-    Quaternion q = heroe->getOrientation().getRotationTo(newDirVector);
-    return q;
-}
-
 void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
     if (labyrinth != nullptr && heroe != nullptr) {
         labyrinth->moveCharacter(heroe, evt.timeSinceLastFrame);
