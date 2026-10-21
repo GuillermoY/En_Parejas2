@@ -120,14 +120,15 @@ void IG2Project::setupScene(void) {
 
     //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
     
-    Light* luz = mSM->createLight("Luz");
-    luz->setType(Ogre::Light::LT_DIRECTIONAL);
-    luz->setDiffuseColour(0.75, 0.75, 0.75);
+    //Light* luz = mSM->createLight("Luz");
+    //luz->setType(Ogre::Light::LT_DIRECTIONAL);
+    //luz->setDiffuseColour(0.75, 0.75, 0.75);
 
-    mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-    mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
+    //mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
+    //mLightNode->attachObject(luz);
+    //mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
 
+    mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
     //------------------------------------------------------------------------
     // Creating Sinbad

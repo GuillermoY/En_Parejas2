@@ -72,4 +72,24 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="IG2Media\example.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="IG2Media\CheckersM.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="IG2Media\RustySteelM.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="IG2Media\BumpyMetalM.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="IG2Media\MtlPlat2M.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="IG2Media\terr_rock6M.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+  </ItemGroup>
 </Project>

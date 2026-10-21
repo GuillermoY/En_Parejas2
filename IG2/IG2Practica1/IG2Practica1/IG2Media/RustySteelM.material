@@ -1,0 +1,9 @@
+material example/RustySteelM{
+    technique { 
+	pass {  
+	    texture_unit {
+		texture RustySteel.jpg
+	    }
+	}
+    }
+}

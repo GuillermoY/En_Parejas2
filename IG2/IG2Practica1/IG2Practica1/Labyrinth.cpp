@@ -3,10 +3,11 @@
 
 int Labyrinth::floorCount = 0;
 
-void Labyrinth::addBlock(Block* block, int row, int col, Vector3 tam)
+void Labyrinth::addBlock(Block* block, int row, int col, Vector3 tam, bool isWall)
 {
+    if (isWall)
+        block->setMaterialName(wallMat);
     block->setScale(tam);
-
     blocks[row][col] = block;
 }
 
@@ -27,12 +28,17 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
 {
     mSM = SM;
     hero = heroe;
-    SN = mSM->getRootSceneNode()->createChildSceneNode();
 
+    SN = mSM->getRootSceneNode()->createChildSceneNode();
     stageFile.open(stageFileName);
     // Read the number of files and columns
     stageFile >> numRows;
     stageFile >> numCols;
+
+    stageFile >> wallMat;
+    stageFile >> floorMat;
+
+    stageFile >> lightType;
 
     blocks.resize(numCols, std::vector<Block*>(numRows));
 
@@ -61,7 +67,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
             stageFile >> cell;
             // Inserts an empty block!
             if (cell == EMPTY_BLOCK) {
-                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
+                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam, false);
             }
             // Wall block
             else if (cell == WALL_BLOCK) {
@@ -82,11 +88,11 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
             // Hero position
             else if (cell == HERO_CELL) {
                 heroe->setPosition({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE });
-                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
+                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam, false);
             }
             else if (cell == VILLAIN_CELL) {
                 addVillain(new Villain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "ogrehead.mesh"), iRow, iCol);
-                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
+                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam, false);
             }
             else if (cell == OG_VILLAIN_CELL)
             {
@@ -94,7 +100,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
                 OGVillain* v = new OGVillain({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM, "springtrapHead.glb");
                 v->setScale(Vector3(30, 30, 30));
                 addVillain(v, iRow, iCol);
-                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam);
+                addBlock(new Empty({ iCol * BLOCK_SIZE, 0, iRow * BLOCK_SIZE }, newNode(), mSM), iRow, iCol, newTam, false);
             }
             // Wrong type of block
 
@@ -103,6 +109,29 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
         }
         iRow++;
     }
+    // The light
+
+
+    Ogre::Light* spotLight1 = mSM->createLight("SpotLight1");
+    Light::LightTypes type;
+    if (lightType == "directional")
+        type = Light::LightTypes::LT_DIRECTIONAL;
+    else if (lightType == "spot")
+        type = Light::LightTypes::LT_SPOTLIGHT;
+    else
+        type = Light::LightTypes::LT_POINT;
+    spotLight1->setType(type);
+    spotLight1->setSpotlightInnerAngle(Ogre::Degree(50.0f));
+    spotLight1->setSpotlightOuterAngle(Ogre::Degree(50.0f));
+    spotLight1->setSpotlightFalloff(0.0f);
+    spotLight1->setDiffuseColour(1.0f, 1.0f, 1.0f);
+    // Node with the light attached
+    mLightNode = mSM->getRootSceneNode()->createChildSceneNode();
+    mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
+    mLightNode->attachObject(spotLight1);
+    mLightNode->setPosition({ heroe->getPosition().x ,
+        heroe->getPosition().y +100,
+        heroe->getPosition().z });
 
     createFloor();
 
@@ -128,6 +157,7 @@ void Labyrinth::createFloor()
     Entity* floor = mSM->createEntity(meshName);
     floorNode = SN->createChildSceneNode();
     floorNode->attachObject(floor);
+    floor->setMaterialName(floorMat);
 
     floorNode->setPosition((numCols - 1) * BLOCK_SIZE / 2.0f, -BLOCK_SIZE / 2.0f, (numRows - 1) * BLOCK_SIZE / 2.0f);
 }
@@ -272,6 +302,11 @@ void Labyrinth::update(Real time)
             v->update(time);
     }
 
+
     hero->update(time);
+
+    mLightNode->setPosition({ hero->getPosition().x,
+    hero->getPosition().y +100,
+    hero->getPosition().z });
     checkVillainCollisions();
 }

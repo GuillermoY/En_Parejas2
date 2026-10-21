@@ -46,14 +46,17 @@ private:
 
 
     void createPart(Vector3 pos, Ogre::SceneNode* part, Ogre::SceneNode* parent = nullptr,
-        Vector3 scale = {0.01f,0.01f,0.01f}, string mesh = "cube.mesh")
+        Vector3 scale = {0.01f,0.01f,0.01f}, string mat = "example/RustySteelM", string mesh = "cube.mesh")
     {
         Ogre::Entity* partEntity = sM->createEntity(mesh);
-        
+        if (mat != "")
+            partEntity->setMaterialName(mat);
+
         if (parent == nullptr)
             part = this->createChildSceneNode();
         else
             part = parent->createChildSceneNode();
+
 
         part->attachObject(partEntity);
         part->setScale(scale);
@@ -69,9 +72,9 @@ private:
         Ogre::SceneNode* leftShoulderNode = nullptr;
         createPart({ 0.0f, 0.0f, 0.0f }, leftShoulderNode, leftArmNode);
         Ogre::SceneNode* leftUpperArmNode = nullptr;
-        createPart({ 0.0f, -1.0f, 0.0f }, leftUpperArmNode, leftArmNode, { 0.004f, 0.001f, 0.004f });
+        createPart({ 0.0f, -1.0f, 0.0f }, leftUpperArmNode, leftArmNode, { 0.004f, 0.001f, 0.004f }, "example/BumpyMetalM");
         Ogre::SceneNode* leftForearmNode = nullptr;
-        createPart({ 0.0f, -2.0f, 0.0f }, leftForearmNode, leftArmNode, { 0.25, 0.25, 0.25}, "fish.mesh");
+        createPart({ 0.0f, -2.0f, 0.0f }, leftForearmNode, leftArmNode, { 0.25, 0.25, 0.25}, "", "fish.mesh");
 
         //Brazo Derecho
         rightArmNode = createChildSceneNode();
@@ -80,20 +83,20 @@ private:
         Ogre::SceneNode* rightShoulderNode = nullptr;
         createPart({ 0.0f, 0.0f, 0.0f }, rightShoulderNode, rightArmNode);
         Ogre::SceneNode* rightUpperArmNode = nullptr;
-        createPart({ 0.0f, -1.0f, 0.0f }, rightUpperArmNode, rightArmNode, { 0.004f, 0.001f, 0.004f });
+        createPart({ 0.0f, -1.0f, 0.0f }, rightUpperArmNode, rightArmNode, { 0.004f, 0.001f, 0.004f }, "example/BumpyMetalM");
         Ogre::SceneNode* rightForearmNode = nullptr;
-        createPart({ 0.0f, -2.0f, 0.0f }, rightForearmNode, rightArmNode, { 0.007f, 0.004f, 0.007f });
+        createPart({ 0.0f, -2.0f, 0.0f }, rightForearmNode, rightArmNode, { 0.007f, 0.004f, 0.007f }, "example/MtlPlat2M");
         
         //Torso
         Ogre::SceneNode* torso = nullptr;
-        createPart({ 0.0f, 0.0f, 0.0f }, torso, nullptr, {0.4,0.4,0.4}, "Barrel.mesh");
+        createPart({ 0.0f, 0.0f, 0.0f }, torso, nullptr, {0.4,0.4,0.4}, "", "Barrel.mesh");
 
         //Pierna Izquierda
         leftLegNode = createChildSceneNode();
         leftLegNode->setPosition(-2.0f, -2.0f, 0.0f);
 
         Ogre::SceneNode* leftLowerLegNode = nullptr;
-        createPart({ 0.0f, 0.0f, 0.0f }, leftLowerLegNode, leftLegNode);
+        createPart({ 0.0f, 0.0f, 0.0f }, leftLowerLegNode, leftLegNode, { 0.01f,0.01f,0.01f }, "example/terr_rock6M");
         Ogre::SceneNode* leftUpperLegNode = nullptr;
         createPart({ 0.0f, -2.0f, 0.0f }, leftUpperLegNode, leftLegNode, { 0.007f, 0.004f, 0.007f });
 
@@ -102,7 +105,7 @@ private:
         rightLegNode->setPosition(2.0f, -2.0f, 0.0f);
 
         Ogre::SceneNode* rightLowerLegNode = nullptr;
-        createPart({ 0.0f, 0.0f, 0.0f }, rightLowerLegNode, rightLegNode);
+        createPart({ 0.0f, 0.0f, 0.0f }, rightLowerLegNode, rightLegNode, { 0.01f,0.01f,0.01f },"example/terr_rock6M");
         Ogre::SceneNode* rightUpperLegNode = nullptr;
         createPart({ 0.0f, -2.0f, 0.0f }, rightUpperLegNode, rightLegNode, { 0.007f, 0.004f, 0.007f });
     }

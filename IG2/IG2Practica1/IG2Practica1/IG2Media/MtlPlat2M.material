@@ -1,0 +1,9 @@
+material example/MtlPlat2M{
+    technique { 
+	pass {  
+	    texture_unit {
+		texture MtlPlat2.jpg
+	    }
+	}
+    }
+}

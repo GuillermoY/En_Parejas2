@@ -1,0 +1,9 @@
+material example/BumpyMetalM{
+    technique { 
+	pass {  
+	    texture_unit {
+		texture BumpyMetal.jpg
+	    }
+	}
+    }
+}

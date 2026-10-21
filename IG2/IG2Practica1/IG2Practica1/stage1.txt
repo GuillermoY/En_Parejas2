@@ -1,5 +1,8 @@
 19
 19
+example/CheckersM
+example/stonesFloor
+spot
 xxxxxxxxxxxxxxxxxxx
 xooooooooxoooooooox
 xoxxoxxxoxoxxxoxxox

@@ -18,12 +18,13 @@
 #include "Simbad.h"
 #include "Villain.h"
 #include "OGVillain.h"
+#include "OgreLight.h"
 
 using namespace Ogre;
 
 class Labyrinth {
 public:
-    void addBlock(Block* block, int row, int col, Vector3 tam);
+    void addBlock(Block* block, int row, int col, Vector3 tam, bool isWall = true);
     void addVillain(Villain* villain, int row, int col);
     void createLabyrinth(std::string stageFileName, SceneManager* SceneManager, Simbad* heroe);
     void moveCharacter(Character* character, Real time);
@@ -51,8 +52,13 @@ protected:
     SceneNode* floorNode = nullptr;
     static int floorCount;
     Simbad* hero = nullptr;
+    
+    string floorMat;
+    string wallMat;
+    string lightType;
 
     SceneNode* SN;
+    SceneNode* mLightNode; 
 
     Block* getBlock(Vector3 position);
     void stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time);

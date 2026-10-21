@@ -1,0 +1,9 @@
+material example/CheckersM{
+    technique { 
+	pass {  
+	    texture_unit {
+		texture Checkers.jpg
+	    }
+	}
+    }
+}
