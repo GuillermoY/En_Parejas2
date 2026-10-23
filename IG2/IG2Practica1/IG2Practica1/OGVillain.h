@@ -39,13 +39,21 @@ private:
     Ogre::SceneNode* leftLegNode = nullptr;
     Ogre::SceneNode* rightLegNode = nullptr;
 
+    // Codos
+    Ogre::SceneNode* leftUpperArmNode = nullptr;
+    Ogre::SceneNode* rightUpperArmNode = nullptr;
+
+    // Manos
+    Ogre::SceneNode* leftForearmNode = nullptr;
+    Ogre::SceneNode* rightForearmNode = nullptr;
+
     float rotationTimer = 0.0f;
     float rotationDuration = 50.0f;
 
     bool rotateForward = true;
 
 
-    void createPart(Vector3 pos, Ogre::SceneNode* part, Ogre::SceneNode* parent = nullptr,
+    void createPart(Vector3 pos, Ogre::SceneNode*& part, Ogre::SceneNode* parent = nullptr,
         Vector3 scale = {0.01f,0.01f,0.01f}, string mat = "example/RustySteelM", string mesh = "cube.mesh")
     {
         Ogre::Entity* partEntity = sM->createEntity(mesh);
@@ -71,9 +79,7 @@ private:
 
         Ogre::SceneNode* leftShoulderNode = nullptr;
         createPart({ 0.0f, 0.0f, 0.0f }, leftShoulderNode, leftArmNode);
-        Ogre::SceneNode* leftUpperArmNode = nullptr;
         createPart({ 0.0f, -1.0f, 0.0f }, leftUpperArmNode, leftArmNode, { 0.004f, 0.001f, 0.004f }, "example/BumpyMetalM");
-        Ogre::SceneNode* leftForearmNode = nullptr;
         createPart({ 0.0f, -2.0f, 0.0f }, leftForearmNode, leftArmNode, { 0.25, 0.25, 0.25}, "", "fish.mesh");
 
         //Brazo Derecho
@@ -82,9 +88,7 @@ private:
         
         Ogre::SceneNode* rightShoulderNode = nullptr;
         createPart({ 0.0f, 0.0f, 0.0f }, rightShoulderNode, rightArmNode);
-        Ogre::SceneNode* rightUpperArmNode = nullptr;
         createPart({ 0.0f, -1.0f, 0.0f }, rightUpperArmNode, rightArmNode, { 0.004f, 0.001f, 0.004f }, "example/BumpyMetalM");
-        Ogre::SceneNode* rightForearmNode = nullptr;
         createPart({ 0.0f, -2.0f, 0.0f }, rightForearmNode, rightArmNode, { 0.007f, 0.004f, 0.007f }, "example/MtlPlat2M");
         
         //Torso
@@ -98,7 +102,7 @@ private:
         Ogre::SceneNode* leftLowerLegNode = nullptr;
         createPart({ 0.0f, 0.0f, 0.0f }, leftLowerLegNode, leftLegNode, { 0.01f,0.01f,0.01f }, "example/terr_rock6M");
         Ogre::SceneNode* leftUpperLegNode = nullptr;
-        createPart({ 0.0f, -2.0f, 0.0f }, leftUpperLegNode, leftLegNode, { 0.007f, 0.004f, 0.007f });
+        createPart({ 0.0f, -1.0f, 0.0f }, leftUpperLegNode, leftLegNode, { 0.007f, 0.004f, 0.007f });
 
         //Pierna Derecha
         rightLegNode = createChildSceneNode();
@@ -107,13 +111,15 @@ private:
         Ogre::SceneNode* rightLowerLegNode = nullptr;
         createPart({ 0.0f, 0.0f, 0.0f }, rightLowerLegNode, rightLegNode, { 0.01f,0.01f,0.01f },"example/terr_rock6M");
         Ogre::SceneNode* rightUpperLegNode = nullptr;
-        createPart({ 0.0f, -2.0f, 0.0f }, rightUpperLegNode, rightLegNode, { 0.007f, 0.004f, 0.007f });
+        createPart({ 0.0f, -1.f, 0.0f }, rightUpperLegNode, rightLegNode, { 0.007f, 0.004f, 0.007f });
     }
 
     void animate(Ogre::Real time)
     {
         if (leftArmNode && rightArmNode
-            && leftLegNode && rightLegNode)
+            && leftLegNode && rightLegNode
+            && leftUpperArmNode && rightUpperArmNode
+            && leftForearmNode && rightForearmNode)
         {
             Ogre::Real direction = 1.0f;
             if (!rotateForward)
@@ -123,6 +129,16 @@ private:
 
             leftArmNode->pitch(armsAngle);
             rightArmNode->pitch(-armsAngle);
+
+            Ogre::Radian upperArmAngle = Ogre::Radian(5.0f * direction * time);
+
+            leftUpperArmNode->pitch(-upperArmAngle);
+            rightUpperArmNode->pitch(upperArmAngle);
+
+            Ogre::Radian handAngle = Ogre::Radian(10.0f * direction * time);
+
+            leftForearmNode->yaw(-upperArmAngle);
+            rightForearmNode->yaw(upperArmAngle);
             
             Ogre::Radian legsAngle = Ogre::Radian(2.0f * direction * time);
             
