@@ -22,7 +22,11 @@
 
 
 class IG2Project : public OgreBites::ApplicationContext, OgreBites::InputListener {
-
+    enum currScene
+    {
+        INTRO,
+        GAME
+    };
 public:
     explicit IG2Project() : OgreBites::ApplicationContext("IG2Project") {};
     virtual ~IG2Project() {};
@@ -56,6 +60,22 @@ protected:
 
     OgreBites::Label* mInfoLabel = nullptr;
     OgreBites::TextBox* mInfoBox = nullptr;
+
+    //CreateIntro
+    void createIntroScene();
+    void createGameScene();
+    void changeScene();
+    currScene actScene = INTRO;
+    Ogre::SceneNode* mSinbadIntroNode = nullptr;
+    Ogre::SceneNode* mFloorIntroNode = nullptr;
+
+    void sinbadIntroAnimation();
+    void addFrame(NodeAnimationTrack* nAnimTrack, float giro, Vector3 pos, Vector3 escala, float tiempo);
+    Ogre::NodeAnimationTrack* sinbadAnim = nullptr;
+    Ogre::AnimationState* sinbadAnimState = nullptr;
+    Ogre::Animation* sinbadParent = nullptr;
+
+    bool hasSwords = false;
 };
 
 #endif

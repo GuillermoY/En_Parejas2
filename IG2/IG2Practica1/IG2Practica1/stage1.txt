@@ -2,7 +2,7 @@
 19
 example/CheckersM
 example/stonesFloor
-spot
+directional
 xxxxxxxxxxxxxxxxxxx
 xooooooooxoooooooox
 xoxxoxxxoxoxxxoxxox
