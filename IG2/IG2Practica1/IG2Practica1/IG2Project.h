@@ -83,7 +83,7 @@ protected:
 
     Ogre::Real currTime = 0.0f;
 
-    Ogre::Real animATime = 18.0f;
+    Ogre::Real animTime = 18.0f;
     Ogre::Real swordATime = 6.0f;
     Ogre::Real danceATime = 15.0f;
     Ogre::Real runATime = 3.0f;
