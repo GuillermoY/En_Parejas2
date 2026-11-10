@@ -16,22 +16,24 @@ bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
         cout << "Position of Sinbad: " << mSinbadNode->getPosition() << endl;
         cout << "Position of the camera: " << mCamNode->getPosition() << endl;
     }
-
-    else if (evt.keysym.sym == SDLK_UP) { //rotateToNewDirection character
-        cout << "Pressed UP" << endl;
-        heroe->changeDirection(heroe->UP);
-    }
-    else if (evt.keysym.sym == SDLK_DOWN) {
-        cout << "Pressed DOWN" << endl;
-        heroe->changeDirection(heroe->DOWN);
-    }
-    else if (evt.keysym.sym == SDLK_LEFT) {
-        cout << "Pressed LEFT" << endl;
-        heroe->changeDirection(heroe->LEFT);
-    }
-    else if (evt.keysym.sym == SDLK_RIGHT) {
-        cout << "Pressed RIGHT" << endl;
-        heroe->changeDirection(heroe->RIGHT);
+    else if (heroe != nullptr)
+    {
+        if (evt.keysym.sym == SDLK_UP) { //rotateToNewDirection character
+            cout << "Pressed UP" << endl;
+            heroe->changeDirection(heroe->UP);
+        }
+        else if (evt.keysym.sym == SDLK_DOWN) {
+            cout << "Pressed DOWN" << endl;
+            heroe->changeDirection(heroe->DOWN);
+        }
+        else if (evt.keysym.sym == SDLK_LEFT) {
+            cout << "Pressed LEFT" << endl;
+            heroe->changeDirection(heroe->LEFT);
+        }
+        else if (evt.keysym.sym == SDLK_RIGHT) {
+            cout << "Pressed RIGHT" << endl;
+            heroe->changeDirection(heroe->RIGHT);
+        }
     }
     else if (evt.keysym.sym == SDLK_s && actScene == INTRO)
     {
@@ -85,9 +87,43 @@ void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
         labyrinth->update(evt.timeSinceLastFrame);
         showCurrentInfo();
     }
-    else if (actScene == INTRO && sinbadAnimState != nullptr)
+    else if (actScene == INTRO && sinbadAnimDance != nullptr)
     {
-        sinbadAnimState->addTime(evt.timeSinceLastFrame);
+        currTime += evt.timeSinceLastFrame;
+        if (currTime > animTime)
+        {
+            currTime = 0;
+        }
+        else if (currTime > danceATime || currTime < runATime)
+        {
+            sinbadAnimDance->addTime(evt.timeSinceLastFrame);
+            sinbadAnimDance->setEnabled(true);
+            sinbadAnimRun->setEnabled(false);
+
+            if (hasSwords)
+            {
+                hasSwords = false;
+                entSinbad->detachObjectFromBone(entSwordR);
+                entSinbad->detachObjectFromBone(entSwordL);
+            }
+        }
+        else
+        {
+            sinbadAnimRun->addTime(evt.timeSinceLastFrame);
+            sinbadAnimDance->setEnabled(false);
+            sinbadAnimRun->setEnabled(true);
+        }
+
+        if (currTime > swordATime && currTime < danceATime
+            && !hasSwords)
+        {
+            hasSwords = true;
+
+            entSinbad->attachObjectToBone("ThumbMed.R", entSwordR);
+            entSinbad->attachObjectToBone("ThumbMed.L", entSwordL);
+        }
+
+        sinbadAnimMove->addTime(evt.timeSinceLastFrame);
     }
 }
 
@@ -231,12 +267,14 @@ void IG2Project::createIntroScene()
     //------------------------------------------------------------------------
     //Creating Sinbad
 
-    Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+    entSinbad = mSM->createEntity("Sinbad.mesh");
     mSinbadIntroNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbadIntro");
-    mSinbadIntroNode->attachObject(ent);
-    sinbadAnimState = ent->getAnimationState("Dance");// mSM->createAnimationState("sinbadIntro");
+    mSinbadIntroNode->attachObject(entSinbad);
 
-    //mSinbadIntroNode->showBoundingBox(true);
+    sinbadParent = mSM->createAnimation("sinbadIntro", animTime);
+    sinbadAnimDance = entSinbad->getAnimationState("Dance");
+    sinbadIntroAnimation();
+
     
     //Set position of Sinbad
     mSinbadIntroNode->setPosition(0, 100, 0);
@@ -244,7 +282,6 @@ void IG2Project::createIntroScene()
     //Set scale of Sinbad
     mSinbadIntroNode->setScale(20, 20, 20);
 
-    sinbadIntroAnimation();
     
     //------------------------------------------------------------------------
     //Creating the floor
@@ -262,37 +299,73 @@ void IG2Project::createIntroScene()
 
 void IG2Project::sinbadIntroAnimation()
 {
-    sinbadParent = mSM->createAnimation("sinbadIntro", 21.0f);
+
     sinbadParent->setInterpolationMode(Ogre::Animation::IM_SPLINE);
-    sinbadAnim = sinbadParent->createNodeTrack(0, mSinbadIntroNode);
 
-    //mSinbadIntroNode->setInitialState();
+    sinbadTrack = sinbadParent->createNodeTrack(0);
+    sinbadTrack->setAssociatedNode(mSinbadIntroNode);
 
-    //Vector3 keyframePos(0, 0, 0);
-    //int movementLength = 50;
-    //Real duration = 16.0;
-    //Real durStep = duration / 4.0;
+    mSinbadIntroNode->setInitialState();
 
-    //addFrame(sinbadAnim, 0, keyframePos, {20,20,20}, 0);
-    //keyframePos += Ogre::Vector3::UNIT_X * movementLength;
-    //addFrame(sinbadAnim, 0, keyframePos, { 20,20,20 }, durStep);
-    //keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
-    //addFrame(sinbadAnim, 0, keyframePos, { 20,20,20 }, durStep*2);
-    //keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
-    //addFrame(sinbadAnim, 0, keyframePos, { 20,20,20 }, durStep*3);
-    //keyframePos += Ogre::Vector3::UNIT_X * movementLength;
-    //addFrame(sinbadAnim, 0, keyframePos, { 20,20,20 }, durStep*4);
+    Vector3 keyframePos(0, 100, 0);
+    Vector3 iniPos(0, 100, 0);
+    Vector3 escala(20, 20, 20);
 
-    sinbadAnimState->setLoop(true);
-    sinbadAnimState->setEnabled(true);
+    Real movementLength = 100;
+    Real durStep = animTime / 10.0f;
+
+    Quaternion mirarDerecha(Degree(90), Vector3::UNIT_Y);
+    Quaternion mirarIzquierda(Degree(-90), Vector3::UNIT_Y);
+    Quaternion mirarCentro(Degree(0), Vector3::UNIT_Y);
+
+    // Quieto
+    addFrame(sinbadTrack, mirarCentro, iniPos, escala, 0);
+
+    addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep*1.5);
+    // Mira a la derecha
+    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep*2);
+
+    // Mueve hacia la derecha
+    keyframePos += Vector3::UNIT_X * movementLength;
+    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep*3);
+    
+    entSwordR = mSM->createEntity("Sword.mesh");
+    entSwordL = mSM->createEntity("Sword.mesh");
+    //entSinbad->attachObjectToBone("Hand", entSword);
+
+    // Gira a la izquierda y comienza a desplazarse
+    addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 4);
+    keyframePos += Vector3::NEGATIVE_UNIT_X * movementLength;
+    addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 5);
+
+    // Continúa hacia la izquierda
+    keyframePos += Vector3::NEGATIVE_UNIT_X * movementLength;
+    addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 6);
+
+    // Vuelve a la derecha a la posición inicial
+    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 7);
+    addFrame(sinbadTrack, mirarDerecha, iniPos, escala, durStep * 8);
+
+    // Regresa al centro mirando hacia delante
+    addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep * 9);
+
+    sinbadAnimMove = mSM->createAnimationState("sinbadIntro");
+    sinbadAnimMove->setEnabled(true);
+    sinbadAnimMove->setLoop(true);
+
+    sinbadAnimRun = entSinbad->getAnimationState("RunBase");
+    sinbadAnimRun->setEnabled(true);
+    sinbadAnimRun->setLoop(true);
 }
 
-void IG2Project::addFrame(NodeAnimationTrack* nAnimTrack, float giro, Vector3 pos, Vector3 escala, Real tiempo)
+void IG2Project::addFrame(NodeAnimationTrack* nAnimTrack, Quaternion giro, Vector3 pos, Vector3 escala, Real tiempo)
 {
     TransformKeyFrame* kf;
     // Keyframe 0 (Init state)
-    kf = nAnimTrack->createNodeKeyFrame(tiempo * 0);
+    kf = nAnimTrack->createNodeKeyFrame(tiempo);
     kf->setTranslate(pos);
+    kf->setRotation(giro);
+    kf->setScale(escala);
 }
 
 void IG2Project::createGameScene()

@@ -70,12 +70,25 @@ protected:
     Ogre::SceneNode* mFloorIntroNode = nullptr;
 
     void sinbadIntroAnimation();
-    void addFrame(NodeAnimationTrack* nAnimTrack, float giro, Vector3 pos, Vector3 escala, float tiempo);
-    Ogre::NodeAnimationTrack* sinbadAnim = nullptr;
-    Ogre::AnimationState* sinbadAnimState = nullptr;
+    void addFrame(NodeAnimationTrack* nAnimTrack, Quaternion giro, Vector3 pos, Vector3 escala, float tiempo);
+    Ogre::NodeAnimationTrack* sinbadTrack = nullptr;
+    Ogre::AnimationState* sinbadAnimDance = nullptr;
+    Ogre::AnimationState* sinbadAnimMove = nullptr;
+    Ogre::AnimationState* sinbadAnimRun = nullptr;
     Ogre::Animation* sinbadParent = nullptr;
 
+    Ogre::Entity* entSwordR = nullptr;
+    Ogre::Entity* entSwordL = nullptr;
+    Ogre::Entity* entSinbad = nullptr;
+
+    Ogre::Real currTime = 0.0f;
+
+    Ogre::Real animATime = 18.0f;
+    Ogre::Real swordATime = 6.0f;
+    Ogre::Real danceATime = 15.0f;
+    Ogre::Real runATime = 3.0f;
     bool hasSwords = false;
+
 };
 
 #endif
