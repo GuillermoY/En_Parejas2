@@ -319,9 +319,8 @@ void IG2Project::sinbadIntroAnimation()
     Quaternion mirarCentro(Degree(0), Vector3::UNIT_Y);
 
     // Quieto
-    addFrame(sinbadTrack, mirarCentro, iniPos, escala, 0);
+    addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep);
 
-    addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep*1.5);
     // Mira a la derecha
     addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep*2);
 

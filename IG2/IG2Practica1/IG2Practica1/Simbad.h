@@ -14,6 +14,10 @@ class Simbad : public Character {
 public:
 	Simbad(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh)
 		: Character(initPos, node, sceneMng, mesh) {
+		
+		charactAnim = entity->getAnimationState("RunBase");
+		charactAnim->setEnabled(true);
+		charactAnim->setLoop(true);
 	};
 
 	int getRemainingLives() const { return lives; }
@@ -28,8 +32,9 @@ public:
 		invulnerableTime = INVULNERABLE_DURATION;
 	}
 
-	void update(Real dt)
+	void update(Real dt) override
 	{
+		Character::update(dt);
 		if (invulnerableTime > 0.0f)
 			invulnerableTime -= dt;
 	}

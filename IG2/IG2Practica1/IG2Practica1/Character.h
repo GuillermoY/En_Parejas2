@@ -29,10 +29,25 @@ public:
 	void rotateToNewDirection();
 	bool is180Turn();
 	tDir getDirectiorion() { return sinbadDirectorion; };
+	virtual void update(Real dt) { if (charactAnim != nullptr) charactAnim->addTime(dt); };
 
+	void setAnimState(String anim)
+	{
+		if (charactAnim->getAnimationName() == anim && charactAnim != nullptr)
+			return;
+
+		if (charactAnim != nullptr) 
+			charactAnim->setEnabled(false);
+
+		charactAnim = entity->getAnimationState(anim);
+		charactAnim->setTimePosition(0);
+		charactAnim->setLoop(true);
+		charactAnim->setEnabled(true);
+	}
 protected:
 	SceneManager* sM;
 
+	Ogre::AnimationState* charactAnim = nullptr;
 private:
 	tDir sinbadDirectorion = DOWN;
 	static const int SPEED; 

@@ -170,9 +170,10 @@ void Labyrinth::moveCharacter(Character* character, Real time) {
     inFrontBlock = this->getBlock(
         charBlock->getPosition() + character->getGridOrientation() * BLOCK_SIZE
     );
+    bool move=false;
     // Character does not change its direction -> step forward!
     if (!character->isDirectionModified()) {
-        stepForward(character, charBlock, inFrontBlock, time);
+        move = stepForward(character, charBlock, inFrontBlock, time);
     }
     // New direction
     else {
@@ -205,9 +206,13 @@ void Labyrinth::moveCharacter(Character* character, Real time) {
         }
         // Rotation cannot be performed... check if character can step forward
         else {
-            stepForward(character, charBlock, inFrontBlock, time);
+            move = stepForward(character, charBlock, inFrontBlock, time);
         }
     }
+    if (move)
+        character->setAnimState("RunBase");
+    else
+        character->setAnimState("IdleTop");
 }
 
 void Labyrinth::moveVillain(Villain* villain, Real time)
@@ -260,14 +265,14 @@ void Labyrinth::chooseVillainDirection(Villain* villain, Block* charBlock)
     villain->rotateToNewDirection();
 }
 
-void Labyrinth::stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time)
+bool Labyrinth::stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time)
 {
     Vector3 direction = character->getGridOrientation();
     float step = character->getSpeed() * time;
 
     if (inFrontBlock->canPassThrough()) {
         character->move(direction * step);
-        return;
+        return true;
     }
 
     Vector3 position = character->getPosition();
@@ -276,10 +281,16 @@ void Labyrinth::stepForward(Character* character, Block* charBlock, Block* inFro
 
     if (remaining > 0.0f) {
         if (step >= remaining)
+        {
             character->setPosition(center);
+            return false;
+        }
         else
+        {
             character->move(direction * step);
+        }
     }
+    return false;
 }
 
 
