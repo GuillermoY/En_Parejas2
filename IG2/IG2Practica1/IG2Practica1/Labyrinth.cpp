@@ -130,12 +130,85 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
     mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
     mLightNode->attachObject(spotLight1);
     mLightNode->setPosition({ heroe->getPosition().x ,
-        heroe->getPosition().y +100,
+        heroe->getPosition().y + 100,
         heroe->getPosition().z });
 
     createFloor();
 
+    //Bombas
+    for (int i = 0; i < MAX_BOMBS; i++)
+        inactiveBombs.push_back(new Bomb(SN->createChildSceneNode(), mSM));
+
     stageFile.close();
+}
+
+void Labyrinth::placeBomb()
+{
+    if (inactiveBombs.empty())
+        return;
+
+    Block* heroBlock = getBlock(hero->getPosition());
+
+    //Evitar dos en la misma casilla
+    for (Bomb* b : activeBombs)
+        if (getBlock(b->getPosition()) == heroBlock)
+            return;
+
+    Bomb* bomb = inactiveBombs.back();
+    inactiveBombs.pop_back();
+
+    bomb->initExplosion(heroBlock->getPosition() + Vector3(0, -BLOCK_SIZE / 2.0f, 0));
+    activeBombs.push_back(bomb);
+}
+
+void Labyrinth::updateBombs(Real time)
+{
+    for (Bomb* b : inactiveBombs)
+        b->update(time);
+
+    for (auto it = activeBombs.begin(); it != activeBombs.end(); ) {
+        Bomb* b = *it;
+        if (b->update(time)) {
+            explodeBomb(b);
+            inactiveBombs.push_back(b);
+            it = activeBombs.erase(it);
+        }
+        else
+            ++it;
+    }
+}
+
+void Labyrinth::explodeBomb(Bomb* bomb)
+{
+    //Bloques afectados
+    Block* center = getBlock(bomb->getPosition());
+    std::vector<Block*> affected{ center };
+    for (Character::tDir d : { Character::UP, Character::DOWN, Character::LEFT, Character::RIGHT }) {
+        Block* neighbour = getBlock(center->getPosition() + Character::dirToVector(d) * BLOCK_SIZE);
+
+        if (BreakableBlock* breakable = dynamic_cast<BreakableBlock*>(neighbour))
+            breakable->breakBlock();
+
+        if (neighbour->canPassThrough())
+            affected.push_back(neighbour);
+    }
+
+    auto inBlast = [&](Character* c) {
+        Block* b = getBlock(c->getPosition());
+        return std::find(affected.begin(), affected.end(), b) != affected.end();
+        };
+
+    if (inBlast(hero))
+        hero->hit();
+
+    for (auto it = villains.begin(); it != villains.end(); ) {
+        if (inBlast(*it)) {
+            (*it)->setVisible(false);
+            it = villains.erase(it);
+        }
+        else
+            ++it;
+    }
 }
 
 void Labyrinth::createFloor()
@@ -170,7 +243,7 @@ void Labyrinth::moveCharacter(Character* character, Real time) {
     inFrontBlock = this->getBlock(
         charBlock->getPosition() + character->getGridOrientation() * BLOCK_SIZE
     );
-    bool move=false;
+    bool move = false;
     // Character does not change its direction -> step forward!
     if (!character->isDirectionModified()) {
         move = stepForward(character, charBlock, inFrontBlock, time);
@@ -317,7 +390,9 @@ void Labyrinth::update(Real time)
     hero->update(time);
 
     mLightNode->setPosition({ hero->getPosition().x,
-    hero->getPosition().y +100,
+    hero->getPosition().y + 100,
     hero->getPosition().z });
+
+    updateBombs(time);
     checkVillainCollisions();
 }

@@ -34,6 +34,9 @@ bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
             cout << "Pressed RIGHT" << endl;
             heroe->changeDirection(heroe->RIGHT);
         }
+        else if (evt.keysym.sym == SDLK_SPACE && labyrinth != nullptr) {
+            labyrinth->placeBomb();
+        }
     }
     else if (evt.keysym.sym == SDLK_s && actScene == INTRO)
     {
@@ -69,7 +72,7 @@ void IG2Project::setup(void) {
 
     // Register our scene with the RTSS
     mShaderGenerator->addSceneManager(mSM);
-        
+
     mSM->addRenderQueueListener(mOverlaySystem);
     //mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", getRenderWindow());
@@ -148,7 +151,7 @@ void IG2Project::setupScene(void) {
 
     mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
     mCamNode->attachObject(cam);
-    
+
     Viewport* vp = getRenderWindow()->addViewport(cam);
 
     mCamMgr = new OgreBites::CameraMan(mCamNode);
@@ -167,13 +170,13 @@ void IG2Project::setupScene(void) {
     //mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     //mLightNode->attachObject(luz);
     //mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
-    
+
     //mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
     //sinbad = new IG2Object(Vector3(0, 0, 0),
     //    mSinbadNode,
     //    mSM,
     //    "Sinbad.mesh");
-    
+
     ////mSinbadNode->showBoundingBox(true);
     //sinbad->setScale(Vector3(15, 15, 15));
     //sinbad->move(Vector3(0, sinbad->calculateBoxSize().y / 2 + 1, 0));
@@ -243,7 +246,7 @@ void IG2Project::changeScene()
     {
         mFloorIntroNode->flipVisibility();
     }
-    
+
     createGameScene();
 }
 
@@ -275,22 +278,22 @@ void IG2Project::createIntroScene()
     sinbadAnimDance = entSinbad->getAnimationState("Dance");
     sinbadIntroAnimation();
 
-    
+
     //Set position of Sinbad
     mSinbadIntroNode->setPosition(0, 100, 0);
-    
+
     //Set scale of Sinbad
     mSinbadIntroNode->setScale(20, 20, 20);
 
-    
+
     //------------------------------------------------------------------------
     //Creating the floor
-    
+
     MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
         Plane(Vector3::UNIT_Y, 0),
         1500, 1500, 50, 50, true, 1, 5, 5,
         Vector3::UNIT_Z);
-    
+
     Entity* entFloor = mSM->createEntity("exampleFloor", "floor");
     entFloor->setMaterialName("example/stonesFloor");
     mFloorIntroNode = mSM->getRootSceneNode()->createChildSceneNode();
@@ -322,12 +325,12 @@ void IG2Project::sinbadIntroAnimation()
     addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep);
 
     // Mira a la derecha
-    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep*2);
+    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 2);
 
     // Mueve hacia la derecha
     keyframePos += Vector3::UNIT_X * movementLength;
-    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep*3);
-    
+    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 3);
+
     entSwordR = mSM->createEntity("Sword.mesh");
     entSwordL = mSM->createEntity("Sword.mesh");
     //entSinbad->attachObjectToBone("Hand", entSword);

@@ -19,6 +19,8 @@
 #include "Villain.h"
 #include "OGVillain.h"
 #include "OgreLight.h"
+#include "Bomb.h"
+#include <algorithm>
 
 using namespace Ogre;
 
@@ -30,6 +32,7 @@ public:
     void moveCharacter(Character* character, Real time);
     void moveVillain(Villain* character, Real time);
     void update(Real time);
+    void placeBomb();
 
 protected:
     int numRows;
@@ -52,13 +55,13 @@ protected:
     SceneNode* floorNode = nullptr;
     static int floorCount;
     Simbad* hero = nullptr;
-    
+
     string floorMat;
     string wallMat;
     string lightType;
 
     SceneNode* SN;
-    SceneNode* mLightNode; 
+    SceneNode* mLightNode;
 
     Block* getBlock(Vector3 position);
     bool stepForward(Character* character, Block* charBlock, Block* inFrontBlock, Real time);
@@ -67,6 +70,12 @@ protected:
     void chooseVillainDirection(Villain* villain, Block* charBlock);
     void createFloor();
     void checkVillainCollisions();
+
+    const int MAX_BOMBS = 3;
+    std::vector<Bomb*> activeBombs; //ya puestas
+    std::vector<Bomb*> inactiveBombs; //por poner
+    void updateBombs(Real time);
+    void explodeBomb(Bomb* bomb);
 
     std::mt19937 gen{ std::random_device{}() };
 };
