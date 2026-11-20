@@ -135,7 +135,7 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
 
     createFloor();
 
-    //Bombas
+    // Bombas: se crean todas al principio y se reutilizan
     for (int i = 0; i < MAX_BOMBS; i++)
         inactiveBombs.push_back(new Bomb(SN->createChildSceneNode(), mSM));
 
@@ -144,12 +144,13 @@ void Labyrinth::createLabyrinth(std::string stageFileName, SceneManager* SM, Sim
 
 void Labyrinth::placeBomb()
 {
+    // Ya hay MAX_BOMBS puestas
     if (inactiveBombs.empty())
         return;
 
     Block* heroBlock = getBlock(hero->getPosition());
 
-    //Evitar dos en la misma casilla
+    // No se ponen dos bombas en la misma casilla
     for (Bomb* b : activeBombs)
         if (getBlock(b->getPosition()) == heroBlock)
             return;
@@ -157,18 +158,21 @@ void Labyrinth::placeBomb()
     Bomb* bomb = inactiveBombs.back();
     inactiveBombs.pop_back();
 
+    // En el centro de la casilla del heroe, a ras de suelo
     bomb->initExplosion(heroBlock->getPosition() + Vector3(0, -BLOCK_SIZE / 2.0f, 0));
     activeBombs.push_back(bomb);
 }
 
 void Labyrinth::updateBombs(Real time)
 {
+    // Las inactivas pueden seguir echando humo de su ultima explosion
     for (Bomb* b : inactiveBombs)
         b->update(time);
 
     for (auto it = activeBombs.begin(); it != activeBombs.end(); ) {
         Bomb* b = *it;
         if (b->update(time)) {
+            // Ha explotado: colisiones y vuelve a estar disponible
             explodeBomb(b);
             inactiveBombs.push_back(b);
             it = activeBombs.erase(it);
@@ -180,27 +184,58 @@ void Labyrinth::updateBombs(Real time)
 
 void Labyrinth::explodeBomb(Bomb* bomb)
 {
-    //Bloques afectados
+    // Bloques afectados: el de la bomba y hasta EXPLOSION_RANGE en cada direccion.
+    // Cada brazo se corta al llegar a un bloque que no se puede atravesar.
     Block* center = getBlock(bomb->getPosition());
     std::vector<Block*> affected{ center };
+
     for (Character::tDir d : { Character::UP, Character::DOWN, Character::LEFT, Character::RIGHT }) {
-        Block* neighbour = getBlock(center->getPosition() + Character::dirToVector(d) * BLOCK_SIZE);
+        Vector3 dir = Character::dirToVector(d);
 
-        if (BreakableBlock* breakable = dynamic_cast<BreakableBlock*>(neighbour))
-            breakable->breakBlock();
+        for (int i = 1; i <= Bomb::EXPLOSION_RANGE; i++) {
+            Vector3 pos = center->getPosition() + dir * (i * BLOCK_SIZE);
 
-        if (neighbour->canPassThrough())
-            affected.push_back(neighbour);
+            // Fuera del laberinto
+            int col = (int)round(pos.x / BLOCK_SIZE);
+            int row = (int)round(pos.z / BLOCK_SIZE);
+            if (row < 0 || row >= numRows || col < 0 || col >= numCols)
+                break;
+
+            Block* b = getBlock(pos);
+
+            // Bloque rompible: se rompe, le llega la explosion y el brazo termina ahi
+            if (BreakableBlock* breakable = dynamic_cast<BreakableBlock*>(b)) {
+                if (!breakable->canPassThrough()) {
+                    breakable->breakBlock();
+                    affected.push_back(b);
+                    break;
+                }
+            }
+
+            // Muro (o bloque invisible): el brazo termina antes
+            if (!b->canPassThrough())
+                break;
+
+            affected.push_back(b);
+        }
     }
+
+    // Humo en todas las casillas afectadas
+    std::vector<Vector3> smokeCells;
+    for (Block* b : affected)
+        smokeCells.push_back(b->getPosition());
+    bomb->showSmoke(smokeCells);
 
     auto inBlast = [&](Character* c) {
         Block* b = getBlock(c->getPosition());
         return std::find(affected.begin(), affected.end(), b) != affected.end();
         };
 
+    // Heroe: pierde una vida
     if (inBlast(hero))
         hero->hit();
 
+    // Villanos: desaparecen del juego
     for (auto it = villains.begin(); it != villains.end(); ) {
         if (inBlast(*it)) {
             (*it)->setVisible(false);

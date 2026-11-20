@@ -25,21 +25,22 @@ particle_system bomb/fuseFire{
     }
 }
 
-// Humo de la explosion. Tambien de duracion indefinida: la clase Bomb lo para
+// Humo de la explosion: hay uno de estos en CADA casilla afectada, asi que cubre
+// solo su casilla. Tambien de duracion indefinida: la clase Bomb lo para
 particle_system bomb/explosionSmoke{
     billboard_type point
-    particle_width 60
-    particle_height 60
-    quota 400
+    particle_width 80
+    particle_height 80
+    quota 80
     material bomb/smoke
 
     emitter Point{
         direction 0 1 0
-        angle 90
-        emission_rate 200
-        time_to_live 1.2
-        velocity_min 80
-        velocity_max 160
+        angle 35
+        emission_rate 50
+        time_to_live 1.0
+        velocity_min 30
+        velocity_max 70
         colour 0.6 0.6 0.6 0.8
     }
 
@@ -51,6 +52,6 @@ particle_system bomb/explosionSmoke{
     }
 
     affector Scaler{
-        rate 60
+        rate 40
     }
 }
