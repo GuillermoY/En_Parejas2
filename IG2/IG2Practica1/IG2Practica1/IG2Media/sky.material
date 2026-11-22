@@ -1,0 +1,12 @@
+material sky/background{
+ technique{
+        pass{
+            
+            lighting off
+            
+            texture_unit {
+                texture spaceSky.jpg
+            }
+        }
+    }
+}

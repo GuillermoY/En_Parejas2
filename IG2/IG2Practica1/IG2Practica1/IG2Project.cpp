@@ -234,6 +234,8 @@ void IG2Project::setupScene(void) {
 
 void IG2Project::changeScene()
 {
+    sinbadAnimDance->setEnabled(false);
+    sinbadAnimRun->setEnabled(false);
     if (mSinbadIntroNode)
     {
         mSinbadIntroNode->flipVisibility();
@@ -372,6 +374,8 @@ void IG2Project::addFrame(NodeAnimationTrack* nAnimTrack, Quaternion giro, Vecto
 
 void IG2Project::createGameScene()
 {
+    mSM->setSkyPlane(true, Plane(Vector3::UNIT_Y, -100), "sky/background", 1, 1, true, 1.0, 100, 100);
+
     // and tell it to render into the main window
     //Viewport* vp = getRenderWindow()->addViewport(cam);
     mCamNode->setPosition(1900, 5000, 1900);
