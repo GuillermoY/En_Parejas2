@@ -112,19 +112,25 @@
     <None Include="IG2Media\terr_rock6M.material">
       <Filter>Archivos de recursos</Filter>
     </None>
-    <None Include="lavaVS.glsl">
-      <Filter>Archivos de recursos\Shaders</Filter>
-    </None>
-    <None Include="lavaFS.glsl">
-      <Filter>Archivos de recursos\Shaders</Filter>
-    </None>
     <None Include="IG2Media\lava_Sphere.material">
       <Filter>Archivos de recursos</Filter>
     </None>
-    <None Include="lavaFS_Sphere.glsl">
+    <None Include="IG2Media\lavaFS.glsl">
       <Filter>Archivos de recursos\Shaders</Filter>
     </None>
-    <None Include="lavaVS_Sphere.glsl">
+    <None Include="IG2Media\lavaFS_Sphere.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="IG2Media\lavaVS.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="IG2Media\lavaVS_Sphere.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="IG2Media\skyVS.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="IG2Media\skyFS.glsl">
       <Filter>Archivos de recursos\Shaders</Filter>
     </None>
   </ItemGroup>

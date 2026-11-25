@@ -241,17 +241,16 @@
         sinbadAnimDance->setEnabled(false);
         sinbadAnimRun->setEnabled(false);
         if (mSinbadIntroNode)
-        {
             mSinbadIntroNode->flipVisibility();
-        }
+        
         if (mLightNode)
-        {
             mLightNode->flipVisibility();
-        }
+        
         if (mFloorIntroNode)
-        {
             mFloorIntroNode->flipVisibility();
-        }
+        
+        if (mSphereIntroNode)
+            mSphereIntroNode->flipVisibility();
 
         createGameScene();
     }
@@ -290,6 +289,17 @@
 
         //Set scale of Sinbad
         mSinbadIntroNode->setScale(20, 20, 20);
+
+
+        //------------------------------------------------------------------------
+        //Creating the sphere
+
+        Entity* entSphere = mSM->createEntity("sphere.mesh");
+        entSphere->setMaterialName("sphere/lava");
+        mSphereIntroNode = mSM->getRootSceneNode()->createChildSceneNode();
+        mSphereIntroNode->attachObject(entSphere);
+        mSphereIntroNode->setPosition(0, 150, -200);
+        mSphereIntroNode->setScale(1, 1, 1);
 
 
         //------------------------------------------------------------------------

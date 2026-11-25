@@ -67,6 +67,7 @@ protected:
     void changeScene();
     currScene actScene = INTRO;
     Ogre::SceneNode* mSinbadIntroNode = nullptr;
+    Ogre::SceneNode* mSphereIntroNode = nullptr;
     Ogre::SceneNode* mFloorIntroNode = nullptr;
 
     void sinbadIntroAnimation();

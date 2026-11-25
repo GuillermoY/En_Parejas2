@@ -1,11 +1,50 @@
-material sky/background{
- technique{
-        pass{
-            
+vertex_program skyVS glsl
+{
+    source skyVS.glsl
+
+    default_params
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto zoomTime sintime_0_2pi 10
+    }
+}
+
+fragment_program skyFS glsl
+{
+    source skyFS.glsl
+
+    default_params
+    {
+        param_named lightMap int 0
+        param_named skyTexture int 1
+        param_named_auto lightTime sintime_0_2pi 10
+    }
+}
+
+material sky/background
+{
+    technique
+    {
+        pass
+        {
             lighting off
-            
-            texture_unit {
-                texture spaceSky.jpg
+
+            vertex_program_ref skyVS {}
+
+            fragment_program_ref skyFS {}
+
+            texture_unit
+            {
+                texture lightMap.jpg 2d
+                tex_address_mode clamp
+                filtering bilinear
+            }
+
+            texture_unit
+            {
+                texture spaceSky2.png 2d
+                tex_address_mode clamp
+                filtering bilinear
             }
         }
     }

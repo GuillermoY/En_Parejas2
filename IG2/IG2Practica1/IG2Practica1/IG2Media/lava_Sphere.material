@@ -5,10 +5,7 @@ vertex_program lavaVS_Sphere glsl
     default_params
     {
         param_named_auto modelViewProjMat worldviewproj_matrix
-        param_named_auto normalMatrix
-        param_named_auto time sintime_0_2pi 10
-        param_named amplitude float 30
-        param_named frequency float 0.01
+        param_named_auto normalMatrix inverse_transpose_worldview_matrix
     }
 }
 
@@ -19,34 +16,37 @@ fragment_program lavaFS_Sphere glsl
     default_params
     {
         param_named lavaTexture int 0
+        param_named blackTexture int 1
+        param_named_auto Flipping render_target_flipping
+        param_named_auto light_direction_ light_direction_view_space 0
     }
 }
 
-material floor/lava_Sphere
+material sphere/lava
 {
     technique
     {
         pass
         {
             lighting off
+
             cull_hardware none
             cull_software none
 
             vertex_program_ref lavaVS_Sphere {}
-
             fragment_program_ref lavaFS_Sphere {}
 
             texture_unit
             {
                 texture lava.jpg 2d
-                tex_address_mode clamp
+                tex_address_mode wrap
                 filtering bilinear
             }
 
             texture_unit
             {
                 texture blackRock.jpg 2d
-                tex_address_mode clamp
+                tex_address_mode wrap
                 filtering bilinear
             }
         }
