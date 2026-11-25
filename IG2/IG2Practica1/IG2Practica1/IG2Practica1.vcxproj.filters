@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de recursos\Shaders">
+      <UniqueIdentifier>{51fe4f50-ccd2-488f-b066-d2a757852f78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IG2Object.cpp">
@@ -94,17 +97,35 @@
     <None Include="IG2Media\example.material">
       <Filter>Archivos de recursos</Filter>
     </None>
+    <None Include="IG2Media\lava.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
     <None Include="IG2Media\MtlPlat2M.material">
       <Filter>Archivos de recursos</Filter>
     </None>
     <None Include="IG2Media\RustySteelM.material">
       <Filter>Archivos de recursos</Filter>
     </None>
+    <None Include="IG2Media\sky.material">
+      <Filter>Archivos de recursos</Filter>
+    </None>
     <None Include="IG2Media\terr_rock6M.material">
       <Filter>Archivos de recursos</Filter>
     </None>
-    <None Include="sky.material">
+    <None Include="lavaVS.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="lavaFS.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="IG2Media\lava_Sphere.material">
       <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="lavaFS_Sphere.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="lavaVS_Sphere.glsl">
+      <Filter>Archivos de recursos\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

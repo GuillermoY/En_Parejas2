@@ -1,406 +1,411 @@
-#include "IG2Project.h"
+    #include "IG2Project.h"
 
-using namespace std;
-using namespace Ogre;
+    using namespace std;
+    using namespace Ogre;
 
-const int IG2Project::SPEED = 100;
+    const int IG2Project::SPEED = 100;
 
-bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
+    bool IG2Project::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
-    // ESC key finished the rendering...
-    if (evt.keysym.sym == SDLK_ESCAPE) {
-        getRoot()->queueEndRendering();
-    }
-
-    else if (evt.keysym.sym == SDLK_k) {
-        cout << "Position of Sinbad: " << mSinbadNode->getPosition() << endl;
-        cout << "Position of the camera: " << mCamNode->getPosition() << endl;
-    }
-    else if (heroe != nullptr)
-    {
-        if (evt.keysym.sym == SDLK_UP) { //rotateToNewDirection character
-            cout << "Pressed UP" << endl;
-            heroe->changeDirection(heroe->UP);
+        // ESC key finished the rendering...
+        if (evt.keysym.sym == SDLK_ESCAPE) {
+            getRoot()->queueEndRendering();
         }
-        else if (evt.keysym.sym == SDLK_DOWN) {
-            cout << "Pressed DOWN" << endl;
-            heroe->changeDirection(heroe->DOWN);
+
+        else if (evt.keysym.sym == SDLK_k) {
+            cout << "Position of Sinbad: " << mSinbadNode->getPosition() << endl;
+            cout << "Position of the camera: " << mCamNode->getPosition() << endl;
         }
-        else if (evt.keysym.sym == SDLK_LEFT) {
-            cout << "Pressed LEFT" << endl;
-            heroe->changeDirection(heroe->LEFT);
-        }
-        else if (evt.keysym.sym == SDLK_RIGHT) {
-            cout << "Pressed RIGHT" << endl;
-            heroe->changeDirection(heroe->RIGHT);
-        }
-        else if (evt.keysym.sym == SDLK_SPACE && labyrinth != nullptr) {
-            labyrinth->placeBomb();
-        }
-    }
-    else if (evt.keysym.sym == SDLK_s && actScene == INTRO)
-    {
-        actScene = GAME;
-        changeScene();
-    }
-
-    return true;
-}
-
-
-void IG2Project::shutdown() {
-
-    mShaderGenerator->removeSceneManager(mSM);
-    mSM->removeRenderQueueListener(mOverlaySystem);
-
-    mRoot->destroySceneManager(mSM);
-
-    delete mTrayMgr;  mTrayMgr = nullptr;
-    delete mCamMgr; mCamMgr = nullptr;
-
-    // do not forget to call the base 
-    OgreBites::ApplicationContext::shutdown();
-}
-
-void IG2Project::setup(void) {
-
-    // do not forget to call the base first
-    OgreBites::ApplicationContext::setup();
-
-    // Create the scene manager
-    mSM = mRoot->createSceneManager();
-
-    // Register our scene with the RTSS
-    mShaderGenerator->addSceneManager(mSM);
-
-    mSM->addRenderQueueListener(mOverlaySystem);
-    //mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
-    mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", getRenderWindow());
-    mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-    addInputListener(mTrayMgr);
-
-    // Adds the listener for this object
-    addInputListener(this);
-    setupScene();
-}
-
-void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
-    if (actScene == GAME && labyrinth != nullptr && heroe != nullptr) {
-        labyrinth->moveCharacter(heroe, evt.timeSinceLastFrame);
-        labyrinth->update(evt.timeSinceLastFrame);
-        showCurrentInfo();
-    }
-    else if (actScene == INTRO && sinbadAnimDance != nullptr)
-    {
-        currTime += evt.timeSinceLastFrame;
-        if (currTime > animTime)
+        else if (heroe != nullptr)
         {
-            currTime = 0;
-        }
-        else if (currTime > danceATime || currTime < runATime)
-        {
-            sinbadAnimDance->addTime(evt.timeSinceLastFrame);
-            sinbadAnimDance->setEnabled(true);
-            sinbadAnimRun->setEnabled(false);
-
-            if (hasSwords)
-            {
-                hasSwords = false;
-                entSinbad->detachObjectFromBone(entSwordR);
-                entSinbad->detachObjectFromBone(entSwordL);
+            if (evt.keysym.sym == SDLK_UP) { //rotateToNewDirection character
+                cout << "Pressed UP" << endl;
+                heroe->changeDirection(heroe->UP);
+            }
+            else if (evt.keysym.sym == SDLK_DOWN) {
+                cout << "Pressed DOWN" << endl;
+                heroe->changeDirection(heroe->DOWN);
+            }
+            else if (evt.keysym.sym == SDLK_LEFT) {
+                cout << "Pressed LEFT" << endl;
+                heroe->changeDirection(heroe->LEFT);
+            }
+            else if (evt.keysym.sym == SDLK_RIGHT) {
+                cout << "Pressed RIGHT" << endl;
+                heroe->changeDirection(heroe->RIGHT);
+            }
+            else if (evt.keysym.sym == SDLK_SPACE && labyrinth != nullptr) {
+                labyrinth->placeBomb();
             }
         }
-        else
+        else if (evt.keysym.sym == SDLK_s && actScene == INTRO)
         {
-            sinbadAnimRun->addTime(evt.timeSinceLastFrame);
-            sinbadAnimDance->setEnabled(false);
-            sinbadAnimRun->setEnabled(true);
+            actScene = GAME;
+            changeScene();
         }
 
-        if (currTime > swordATime && currTime < danceATime
-            && !hasSwords)
-        {
-            hasSwords = true;
+        return true;
+    }
 
-            entSinbad->attachObjectToBone("ThumbMed.R", entSwordR);
-            entSinbad->attachObjectToBone("ThumbMed.L", entSwordL);
+
+    void IG2Project::shutdown() {
+
+        delete mTrayMgr;  mTrayMgr = nullptr;
+        delete mCamMgr; mCamMgr = nullptr;
+
+        if (mSM)
+        {
+            mShaderGenerator->removeSceneManager(mSM);
+            mSM->removeRenderQueueListener(mOverlaySystem);
+
+            mRoot->destroySceneManager(mSM);
+            mSM = nullptr;
         }
 
-        sinbadAnimMove->addTime(evt.timeSinceLastFrame);
+        // do not forget to call the base 
+        OgreBites::ApplicationContext::shutdown();
     }
-}
 
-void IG2Project::showCurrentInfo()
-{
-    std::stringstream ss;
-    ss << "Lives: " << heroe->getRemainingLives() << "\n";
-    ss << "Points: " << heroe->getPoints();
-    mInfoBox->setText(ss.str());
-}
+    void IG2Project::setup(void) {
 
-void IG2Project::setupScene(void) {
+        // do not forget to call the base first
+        OgreBites::ApplicationContext::setup();
 
-    //------------------------------------------------------------------------
-    // Creating the camera
+        // Create the scene manager
+        mSM = mRoot->createSceneManager();
 
-    Camera* cam = mSM->createCamera("Cam");
-    cam->setNearClipDistance(1);
-    cam->setFarClipDistance(10000);
-    cam->setAutoAspectRatio(true);
-    //cam->setPolygonMode(Ogre::PM_WIREFRAME);
+        // Register our scene with the RTSS
+        mShaderGenerator->addSceneManager(mSM);
 
-    mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
-    mCamNode->attachObject(cam);
+        mSM->addRenderQueueListener(mOverlaySystem);
+        //mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
+        mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", getRenderWindow());
+        mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+        addInputListener(mTrayMgr);
 
-    Viewport* vp = getRenderWindow()->addViewport(cam);
+        // Adds the listener for this object
+        addInputListener(this);
+        setupScene();
+    }
 
-    mCamMgr = new OgreBites::CameraMan(mCamNode);
-    addInputListener(mCamMgr);
-    mCamMgr->setStyle(OgreBites::CS_ORBIT);
+    void IG2Project::frameRendered(const Ogre::FrameEvent& evt) {
+        if (actScene == GAME && labyrinth != nullptr && heroe != nullptr) {
+            labyrinth->moveCharacter(heroe, evt.timeSinceLastFrame);
+            labyrinth->update(evt.timeSinceLastFrame);
+            showCurrentInfo();
+        }
+        else if (actScene == INTRO && sinbadAnimDance != nullptr)
+        {
+            currTime += evt.timeSinceLastFrame;
+            if (currTime > animTime)
+            {
+                currTime = 0;
+            }
+            else if (currTime > danceATime || currTime < runATime)
+            {
+                sinbadAnimDance->addTime(evt.timeSinceLastFrame);
+                sinbadAnimDance->setEnabled(true);
+                sinbadAnimRun->setEnabled(false);
 
-    createIntroScene();
-#pragma region TestCommands
+                if (hasSwords)
+                {
+                    hasSwords = false;
+                    entSinbad->detachObjectFromBone(entSwordR);
+                    entSinbad->detachObjectFromBone(entSwordL);
+                }
+            }
+            else
+            {
+                sinbadAnimRun->addTime(evt.timeSinceLastFrame);
+                sinbadAnimDance->setEnabled(false);
+                sinbadAnimRun->setEnabled(true);
+            }
 
-    //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+            if (currTime > swordATime && currTime < danceATime
+                && !hasSwords)
+            {
+                hasSwords = true;
 
-    //Light* luz = mSM->createLight("Luz");
-    //luz->setType(Ogre::Light::LT_DIRECTIONAL);
-    //luz->setDiffuseColour(0.75, 0.75, 0.75);
+                entSinbad->attachObjectToBone("ThumbMed.R", entSwordR);
+                entSinbad->attachObjectToBone("ThumbMed.L", entSwordL);
+            }
 
-    //mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-    //mLightNode->attachObject(luz);
-    //mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
+            sinbadAnimMove->addTime(evt.timeSinceLastFrame);
+        }
+    }
 
-    //mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-    //sinbad = new IG2Object(Vector3(0, 0, 0),
-    //    mSinbadNode,
-    //    mSM,
-    //    "Sinbad.mesh");
-
-    ////mSinbadNode->showBoundingBox(true);
-    //sinbad->setScale(Vector3(15, 15, 15));
-    //sinbad->move(Vector3(0, sinbad->calculateBoxSize().y / 2 + 1, 0));
-    //Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
-    //mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-    //mSinbadNode->attachObject(ent);
-
-    // Show bounding box
-    //mSinbadNode->showBoundingBox(true);
-
-    // Set position of Sinbad
-    //mSinbadNode->setPosition(x, y, z);
-
-    // Set scale of Sinbad
-    //mSinbadNode->setScale(20, 20, 20);
-
-    //mSinbadNode->yaw(Ogre::Degree(-45));
-    //mSinbadNode->setVisible(false);    
-
-
-    //------------------------------------------------------------------------
-    // Creating the floor
-
-    //MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-    //    Plane(Vector3::UNIT_Y, 0),
-    //    1500, 1500, 50, 50, true, 1, 5, 5,
-    //    Vector3::UNIT_Z);
-
-    //Entity* entFloor = mSM->createEntity("exampleFloor", "floor");
-    //entFloor->setMaterialName("example/stonesFloor");
-    //SceneNode* floorNode = mSM->getRootSceneNode()->createChildSceneNode();
-    //floorNode->attachObject(entFloor);
-
-
-    //------------------------------------------------------------------------
-   // Creating the dragon
-
-    //Ogre::Entity* entDragon = mSM->createEntity("cube.mesh");
-    //Ogre::SceneNode* mDragonNode = mSM->getRootSceneNode()->createChildSceneNode("nDragon");
-    //mDragonNode->attachObject(entDragon);
-
-    //// Show bounding box
-    //mDragonNode->showBoundingBox(true);
-
-    // Set position of the dragon
-    //mDragonNode->setPosition(x, y, z);
-
-    // Set scale of the dragon
-    //mDragonNode->setScale(20, 20, 20);
-
-    //mDragonNode->yaw(Ogre::Degree(-45));
-    //mDragonNode->setVisible(false);
-#pragma endregion
-}
-
-void IG2Project::changeScene()
-{
-    sinbadAnimDance->setEnabled(false);
-    sinbadAnimRun->setEnabled(false);
-    if (mSinbadIntroNode)
+    void IG2Project::showCurrentInfo()
     {
-        mSinbadIntroNode->flipVisibility();
+        std::stringstream ss;
+        ss << "Lives: " << heroe->getRemainingLives() << "\n";
+        ss << "Points: " << heroe->getPoints();
+        mInfoBox->setText(ss.str());
     }
-    if (mLightNode)
+
+    void IG2Project::setupScene(void) {
+
+        //------------------------------------------------------------------------
+        // Creating the camera
+
+        Camera* cam = mSM->createCamera("Cam");
+        cam->setNearClipDistance(1);
+        cam->setFarClipDistance(10000);
+        cam->setAutoAspectRatio(true);
+        //cam->setPolygonMode(Ogre::PM_WIREFRAME);
+
+        mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
+        mCamNode->attachObject(cam);
+
+        Viewport* vp = getRenderWindow()->addViewport(cam);
+
+        mCamMgr = new OgreBites::CameraMan(mCamNode);
+        addInputListener(mCamMgr);
+        mCamMgr->setStyle(OgreBites::CS_ORBIT);
+
+        createIntroScene();
+    #pragma region TestCommands
+
+        //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+
+        //Light* luz = mSM->createLight("Luz");
+        //luz->setType(Ogre::Light::LT_DIRECTIONAL);
+        //luz->setDiffuseColour(0.75, 0.75, 0.75);
+
+        //mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
+        //mLightNode->attachObject(luz);
+        //mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
+
+        //mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+        //sinbad = new IG2Object(Vector3(0, 0, 0),
+        //    mSinbadNode,
+        //    mSM,
+        //    "Sinbad.mesh");
+
+        ////mSinbadNode->showBoundingBox(true);
+        //sinbad->setScale(Vector3(15, 15, 15));
+        //sinbad->move(Vector3(0, sinbad->calculateBoxSize().y / 2 + 1, 0));
+        //Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+        //mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+        //mSinbadNode->attachObject(ent);
+
+        // Show bounding box
+        //mSinbadNode->showBoundingBox(true);
+
+        // Set position of Sinbad
+        //mSinbadNode->setPosition(x, y, z);
+
+        // Set scale of Sinbad
+        //mSinbadNode->setScale(20, 20, 20);
+
+        //mSinbadNode->yaw(Ogre::Degree(-45));
+        //mSinbadNode->setVisible(false);    
+
+
+        //------------------------------------------------------------------------
+        // Creating the floor
+
+        //MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        //    Plane(Vector3::UNIT_Y, 0),
+        //    1500, 1500, 50, 50, true, 1, 5, 5,
+        //    Vector3::UNIT_Z);
+
+        //Entity* entFloor = mSM->createEntity("exampleFloor", "floor");
+        //entFloor->setMaterialName("example/stonesFloor");
+        //SceneNode* floorNode = mSM->getRootSceneNode()->createChildSceneNode();
+        //floorNode->attachObject(entFloor);
+
+
+        //------------------------------------------------------------------------
+       // Creating the dragon
+
+        //Ogre::Entity* entDragon = mSM->createEntity("cube.mesh");
+        //Ogre::SceneNode* mDragonNode = mSM->getRootSceneNode()->createChildSceneNode("nDragon");
+        //mDragonNode->attachObject(entDragon);
+
+        //// Show bounding box
+        //mDragonNode->showBoundingBox(true);
+
+        // Set position of the dragon
+        //mDragonNode->setPosition(x, y, z);
+
+        // Set scale of the dragon
+        //mDragonNode->setScale(20, 20, 20);
+
+        //mDragonNode->yaw(Ogre::Degree(-45));
+        //mDragonNode->setVisible(false);
+    #pragma endregion
+    }
+
+    void IG2Project::changeScene()
     {
-        mLightNode->flipVisibility();
+        sinbadAnimDance->setEnabled(false);
+        sinbadAnimRun->setEnabled(false);
+        if (mSinbadIntroNode)
+        {
+            mSinbadIntroNode->flipVisibility();
+        }
+        if (mLightNode)
+        {
+            mLightNode->flipVisibility();
+        }
+        if (mFloorIntroNode)
+        {
+            mFloorIntroNode->flipVisibility();
+        }
+
+        createGameScene();
     }
-    if (mFloorIntroNode)
+
+    void IG2Project::createIntroScene()
     {
-        mFloorIntroNode->flipVisibility();
+        mCamNode->setPosition(0, 500, 500);
+        mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+
+        //------------------------------------------------------------------------
+        //Creating Light
+        mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+
+        Light* luz = mSM->createLight("Luz");
+        luz->setType(Ogre::Light::LT_DIRECTIONAL);
+        luz->setDiffuseColour(0.75, 0.75, 0.75);
+
+        mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
+        mLightNode->attachObject(luz);
+        mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
+
+        //------------------------------------------------------------------------
+        //Creating Sinbad
+
+        entSinbad = mSM->createEntity("Sinbad.mesh");
+        mSinbadIntroNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbadIntro");
+        mSinbadIntroNode->attachObject(entSinbad);
+
+        sinbadParent = mSM->createAnimation("sinbadIntro", animTime);
+        sinbadAnimDance = entSinbad->getAnimationState("Dance");
+        sinbadIntroAnimation();
+
+
+        //Set position of Sinbad
+        mSinbadIntroNode->setPosition(0, 100, 0);
+
+        //Set scale of Sinbad
+        mSinbadIntroNode->setScale(20, 20, 20);
+
+
+        //------------------------------------------------------------------------
+        //Creating the floor
+
+        MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+            Plane(Vector3::UNIT_Y, 0),
+            1500, 1500, 50, 50, true, 1, 1, 1,
+            Vector3::UNIT_Z);
+
+        Entity* entFloor = mSM->createEntity("exampleFloor", "floor");
+        //entFloor->setMaterialName("example/stonesFloor");
+        entFloor->setMaterialName("floor/lava");
+        mFloorIntroNode = mSM->getRootSceneNode()->createChildSceneNode();
+        mFloorIntroNode->attachObject(entFloor);
     }
 
-    createGameScene();
-}
+    void IG2Project::sinbadIntroAnimation()
+    {
 
-void IG2Project::createIntroScene()
-{
-    mCamNode->setPosition(0, 500, 500);
-    mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+        sinbadParent->setInterpolationMode(Ogre::Animation::IM_SPLINE);
 
-    //------------------------------------------------------------------------
-    //Creating Light
-    mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+        sinbadTrack = sinbadParent->createNodeTrack(0);
+        sinbadTrack->setAssociatedNode(mSinbadIntroNode);
 
-    Light* luz = mSM->createLight("Luz");
-    luz->setType(Ogre::Light::LT_DIRECTIONAL);
-    luz->setDiffuseColour(0.75, 0.75, 0.75);
+        mSinbadIntroNode->setInitialState();
 
-    mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-    mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(-1, -1, -1));
+        Vector3 keyframePos(0, 100, 0);
+        Vector3 iniPos(0, 100, 0);
+        Vector3 escala(20, 20, 20);
 
-    //------------------------------------------------------------------------
-    //Creating Sinbad
+        Real movementLength = 100;
+        Real durStep = animTime / 10.0f;
 
-    entSinbad = mSM->createEntity("Sinbad.mesh");
-    mSinbadIntroNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbadIntro");
-    mSinbadIntroNode->attachObject(entSinbad);
+        Quaternion mirarDerecha(Degree(90), Vector3::UNIT_Y);
+        Quaternion mirarIzquierda(Degree(-90), Vector3::UNIT_Y);
+        Quaternion mirarCentro(Degree(0), Vector3::UNIT_Y);
 
-    sinbadParent = mSM->createAnimation("sinbadIntro", animTime);
-    sinbadAnimDance = entSinbad->getAnimationState("Dance");
-    sinbadIntroAnimation();
+        // Quieto
+        addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep);
 
+        // Mira a la derecha
+        addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 2);
 
-    //Set position of Sinbad
-    mSinbadIntroNode->setPosition(0, 100, 0);
+        // Mueve hacia la derecha
+        keyframePos += Vector3::UNIT_X * movementLength;
+        addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 3);
 
-    //Set scale of Sinbad
-    mSinbadIntroNode->setScale(20, 20, 20);
+        entSwordR = mSM->createEntity("Sword.mesh");
+        entSwordL = mSM->createEntity("Sword.mesh");
+        //entSinbad->attachObjectToBone("Hand", entSword);
 
+        // Gira a la izquierda y comienza a desplazarse
+        addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 4);
+        keyframePos += Vector3::NEGATIVE_UNIT_X * movementLength;
+        addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 5);
 
-    //------------------------------------------------------------------------
-    //Creating the floor
+        // Continúa hacia la izquierda
+        keyframePos += Vector3::NEGATIVE_UNIT_X * movementLength;
+        addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 6);
 
-    MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-        Plane(Vector3::UNIT_Y, 0),
-        1500, 1500, 50, 50, true, 1, 5, 5,
-        Vector3::UNIT_Z);
+        // Vuelve a la derecha a la posición inicial
+        addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 7);
+        addFrame(sinbadTrack, mirarDerecha, iniPos, escala, durStep * 8);
 
-    Entity* entFloor = mSM->createEntity("exampleFloor", "floor");
-    entFloor->setMaterialName("example/stonesFloor");
-    mFloorIntroNode = mSM->getRootSceneNode()->createChildSceneNode();
-    mFloorIntroNode->attachObject(entFloor);
-}
+        // Regresa al centro mirando hacia delante
+        addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep * 9);
 
-void IG2Project::sinbadIntroAnimation()
-{
+        sinbadAnimMove = mSM->createAnimationState("sinbadIntro");
+        sinbadAnimMove->setEnabled(true);
+        sinbadAnimMove->setLoop(true);
 
-    sinbadParent->setInterpolationMode(Ogre::Animation::IM_SPLINE);
+        sinbadAnimRun = entSinbad->getAnimationState("RunBase");
+        sinbadAnimRun->setEnabled(true);
+        sinbadAnimRun->setLoop(true);
+    }
 
-    sinbadTrack = sinbadParent->createNodeTrack(0);
-    sinbadTrack->setAssociatedNode(mSinbadIntroNode);
+    void IG2Project::addFrame(NodeAnimationTrack* nAnimTrack, Quaternion giro, Vector3 pos, Vector3 escala, Real tiempo)
+    {
+        TransformKeyFrame* kf;
+        // Keyframe 0 (Init state)
+        kf = nAnimTrack->createNodeKeyFrame(tiempo);
+        kf->setTranslate(pos);
+        kf->setRotation(giro);
+        kf->setScale(escala);
+    }
 
-    mSinbadIntroNode->setInitialState();
+    void IG2Project::createGameScene()
+    {
+        mSM->setSkyPlane(true, Plane(Vector3::UNIT_Y, -100), "sky/background", 1, 1, true, 1.0, 100, 100);
 
-    Vector3 keyframePos(0, 100, 0);
-    Vector3 iniPos(0, 100, 0);
-    Vector3 escala(20, 20, 20);
+        // and tell it to render into the main window
+        //Viewport* vp = getRenderWindow()->addViewport(cam);
+        mCamNode->setPosition(1900, 5000, 1900);
+        mCamNode->lookAt({ 1900, 0, 1900 }, Ogre::Node::TS_WORLD);
+        mCamNode->roll(Degree(180.0f));
+        //------------------------------------------------------------------------
+        // Creating the light
+        //mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
-    Real movementLength = 100;
-    Real durStep = animTime / 10.0f;
+        //------------------------------------------------------------------------
+        // Creating Sinbad
+        mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode();
+        heroe = new Simbad({ 0, 0, 0 }, mSinbadNode, mSM, "Sinbad.mesh");
+        heroe->setScale(Vector3(20, 20, 20));
+        mSinbadNode->showBoundingBox(true);
 
-    Quaternion mirarDerecha(Degree(90), Vector3::UNIT_Y);
-    Quaternion mirarIzquierda(Degree(-90), Vector3::UNIT_Y);
-    Quaternion mirarCentro(Degree(0), Vector3::UNIT_Y);
+        //------------------------------------------------------------------------
+        // Creating labyrinth
 
-    // Quieto
-    addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep);
+        labyrinth = new Labyrinth();
+        labyrinth->createLabyrinth("stage1.txt", mSM, heroe);
 
-    // Mira a la derecha
-    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 2);
-
-    // Mueve hacia la derecha
-    keyframePos += Vector3::UNIT_X * movementLength;
-    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 3);
-
-    entSwordR = mSM->createEntity("Sword.mesh");
-    entSwordL = mSM->createEntity("Sword.mesh");
-    //entSinbad->attachObjectToBone("Hand", entSword);
-
-    // Gira a la izquierda y comienza a desplazarse
-    addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 4);
-    keyframePos += Vector3::NEGATIVE_UNIT_X * movementLength;
-    addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 5);
-
-    // Continúa hacia la izquierda
-    keyframePos += Vector3::NEGATIVE_UNIT_X * movementLength;
-    addFrame(sinbadTrack, mirarIzquierda, keyframePos, escala, durStep * 6);
-
-    // Vuelve a la derecha a la posición inicial
-    addFrame(sinbadTrack, mirarDerecha, keyframePos, escala, durStep * 7);
-    addFrame(sinbadTrack, mirarDerecha, iniPos, escala, durStep * 8);
-
-    // Regresa al centro mirando hacia delante
-    addFrame(sinbadTrack, mirarCentro, iniPos, escala, durStep * 9);
-
-    sinbadAnimMove = mSM->createAnimationState("sinbadIntro");
-    sinbadAnimMove->setEnabled(true);
-    sinbadAnimMove->setLoop(true);
-
-    sinbadAnimRun = entSinbad->getAnimationState("RunBase");
-    sinbadAnimRun->setEnabled(true);
-    sinbadAnimRun->setLoop(true);
-}
-
-void IG2Project::addFrame(NodeAnimationTrack* nAnimTrack, Quaternion giro, Vector3 pos, Vector3 escala, Real tiempo)
-{
-    TransformKeyFrame* kf;
-    // Keyframe 0 (Init state)
-    kf = nAnimTrack->createNodeKeyFrame(tiempo);
-    kf->setTranslate(pos);
-    kf->setRotation(giro);
-    kf->setScale(escala);
-}
-
-void IG2Project::createGameScene()
-{
-    mSM->setSkyPlane(true, Plane(Vector3::UNIT_Y, -100), "sky/background", 1, 1, true, 1.0, 100, 100);
-
-    // and tell it to render into the main window
-    //Viewport* vp = getRenderWindow()->addViewport(cam);
-    mCamNode->setPosition(1900, 5000, 1900);
-    mCamNode->lookAt({ 1900, 0, 1900 }, Ogre::Node::TS_WORLD);
-    mCamNode->roll(Degree(180.0f));
-    //------------------------------------------------------------------------
-    // Creating the light
-    //mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
-
-    //------------------------------------------------------------------------
-    // Creating Sinbad
-    mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode();
-    heroe = new Simbad({ 0, 0, 0 }, mSinbadNode, mSM, "Sinbad.mesh");
-    heroe->setScale(Vector3(20, 20, 20));
-    mSinbadNode->showBoundingBox(true);
-
-    //------------------------------------------------------------------------
-    // Creating labyrinth
-
-    labyrinth = new Labyrinth();
-    labyrinth->createLabyrinth("stage1.txt", mSM, heroe);
-
-    //------------------------------------------------------------------------
-    // HUD
-    mInfoLabel = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Stage: 1", 200);
-    mInfoBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Status", 200, 100);
-    showCurrentInfo();
-}
+        //------------------------------------------------------------------------
+        // HUD
+        mInfoLabel = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Stage: 1", 200);
+        mInfoBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Status", 200, 100);
+        showCurrentInfo();
+    }

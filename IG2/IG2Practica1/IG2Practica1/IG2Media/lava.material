@@ -1,0 +1,46 @@
+vertex_program lavaVS glsl
+{
+    source lavaVS.glsl
+
+    default_params
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto time sintime_0_2pi 10
+        param_named amplitude float 30
+        param_named frequency float 0.01
+    }
+}
+
+fragment_program lavaFS glsl
+{
+    source lavaFS.glsl
+
+    default_params
+    {
+        param_named lavaTexture int 0
+    }
+}
+
+material floor/lava
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            cull_hardware none
+            cull_software none
+
+            vertex_program_ref lavaVS {}
+
+            fragment_program_ref lavaFS {}
+
+            texture_unit
+            {
+                texture lava.jpg 2d
+                tex_address_mode clamp
+                filtering bilinear
+            }
+        }
+    }
+}
